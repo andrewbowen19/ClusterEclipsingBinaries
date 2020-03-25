@@ -1,10 +1,18 @@
 # Git ignore file for us to not push plots and data files to GitHub, only code
-*.DS_Store
+
+# Plot file extensions
 *.pdf
-*.csv
+*.png
+*.jpg
+*.eps
+
+# Data file extensions
 *.txt
+*.csv
 *.xlsx
 
+# Misc.
+.DS_Store
 
 # Plots and data files (.csv/.txt) can be stored on Box (NU): https://northwestern.app.box.com/folder/70663495351
 # Can also put backups on Google drive: https://drive.google.com/drive/u/0/folders/1_YzH4ik6EnQTf5hVVQyflAc9jrFrKZDe
