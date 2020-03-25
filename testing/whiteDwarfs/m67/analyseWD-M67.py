@@ -4,8 +4,12 @@
 #########################
 #########################
 
-# NEW analyse script --- want to make more flexible and run once to loop thru entire file tree for all scenarios/cluster types (OC/GC/long, Base/Col, Crowd/NoCrowd)
-# Should no longer need to call four separate times
+# Baseline M67 (GC) long script -- NO crowding
+# White Dwarf (WD) version of analyse script
+# New script copied from quest - want to take p and ecc from each population (all, obs, rec) and put them into separate file
+# Doing this so we don't have to run analyse each time
+# Can write separate script for p-ecc plots
+# Quest paths in this version of script
 
 import pandas as pd
 import numpy as np
@@ -74,7 +78,7 @@ def saveHist(histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_
 	ax1.step(bin_edges, histRec[f]/np.sum(histRec[f]), color=c3, linewidth=lw)
 	ax1.set_ylabel('PDF')
 	ax1.set_yscale('log')
-	ax1.set_title('Globular Clusters - Baseline', fontsize = 16)
+	ax1.set_title('M67 - Baseline', fontsize = 16)
 	ax1.set_xlabel(xtitle)
 	#CDF
 	#cdfAll = []
@@ -116,6 +120,42 @@ def saveHist(histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_
 				outline += ','+str(histRec[f][i])
 			outline += '\n'
 			fl.write(outline)
+
+# ######################################## Testing functions ########################################
+def writeCornerFiles(df, binParams):
+	'''
+	Function to write certain binary parameters 
+	'''
+
+	# Dataframes to write to files later; 3 files for each sub-population - append everything to these
+	# Column names: ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i']
+	All= pd.DataFrame(columns = binParams)
+	Obs = pd.DataFrame(columns = binParams)
+	Rec = pd.DataFrame(columns = binParams)
+
+	# setting up all, obs, rec lists for each binary param
+	for param in binParams:
+		param_all = []
+		param_obs = []
+		param_rec = []
+
+		param_all.append(df[param])
+		param_obs.append(df[param])
+		param_rec.append(df[param])
+
+		All[param] = param_all
+		Obs[param] = param_obs
+		Rec[param] = param_rec
+
+		print('dataframes 2 write: ', sAll, Obs, Rec)
+
+	return All, Obs, Rec
+
+
+# test call
+# writeCornerFiles(['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
+#####################################################################################################
+
 
 if __name__ == "__main__":
 
@@ -206,7 +246,9 @@ if __name__ == "__main__":
 	obsNPrsa = []
 	recNPrsa = []
 
-	# Lists for period and eccentricity for Andrew's circularization plots
+	# Lists for different params
+
+	binaryParams =  ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
 	eccAll = []
 	eccObs = []
 	eccRec = []
@@ -214,15 +256,36 @@ if __name__ == "__main__":
 	pAll = []
 	pObs = []
 	pRec = []
+
+	iAll = []
+	iObs = []
+	iRec = []
+
+	m1All = []
+	m1Obs = []
+	m1Rec = []
+
+	m2All = []
+	m2Obs = []
+	m2Rec = []
+
+	r1All = []
+	r1Obs = []
+	r1Rec = []	
+
+	r2All = []
+	r2Obs = []
+	r2Rec = []
+
 	# Using prsa dataframes for these lists because of period cutoff at 1000 days
 
 	# Dataframes to write to files later; 3 files for each sub-population - append everything to these
-	peccAll = pd.DataFrame(columns = ['e', 'p'])
-	peccObs = pd.DataFrame(columns = ['e', 'p'])
-	peccRec = pd.DataFrame(columns = ['e', 'p'])
+	All = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
+	Obs = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
+	Rec = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
 
 	#Read in all the data and make the histograms
-	d = "/projects/p30137/ageller/testing/EBLSST/clusters/GlobularClusters/output_files/"
+	d = "./input_files/"
 	files = os.listdir(d)
 	IDs = []
 	for i, f in enumerate(files):
@@ -255,11 +318,18 @@ if __name__ == "__main__":
 			NobsPrsa = 0.
 			NrecPrsa = 0.
 			Nall = len(data.index)/intNorm ###is this correct? (and the only place I need to normalize?)
-			prsa = data.loc[(data['appMagMean_r'] <= 19.5) & (data['appMagMean_r'] > 15.8) & (data['p'] < 1000) & (data['p'] > 0.5)]
+			prsa = data.loc[(data['p'] < 1000) & (data['p'] > 0.5)]
 
 			# Appending for Andrew
 			eccAll.append(prsa['e'].values)
 			pAll.append(prsa['p'].values)
+			iAll.append(prsa['i'].values)
+			m1All.append(prsa['m1'].values)
+			m2All.append(prsa['m2'].values)
+			r1All.append(prsa['r1'].values)
+			r2All.append(prsa['r2'].values)
+
+			writeCornerFiles(prsa, binaryParams)
 
 			NallPrsa = len(prsa.index)
 			if (Nall >= Nlim):
@@ -304,12 +374,19 @@ if __name__ == "__main__":
 				#Obs
 				obs = data.loc[data['LSM_PERIOD'] != -999]
 				Nobs = len(obs.index)
-				prsaObs = data.loc[(data['appMagMean_r'] <= 19.5) & (data['appMagMean_r'] > 15.8) & (data['p'] < 1000) & (data['p'] >0.5) & (data['LSM_PERIOD'] != -999)]
+				prsaObs = data.loc[(data['p'] < 1000) & (data['p'] >0.5) & (data['LSM_PERIOD'] != -999)]
 				NobsPrsa = len(prsaObs.index)
 
 				# Appending for Andrew's files
 				eccObs.append(prsaObs['e'].values)
 				pObs.append(prsaObs['p'].values)
+				iObs.append(prsaObs['i'].values)
+				m1Obs.append(prsaObs['m1'].values)
+				m2Obs.append(prsaObs['m2'].values)
+				r1Obs.append(prsaObs['r1'].values)
+				r2Obs.append(prsaObs['r2'].values)
+
+
 
 				if (Nobs >= Nlim):
 					m1hObs0, m1b = np.histogram(obs["m1"], bins=mbins)
@@ -338,7 +415,7 @@ if __name__ == "__main__":
 						halfP = abs(data[key] - 0.5*data['p'])/(0.5*data['p'])
 						twiceP = abs(data[key] - 2.*data['p'])/(2.*data['p'])
 						rec = data.loc[(data[key] != -999) & ( (fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))]
-						prsaRec = data.loc[(data['appMagMean_r'] <= 19.5) & (data['appMagMean_r'] >15.8) & (data['p'] < 1000) & (data['p'] >0.5) & (data['LSM_PERIOD'] != -999) & ( (fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))]
+						prsaRec = data.loc[(data['p'] < 1000) & (data['p'] >0.5) & (data['LSM_PERIOD'] != -999) & ( (fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))]
 						Nrec = len(rec.index)
 
 						#I'd like to account for all filters here to have more accurate numbers
@@ -348,6 +425,14 @@ if __name__ == "__main__":
 						# Going to use prsaRecCombined for ecc-p plots to account for all filters
 						eccRec.append(prsaRec['e'].values)
 						pRec.append(prsaRec['p'].values)
+						iRec.append(prsaRec['i'].values)
+						m1Rec.append(prsaRec['m1'].values)
+						m2Rec.append(prsaRec['m2'].values)
+						r1Rec.append(prsaRec['r1'].values)
+						r2Rec.append(prsaRec['r2'].values)
+
+
+						# print(prsaRec.columns)
 
 
 						if (filt == 'all'):
@@ -400,38 +485,80 @@ if __name__ == "__main__":
 			recNPrsa.append(NrecPrsa)
 			#print(np.sum(lphRec), np.sum(recN), np.sum(lphRec)/np.sum(recN), np.sum(lphRec0), Nrec, np.sum(lphRec0)/Nrec, np.sum(lphObs), np.sum(obsN), np.sum(lphObs)/np.sum(obsN))
 
-	# Concatenating p and ecc lists
+	# Concatenating param lists for 2D histograms -- eccentricity 1st (all 3 subpopulations)
 	eccAll = np.concatenate(eccAll)
 	eccObs = np.concatenate(eccObs)
 	eccRec = np.concatenate(eccRec)
 
+	# period
 	pAll = np.concatenate(pAll)
 	pObs = np.concatenate(pObs)
 	pRec = np.concatenate(pRec)
+
+	# Inclination
+	iAll = np.concatenate(iAll)
+	iObs = np.concatenate(iObs)
+	iRec = np.concatenate(iRec)
+
+	# Mass 1
+	m1All = np.concatenate(m1All)
+	m1Obs = np.concatenate(m1Obs)
+	m1Rec = np.concatenate(m1Rec)
+
+	# Mass 2
+	m2All = np.concatenate(m2All)
+	m2Obs = np.concatenate(m2Obs)
+	m2Rec = np.concatenate(m2Rec)
+
+	# Radius 1
+	r1All = np.concatenate(r1All)
+	r1Obs = np.concatenate(r1Obs)
+	r1Rec = np.concatenate(r1Rec)
+
+	# Radius 2
+	r2All = np.concatenate(r2All)
+	r2Obs = np.concatenate(r2Obs)
+	r2Rec = np.concatenate(r2Rec)	
 
 
 	# print('Ecc lists:', eccAll, eccObs, eccRec)
 	# print('P lists:', pAll, pObs, pRec)
 	# Appending lists with all the p/ecc values to our dataframes
 	# All dataframe
-	peccAll['e'] = eccAll
-	peccAll['p'] = pAll
+	All['e'] = eccAll
+	All['p'] = pAll
+	All['i'] = iAll
+	All['m1'] = m1All
+	All['m2'] = m2All
+	All['r1'] = r1All
+	All['r2'] = r2All
 
 	# Observable dataframe
-	peccObs['e'] = eccObs
-	peccObs['p'] = pObs
+	Obs['e'] = eccObs
+	Obs['p'] = pObs
+	Obs['i'] = iObs
+	Obs['m1'] = m1Obs
+	Obs['m2'] = m2Obs
+	Obs['r1'] = r1Obs
+	Obs['r2'] = r2Obs
 
 	# Recovered dataframe
-	peccRec['e'] = eccRec
-	peccRec['p'] = pRec
+	Rec['e'] = eccRec
+	Rec['p'] = pRec
+	Rec['i'] = iRec
+	Rec['m1'] = m1Rec
+	Rec['m2'] = m2Rec
+	Rec['r1'] = r1Rec
+	Rec['r2'] = r2Rec
+
 
 	# print('Final Dataframes:', peccAll, peccObs, peccRec)
 	# print(peccRec.columns)
 	
 	# 3 letter code corresponds to scenario (OC/GC, baseline/colossus, crowding/no crowding)
-	peccAll.to_csv('./pecc/all-GBN-ecc-p.csv', header = ['e', 'p'])
-	peccObs.to_csv('./pecc/obs-GBN-ecc-p.csv', header = ['e', 'p'])
-	peccRec.to_csv('./pecc/rec-GBN-ecc-p.csv', header = ['e', 'p'])
+	All.to_csv('./data/all-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
+	Obs.to_csv('./data/obs-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
+	Rec.to_csv('./data/rec-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
 
 	#plot and save the histograms
 	saveHist(m1hAll, m1hObs, m1hRec, m1b, 'm1 (Msolar)', 'EBLSST_m1hist')
@@ -460,7 +587,7 @@ if __name__ == "__main__":
 	mlw = ax.scatter(np.array(RAwrap).ravel()*np.pi/180., np.array(Decwrap).ravel()*np.pi/180., c=np.array(recFrac)*100., cmap='viridis_r', s = 4)
 	cbar = f.colorbar(mlw, shrink=0.7)
 	cbar.set_label(r'% recovered')
-	f.savefig('./plots/'  + 'mollweide_pct.pdf',format='pdf', bbox_inches = 'tight')
+	f.savefig('./plots/analyse_plots/'  + 'mollweide_pct.pdf',format='pdf', bbox_inches = 'tight')
 
 	f, ax = plt.subplots(subplot_kw={'projection': "mollweide"}, figsize=(8,5))
 	ax.grid(True)
@@ -472,16 +599,16 @@ if __name__ == "__main__":
 	mlw = ax.scatter(np.array(RAwrap).ravel()*np.pi/180., np.array(Decwrap).ravel()*np.pi/180., c=np.log10(np.array(recN)), cmap='viridis_r', s = 4)
 	cbar = f.colorbar(mlw, shrink=0.7)
 	cbar.set_label(r'log10(N) recovered')
-	f.savefig('./plots/'  + 'mollweide_N.pdf',format='pdf', bbox_inches = 'tight')
+	f.savefig('./plots/analyse_plots/'  + 'mollweide_N.pdf',format='pdf', bbox_inches = 'tight')
 
 	if (doIndividualPlots):
-		fmass.savefig('./plots/'  + 'massPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fqrat.savefig('./plots/'  + 'qPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fecc.savefig('./plots/'  + 'eccPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		flper.savefig('./plots/'  + 'lperPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fdist.savefig('./plots/'  + 'distPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fmag.savefig('./plots/'  + 'magPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		frad.savefig('./plots/'  + 'radPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		fmass.savefig('./plots/analyse_plots/'  + 'massPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		fqrat.savefig('./plots/analyse_plots/'  + 'qPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		fecc.savefig('./plots/analyse_plots/'  + 'eccPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		flper.savefig('./plots/analyse_plots/'  + 'lperPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		fdist.savefig('./plots/analyse_plots/'  + 'distPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		fmag.savefig('./plots/analyse_plots/'  + 'magPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		frad.savefig('./plots/analyse_plots/'  + 'radPDFall.pdf',format='pdf', bbox_inches = 'tight')
 
 	print("###################")
 	print("number of binaries in input files (raw, log):",np.sum(fileN), np.log10(np.sum(fileN)))
