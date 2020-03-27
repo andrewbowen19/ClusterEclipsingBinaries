@@ -122,38 +122,34 @@ def saveHist(histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_
 			fl.write(outline)
 
 # ######################################## Testing functions ########################################
-def writeCornerFiles(df, binParams):
+def writeCornerFiles(df, binParams, population, clusterType, strategy, crowding):
 	'''
-	Function to write certain binary parameters 
+	Function to write certain binary parameters to csv data files - will feed white dwarf dataframes (loc statement on all, obs, rec dfs) 
+	df - input dataframe
+	binParams - listlike, needs to be strings included in df.columns
+	Below are naming parameters for output hist files
+	population : either all, obs, rec
+	clustertype : Globular (G), Open (O), M10, M67
+	strategy : baseline (B) or colossus (C)
+	crowding : either no-crowding scenario (N) or with crowding (C)
 	'''
 
-	# Dataframes to write to files later; 3 files for each sub-population - append everything to these
-	# Column names: ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i']
-	All= pd.DataFrame(columns = binParams)
-	Obs = pd.DataFrame(columns = binParams)
-	Rec = pd.DataFrame(columns = binParams)
-
-	# setting up all, obs, rec lists for each binary param
+	newDF = pd.DataFrame(columns = binParams)
+	param_list = []
 	for param in binParams:
-		param_all = []
-		param_obs = []
-		param_rec = []
-
-		param_all.append(df[param])
-		param_obs.append(df[param])
-		param_rec.append(df[param])
-
-		All[param] = param_all
-		Obs[param] = param_obs
-		Rec[param] = param_rec
-
-		print('dataframes 2 write: ', sAll, Obs, Rec)
-
-	return All, Obs, Rec
+		param_list.append(df[param].values)
+		params = np.concatenate(param_list)
 
 
-# test call
-# writeCornerFiles(['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
+		newDF[param] = params#_list
+	print(newDF)
+
+	newDF.to_csv(f'./data/{population}-{clusterType}{strategy}{crowding}-histData.csv')
+	# print('dataframes 2 write: ', newDF)
+
+	# return newDF
+
+
 #####################################################################################################
 
 
@@ -246,9 +242,8 @@ if __name__ == "__main__":
 	obsNPrsa = []
 	recNPrsa = []
 
-	# Lists for different params
 
-	binaryParams =  ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
+	# Lists for different params
 	eccAll = []
 	eccObs = []
 	eccRec = []
@@ -277,12 +272,20 @@ if __name__ == "__main__":
 	r2Obs = []
 	r2Rec = []
 
+	magAll = []
+	magObs = []
+	magRec = []
+
+	# Lists to append WD dataframes to, will concatenate after looping thru files
+	all_WD = []
+	obs_WD = []
+	rec_WD = []
 	# Using prsa dataframes for these lists because of period cutoff at 1000 days
 
 	# Dataframes to write to files later; 3 files for each sub-population - append everything to these
-	All = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
-	Obs = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
-	Rec = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
+	All = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Obs = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Rec = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
 
 	#Read in all the data and make the histograms
 	d = "./input_files/"
@@ -320,6 +323,12 @@ if __name__ == "__main__":
 			Nall = len(data.index)/intNorm ###is this correct? (and the only place I need to normalize?)
 			prsa = data.loc[(data['p'] < 1000) & (data['p'] > 0.5)]
 
+			# Selecting only WD candidates
+			prsaWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & ((data['m1'] < 0.6) | (data['m2'] < 0.6)) & ((data['r1'] < 0.2) | (data['r2'] < 0.2))]
+			all_WD.append(prsaWD)
+			# Appending for Andrew
+
+			# writeCornerFiles(prsa, ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'], 'all', 'M67','B','N')
 			# Appending for Andrew
 			eccAll.append(prsa['e'].values)
 			pAll.append(prsa['p'].values)
@@ -328,8 +337,7 @@ if __name__ == "__main__":
 			m2All.append(prsa['m2'].values)
 			r1All.append(prsa['r1'].values)
 			r2All.append(prsa['r2'].values)
-
-			writeCornerFiles(prsa, binaryParams)
+			magAll.append(prsa['appMagMean_r'].values)
 
 			NallPrsa = len(prsa.index)
 			if (Nall >= Nlim):
@@ -377,7 +385,12 @@ if __name__ == "__main__":
 				prsaObs = data.loc[(data['p'] < 1000) & (data['p'] >0.5) & (data['LSM_PERIOD'] != -999)]
 				NobsPrsa = len(prsaObs.index)
 
-				# Appending for Andrew's files
+				# White dwarf appending
+				prsaObsWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & (data['LSM_PERIOD'] != -999)
+					 & ((data['m1'] < 0.6) | (data['m2'] < 0.6)) & ((data['r1'] < 0.2) | (data['r2'] < 0.2))]
+				obs_WD.append(prsaObsWD)
+
+				# would like to see if there is a better way of doing this
 				eccObs.append(prsaObs['e'].values)
 				pObs.append(prsaObs['p'].values)
 				iObs.append(prsaObs['i'].values)
@@ -385,8 +398,7 @@ if __name__ == "__main__":
 				m2Obs.append(prsaObs['m2'].values)
 				r1Obs.append(prsaObs['r1'].values)
 				r2Obs.append(prsaObs['r2'].values)
-
-
+				magObs.append(prsaObs['appMagMean_r'].values)
 
 				if (Nobs >= Nlim):
 					m1hObs0, m1b = np.histogram(obs["m1"], bins=mbins)
@@ -430,9 +442,14 @@ if __name__ == "__main__":
 						m2Rec.append(prsaRec['m2'].values)
 						r1Rec.append(prsaRec['r1'].values)
 						r2Rec.append(prsaRec['r2'].values)
+						magRec.append(prsaRec['appMagMean_r'].values)
 
+						# writeCornerFiles(prsaRec, ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'], 'rec', 'M67','B','N')
 
-						# print(prsaRec.columns)
+						# White dwarf appending
+						prsaRecWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & (data['LSM_PERIOD'] != -999)  & ( (fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))
+							 & ((data['m1'] < 0.6) | (data['m2'] < 0.6)) & ((data['r1'] < 0.2) | (data['r2'] < 0.2))]
+						rec_WD.append(prsaRecWD)
 
 
 						if (filt == 'all'):
@@ -520,9 +537,14 @@ if __name__ == "__main__":
 	r2Obs = np.concatenate(r2Obs)
 	r2Rec = np.concatenate(r2Rec)	
 
+	# Apparent Magnitude
+	magAll = np.concatenate(magAll)
+	magObs = np.concatenate(magObs)
+	magRec = np.concatenate(magRec)	
 
-	# print('Ecc lists:', eccAll, eccObs, eccRec)
-	# print('P lists:', pAll, pObs, pRec)
+
+	# # print('Ecc lists:', eccAll, eccObs, eccRec)
+	# # print('P lists:', pAll, pObs, pRec)
 	# Appending lists with all the p/ecc values to our dataframes
 	# All dataframe
 	All['e'] = eccAll
@@ -532,6 +554,7 @@ if __name__ == "__main__":
 	All['m2'] = m2All
 	All['r1'] = r1All
 	All['r2'] = r2All
+	All['appMagMean_r'] = magAll
 
 	# Observable dataframe
 	Obs['e'] = eccObs
@@ -541,6 +564,7 @@ if __name__ == "__main__":
 	Obs['m2'] = m2Obs
 	Obs['r1'] = r1Obs
 	Obs['r2'] = r2Obs
+	Obs['appMagMean_r'] = magObs
 
 	# Recovered dataframe
 	Rec['e'] = eccRec
@@ -550,15 +574,30 @@ if __name__ == "__main__":
 	Rec['m2'] = m2Rec
 	Rec['r1'] = r1Rec
 	Rec['r2'] = r2Rec
-
-
-	# print('Final Dataframes:', peccAll, peccObs, peccRec)
-	# print(peccRec.columns)
+	Rec['appMagMean_r'] = magRec
 	
+	csv_cols = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
+
 	# 3 letter code corresponds to scenario (OC/GC, baseline/colossus, crowding/no crowding)
-	All.to_csv('./data/all-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
-	Obs.to_csv('./data/obs-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
-	Rec.to_csv('./data/rec-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
+	All.to_csv('./data/all-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Obs.to_csv('./data/obs-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Rec.to_csv('./data/rec-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+
+	# Appending WD dataframes 
+	WDall = pd.concat(all_WD)
+	WDobs = pd.concat(obs_WD)
+	WDrec = pd.concat(rec_WD)
+
+	# Only want certain columns from df
+	WDall = WDall.loc['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
+	WDobs = WDall.loc['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
+	WDrec = WDall.loc['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
+
+	print('White Dwarf Candidates: ', WDall, WDobs, WDrec)
+
+	WDall.to_csv('./data/all-M67BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	WDobs.to_csv('./data/obs-M67BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	WDrec.to_csv('./data/rec-M67BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
 
 	#plot and save the histograms
 	saveHist(m1hAll, m1hObs, m1hRec, m1b, 'm1 (Msolar)', 'EBLSST_m1hist')
