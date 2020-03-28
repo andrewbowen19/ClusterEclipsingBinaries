@@ -4,7 +4,7 @@
 #########################
 #########################
 
-# Baseline M67 (GC) long script -- NO crowding
+# Colossus M67 (GC) long script -- NO crowding
 # White Dwarf (WD) version of analyse script
 # New script copied from quest - want to take p and ecc from each population (all, obs, rec) and put them into separate file
 # Doing this so we don't have to run analyse each time
@@ -78,7 +78,7 @@ def saveHist(histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_
 	ax1.step(bin_edges, histRec[f]/np.sum(histRec[f]), color=c3, linewidth=lw)
 	ax1.set_ylabel('PDF')
 	ax1.set_yscale('log')
-	ax1.set_title('M67 - Baseline', fontsize = 16)
+	ax1.set_title('M67 - Colossus', fontsize = 16)
 	ax1.set_xlabel(xtitle)
 	#CDF
 	#cdfAll = []
@@ -149,6 +149,25 @@ def writeCornerFiles(df, binParams, population, clusterType, strategy, crowding)
 
 	# return newDF
 
+def wdMRrelation(mass):
+	'''
+	Function for mass-radius relationship for MS stars, 
+	WDs will have radii smaller than the predicted R from this relation
+	Source: http://personal.psu.edu/rbc3/A534/lec18.pdf
+	'''
+	xi = 0
+	for m in mass:
+		if (m < 1.0):
+			xi = 0.8
+			radius = m ** xi
+			# print('radius: ', radius)
+			return radius
+
+		elif m >= 1.0:
+			xi = 0.57
+			radius = m ** xi
+			# print('radius: ', radius)
+			return 0.0
 
 #####################################################################################################
 
@@ -324,11 +343,11 @@ if __name__ == "__main__":
 			prsa = data.loc[(data['p'] < 1000) & (data['p'] > 0.5)]
 
 			# Selecting only WD candidates
-			prsaWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & ((data['m1'] < 0.6) | (data['m2'] < 0.6)) & ((data['r1'] < 0.2) | (data['r2'] < 0.2))]
+			# print('foo: ', data.loc[(data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2']))]  )
+			prsaWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & ((data['m1'] < 0.6) | (data['m2'] < 0.6))
+			 & ((data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2'])))]
 			all_WD.append(prsaWD)
-			# Appending for Andrew
 
-			# writeCornerFiles(prsa, ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'], 'all', 'M67','B','N')
 			# Appending for Andrew
 			eccAll.append(prsa['e'].values)
 			pAll.append(prsa['p'].values)
@@ -387,7 +406,7 @@ if __name__ == "__main__":
 
 				# White dwarf appending
 				prsaObsWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & (data['LSM_PERIOD'] != -999)
-					 & ((data['m1'] < 0.6) | (data['m2'] < 0.6)) & ((data['r1'] < 0.2) | (data['r2'] < 0.2))]
+					 & ((data['m1'] < 0.6) | (data['m2'] < 0.6))  & ((data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2'])))]
 				obs_WD.append(prsaObsWD)
 
 				# would like to see if there is a better way of doing this
@@ -448,7 +467,7 @@ if __name__ == "__main__":
 
 						# White dwarf appending
 						prsaRecWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & (data['LSM_PERIOD'] != -999)  & ( (fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))
-							 & ((data['m1'] < 0.6) | (data['m2'] < 0.6)) & ((data['r1'] < 0.2) | (data['r2'] < 0.2))]
+							 & ((data['m1'] < 0.6) | (data['m2'] < 0.6))  & ((data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2'])))]
 						rec_WD.append(prsaRecWD)
 
 
@@ -579,9 +598,9 @@ if __name__ == "__main__":
 	csv_cols = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
 
 	# 3 letter code corresponds to scenario (OC/GC, baseline/colossus, crowding/no crowding)
-	All.to_csv('./data/all-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
-	Obs.to_csv('./data/obs-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
-	Rec.to_csv('./data/rec-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	All.to_csv('./data/all-M67CN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Obs.to_csv('./data/obs-M67CN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Rec.to_csv('./data/rec-M67CN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
 
 	# Appending WD dataframes 
 	WDall = pd.concat(all_WD)
@@ -589,15 +608,15 @@ if __name__ == "__main__":
 	WDrec = pd.concat(rec_WD)
 
 	# Only want certain columns from df
-	WDall = WDall.loc['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
-	WDobs = WDall.loc['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
-	WDrec = WDall.loc['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
+	WDall = WDall[csv_cols]
+	WDobs = WDobs[csv_cols]
+	WDrec = WDrec[csv_cols]
 
 	print('White Dwarf Candidates: ', WDall, WDobs, WDrec)
 
-	WDall.to_csv('./data/all-M67BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
-	WDobs.to_csv('./data/obs-M67BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
-	WDrec.to_csv('./data/rec-M67BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	WDall.to_csv('./data/wd/all-M67CN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	WDobs.to_csv('./data/wd/obs-M67CN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	WDrec.to_csv('./data/wd/rec-M67CN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
 
 	#plot and save the histograms
 	saveHist(m1hAll, m1hObs, m1hRec, m1b, 'm1 (Msolar)', 'EBLSST_m1hist')

@@ -4,7 +4,8 @@
 #########################
 #########################
 
-# Baseline M10 (GC) long script -- NO crowding
+# Baseline M67 (GC) long script -- NO crowding
+# White Dwarf (WD) version of analyse script
 # New script copied from quest - want to take p and ecc from each population (all, obs, rec) and put them into separate file
 # Doing this so we don't have to run analyse each time
 # Can write separate script for p-ecc plots
@@ -77,7 +78,7 @@ def saveHist(histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_
 	ax1.step(bin_edges, histRec[f]/np.sum(histRec[f]), color=c3, linewidth=lw)
 	ax1.set_ylabel('PDF')
 	ax1.set_yscale('log')
-	ax1.set_title('M10 - Baseline', fontsize = 16)
+	ax1.set_title('M67 - Baseline', fontsize = 16)
 	ax1.set_xlabel(xtitle)
 	#CDF
 	#cdfAll = []
@@ -119,6 +120,57 @@ def saveHist(histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_
 				outline += ','+str(histRec[f][i])
 			outline += '\n'
 			fl.write(outline)
+
+# ######################################## Testing functions ########################################
+def writeCornerFiles(df, binParams, population, clusterType, strategy, crowding):
+	'''
+	Function to write certain binary parameters to csv data files - will feed white dwarf dataframes (loc statement on all, obs, rec dfs) 
+	df - input dataframe
+	binParams - listlike, needs to be strings included in df.columns
+	Below are naming parameters for output hist files
+	population : either all, obs, rec
+	clustertype : Globular (G), Open (O), M10, M67
+	strategy : baseline (B) or colossus (C)
+	crowding : either no-crowding scenario (N) or with crowding (C)
+	'''
+
+	newDF = pd.DataFrame(columns = binParams)
+	param_list = []
+	for param in binParams:
+		param_list.append(df[param].values)
+		params = np.concatenate(param_list)
+
+
+		newDF[param] = params#_list
+	print(newDF)
+
+	newDF.to_csv(f'./data/{population}-{clusterType}{strategy}{crowding}-histData.csv')
+	# print('dataframes 2 write: ', newDF)
+
+	# return newDF
+
+def wdMRrelation(mass):
+	'''
+	Function for mass-radius relationship for MS stars, 
+	WDs will have radii smaller than the predicted R from this relation
+	Source: http://personal.psu.edu/rbc3/A534/lec18.pdf
+	'''
+	xi = 0
+	for m in mass:
+		if (m < 1.0):
+			xi = 0.8
+			radius = m ** xi
+			# print('radius: ', radius)
+			return radius
+
+		elif m >= 1.0:
+			xi = 0.57
+			radius = m ** xi
+			# print('radius: ', radius)
+			return 0.0
+
+#####################################################################################################
+
 
 if __name__ == "__main__":
 
@@ -209,6 +261,7 @@ if __name__ == "__main__":
 	obsNPrsa = []
 	recNPrsa = []
 
+
 	# Lists for different params
 	eccAll = []
 	eccObs = []
@@ -238,12 +291,20 @@ if __name__ == "__main__":
 	r2Obs = []
 	r2Rec = []
 
+	magAll = []
+	magObs = []
+	magRec = []
+
+	# Lists to append WD dataframes to, will concatenate after looping thru files
+	all_WD = []
+	obs_WD = []
+	rec_WD = []
 	# Using prsa dataframes for these lists because of period cutoff at 1000 days
 
 	# Dataframes to write to files later; 3 files for each sub-population - append everything to these
-	All = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
-	Obs = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
-	Rec = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
+	All = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Obs = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Rec = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
 
 	#Read in all the data and make the histograms
 	d = "./input_files/"
@@ -255,7 +316,6 @@ if __name__ == "__main__":
 		if (fl >= 4):
 			#read in the header
 			header = pd.read_csv(d+f, nrows=1)
-			print(header)
 	######################
 	#NEED TO ACCOUNT FOR THE BINARY FRACTION when combining histograms
 	#####################
@@ -282,6 +342,12 @@ if __name__ == "__main__":
 			Nall = len(data.index)/intNorm ###is this correct? (and the only place I need to normalize?)
 			prsa = data.loc[(data['p'] < 1000) & (data['p'] > 0.5)]
 
+			# Selecting only WD candidates
+			# print('foo: ', data.loc[(data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2']))]  )
+			prsaWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & ((data['m1'] < 0.6) | (data['m2'] < 0.6))
+			 & ((data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2'])))]
+			all_WD.append(prsaWD)
+
 			# Appending for Andrew
 			eccAll.append(prsa['e'].values)
 			pAll.append(prsa['p'].values)
@@ -290,7 +356,7 @@ if __name__ == "__main__":
 			m2All.append(prsa['m2'].values)
 			r1All.append(prsa['r1'].values)
 			r2All.append(prsa['r2'].values)
-
+			magAll.append(prsa['appMagMean_r'].values)
 
 			NallPrsa = len(prsa.index)
 			if (Nall >= Nlim):
@@ -338,7 +404,12 @@ if __name__ == "__main__":
 				prsaObs = data.loc[(data['p'] < 1000) & (data['p'] >0.5) & (data['LSM_PERIOD'] != -999)]
 				NobsPrsa = len(prsaObs.index)
 
-				# Appending for Andrew's files
+				# White dwarf appending
+				prsaObsWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & (data['LSM_PERIOD'] != -999)
+					 & ((data['m1'] < 0.6) | (data['m2'] < 0.6))  & ((data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2'])))]
+				obs_WD.append(prsaObsWD)
+
+				# would like to see if there is a better way of doing this
 				eccObs.append(prsaObs['e'].values)
 				pObs.append(prsaObs['p'].values)
 				iObs.append(prsaObs['i'].values)
@@ -346,6 +417,7 @@ if __name__ == "__main__":
 				m2Obs.append(prsaObs['m2'].values)
 				r1Obs.append(prsaObs['r1'].values)
 				r2Obs.append(prsaObs['r2'].values)
+				magObs.append(prsaObs['appMagMean_r'].values)
 
 				if (Nobs >= Nlim):
 					m1hObs0, m1b = np.histogram(obs["m1"], bins=mbins)
@@ -389,9 +461,14 @@ if __name__ == "__main__":
 						m2Rec.append(prsaRec['m2'].values)
 						r1Rec.append(prsaRec['r1'].values)
 						r2Rec.append(prsaRec['r2'].values)
+						magRec.append(prsaRec['appMagMean_r'].values)
 
+						# writeCornerFiles(prsaRec, ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'], 'rec', 'M67','B','N')
 
-						# print(prsaRec.columns)
+						# White dwarf appending
+						prsaRecWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & (data['LSM_PERIOD'] != -999)  & ( (fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))
+							 & ((data['m1'] < 0.6) | (data['m2'] < 0.6))  & ((data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2'])))]
+						rec_WD.append(prsaRecWD)
 
 
 						if (filt == 'all'):
@@ -479,9 +556,14 @@ if __name__ == "__main__":
 	r2Obs = np.concatenate(r2Obs)
 	r2Rec = np.concatenate(r2Rec)	
 
+	# Apparent Magnitude
+	magAll = np.concatenate(magAll)
+	magObs = np.concatenate(magObs)
+	magRec = np.concatenate(magRec)	
 
-	# print('Ecc lists:', eccAll, eccObs, eccRec)
-	# print('P lists:', pAll, pObs, pRec)
+
+	# # print('Ecc lists:', eccAll, eccObs, eccRec)
+	# # print('P lists:', pAll, pObs, pRec)
 	# Appending lists with all the p/ecc values to our dataframes
 	# All dataframe
 	All['e'] = eccAll
@@ -491,6 +573,7 @@ if __name__ == "__main__":
 	All['m2'] = m2All
 	All['r1'] = r1All
 	All['r2'] = r2All
+	All['appMagMean_r'] = magAll
 
 	# Observable dataframe
 	Obs['e'] = eccObs
@@ -500,6 +583,7 @@ if __name__ == "__main__":
 	Obs['m2'] = m2Obs
 	Obs['r1'] = r1Obs
 	Obs['r2'] = r2Obs
+	Obs['appMagMean_r'] = magObs
 
 	# Recovered dataframe
 	Rec['e'] = eccRec
@@ -509,15 +593,30 @@ if __name__ == "__main__":
 	Rec['m2'] = m2Rec
 	Rec['r1'] = r1Rec
 	Rec['r2'] = r2Rec
-
-
-	# print('Final Dataframes:', peccAll, peccObs, peccRec)
-	# print(peccRec.columns)
+	Rec['appMagMean_r'] = magRec
 	
+	csv_cols = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
+
 	# 3 letter code corresponds to scenario (OC/GC, baseline/colossus, crowding/no crowding)
-	All.to_csv('./data/all-M10BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
-	Obs.to_csv('./data/obs-M10BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
-	Rec.to_csv('./data/rec-M10BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
+	All.to_csv('./data/all-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Obs.to_csv('./data/obs-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Rec.to_csv('./data/rec-M67BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+
+	# Appending WD dataframes 
+	WDall = pd.concat(all_WD)
+	WDobs = pd.concat(obs_WD)
+	WDrec = pd.concat(rec_WD)
+
+	# Only want certain columns from df
+	WDall = WDall[csv_cols]
+	WDobs = WDobs[csv_cols]
+	WDrec = WDrec[csv_cols]
+
+	print('White Dwarf Candidates: ', WDall, WDobs, WDrec)
+
+	WDall.to_csv('./data/wd/all-M67BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	WDobs.to_csv('./data/wd/obs-M67BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	WDrec.to_csv('./data/wd/rec-M67BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
 
 	#plot and save the histograms
 	saveHist(m1hAll, m1hObs, m1hRec, m1b, 'm1 (Msolar)', 'EBLSST_m1hist')
@@ -546,7 +645,7 @@ if __name__ == "__main__":
 	mlw = ax.scatter(np.array(RAwrap).ravel()*np.pi/180., np.array(Decwrap).ravel()*np.pi/180., c=np.array(recFrac)*100., cmap='viridis_r', s = 4)
 	cbar = f.colorbar(mlw, shrink=0.7)
 	cbar.set_label(r'% recovered')
-	f.savefig('./plots/'  + 'mollweide_pct.pdf',format='pdf', bbox_inches = 'tight')
+	f.savefig('./plots/analyse_plots/'  + 'mollweide_pct.pdf',format='pdf', bbox_inches = 'tight')
 
 	f, ax = plt.subplots(subplot_kw={'projection': "mollweide"}, figsize=(8,5))
 	ax.grid(True)
@@ -558,16 +657,16 @@ if __name__ == "__main__":
 	mlw = ax.scatter(np.array(RAwrap).ravel()*np.pi/180., np.array(Decwrap).ravel()*np.pi/180., c=np.log10(np.array(recN)), cmap='viridis_r', s = 4)
 	cbar = f.colorbar(mlw, shrink=0.7)
 	cbar.set_label(r'log10(N) recovered')
-	f.savefig('./plots/'  + 'mollweide_N.pdf',format='pdf', bbox_inches = 'tight')
+	f.savefig('./plots/analyse_plots/'  + 'mollweide_N.pdf',format='pdf', bbox_inches = 'tight')
 
 	if (doIndividualPlots):
-		fmass.savefig('./plots/'  + 'massPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fqrat.savefig('./plots/'  + 'qPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fecc.savefig('./plots/'  + 'eccPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		flper.savefig('./plots/'  + 'lperPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fdist.savefig('./plots/'  + 'distPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fmag.savefig('./plots/'  + 'magPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		frad.savefig('./plots/'  + 'radPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		fmass.savefig('./plots/analyse_plots/'  + 'massPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		fqrat.savefig('./plots/analyse_plots/'  + 'qPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		fecc.savefig('./plots/analyse_plots/'  + 'eccPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		flper.savefig('./plots/analyse_plots/'  + 'lperPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		fdist.savefig('./plots/analyse_plots/'  + 'distPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		fmag.savefig('./plots/analyse_plots/'  + 'magPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		frad.savefig('./plots/analyse_plots/'  + 'radPDFall.pdf',format='pdf', bbox_inches = 'tight')
 
 	print("###################")
 	print("number of binaries in input files (raw, log):",np.sum(fileN), np.log10(np.sum(fileN)))
