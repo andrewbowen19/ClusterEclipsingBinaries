@@ -7,7 +7,9 @@ Making this as a directory with file structure similar to that of WDs
 Want this to be able to be called in other scripts
 so we can run it in an os.walk loop
 
-
+can use 'runAnalyse' script to run analyse for each subscenario (16 in total -- OC/GC/LongCluster, Baseline/Colossus, Crowding/No-Crowding)
+Need to update directories with proper input files
+Will upload folder to Quest and run on there - will make OCs and GCs use less memory
 
 
 

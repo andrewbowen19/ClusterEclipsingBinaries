@@ -712,7 +712,7 @@ class analyseCluster(object):
 			# Only want certain columns from df
 			WDall = WDall[self.csv_cols]
 			WDobs = WDobs[self.csv_cols]
-			WDrec = WDrec[self.csv_cols]
+			WDrec = WDrec[self.scsv_cols]
 
 			print('White Dwarf Candidates: ', WDall, WDobs, WDrec)
 
@@ -791,8 +791,8 @@ class analyseCluster(object):
 # xx = analyseCluster('M10', 'B', 'N', False)
 # xx.analyse('M10', 'B', 'N', False)
 
-wd = analyseCluster('M10', 'B', 'N', True)
-wd.analyse('M10', 'B', 'N', True)
+# wd = analyseCluster('M10', 'B', 'N', True)
+# wd.analyse('M10', 'B', 'N', True)
 # class params: self, clusterType, strategy, crowding, searchWDs
 
 
