@@ -1,5 +1,10 @@
 # Git ignore file for us to not push plots and data files to GitHub, only code
 
+# Directories we don't need to push to GitHub
+/poster
+/plots
+/data
+
 # Plot file extensions
 *.pdf
 *.png
