@@ -1,13 +1,8 @@
-#########################
-#########################
-# Need to account for limit in input period
-#########################
-#########################
+'''
+Testing script to turn analyse into a function/class
+Want to be able to import it into a os.walk script so we can run it once for all cluster types/viewing scenarios
 
-# Testing script to turn analyse into a function/class
-# Want to be able to import it into a os.walk script so we can run it once for all cluster types/viewing scenarios
-# 
-
+'''
 import pandas as pd
 import numpy as np
 import os
@@ -23,121 +18,6 @@ matplotlib.use('Agg')
 doIndividualPlots = True
 from matplotlib import pyplot as plt
 
-
-# def file_len(fname):
-# 	i = 0
-# 	with open(fname) as f:
-# 		for i, l in enumerate(f):
-# 			pass
-# 	return i + 1
-
-# def getPhs(sigma, m1=1*units.solMass, m2=1*units.solMass, m3=0.5*units.solMass):
-# 	Phs = np.pi*constants.G/np.sqrt(2.)*(m1*m2/m3)**(3./2.)*(m1 + m2)**(-0.5)*sigma**(-3.)
-# 	return Phs.decompose().to(units.day)
-
-# #similar to field, but limiting by the hard-soft boundary
-# def fitRagfb():
-# 	x = [0.05, 0.1, 1, 8, 15]  #estimates of midpoints in bins, and using this: https://sites.uni.edu/morgans/astro/course/Notes/section2/spectralmasses.html
-# 	y = [0.20, 0.35, 0.50, 0.70, 0.75]
-# 	init = models.PowerLaw1D(amplitude=0.5, x_0=1, alpha=-1.)
-# 	fitter = fitting.LevMarLSQFitter()
-# 	fit = fitter(init, x, y)
-
-# 	return fit
-
-# def RagNormal(x, cdf = False):
-# 	mean = 5.03
-# 	std = 2.28
-# 	if (cdf):
-# 		return scipy.stats.norm.cdf(x,mean,std)
-
-# 	return scipy.stats.norm.pdf(x,mean,std)
-
-
-# def saveHist(histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_', 'g_', 'r_', 'i_', 'z_', 'y_','all']):
-# 	c1 = '#5687A6' #Dali Blue (Andrew's AAS Poster)
-# 	c2 = '#A62B1F' #Dai Red 
-# 	c3 = '#BF8A26' #Dali Beige
-# 	fig,ax1, ax2  = plt.subplots((2,1),figsize=(8,6), sharex=True)#can change to include cdf with ax1, ax2
-
-# 	histAll = np.insert(histAll,0,0)
-# 	histObs = np.insert(histObs,0,0)
-# 	for f in filters:
-# 		histRec[f] = np.insert(histRec[f],0,0)
-
-# 	#PDF
-# 	ax1.step(bin_edges, histAll/np.sum(histAll), color=c1)
-# 	ax1.step(bin_edges, histObs/np.sum(histObs), color=c2)
-# 	for f in filters:
-# 		lw = 1
-# 		if (f == 'all'):
-# 			lw = 0.5
-# 	ax1.step(bin_edges, histRec[f]/np.sum(histRec[f]), color=c3, linewidth=lw)
-# 	ax1.set_ylabel('PDF')
-# 	ax1.set_yscale('log')
-# 	ax1.set_title('M67 - Baseline', fontsize = 16)
-# 	ax1.set_xlabel(xtitle)
-# 	#CDF - NOt using for our purposes but can include
-# 	cdfAll = []
-# 	cdfObs = []
-# 	cdfRec = dict()
-# 	for f in filters:
-# 		cdfRec[f] = []
-
-# 	for i in range(len(histAll)):
-# 		cdfAll.append(np.sum(histAll[:i])/np.sum(histAll))
-# 	for i in range(len(histObs)):
-# 		cdfObs.append(np.sum(histObs[:i])/np.sum(histObs))
-# 	for f in filters:
-# 		for i in range(len(histRec[f])):
-# 			cdfRec[f].append(np.sum(histRec[f][:i])/np.sum(histRec[f]))
-# 	ax2.step(bin_edges, cdfAll, color=c1)
-# 	ax2.step(bin_edges, cdfObs, color=c2)
-# 	for f in filters:
-# 		lw = 1
-# 		if (f == 'all'):
-# 			lw = 0.5
-# 		ax2.step(bin_edges, cdfRec[f], color=c3, linewidth=lw)
-# 	ax2.set_ylabel('CDF')
-
-# 	ax2.set_xlabel(xtitle)
-# 	fig.subplots_adjust(hspace=0)
-# 	fig.savefig('./plots/'  + fname+'.pdf',format='pdf', bbox_inches = 'tight')
-
-# 	#write to a text file
-# 	with open('./eblsst_files/' + fname+'.csv','w') as fl:
-# 		outline = 'binEdges,histAll,histObs'
-# 		for f in filters:
-# 			outline += ','+f+'histRec'
-# 		outline += '\n'
-# 		fl.write(outline)
-# 		for i in range(len(bin_edges)):
-# 			outline = str(bin_edges[i])+','+str(histAll[i])+','+str(histObs[i])
-# 			for f in filters:
-# 				outline += ','+str(histRec[f][i])
-# 			outline += '\n'
-# 			fl.write(outline)
-
-
-# def wdMRrelation(mass):
-# 	'''
-# 	Function for mass-radius relationship for MS stars, 
-# 	WDs will have radii smaller than the predicted R from this relation
-# 	Source: http://personal.psu.edu/rbc3/A534/lec18.pdf
-# 	'''
-# 	xi = 0
-# 	for m in mass:
-# 		if (m < 1.0):
-# 			xi = 0.8
-# 			radius = m ** xi
-# 			# print('radius: ', radius)
-# 			return radius
-
-# 		elif m >= 1.0:
-# 			xi = 0.57
-# 			radius = m ** xi
-# 			# print('radius: ', radius)
-# 			return 0.0
 
 #####################################################################################################
 
