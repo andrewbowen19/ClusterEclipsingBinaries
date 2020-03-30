@@ -13,4 +13,7 @@ Have cleaned Cluster data file (one file for both OCs and GCs), now we want to i
 
 Successfully drew sigma for every cluster (get_sigma fucntion in cluster_muster) - now we want to run getClusterbinaries on every cluster and then use EBLSST
 
+
+New repo on GitHub: ClusterEclipsingBinaries
+
 Need paper write-up by friday, poster by August 8th for LSST conference
