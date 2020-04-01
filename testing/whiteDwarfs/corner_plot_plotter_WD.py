@@ -1,8 +1,9 @@
 # Corner plot script 
 # White dwarf version, includes magnitudes in input files
-# this should run 
+# This script should run for all 4 cluster types and observing scenarios. 
+# Upload corner plots to box (both contours and no contour versions)
 
-# Documentation here: https://corner.readthedocs.io/en/latest/
+# Corner plotting documentation here: https://corner.readthedocs.io/en/latest/
 
 import corner
 import numpy as np
@@ -28,7 +29,7 @@ def corner_plot(DataFrame, popType, name, contours = False):
 		print('Making corner plots with contours...')
 		df = DataFrame
 		f = corner.corner(df, labels = df.columns, bins = 20, plot_contours = True)
-		f.suptitle(popType + '-' + name, fontsize=24)
+		f.suptitle(popType + '-' + name + ' White Dwarfs', fontsize=24)
 		f.show()
 		f.savefig(f'./plots/corner_plots/contours/{popType}-{name}-cornerPlot-contourWD.pdf')
 
@@ -39,7 +40,7 @@ def corner_plot(DataFrame, popType, name, contours = False):
 		print('Making corner plots...')
 		df = DataFrame
 		f = corner.corner(df, labels = df.columns, bins = 20,plot_contours = False)
-		f.suptitle(popType + '-' + name, fontsize = 24)
+		f.suptitle(popType + '-' + name + ' White Dwarfs', fontsize = 24)
 		f.show()
 		f.savefig(f'./plots/corner_plots/{popType}-{name}-cornerPlotWD.pdf')
 
