@@ -4,7 +4,7 @@
 #########################
 #########################
 
-# Baseline M10 (GC) long script -- NO crowding
+# Colossus GC analyse script -- NO crowding
 # White Dwarf (WD) version of analyse script
 # New script copied from quest - want to take p and ecc from each population (all, obs, rec) and put them into separate file
 # Doing this so we don't have to run analyse each time
@@ -78,7 +78,7 @@ def saveHist(histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_
 	ax1.step(bin_edges, histRec[f]/np.sum(histRec[f]), color=c3, linewidth=lw)
 	ax1.set_ylabel('PDF')
 	ax1.set_yscale('log')
-	ax1.set_title('M10 - Baseline', fontsize = 16)
+	ax1.set_title('Globular Clusters - Colossus', fontsize = 16)
 	ax1.set_xlabel(xtitle)
 	#CDF
 	#cdfAll = []
@@ -144,7 +144,7 @@ def writeCornerFiles(df, binParams, population, clusterType, strategy, crowding)
 		newDF[param] = params#_list
 	print(newDF)
 
-	newDF.to_csv(f'./data/{population}-{clusterType}{strategy}{crowding}-histData.csv')
+	# newDF.to_csv(f'./data/{population}-{clusterType}{strategy}{crowding}-histData.csv')
 	# print('dataframes 2 write: ', newDF)
 
 	# return newDF
@@ -307,7 +307,7 @@ if __name__ == "__main__":
 	Rec = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
 
 	#Read in all the data and make the histograms
-	d = "./input_files/new_output/" #using properly encoded output_files
+	d = "/projects/p30137/ageller/testing/EBLSST/clusters/GlobularClusters/colossus/output_files/"
 	files = os.listdir(d)
 	IDs = []
 	for i, f in enumerate(files):
@@ -599,9 +599,9 @@ if __name__ == "__main__":
 	csv_cols = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
 
 	# 3 letter code corresponds to scenario (OC/GC, baseline/colossus, crowding/no crowding)
-	All.to_csv('./data/all-M10BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
-	Obs.to_csv('./data/obs-M10BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
-	Rec.to_csv('./data/rec-M10BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	All.to_csv('./data/all-GCN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Obs.to_csv('./data/obs-GCN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Rec.to_csv('./data/rec-GCN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
 
 	# Appending WD dataframes 
 	WDall = pd.concat(all_WD)
@@ -615,9 +615,9 @@ if __name__ == "__main__":
 
 	print('White Dwarf Candidates: ', WDall, WDobs, WDrec)
 
-	WDall.to_csv('./data/wd/all-M10BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
-	WDobs.to_csv('./data/wd/obs-M10BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
-	WDrec.to_csv('./data/wd/rec-M10BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	WDall.to_csv('./data/wd/all-GCN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	WDobs.to_csv('./data/wd/obs-GCN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	WDrec.to_csv('./data/wd/rec-GCN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
 
 	#plot and save the histograms
 	saveHist(m1hAll, m1hObs, m1hRec, m1b, 'm1 (Msolar)', 'EBLSST_m1hist')

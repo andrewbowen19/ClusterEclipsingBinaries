@@ -35,7 +35,7 @@ class analyseCluster(object):
 		self.crowding = None
 		self.searchWDs = None
 
-	def file_len(self, fname):
+	def file_len(self, fname): 
 		i = 0
 		with open(fname) as f:
 			for i, l in enumerate(f):
@@ -665,6 +665,7 @@ class analyseCluster(object):
 		print("total observable in Prsa 15.8<r<19.5 P<1000d sample (raw, log):",np.sum(obsNPrsa), np.log10(np.sum(obsNPrsa)))
 		print("total recovered in Prsa 15.8<r<19.5 P<1000d sample (raw, log):",np.sum(recNPrsa), np.log10(np.sum(recNPrsa)))
 		print("Prsa 15.8<r<19.5 P<1000d rec/obs*100:",np.sum(recNPrsa)/np.sum(obsNPrsa)*100.)
+
 
 
 # test call of class
