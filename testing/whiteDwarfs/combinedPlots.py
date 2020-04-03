@@ -78,17 +78,6 @@ def multiScatter(data_x, data_y, xlabel, ylabel, title,scenario_list):
 for root, dirs, files in os.walk('./wd_output/', topdown = True):
 	for d in dirs:
 		print('working dir: ', d)
-		# haveObs = False
-		# haveRec = False
-		# m1Obs = []
-		# m2Obs = []
-		# r1Obs = []
-		# r2Obs = []
-
-		# m1Rec = []
-		# m2Rec = []
-		# r1Rec = []
-		# r2Rec = []
 
 		nameslices = []
 		scenarioSlices = []
