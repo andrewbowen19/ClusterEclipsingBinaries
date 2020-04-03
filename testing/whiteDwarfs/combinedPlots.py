@@ -1,7 +1,7 @@
 """
 Script to create combined histograms and scatter plots 
 All 4 scenarios for each cluster type/subpopulation: 
-i.e. recovered binaries for Globular Clusters: CN, CC, BC, BN all in one plot
+i.e. recovered or observed binaries for Globular Clusters: CN, CC, BC, BN all in one plot
 """
 
 import numpy as np
@@ -12,7 +12,8 @@ from itertools import permutations
 # List and dict of labels and markerstyles for plots
 markers = ['^', 'o', 's', '*']
 labels = {'BN': 'Baseline No Crowding', 'BC':'Baseline Crowding', 'CN':'Colossus No Crowding', 'CC':'Colossus Crowding'}
-alphas = np.arange(1.0,0.0,0.25)
+# alphas = np.arange(1.0,0.0,0.25)
+colors = ['#a6cee3' , '#1f78b4', '#b2df8a' , '#33a02c']
 
 def makePlottingArrays(path, files):
 	'''
@@ -20,9 +21,6 @@ def makePlottingArrays(path, files):
 	Params:
 	path - path to dubir and requisite files
 	files - should be list of files in either Rec or Obs subdir (len(f) = 4)
-	x and y labels - strings, pull from dataframe names
-	title - can just pull from file name (e.g. rec-M10BN)
-	scenario - pull from file name
 	'''
 	# Rewriting this function to do all the work of the below file walk
 	m1 = []
@@ -30,14 +28,18 @@ def makePlottingArrays(path, files):
 	r1 = []
 	r2 = []
 	scenarios = [] # observing scenario of that file (should be in order)
+	p = []
 	for f in files:
 		df = pd.read_csv(path + f)
 		df.drop('Unnamed: 0', axis =1)
 
+		# Appending data to df
 		m1.append(df['m1'])
 		m2.append(df['m2'])
 		r1.append(df['r1'])
 		r2.append(df['r2'])
+
+		p.append(df['p'])
 
 		# Generating appropriate observing scenario string
 		if 'G' in f or 'O' in f:
@@ -50,8 +52,7 @@ def makePlottingArrays(path, files):
 
 		
 
-	return {'m1': m1, 'm2': m2, 'r1': r1, 'r2':r2}, scenarios
-
+	return {'m1': m1, 'm2': m2, 'r1': r1, 'r2':r2}, scenarios, p
 
 def multiScatter(data_x, data_y, xlabel, ylabel, title,scenario_list):
 	'''
@@ -63,7 +64,7 @@ def multiScatter(data_x, data_y, xlabel, ylabel, title,scenario_list):
 	f,ax = plt.subplots()
 
 	for i in range(0,len(data_x)):
-		ax.scatter(data_x[i], data_y[i], marker = markers[i], alpha = 0.5, label = scenario_list[i])
+		ax.scatter(data_x[i], data_y[i], marker = markers[i], alpha = 0.5, c = colors[i],label = scenario_list[i])
 	ax.set_xlabel(xlabel)
 	ax.set_ylabel(ylabel)
 	ax.set_title(title)
@@ -71,6 +72,22 @@ def multiScatter(data_x, data_y, xlabel, ylabel, title,scenario_list):
 	# plt.show()
 	f.savefig(f'./plots/combinedPlots/scatter/{title}-{xlabel}{ylabel}-scatter.pdf')
 	print('Scatter plots made!')
+
+def multiHist(data, title,scenario_list):
+	'''
+	Function to create layered histograms among all 4 params
+	Will likely use for period histograms among all 4 scenarios
+	Same arguments as multiScatter
+	'''
+	f,ax = plt.subplots()
+	for i in range(0, len(data)):
+		ax.hist(data[i], range = [0,50],histtype = 'step', color = colors[i], label = scenario_list[i])
+	ax.set_xlabel('period (days)')
+	ax.set_title(title)
+	ax.legend()
+	f.savefig(f'./plots/combinedPlots/hists/{title}-pHist.pdf')
+	print('period histgram made!')
+
 
 # #################################################################################################################
 
@@ -105,7 +122,9 @@ for root, dirs, files in os.walk('./wd_output/', topdown = True):
 					plot_title = name[0:7]
 
 			# Reading in data files and creating nested lists for plotting
-			dat, obs_scen = makePlottingArrays(root + '/' + d + '/',f) # makes correctly formatted nested lists for each Obs and Rec subdir
+			dat, obs_scen, periods = makePlottingArrays(root + '/' + d + '/',f) # makes correctly formatted nested lists for each Obs and Rec subdir
+
+			multiHist(periods, plot_title, obs_scen)
 
 			# Looping through all param permutations (between m1,m2,r1,r2)
 			for p in permutations(dat, 2):
