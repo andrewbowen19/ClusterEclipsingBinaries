@@ -8,13 +8,14 @@ This should take a while to run (ideally we should copy this directory to Quest 
 Make sure each scenario sub-directory has updated data files -- will need Quest paths when uploaded to Quest
 
 '''
-
+# Quest version of script
 
 
 import numpy as np
 import pandas as pd
 import os
-import analyseCluster
+from analyseCluster import analyseCluster
+# from analyseCluster import analyse
 # from analyseCluster import analyse
 
 # dictionary containig scenario subdir names and they're corresponding inputs as params for analyseCluster
@@ -27,43 +28,47 @@ for root, dirs, files in os.walk('./clusters', topdown = True):
 	haveCrowd = False
 	haveCluster = False
 	whiteDwarfs = False
+	crowd = None
+	stratOpSim = None
+	cluster = None
 
 		# Now need to instantiate analyseCluster for each scenario (clusterType, baseline/colossus, crowd/no-crowd)
 	for d in dirs:
-		# Running through each directory in file tree
+		# Running through each directory in file tree - can just call analyse for each
 		path = root + '/' + d # path to files from this script's home directory
 		print('path', path)
 		
 		# Pulling strategy and crowding scenarios from directory names -- tying to scenario_dict
 		if d in scenario_dict:
-			print('Have scenario!')
+			print('Have viewing and crowding scenario!')
 			stratOpSim = scenario_dict[d][0]
 			crowd = scenario_dict[d][1]
 			haveStrat = True
 			haveCrowd = True
 
-		# Checking cluster type
-		if d in clusterTypes:
-			print('Cluster type acquired!')
+		# # Checking cluster type
+		if path[10::] in clusterTypes:
+			print('Cluster type acquired!', clusterTypes[d])
 			cluster = clusterTypes[d]
 			haveCluster = True
 
 		# Checking if white dwarf case is being created
 		if 'wd' in (root + d):
+			print('White Dwarfs incoming')
 			whiteDwarfs = True
-		print('')
+
 		
 		# Create cluster analyse object without White Dwarf case
-		if haveCluster and haveCrowd and haveStrat:
+		if haveCrowd and haveStrat: #haveCluster and 
 			print('Running analyse without WDs...')
-			run = analyseCluster(cluster, stratOpSim, crowd, False)
-			run.analyse(cluster, stratOpSim, crowd, False)
+			ac = analyseCluster(path, cluster, stratOpSim, crowd, False)
+			ac.analyse(path, cluster, stratOpSim, crowd, False)
 
 		# create analyse object for White Dwarf case
-		if haveCluster and haveCrowd and haveStrat and whiteDwarfs:
+		elif haveCrowd and haveStrat and whiteDwarfs: #haveCluster and 
 			print('Running analyse WITH WDs...')
-			run = analyseCluster(cluster, stratOpSim, crowd, True)
-			run.analyse(cluster, stratOpSim, crowd, True)
+			ac = analyseCluster(path, cluster, stratOpSim, crowd, True)
+			ac.analyse(path, cluster, stratOpSim, crowd, True)
 	print('')
 
 
