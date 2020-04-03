@@ -43,10 +43,11 @@ class whiteDwarfBinaries(object):
 		'''
 		self.path = path
 		self.filename = filename
-		self.df = pd.read_csv(self.path + self.filename) #, names = ['p','m1','m2','r1','r2','e','i','appMagMean_r'])
-		self.df = self.df.drop('Unnamed: 0', axis =1) # dropping index column from csv write
+		if 'wdBinaries.csv' in self.filename:
+			self.df = pd.read_csv(self.path + self.filename) #, names = ['p','m1','m2','r1','r2','e','i','appMagMean_r'])
+			self.df = self.df.drop('Unnamed: 0', axis =1) # dropping index column from csv write
 
-		return self.df
+			return self.df
 
 	def scatterPlot(self, x,y, title, xlabel, ylabel, saveFig = False):
 		'''
