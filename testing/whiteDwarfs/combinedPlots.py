@@ -9,6 +9,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 from itertools import permutations
+
 # List and dict of labels and markerstyles for plots
 markers = ['^', 'o', 's', '*']
 labels = {'BN': 'Baseline No Crowding', 'BC':'Baseline Crowding', 'CN':'Colossus No Crowding', 'CC':'Colossus Crowding'}
@@ -72,55 +73,13 @@ def multiScatter(data_x, data_y, xlabel, ylabel, title,scenario_list):
 	f.savefig(f'./plots/combinedPlots/scatter/{title}-{xlabel}{ylabel}-scatter.pdf')
 	print('Scatter plots made!')
 
-<<<<<<< HEAD
-=======
-# Test call for function
-# m10rec = ['rec-M10BC-wdBinaries.csv', 'rec-M10BN-wdBinaries.csv', 'rec-M10CC-wdBinaries.csv', 'rec-M10CN-wdBinaries.csv']
+# #################################################################################################################
 
-# m1 = []
-# m2 = []
-# for file in m10rec:
-# 	dat = pd.read_csv('./wd_output/m10/RecM10/'+file)
-# 	dat = dat.drop('Unnamed: 0', axis =1)
-# 	m1.append(dat['m1'])
-# 	m2.append(dat['m2'])
-
-# print(len(m1), range(len(m1)))
-# xx = makeCombinedScatterPlot(m1, m2, 'm1', 'm2', 'rec-M10', 'BN')
-
->>>>>>> dev
 # Looping through WD binary file tree to make these combined scatter plots and hists
 for root, dirs, files in os.walk('./wd_output/', topdown = True):
-
-
 	for d in dirs:
-<<<<<<< HEAD
+
 		print('working dir: ', d)
-		# haveObs = False
-		# haveRec = False
-		# m1Obs = []
-		# m2Obs = []
-		# r1Obs = []
-		# r2Obs = []
-
-		# m1Rec = []
-		# m2Rec = []
-		# r1Rec = []
-		# r2Rec = []
-=======
-		print('foo', d)
-		haveObs = False
-		haveRec = False
-		m1Obs = []
-		m2Obs = []
-		r1Obs = []
-		r2Obs = []
-
-		m1Rec = []
-		m2Rec = []
-		r1Rec = []
-		r2Rec = []
->>>>>>> dev
 
 		nameslices = []
 		scenarioSlices = []
@@ -139,18 +98,14 @@ for root, dirs, files in os.walk('./wd_output/', topdown = True):
 			print(d)
 			f = os.listdir(root + '/' + d)
 			print(f)
-<<<<<<< HEAD
 
 			# Picking out correct name slices for plot tiles (i.e. 'rec-G' for all recovered binaries in GCs)
-=======
->>>>>>> dev
 			for name in f:
 				if 'G' in name or 'O' in name:
 					plot_title = name[0:5]
 				if 'M10' in name or 'M67' in name:
 					plot_title = name[0:7]
 
-<<<<<<< HEAD
 			# Reading in data files and creating nested lists for plotting
 			dat, obs_scen = makePlottingArrays(root + '/' + d + '/',f) # makes correctly formatted nested lists for each Obs and Rec subdir
 
@@ -160,22 +115,19 @@ for root, dirs, files in os.walk('./wd_output/', topdown = True):
 				x_param = p[0]
 				y_param = p[1]
 				
-=======
+
+			# Reading in data files and creating nested lists for plotting
+
 			dat, obs_scen = makePlottingArrays(root + '/' + d + '/',f) # makes correctly formatted nested lists for each Obs and Rec subdir
-			print('nested-list dict: ', type(dat))
+
+			# Looping through all param permutations (between m1,m2,r1,r2)
 			for p in permutations(dat, 2):
-				# print('XYZ - perm: ', p[0], p[1])
+				# x and ya labels
 				x_param = p[0]
 				y_param = p[1]
 				
-
->>>>>>> dev
 				# Making scatter plots for all combinations of mass-radius params
 				multiScatter(dat[x_param], dat[y_param], p[0], p[1], plot_title, obs_scen)
-
-
-
-
 
 
 
