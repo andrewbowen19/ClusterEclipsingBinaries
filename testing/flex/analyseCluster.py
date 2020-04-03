@@ -29,11 +29,12 @@ class analyseCluster(object):
 	'''
 
 
-	def __init__(self, clusterType, strategy, crowding, searchWDs):
-		self.clusterType = None
-		self.strategy = None
-		self.crowding = None
-		self.searchWDs = None
+	def __init__(self, path,clusterType, strategy, crowding,searchWDs):
+		self.clusterType = clusterType
+		self.strategy = strategy
+		self.crowding = crowding
+		self.searchWDs = searchWDs
+		self.path = path
 
 	def file_len(self, fname): 
 		i = 0
@@ -85,8 +86,9 @@ class analyseCluster(object):
 				lw = 0.5
 		ax1.step(bin_edges, histRec[f]/np.sum(histRec[f]), color=c3, linewidth=lw)
 		ax1.set_ylabel('PDF')
+		# print('FOO FOO BIG OLE POO',self.clusterType, self.crowding)
 		ax1.set_yscale('log')
-		ax1.set_title('M67 - Baseline', fontsize = 16)
+		#ax1.set_title(self.clusterType + "(" + self.crowding + ")", fontsize = 16)
 		ax1.set_xlabel(xtitle)
 		#CDF - NOt using for our purposes but can include
 		cdfAll = []
@@ -113,10 +115,10 @@ class analyseCluster(object):
 
 		ax2.set_xlabel(xtitle)
 		fig.subplots_adjust(hspace=0)
-		fig.savefig('./plots/'  + fname+'.pdf',format='pdf', bbox_inches = 'tight')
+		fig.savefig(self.path +'/plots/'  + fname+'.pdf',format='pdf', bbox_inches = 'tight')
 
 		#write to a text file
-		with open('./eblsst_files/' + fname+'.csv','w') as fl:
+		with open(self.path + '/eblsst_files/' + fname+'.csv','w') as fl:
 			outline = 'binEdges,histAll,histObs'
 			for f in filters:
 				outline += ','+f+'histRec'
@@ -151,8 +153,11 @@ class analyseCluster(object):
 				return 0.0
 
 
-	def analyse(self, clusterType,  strategy, crowding, searchWDs):
+	def analyse(self, path, clusterType,  strategy, crowding, searchWDs):
 		self.searchWDs = searchWDs
+		self.path = path
+		self.clusterType = clusterType
+		self.crowding = crowding
 		filters = ['u_', 'g_', 'r_', 'i_', 'z_', 'y_', 'all']
 
 		#get the Raghavan binary fraction fit
@@ -287,7 +292,7 @@ class analyseCluster(object):
 		Rec = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
 
 		#Read in all the data and make the histograms
-		d = "./input_files/"
+		d = self.path + "/input_files/"
 		files = os.listdir(d)
 		IDs = []
 		for i, f in enumerate(files):
@@ -578,9 +583,9 @@ class analyseCluster(object):
 		self.csv_cols = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
 
 		# 3 letter code corresponds to scenario (OC/GC, baseline/colossus, crowding/no crowding)
-		All.to_csv('./data/all-M67BN-histData.csv', header = self.csv_cols)
-		Obs.to_csv('./data/obs-M67BN-histData.csv', header = self.csv_cols)
-		Rec.to_csv('./data/rec-M67BN-histData.csv', header = self.csv_cols)
+		All.to_csv(self.path + '/data/all-M67BN-histData.csv', header = self.csv_cols)
+		Obs.to_csv(self.path + '/data/obs-M67BN-histData.csv', header = self.csv_cols)
+		Rec.to_csv(self.path + '/data/rec-M67BN-histData.csv', header = self.csv_cols)
 
 		if self.searchWDs == True:
 			print('FOO FOO FOO')
@@ -596,9 +601,9 @@ class analyseCluster(object):
 
 			print('White Dwarf Candidates: ', WDall, WDobs, WDrec)
 
-			WDall.to_csv(f'./data/wd/all-{self.clusterType}{self.strategy}{self.crowding}-WD-histData.csv', header = self.csv_cols)
-			WDobs.to_csv(f'./data/wd/obs-{self.clusterType}{self.strategy}{self.crowding}-WD-histData.csv', header = self.csv_cols)
-			WDrec.to_csv(f'./data/wd/rec-{self.clusterType}{self.strategy}{self.crowding}-WD-histData.csv', header = self.csv_cols)
+			WDall.to_csv(self.path + f'data/wd/all-{self.clusterType}{self.strategy}{self.crowding}-WD-histData.csv', header = self.csv_cols)
+			WDobs.to_csv(self.path + f'data/wd/obs-{self.clusterType}{self.strategy}{self.crowding}-WD-histData.csv', header = self.csv_cols)
+			WDrec.to_csv(self.path + f'data/wd/rec-{self.clusterType}{self.strategy}{self.crowding}-WD-histData.csv', header = self.csv_cols)
 
 		#plot and save the histograms
 		self.saveHist(m1hAll, m1hObs, m1hRec, m1b, 'm1 (Msolar)', 'EBLSST_m1hist')
@@ -627,7 +632,7 @@ class analyseCluster(object):
 		mlw = ax.scatter(np.array(RAwrap).ravel()*np.pi/180., np.array(Decwrap).ravel()*np.pi/180., c=np.array(recFrac)*100., cmap='viridis_r', s = 4)
 		cbar = f.colorbar(mlw, shrink=0.7)
 		cbar.set_label(r'% recovered')
-		f.savefig('./plots/analyse_plots/'  + 'mollweide_pct.pdf',format='pdf', bbox_inches = 'tight')
+		f.savefig(self.path + '/plots/analyse_plots/'  + 'mollweide_pct.pdf',format='pdf', bbox_inches = 'tight')
 
 		f, ax = plt.subplots(subplot_kw={'projection': "mollweide"}, figsize=(8,5))
 		ax.grid(True)
@@ -639,16 +644,16 @@ class analyseCluster(object):
 		mlw = ax.scatter(np.array(RAwrap).ravel()*np.pi/180., np.array(Decwrap).ravel()*np.pi/180., c=np.log10(np.array(recN)), cmap='viridis_r', s = 4)
 		cbar = f.colorbar(mlw, shrink=0.7)
 		cbar.set_label(r'log10(N) recovered')
-		f.savefig('./plots/analyse_plots/'  + 'mollweide_N.pdf',format='pdf', bbox_inches = 'tight')
+		f.savefig(self.path + '/plots/analyse_plots/'  + 'mollweide_N.pdf',format='pdf', bbox_inches = 'tight')
 
 		if (doIndividualPlots):
-			fmass.savefig('./plots/analyse_plots/'  + 'massPDFall.pdf',format='pdf', bbox_inches = 'tight')
-			fqrat.savefig('./plots/analyse_plots/'  + 'qPDFall.pdf',format='pdf', bbox_inches = 'tight')
-			fecc.savefig('./plots/analyse_plots/'  + 'eccPDFall.pdf',format='pdf', bbox_inches = 'tight')
-			flper.savefig('./plots/analyse_plots/'  + 'lperPDFall.pdf',format='pdf', bbox_inches = 'tight')
-			fdist.savefig('./plots/analyse_plots/'  + 'distPDFall.pdf',format='pdf', bbox_inches = 'tight')
-			fmag.savefig('./plots/analyse_plots/'  + 'magPDFall.pdf',format='pdf', bbox_inches = 'tight')
-			frad.savefig('./plots/analyse_plots/'  + 'radPDFall.pdf',format='pdf', bbox_inches = 'tight')
+			fmass.savefig(self.path + '/plots/analyse_plots/'  + 'massPDFall.pdf',format='pdf', bbox_inches = 'tight')
+			fqrat.savefig(self.path + '/plots/analyse_plots/'  + 'qPDFall.pdf',format='pdf', bbox_inches = 'tight')
+			fecc.savefig(self.path + '/plots/analyse_plots/'  + 'eccPDFall.pdf',format='pdf', bbox_inches = 'tight')
+			flper.savefig(self.path + '/plots/analyse_plots/'  + 'lperPDFall.pdf',format='pdf', bbox_inches = 'tight')
+			fdist.savefig(self.path + '/plots/analyse_plots/'  + 'distPDFall.pdf',format='pdf', bbox_inches = 'tight')
+			fmag.savefig(self.path + '/plots/analyse_plots/'  + 'magPDFall.pdf',format='pdf', bbox_inches = 'tight')
+			frad.savefig(self.path + '/plots/analyse_plots/'  + 'radPDFall.pdf',format='pdf', bbox_inches = 'tight')
 
 		print("###################")
 		print("number of binaries in input files (raw, log):",np.sum(fileN), np.log10(np.sum(fileN)))
