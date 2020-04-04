@@ -1,19 +1,18 @@
-Working Git repository for our cluster eclipsing binary project (made on 7/8/19)
+# Welcome to the GitHub repository of our Cluster Eclipsing Binaries project!
 
-Want to include eclipsing binaries in star clusters (both open and globular clusters) in our EBLSST project
-Also want to include cluster sigma read-ins within our class
+This project, serving as my senior thesis, studies the period recovery of the new Large Synoptic Survey Telescope
+for eclipsing binary stars in clusters. By learning about the periods of binary stars, we can then infer the mass of these stars -- allowing us to test our models of stellar evolution.
 
-Will try to integrate our code versions and run them on Quest
+We used data from catalogs provided from several sources of both [Open](https://www.google.com/search?client=safari&rls=en&q=webda+catalog&ie=UTF-8&oe=UTF-8) and [Globular clusters](http://physwww.mcmaster.ca/~harris/mwgc.dat). 
 
+Our project attempts to optimize the LSST cadence for viewing eclipsing binaries between different LSST observing strategies (*baseline* and *colossus*, respectively)
 
-7/15/19 Update:
+Author(s): Andrew Bowen (1), Aaron M. Geller (2)
+1. Center for Interdisciplinary Exploration and Research in Astrophysics
+1800 Sherman Ave, 8th Floor 
+Northwestern University, CIERA Evanston, IL 60201
+2. Adler Planetarium
+1300 S Lake Shore Dr, Chicago, IL 60605
 
-Have cleaned Cluster data file (one file for both OCs and GCs), now we want to integrate that with our getClusterBinaries class and be able to run them through cosmic, then we will post on Quest and run everything together for 40k binaries per cluster
+email: andrewbowen2020 [at] u.northwestern.edu
 
-
-Successfully drew sigma for every cluster (get_sigma fucntion in cluster_muster) - now we want to run getClusterbinaries on every cluster and then use EBLSST
-
-
-New repo on GitHub: ClusterEclipsingBinaries
-
-Need paper write-up by friday, poster by August 8th for LSST conference

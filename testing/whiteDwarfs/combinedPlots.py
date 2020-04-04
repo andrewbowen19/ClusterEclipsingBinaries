@@ -1,6 +1,6 @@
 """
-Script to create combined histograms and scatter plots 
-All 4 scenarios for each cluster type/subpopulation: 
+Script to create combined histograms and scatter plots
+All 4 scenarios for each cluster type/subpopulation:
 i.e. recovered or observed binaries for Globular Clusters: CN, CC, BC, BN all in one plot
 """
 
@@ -12,8 +12,9 @@ from itertools import permutations
 
 # List and dict of labels and markerstyles for plots
 markers = ['^', 'o', 's', '*']
-labels = {'BN': 'Baseline No Crowding', 'BC':'Baseline Crowding', 'CN':'Colossus No Crowding', 'CC':'Colossus Crowding'}
-# alphas = np.arange(1.0,0.0,0.25)
+labels = {'BN': 'Baseline No Crowding', 'BC':'Baseline Crowding', 
+			'CN':'Colossus No Crowding', 'CC':'Colossus Crowding'}
+
 colors = ['#a6cee3' , '#1f78b4', '#b2df8a' , '#33a02c']
 
 def makePlottingArrays(path, files):
@@ -23,6 +24,7 @@ def makePlottingArrays(path, files):
 	path - path to dubir and requisite files
 	files - should be list of files in either Rec or Obs subdir (len(f) = 4)
 	'''
+
 	# Rewriting this function to do all the work of the below file walk
 	m1 = []
 	m2 = []
@@ -63,36 +65,35 @@ def multiScatter(data_x, data_y, xlabel, ylabel, title,scenario_list):
 
 	'''
 	f,ax = plt.subplots()
-
+	# Plotting for all 4 viewing scenarios
 	for i in range(0,len(data_x)):
 		ax.scatter(data_x[i], data_y[i], marker = markers[i], alpha = 0.5, c = colors[i],label = scenario_list[i])
 	ax.set_xlabel(xlabel)
 	ax.set_ylabel(ylabel)
 	ax.set_title(title)
 	ax.legend()
-	# plt.show()
+
 	f.savefig(f'./plots/combinedPlots/scatter/{title}-{xlabel}{ylabel}-scatter.pdf')
 	print('Scatter plots made!')
 
-def multiHist(data, title,scenario_list):
+def multiHist(data, title, xlabel, xmin, xmax, scenario_list):
 	'''
 	Function to create layered histograms among all 4 params
 	Will likely use for period histograms among all 4 scenarios
 	Same arguments as multiScatter
 	'''
-	f,ax = plt.subplots()
+	f,ax=plt.subplots()
 	for i in range(0, len(data)):
-		ax.hist(data[i], range = [0,50],histtype = 'step', color = colors[i], label = scenario_list[i])
-	ax.set_xlabel('period (days)')
+		ax.hist(data[i], range=[xmin, xmax],  histtype='step', color=colors[i], label=scenario_list[i])
+	ax.set_xlabel(xlabel)
 	ax.set_title(title)
 	ax.legend()
-	f.savefig(f'./plots/combinedPlots/hists/{title}-pHist.pdf')
-	print('period histgram made!')
-
+	f.savefig(f'./plots/combinedPlots/hists/{title}-{xlabel}Hist.pdf')
+	print(f'Combined {xlabel} histgram made!')
 
 # #################################################################################################################
 
-# Looping through WD binary file tree to make these combined scatter plots and hists
+# Looping through WD binary file tree making combined scatter plots and hists
 for root, dirs, files in os.walk('./wd_output/', topdown = True):
 	for d in dirs:
 
@@ -109,7 +110,7 @@ for root, dirs, files in os.walk('./wd_output/', topdown = True):
 			sameslices = [0,9]
 			scenarioSlices = [7,9]
 
-		# Only want 2 subdirs
+		# Only want 2 subdirs - observed and recovered
 		if 'Obs' in d or 'Rec' in d:
 
 			print(d)
@@ -126,9 +127,16 @@ for root, dirs, files in os.walk('./wd_output/', topdown = True):
 			# Reading in data files and creating nested lists for plotting
 			dat, obs_scen, periods = makePlottingArrays(root + '/' + d + '/',f) # makes correctly formatted nested lists for each Obs and Rec subdir
 
-			multiHist(periods, plot_title, obs_scen)
+			# Making combined period histograms
+			multiHist(periods, plot_title, 'p', 0., 50., obs_scen)
 
-			# Looping through all param permutations (between m1,m2,r1,r2)
+			# Making mass, radius combined hists
+			multiHist(dat['m1'], plot_title, 'm1', 0., 0.6, obs_scen) # m1
+			multiHist(dat['m2'], plot_title, 'm2', 0., 0.6, obs_scen) # m2
+			multiHist(dat['r1'], plot_title, 'r1', 0., 0.8, obs_scen) # r1
+			multiHist(dat['r2'], plot_title, 'r2', 0., 0.8, obs_scen) # r2
+
+			# Looping through all param permutations (between m1,m2,r1,r2) -- making scatter plots
 			for p in permutations(dat, 2):
 				# x and ya labels
 				x_param = p[0]
