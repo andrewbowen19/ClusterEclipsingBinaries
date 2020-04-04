@@ -1,6 +1,9 @@
 '''
-Testing script to turn analyse into a function/class
-Want to be able to import it into a os.walk script so we can run it once for all cluster types/viewing scenarios
+Rewritten analyse script as an object
+Can call in file tree walk scrip (runAnalyse)
+Will perform analyse functionality for multiple viewing scenarios
+Can call one time (or in a loop)
+instead of running script several times for multiple scenarios
 
 '''
 import pandas as pd
@@ -11,32 +14,30 @@ from astropy import units, constants
 from astropy.modeling import models, fitting
 import scipy.stats
 from scipy.integrate import quad
+from matplotlib import pyplot as plt
 
-#for Quest
+# imports for Quest plots
 import matplotlib
 matplotlib.use('Agg')
 doIndividualPlots = True
-from matplotlib import pyplot as plt
 
 
-#####################################################################################################
-
+# #####################################################################################################
 
 class analyseCluster(object):
 	'''
-	Object for use to be able to call our analyseEBLSST script for any scenario 
+	Object for use to be able to call our analyseEBLSST script for any scenario
 	This replaces having a separate analyse script in each directory
 	'''
 
-
-	def __init__(self, path,clusterType, strategy, crowding,searchWDs):
+	def __init__(self, path, clusterType, strategy, crowding, searchWDs):
 		self.clusterType = clusterType
 		self.strategy = strategy
 		self.crowding = crowding
 		self.searchWDs = searchWDs
 		self.path = path
 
-	def file_len(self, fname): 
+	def file_len(self, fname):
 		i = 0
 		with open(fname) as f:
 			for i, l in enumerate(f):
@@ -47,9 +48,9 @@ class analyseCluster(object):
 		self.Phs = np.pi*constants.G/np.sqrt(2.)*(m1*m2/m3)**(3./2.)*(m1 + m2)**(-0.5)*sigma**(-3.)
 		return self.Phs.decompose().to(units.day)
 
-	#similar to field, but limiting by the hard-soft boundary
+	# similar to field, but limiting by the hard-soft boundary
 	def fitRagfb(self):
-		x = [0.05, 0.1, 1, 8, 15]  #estimates of midpoints in bins, and using this: https://sites.uni.edu/morgans/astro/course/Notes/section2/spectralmasses.html
+		x = [0.05, 0.1, 1, 8, 15]  # estimates of midpoints in bins, and using this: https://sites.uni.edu/morgans/astro/course/Notes/section2/spectralmasses.html
 		y = [0.20, 0.35, 0.50, 0.70, 0.75]
 		init = models.PowerLaw1D(amplitude=0.5, x_0=1, alpha=-1.)
 		fitter = fitting.LevMarLSQFitter()
@@ -57,7 +58,7 @@ class analyseCluster(object):
 
 		return fit
 
-	def RagNormal(self,x, cdf = False):
+	def RagNormal(self, x, cdf=False):
 		mean = 5.03
 		std = 2.28
 		if (cdf):
@@ -65,17 +66,19 @@ class analyseCluster(object):
 
 		return scipy.stats.norm.pdf(x,mean,std)
 
+	def saveHist(self, histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_', 'g_', 'r_', 'i_', 'z_', 'y_', 'all']):
+		'''
+		Method to generate step pdf and cdfs for different binary population params
+		'''
+		c1 = '#5687A6' # Dali Blue (Andrew's AAS Poster scheme)
+		c2 = '#A62B1F' # Dai Red
+		c3 = '#BF8A26' # Dali Beige
+		fig,(ax1, ax2) = plt.subplots(2, 1, figsize=(5, 8), sharex=True)
 
-	def saveHist(self, histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_', 'g_', 'r_', 'i_', 'z_', 'y_','all']):
-		c1 = '#5687A6' #Dali Blue (Andrew's AAS Poster)
-		c2 = '#A62B1F' #Dai Red 
-		c3 = '#BF8A26' #Dali Beige
-		fig,(ax1, ax2) = plt.subplots(2,1,figsize=(5, 8), sharex=True)
-
-		histAll = np.insert(histAll,0,0)
-		histObs = np.insert(histObs,0,0)
+		histAll = np.insert(histAll, 0, 0)
+		histObs = np.insert(histObs, 0, 0)
 		for f in filters:
-			histRec[f] = np.insert(histRec[f],0,0)
+			histRec[f] = np.insert(histRec[f], 0, 0)
 
 		#PDF
 		ax1.step(bin_edges, histAll/np.sum(histAll), color=c1)
@@ -115,7 +118,7 @@ class analyseCluster(object):
 
 		ax2.set_xlabel(xtitle)
 		fig.subplots_adjust(hspace=0)
-		fig.savefig(self.path +'/plots/'  + fname+'.pdf',format='pdf', bbox_inches = 'tight')
+		fig.savefig(self.path + '/plots/' + fname + '.pdf', format='pdf', bbox_inches='tight')
 
 		#write to a text file
 		with open(self.path + '/eblsst_files/' + fname+'.csv','w') as fl:
@@ -163,7 +166,7 @@ class analyseCluster(object):
 		#get the Raghavan binary fraction fit
 		fbFit= self.fitRagfb()
 		print(fbFit)
-			
+
 		#to normalize
 		intAll, err = quad(self.RagNormal, -20, 20)
 		intCut, err = quad(self.RagNormal, -20, np.log10(365*10.))
@@ -311,7 +314,7 @@ class analyseCluster(object):
 				Dec.append(header['OpSimDec'])
 
 				#read in rest of the file
-				data = pd.read_csv(d+f, header = 2).fillna(-999)
+				data = pd.read_csv(d+f, header=2).fillna(-999)
 				rF = 0.
 				rN = 0.
 				Nrec = 0.
@@ -329,7 +332,7 @@ class analyseCluster(object):
 
 				# Selecting only WD candidates
 				# print('foo: ', data.loc[(data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2']))]  )
-				prsaWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & ((data['m1'] < 0.6) | (data['m2'] < 0.6))
+				prsaWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & ((data['m1'] < 0.6) | (data['m2'] < 0.6))
 				 & ((data['r1'] < self.wdMRrelation(data['m1'])) | (data['r2'] < self.wdMRrelation(data['m2'])))]
 				self.all_WD.append(prsaWD)
 
@@ -374,7 +377,6 @@ class analyseCluster(object):
 					print("fb, Phs = ", fb, Phs)
 					Nmult *= fb
 
-								
 					m1hAll += m1hAll0/Nall*Nmult
 					qhAll += qhAll0/Nall*Nmult
 					ehAll += ehAll0/Nall*Nmult
@@ -390,8 +392,8 @@ class analyseCluster(object):
 					NobsPrsa = len(prsaObs.index)
 
 					# White dwarf appending
-					prsaObsWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & (data['LSM_PERIOD'] != -999)
-						 & ((data['m1'] < 0.6) | (data['m2'] < 0.6))  & ((data['r1'] < self.wdMRrelation(data['m1'])) | (data['r2'] < self.wdMRrelation(data['m2'])))]
+					prsaObsWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & (data['LSM_PERIOD'] != -999)
+						 & ((data['m1'] < 0.6) | (data['m2'] < 0.6))  & ((data['r1']<self.wdMRrelation(data['m1'])) | (data['r2']<self.wdMRrelation(data['m2'])))]
 					self.obs_WD.append(prsaObsWD)
 
 					# would like to see if there is a better way of doing this
@@ -430,8 +432,8 @@ class analyseCluster(object):
 							fullP = abs(data[key] - data['p'])/data['p']
 							halfP = abs(data[key] - 0.5*data['p'])/(0.5*data['p'])
 							twiceP = abs(data[key] - 2.*data['p'])/(2.*data['p'])
-							rec = data.loc[(data[key] != -999) & ( (fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))]
-							prsaRec = data.loc[(data['p'] < 1000) & (data['p'] >0.5) & (data['LSM_PERIOD'] != -999) & ( (fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))]
+							rec = data.loc[(data[key] != -999) & ((fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))]
+							prsaRec = data.loc[(data['p'] < 1000) & (data['p'] >0.5) & (data['LSM_PERIOD'] != -999) & ((fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))]
 							Nrec = len(rec.index)
 
 							#I'd like to account for all filters here to have more accurate numbers
@@ -451,7 +453,7 @@ class analyseCluster(object):
 							# writeCornerFiles(prsaRec, ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'], 'rec', 'M67','B','N')
 
 							# White dwarf appending
-							prsaRecWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & (data['LSM_PERIOD'] != -999)  & ( (fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))
+							prsaRecWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & (data['LSM_PERIOD'] != -999)  & ((fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))
 								 & ((data['m1'] < 0.6) | (data['m2'] < 0.6))  & ((data['r1'] < self.wdMRrelation(data['m1'])) | (data['r2'] < self.wdMRrelation(data['m2'])))]
 							self.rec_WD.append(prsaRecWD)
 
@@ -579,7 +581,7 @@ class analyseCluster(object):
 		Rec['r1'] = r1Rec
 		Rec['r2'] = r2Rec
 		Rec['appMagMean_r'] = magRec
-		
+
 		self.csv_cols = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
 
 		# 3 letter code corresponds to scenario (OC/GC, baseline/colossus, crowding/no crowding)
@@ -587,7 +589,7 @@ class analyseCluster(object):
 		Obs.to_csv(self.path + '/data/obs-M67BN-histData.csv', header = self.csv_cols)
 		Rec.to_csv(self.path + '/data/rec-M67BN-histData.csv', header = self.csv_cols)
 
-		if self.searchWDs == True:
+		if self.searchWDs is True:
 			print('FOO FOO FOO')
 			# Appending WD dataframes 
 			WDall = pd.concat(self.all_WD)
@@ -673,13 +675,6 @@ class analyseCluster(object):
 
 
 
-# test call of class
-# xx = analyseCluster('M10', 'B', 'N', False)
-# xx.analyse('M10', 'B', 'N', False)
-
-# wd = analyseCluster('M10', 'B', 'N', True)
-# wd.analyse('M10', 'B', 'N', True)
-# class params: self, clusterType, strategy, crowding, searchWDs
 
 
-
+# TODO: add to quest and run as batch job
