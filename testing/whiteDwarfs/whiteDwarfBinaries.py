@@ -43,7 +43,7 @@ class whiteDwarfBinaries(object):
 		'''
 		self.path = path
 		self.filename = filename
-		if 'wdBinaries.csv' in self.filename:
+		if 'WD-histData.csv' in self.filename:
 			self.df = pd.read_csv(self.path + self.filename) #, names = ['p','m1','m2','r1','r2','e','i','appMagMean_r'])
 			self.df = self.df.drop('Unnamed: 0', axis =1) # dropping index column from csv write
 
@@ -141,7 +141,7 @@ class whiteDwarfBinaries(object):
 			self.scatterPlot(self.wds['r1'], self.wds['r2'], scenario, '$r_1$ $(R_{\odot})$','$r_2$ $(M_{\odot})$', True)
 
 		if save_csv == True:
-			self.wds.to_csv(f'./wd_output/{scenario}-wdBinaries.csv')
+			self.wds.to_csv(f'./wd_output/{scenario}-wdBinaryPairs.csv')
 
 		# return wds
 
@@ -155,14 +155,15 @@ class whiteDwarfBinaries(object):
 
 # Periods in our WD data files are NOT in the log
 
-# Now we'llloop through our file tree to create these plots for 
-for root, dirs, files in os.walk('.', topdown = True):
+# Now we'll loop through our file tree to create these plots for 
+for root, dirs, files in os.walk('./clusters/', topdown = True):
 	for name in files:
 
 		if ('WD-histData.csv' in name) and ('rec' in name or 'obs' in name):
 			print('ROOT, NAME : ', root, name)
 			print('Found file, reading in data...')
 			wdb = whiteDwarfBinaries(root + '/', name)
+
 			data = wdb.fileReadIn(root + '/', name)
 			print(data)
 			plotMe = wdb.findWhiteDwarfPairs(data, name.replace('-WD-histData.csv', ''), True, True)
