@@ -2,6 +2,7 @@
 Script to create combined histograms and scatter plots
 All 4 scenarios for each cluster type/subpopulation:
 i.e. recovered or observed binaries for Globular Clusters: CN, CC, BC, BN all in one plot
+Using this to generate scatter plots for WD binary pairs
 """
 
 import numpy as np

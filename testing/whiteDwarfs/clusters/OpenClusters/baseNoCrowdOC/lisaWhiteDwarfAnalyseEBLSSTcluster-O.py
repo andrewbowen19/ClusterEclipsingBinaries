@@ -4,10 +4,9 @@
 #########################
 #########################
 
-# Baseline M10 (GC) long script -- NO crowding
+# Baseline Open Clusters script -- NO crowding
 # White Dwarf (WD) version of analyse script
-# New script copied from quest - want to take p and ecc from each population (all, obs, rec) and put them into separate file
-# Doing this so we don't have to run analyse each time
+# Pulling LISA WD GW progenitor candidates
 
 import pandas as pd
 import numpy as np
@@ -25,12 +24,11 @@ matplotlib.use('Agg')
 doIndividualPlots = True
 
 from matplotlib import pyplot as plt
-
-def file_len(fname): 
+def file_len(fname):
 	i = 0
-	with open(fname, encoding = 'us-ascii') as f:
+	with open(fname) as f:
+		# print(type(f))
 		for i, l in enumerate(f):
-			# print('index, line: ', i,l)
 			pass
 	return i + 1
 
@@ -78,7 +76,7 @@ def saveHist(histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_
 	ax1.step(bin_edges, histRec[f]/np.sum(histRec[f]), color=c3, linewidth=lw)
 	ax1.set_ylabel('PDF')
 	ax1.set_yscale('log')
-	ax1.set_title('M10 - Baseline', fontsize = 16)
+	ax1.set_title('Open CLusters - Baseline', fontsize = 16)
 	ax1.set_xlabel(xtitle)
 	#CDF
 	#cdfAll = []
@@ -166,7 +164,7 @@ def wdMRrelation(mass):
 		elif m >= 1.0:
 			xi = 0.57
 			radius = m ** xi
-			# will not have negative radii values
+			# print('radius: ', radius)
 			return 0.0
 
 #####################################################################################################
@@ -307,7 +305,7 @@ if __name__ == "__main__":
 	Rec = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
 
 	#Read in all the data and make the histograms
-	d = "./input_files/" #using properly encoded output_files
+	d = "/projects/p30137/ageller/testing/EBLSST/clusters/GlobularClusters/output_files/"
 	files = os.listdir(d)
 	IDs = []
 	for i, f in enumerate(files):
@@ -319,7 +317,6 @@ if __name__ == "__main__":
 	######################
 	#NEED TO ACCOUNT FOR THE BINARY FRACTION when combining histograms
 	#####################
-
 			Nmult = header['clusterMass'][0]/mMean
 			#Nmult = 1.
 
@@ -345,8 +342,8 @@ if __name__ == "__main__":
 
 			# Selecting only WD candidates
 			# print('foo: ', data.loc[(data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2']))]  )
-			prsaWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & ((data['m1'] < 0.6) | (data['m2'] < 0.6))
-			 & ((data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2'])))]
+			prsaWD = data.loc[(data['p'] < 0.1) & (data['p'] > 0.001) & ((data['m1'] < 0.6) | (data['m2'] < 0.6))
+				 & ((data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2'])))]
 			all_WD.append(prsaWD)
 
 			# Appending for Andrew
@@ -402,12 +399,12 @@ if __name__ == "__main__":
 				#Obs
 				obs = data.loc[data['LSM_PERIOD'] != -999]
 				Nobs = len(obs.index)
-				prsaObs = data.loc[(data['p'] < 1000) & (data['p'] >0.5) & (data['LSM_PERIOD'] != -999)]
+				prsaObs = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & (data['LSM_PERIOD'] != -999)]
 				NobsPrsa = len(prsaObs.index)
 
 				# White dwarf appending
-				prsaObsWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & (data['LSM_PERIOD'] != -999)
-					 & ((data['m1'] < 0.6) | (data['m2'] < 0.6))  & ((data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2'])))]
+				prsaObsWD = data.loc[(data['p'] < 0.1) & (data['p'] > 0.001) & (data['LSM_PERIOD'] != -999)
+					 & ((data['m1'] < 0.6) | (data['m2'] < 0.6))  & ((data['r1']<wdMRrelation(data['m1'])) | (data['r2']<wdMRrelation(data['m2'])))]
 				obs_WD.append(prsaObsWD)
 
 				# would like to see if there is a better way of doing this
@@ -467,7 +464,7 @@ if __name__ == "__main__":
 						# writeCornerFiles(prsaRec, ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'], 'rec', 'M67','B','N')
 
 						# White dwarf appending
-						prsaRecWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5 ) & (data['LSM_PERIOD'] != -999)  & ( (fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))
+						prsaRecWD = data.loc[(data['p'] < 0.1) & (data['p'] > 0.0) & (data['LSM_PERIOD'] != -999)  & ((fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))
 							 & ((data['m1'] < 0.6) | (data['m2'] < 0.6))  & ((data['r1'] < wdMRrelation(data['m1'])) | (data['r2'] < wdMRrelation(data['m2'])))]
 						rec_WD.append(prsaRecWD)
 
@@ -599,9 +596,9 @@ if __name__ == "__main__":
 	csv_cols = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
 
 	# 3 letter code corresponds to scenario (OC/GC, baseline/colossus, crowding/no crowding)
-	All.to_csv('./data/all-M10BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
-	Obs.to_csv('./data/obs-M10BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
-	Rec.to_csv('./data/rec-M10BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	All.to_csv('./data/all-OBN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Obs.to_csv('./data/obs-OBN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	Rec.to_csv('./data/rec-OBN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
 
 	# Appending WD dataframes 
 	WDall = pd.concat(all_WD)
@@ -615,9 +612,9 @@ if __name__ == "__main__":
 
 	print('White Dwarf Candidates: ', WDall, WDobs, WDrec)
 
-	WDall.to_csv('./data/wd/all-M10BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
-	WDobs.to_csv('./data/wd/obs-M10BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
-	WDrec.to_csv('./data/wd/rec-M10BN-WD-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	WDall.to_csv('./data/wd/all-OBN-WD-LISA-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	WDobs.to_csv('./data/wd/obs-OBN-WD-LISA-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
+	WDrec.to_csv('./data/wd/rec-OBN-WD-LISA-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'])
 
 	#plot and save the histograms
 	saveHist(m1hAll, m1hObs, m1hRec, m1b, 'm1 (Msolar)', 'EBLSST_m1hist')
