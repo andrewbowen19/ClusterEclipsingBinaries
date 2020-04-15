@@ -44,6 +44,7 @@ def createMollweide(filename, strategy, create_csv = True):
 	ax.scatter(raGal[xx]*np.pi/180.,decGal[xx]*np.pi/180., s = fieldRad, c=OpS.Nobs[xx], 
 	           cmap='tab10', alpha = 1, vmin=0, vmax=1000)
 	ax.set_title(strategy, fontsize = 16)
+	plt.show()
 
 	if create_csv:
 		dat = pd.DataFrame({'OpSim ID' : OpS.ID, 'OpSim RA': OpS.RA, 'OpSim Dec': OpS.Dec, 'Nobs': OpS.Nobs})
@@ -56,5 +57,6 @@ def createMollweide(filename, strategy, create_csv = True):
 
 
 
-createMollweide('baseline2018a.db', 'baseline')
+createMollweide('../baseline2018a.db.gz.download', 'baseline')
+createMollweide('../colossus_2665.db.gz.download', 'colossus')
 

@@ -15,7 +15,6 @@ Paper here: https://arxiv.org/abs/1907.00014
 '''
 # Quest version of script
 
-
 import numpy as np
 import pandas as pd
 import os
