@@ -18,6 +18,7 @@
 
 # Misc.
 .DS_Store
+.db
 
 # Plots and data files (.csv/.txt) can be stored on Box (NU): https://northwestern.app.box.com/folder/70663495351
 # Can also put backups on Google drive: https://drive.google.com/drive/u/0/folders/1_YzH4ik6EnQTf5hVVQyflAc9jrFrKZDe
