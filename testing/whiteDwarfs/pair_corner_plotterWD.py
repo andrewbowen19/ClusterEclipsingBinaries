@@ -1,5 +1,5 @@
 # Corner plot script 
-# White dwarf PAIRS version, includes magnitudes in input files
+# White dwarf PAIRS (binary WDs) (binary WDs) (binary WDs) (binary WDs) (binary WDs) (binary WDs) (binary WDs) (binary WDs) (binary WDs) version, includes magnitudes in input files
 # This script should run for all 4 cluster types and observing scenarios. 
 # Upload corner plots to box (both contours and no contour versions)
 
