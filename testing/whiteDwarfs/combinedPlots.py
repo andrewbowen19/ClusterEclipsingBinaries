@@ -119,10 +119,11 @@ for root, dirs, files in os.walk('./wd_output/', topdown = True):
 
 			# Picking out correct name slices for plot tiles (i.e. 'rec-G' for all recovered binaries in GCs)
 			for name in f:
-				if 'G' in name or 'O' in name:
-					plot_title = name[0:5]
-				if 'M10' in name or 'M67' in name:
-					plot_title = name[0:7]
+				if 'wdBinaries.csv' in name:
+					if 'G' in name or 'O' in name:
+						plot_title = name[0:5]
+					if 'M10' in name or 'M67' in name:
+						plot_title = name[0:7]
 
 			# Reading in data files and creating nested lists for plotting
 			dat, obs_scen, periods = makePlottingArrays(root + '/' + d + '/',f) # makes correctly formatted nested lists for each Obs and Rec subdir

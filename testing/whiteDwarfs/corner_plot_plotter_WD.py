@@ -2,6 +2,8 @@
 # White dwarf version, includes magnitudes in input files
 # This script should run for all 4 cluster types and observing scenarios. 
 # Upload corner plots to box (both contours and no contour versions)
+# Does NOT produce plots for WD binary pairs (not pulling from correct data source)
+
 
 # Corner plotting documentation here: https://corner.readthedocs.io/en/latest/
 

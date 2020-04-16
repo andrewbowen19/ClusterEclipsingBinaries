@@ -12,7 +12,7 @@ Need to update directories with proper input files
 Will upload folder to Quest and run on there - will make OCs and GCs use less memory
 
 
-
+UPDATE: successfully ran lisaRunAnalyse and RunAnalyse script to produce output files for both LISA-candidate WDs as well as circularized binary output files
 
 
 
