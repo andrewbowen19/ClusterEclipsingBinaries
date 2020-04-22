@@ -7,6 +7,8 @@ We used data from catalogs provided from several sources of both [Open](https://
 
 Our project attempts to optimize the LSST cadence for viewing eclipsing binaries between different LSST observing strategies (*baseline* and *colossus*, respectively)
 
+Feel free to look over our [**project poster**](/poster/AAS/AAS-Poster-final.pdf) which recently was awarded as a Chambliss Finalist at the 235th Meeting of the American AStronoimcal Society!
+
 Author(s): Andrew Bowen (1), Aaron M. Geller (2)
 1. Center for Interdisciplinary Exploration and Research in Astrophysics
 1800 Sherman Ave, 8th Floor 
