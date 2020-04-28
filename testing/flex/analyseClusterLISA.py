@@ -117,11 +117,11 @@ class analyseClusterLISA(object):
             if (f == 'all'):
                 lw = 0.5
             ax2.step(bin_edges, cdfRec[f], color=c3, linewidth=lw)
-        ax2.set_ylabel('CDF')
+        ax2.set_ylabel('CDF', fontsize=16)
 
-        ax2.set_xlabel(xtitle)
+        ax2.set_xlabel(xtitle, fontsize=16)
         fig.subplots_adjust(hspace=0)
-        fig.savefig(self.path + '/plots/' + fname + '.pdf', format='pdf', bbox_inches='tight')
+        fig.savefig(self.path + '/plots/analyse_plots/' + fname + '.pdf', format='pdf', bbox_inches='tight')
 
         # write to a text file
         with open(self.path + '/eblsst_files/' + fname + '.csv', 'w') as fl:
@@ -156,6 +156,19 @@ class analyseClusterLISA(object):
                 radius = m ** xi
                 # print('radius: ', radius)
                 return 0.0
+
+
+    def log_g(self, mass, radius):
+        '''
+        Function to generate log(g) surface gravity values
+        Will select WDs based on this metric instead of mass-radius relation
+        '''
+        
+        # Gravitational constant (needs to be in solar units)
+        G = 6.352380952380953e+16
+        g = G * mass / (radius**2)
+
+        return np.log10(g)
 
     def analyse(self, path, clusterType, strategy, crowding):
         '''
@@ -333,7 +346,7 @@ class analyseClusterLISA(object):
 
                 # All WD binaries - detectable by LISA
                 prsaWD = data.loc[(data['p'] < 0.1) & (data['p'] > 0.001) & ((data['m1'] < 0.6) | (data['m2'] < 0.6))
-                                  & ((data['r1'] < self.wdMRrelation(data['m1'])) | (data['r2'] < self.wdMRrelation(data['m2'])))]
+                                  & (self.log_g(data['m1'], data['r1']) > 7.0) & (self.log_g(data['m2'], data['r2']) > 7.0)]
                 self.all_WD.append(prsaWD)
 
                 # Appending for Andrew
@@ -393,8 +406,8 @@ class analyseClusterLISA(object):
 
                     # White dwarf binaries detectable by LISA
                     prsaObsWD = data.loc[(data['p'] < 0.1) & (data['p'] > 0.001) & (data['LSM_PERIOD'] != -999)
-                                         & ((data['m1'] < 0.6) | (data['m2'] < 0.6)) & ((data['r1'] < self.wdMRrelation(data['m1']))
-                                         | (data['r2'] < self.wdMRrelation(data['m2'])))]
+                                         & ((data['m1'] < 0.6) | (data['m2'] < 0.6)) &
+                                         (self.log_g(data['m1'], data['r1']) > 7.0) & (self.log_g(data['m2'], data['r2']) > 7.0 )]
                     self.obs_WD.append(prsaObsWD)
 
                     # would like to see if there is a better way of doing this
@@ -455,7 +468,7 @@ class analyseClusterLISA(object):
                             prsaRecWD = data.loc[(data['p'] < 0.1) & (data['p'] > 0.001) & (data['LSM_PERIOD'] != -999)
                                                  & ((fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))
                                                  & ((data['m1'] < 0.6) | (data['m2'] < 0.6))
-                                                 & ((data['r1'] < self.wdMRrelation(data['m1'])) | (data['r2'] < self.wdMRrelation(data['m2'])))]
+                                                 & (self.log_g(data['m1'], data['r1']) > 7.0) & (self.log_g(data['m2'], data['r2']) > 7.0)]
                             self.rec_WD.append(prsaRecWD)
 
                             if (filt == 'all'):
@@ -600,7 +613,7 @@ class analyseClusterLISA(object):
 
         WDall.to_csv(self.path + '/data/wd/all-' + self.clusterType + self.strategy + self.crowding + '-WD-histDataLISA.csv', header=self.csv_cols)
         WDobs.to_csv(self.path + '/data/wd/obs-' + self.clusterType + self.strategy + self.crowding + '-WD-histDataLISA.csv', header=self.csv_cols)
-        WDrec.to_csv(self.path + '/data/wd/rec-' + self.clusterType + self.strategy + self.crowding + ' -WD-histDataLISA.csv', header=self.csv_cols)
+        WDrec.to_csv(self.path + '/data/wd/rec-' + self.clusterType + self.strategy + self.crowding + '-WD-histDataLISA.csv', header=self.csv_cols)
 
         # plot and save the histograms
         self.saveHist(m1hAll, m1hObs, m1hRec, m1b, 'm1 (Msolar)', 'EBLSST_m1hist')
