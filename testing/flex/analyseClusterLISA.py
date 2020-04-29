@@ -593,9 +593,9 @@ class analyseClusterLISA(object):
         self.csv_cols = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
 
         # 3 letter code corresponds to scenario (OC/GC, base/col, crowd/no crowd)
-        All.to_csv(self.path + '/data/all-M67BN-histData.csv', header=self.csv_cols)
-        Obs.to_csv(self.path + '/data/obs-M67BN-histData.csv', header=self.csv_cols)
-        Rec.to_csv(self.path + '/data/rec-M67BN-histData.csv', header=self.csv_cols)
+        All.to_csv(self.path + '/data/all-M67BN-histData.csv', header=self.csv_cols, index=False)
+        Obs.to_csv(self.path + '/data/obs-M67BN-histData.csv', header=self.csv_cols, index=False)
+        Rec.to_csv(self.path + '/data/rec-M67BN-histData.csv', header=self.csv_cols, index=False)
 
         # if self.searchWDs is True:
         print('FOO FOO FOO')
@@ -611,9 +611,9 @@ class analyseClusterLISA(object):
 
         print('White Dwarf Candidates: ', WDall, WDobs, WDrec)
 
-        WDall.to_csv(self.path + '/data/wd/all-' + self.clusterType + self.strategy + self.crowding + '-WD-histDataLISA.csv', header=self.csv_cols)
-        WDobs.to_csv(self.path + '/data/wd/obs-' + self.clusterType + self.strategy + self.crowding + '-WD-histDataLISA.csv', header=self.csv_cols)
-        WDrec.to_csv(self.path + '/data/wd/rec-' + self.clusterType + self.strategy + self.crowding + '-WD-histDataLISA.csv', header=self.csv_cols)
+        WDall.to_csv(self.path + '/data/wd/all-' + self.clusterType + self.strategy + self.crowding + '-WD-histDataLISA.csv', header=self.csv_cols, index=False)
+        WDobs.to_csv(self.path + '/data/wd/obs-' + self.clusterType + self.strategy + self.crowding + '-WD-histDataLISA.csv', header=self.csv_cols, index=False)
+        WDrec.to_csv(self.path + '/data/wd/rec-' + self.clusterType + self.strategy + self.crowding + '-WD-histDataLISA.csv', header=self.csv_cols, index=False)
 
         # plot and save the histograms
         self.saveHist(m1hAll, m1hObs, m1hRec, m1b, 'm1 (Msolar)', 'EBLSST_m1hist')

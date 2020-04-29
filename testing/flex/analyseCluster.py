@@ -156,17 +156,17 @@ class analyseCluster(object):
 				return 0.0
 
 
-    def log_g(self, mass, radius):
-        '''
-        Function to generate log(g) surface gravity values
-        Will select WDs based on this metric instead of mass-radius relation
-        '''
-        
-        # Gravitational constant (needs to be in solar units)
-        G = 6.67e-11
-        g = G * mass / (radius**2)
+	def log_g(self, mass, radius):
+		'''
+		Function to generate log(g) surface gravity values
+		Will select WDs based on this metric instead of mass-radius relation
+		'''
+	
+		# Gravitational constant (needs to be in solar units)
+		G = 6.67e-11
+		g = G * mass / (radius**2)
 
-        return np.log10(g)
+		return np.log10(g)
 
 	def analyse(self, path, clusterType,  strategy, crowding, searchWDs):
 		self.searchWDs = searchWDs
@@ -343,8 +343,8 @@ class analyseCluster(object):
 				prsa = data.loc[(data['p'] < 1000) & (data['p'] > 0.5)]
 
 				# Selecting only WD candidates
-                prsaWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & ((data['m1'] < 0.6) | (data['m2'] < 0.6))
-                                  & (self.log_g(data['m1'], data['r1']) > 7.0 | self.log_g(data['m2'], data['r2']) > 7.0 )]
+				prsaWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & ((data['m1'] < 0.6) | (data['m2'] < 0.6))
+								  & (self.log_g(data['m1'], data['r1']) > 7.0 | self.log_g(data['m2'], data['r2']) > 7.0 )]
 				self.all_WD.append(prsaWD)
 
 				# Appending for Andrew
@@ -403,9 +403,9 @@ class analyseCluster(object):
 					NobsPrsa = len(prsaObs.index)
 
 					# White dwarf appending
-                    prsaObsWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & (data['LSM_PERIOD'] != -999)
-                                         & ((data['m1'] < 0.6) | (data['m2'] < 0.6)) &
-                                         (self.log_g(data['m1'], data['r1']) > 7.0 | self.log_g(data['m2'], data['r2']) > 7.0)]
+					prsaObsWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & (data['LSM_PERIOD'] != -999)
+										 & ((data['m1'] < 0.6) | (data['m2'] < 0.6)) &
+										 (self.log_g(data['m1'], data['r1']) > 7.0 | self.log_g(data['m2'], data['r2']) > 7.0)]
 					self.obs_WD.append(prsaObsWD)
 
 					# would like to see if there is a better way of doing this
