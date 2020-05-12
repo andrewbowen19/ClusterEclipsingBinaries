@@ -1,4 +1,5 @@
-# Corner plot script 
+# Corner plot script -- OLD, does not inlcude file paths for WD binaries
+# e.g. Binaries in the sample this script uses could be a WD with a MS star, etc. 
 # White dwarf version, includes magnitudes in input files
 # This script should run for all 4 cluster types and observing scenarios. 
 # Upload corner plots to box (both contours and no contour versions)

@@ -30,6 +30,8 @@ scenario_dict = {'baseNoCrowd': ['B', 'N'], 'baseCrowd': ['B', 'C'],
 clusterTypes = {'GlobularClusters': 'G', 'OpenClusters': 'O',
                 'm10': 'M10', 'm67': 'M67'}
 
+print('Analyzing all clusters including LISA candidate WD binaries...')
+
 # looping through file tree to cover all 16 scenarios
 for root, dirs, files in os.walk('./clusters', topdown=True):
     haveStrat = False

@@ -18,3 +18,4 @@ These 'combined plots' show scatter plots and hists across all 4 observing scena
 *Note:* the csv files with the extensions 'wdBinaryPairs.csv' are pulled from the 'WD-histData.csv' files in the 
 clusters' subdir - those files were produced from the wd-analysescripts located in those subdirectories of clusters
 
+Moving forward, we will only use the "WD-histDataLISA.csv" files as those contain WD binary systems detectable by both LSST and LISA
