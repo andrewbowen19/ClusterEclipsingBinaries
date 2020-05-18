@@ -14,6 +14,7 @@ Will upload folder to Quest and run on there - will make OCs and GCs use less me
 
 UPDATE: successfully ran lisaRunAnalyse and RunAnalyse script to produce output files for both LISA-candidate WDs as well as circularized binary output files
 
+Output csv files from Quest are posted in this repo. These are for histogram/corner plot data for MS stars as well as WDs (LISA WDs specifically).
 
 
 
