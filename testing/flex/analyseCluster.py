@@ -342,9 +342,10 @@ class analyseCluster(object):
 				Nall = len(data.index)/intNorm ###is this correct? (and the only place I need to normalize?)
 				prsa = data.loc[(data['p'] < 1000) & (data['p'] > 0.5)]
 
-				# Selecting only WD candidates
-				prsaWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & ((data['m1'] < 0.6) | (data['m2'] < 0.6))
-								  & (self.log_g(data['m1'], data['r1']) > 7.0 | self.log_g(data['m2'], data['r2']) > 7.0 )]
+				# Selecting only WD candidates - log(g) selection (no mass)
+				prsaWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) 
+								  & (self.log_g(data['m1'], data['r1']) > 7.0)
+								  & (self.log_g(data['m2'], data['r2']) > 7.0 )]
 				self.all_WD.append(prsaWD)
 
 				# Appending for Andrew
@@ -404,8 +405,8 @@ class analyseCluster(object):
 
 					# White dwarf appending
 					prsaObsWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & (data['LSM_PERIOD'] != -999)
-										 & ((data['m1'] < 0.6) | (data['m2'] < 0.6)) &
-										 (self.log_g(data['m1'], data['r1']) > 7.0 | self.log_g(data['m2'], data['r2']) > 7.0)]
+										& (self.log_g(data['m1'], data['r1']) > 7.0)
+										& (self.log_g(data['m2'], data['r2']) > 7.0)]
 					self.obs_WD.append(prsaObsWD)
 
 					# would like to see if there is a better way of doing this
@@ -465,8 +466,9 @@ class analyseCluster(object):
 							# writeCornerFiles(prsaRec, ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r'], 'rec', 'M67','B','N')
 
 							# White dwarf appending
-							prsaRecWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & (data['LSM_PERIOD'] != -999)  & ((fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))
-								 & ((data['m1'] < 0.6) | (data['m2'] < 0.6))  & (self.log_g(data['m1'], data['r1']) > 7.0 | self.log_g(data['m2'], data['r2']) > 7.0)]
+							prsaRecWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & (data['LSM_PERIOD'] != -999)
+												& ((fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))
+												& (self.log_g(data['m1'], data['r1']) > 7.0) & (self.log_g(data['m2'], data['r2']) > 7.0)]
 							self.rec_WD.append(prsaRecWD)
 
 

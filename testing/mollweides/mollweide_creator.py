@@ -45,7 +45,7 @@ def plotMollweide(x, y, cVal, fieldSize, title):
     im = ax.scatter(x, y, s=fieldSize, c=cVal,
                     cmap='viridis', alpha=1, vmin=0, vmax=1000)
 
-    ax.set_title(title, fontsize=16)
+    ax.set_title(title, fontsize=24)
     cbar = f.colorbar(im)
     cbar.ax.set_ylabel(r'Nobs', fontsize = 16, rotation=270, labelpad=8)
 
