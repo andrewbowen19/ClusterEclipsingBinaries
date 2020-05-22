@@ -220,7 +220,7 @@ class analyseClusterLISA(object):
 		lpbins = np.arange(-2, 10, 0.5, dtype='float')
 		dbins = np.arange(0, 40, 1, dtype='float')
 		magbins = np.arange(11, 25, 1, dtype='float')
-		rbins = np.arange(0, 100, 0.2, dtype='float')
+		rbins = np.arange(0, 100, 1, dtype='float')
 
 		# blanks for the histograms - ALL first
 		m1hAll = np.zeros_like(mbins)[1:]
@@ -599,9 +599,9 @@ class analyseClusterLISA(object):
 		self.csv_cols = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i', 'appMagMean_r']
 
 		# 3 letter code corresponds to scenario (OC/GC, base/col, crowd/no crowd)
-		All.to_csv(self.path + '/data/all-M67BN-histData.csv', header=self.csv_cols, index=False)
-		Obs.to_csv(self.path + '/data/obs-M67BN-histData.csv', header=self.csv_cols, index=False)
-		Rec.to_csv(self.path + '/data/rec-M67BN-histData.csv', header=self.csv_cols, index=False)
+		All.to_csv(self.path + '/data/all-' + self.clusterType + self.strategy + self.crowding + '-histData.csv', header=self.csv_cols, index=False)
+		Obs.to_csv(self.path + '/data/obs-' + self.clusterType + self.strategy + self.crowding + '-histData.csv', header=self.csv_cols, index=False)
+		Rec.to_csv(self.path + '/data/rec-' + self.clusterType + self.strategy + self.crowding + '-histData.csv', header=self.csv_cols, index=False)
 
 		# if self.searchWDs is True:
 		print('FOO FOO FOO')
@@ -686,7 +686,29 @@ class analyseClusterLISA(object):
 		print("total recovered in Prsa 15.8<r<19.5 P<1000d sample (raw, log):", np.sum(recNPrsa), np.log10(np.sum(recNPrsa)))
 		print("Prsa 15.8<r<19.5 P<1000d rec/obs*100:", np.sum(recNPrsa)/np.sum(obsNPrsa)*100.)
 
-
+		# Maybe try to save these #s to a file
+		print('Writing recovery stats to output txt file...')
+		
+		with open(os.path.join('./output/','recovery-stats') + self.clusterType + self.strategy + self.crowding + '.txt', 'w') as f:
+			f.write("Observing Scenario: " + '\n')
+			f.write("Cluster Type: " + ' ' + self.clusterType + '\n')
+			f.write("OpSim Strategy: " + ' ' + self.strategy + '\n')
+			f.write("Crowding scenario: " + ' ' + self.crowding + '\n')
+			f.write('\n')
+			f.write("number of binaries in input files (raw, log):" + ' ' + str(np.sum(fileN)) + ', ' +  str(np.log10(np.sum(fileN))) + '\n')
+			f.write("number of binaries in tested with gatspy (raw, log):" + ' ' +  str(np.sum(fileObsN)) + ', ' +  str(np.log10(np.sum(fileObsN))) + '\n')
+			f.write("number of binaries in recovered with gatspy (raw, log):" + ' ' + str(np.sum(fileRecN)) + ', ' +  str(np.log10(np.sum(fileRecN))) + '\n')
+			f.write("recovered/observable*100 with gatspy:" + ' ' + str(np.sum(fileRecN)/np.sum(fileObsN)*100.) + '\n')
+			f.write("###############################" + '\n')
+			f.write("total in sample (raw, log):" + ' ' + str(np.sum(rawN)) + ', ' + str(np.log10(np.sum(rawN))) + '\n')
+			f.write("total observable (raw, log):" + ' ' + str(np.sum(obsN)) + ', ' + str(np.log10(np.sum(obsN))) + '\n')
+			f.write("total recovered (raw, log):" + ' ' + str(np.sum(recN)) + ', ' +  str(np.log10(np.sum(recN))) + '\n')
+			f.write("recovered/observable*100:" + ' ' + str(np.sum(recN)/np.sum(obsN)*100.) + '\n')
+			f.write("###################" + '\n')
+			f.write("total in Prsa 15.8<r<19.5 P<1000d sample (raw, log):" + ' ' + str(np.sum(allNPrsa)) + ', ' + str(np.log10(np.sum(allNPrsa))) + '\n')
+			f.write("total observable in Prsa 15.8<r<19.5 P<1000d sample (raw, log):" + ' ' + str(np.sum(obsNPrsa)) + ', ' +  str(np.log10(np.sum(obsNPrsa))) + '\n')
+			f.write("total recovered in Prsa 15.8<r<19.5 P<1000d sample (raw, log):" + ' ' + str(np.sum(recNPrsa)) + ', ' +  str(np.log10(np.sum(recNPrsa))) + '\n')
+			f.write("Prsa 15.8<r<19.5 P<1000d rec/obs*100:" + str(np.sum(recNPrsa)/np.sum(obsNPrsa)*100.) + '\n')
 
 
 

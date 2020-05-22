@@ -1,6 +1,8 @@
 # Corner plot script 
 # Flex repo version, need to add to other file trees (M67, OC, GC)
-# Updated for flex file paths (even for all observing scenarios
+# Updated for flex file paths (even for all observing scenarios)
+# Will create corner plots for all binary sample (i.e. not just WDs)
+# Corner plotting documentation: https://corner.readthedocs.io/en/latest/
 
 import corner
 import numpy as np
@@ -25,22 +27,22 @@ def corner_plot(DataFrame, popType, name, contours = False):
 	if contours == True:
 		print('Making corner plots with contours...')
 		df = DataFrame
-		f = corner.corner(df, labels = df.columns, bins = 20, plot_contours = True)
+		f = corner.corner(df, labels = df.columns, label_kwargs={"fontsize":18}, bins = 20, plot_contours = True, title_kwargs={"fontsize": 28})
 		f.suptitle(popType + '-' + name, fontsize=24)
 		f.show()
 		f.savefig(f'./plots/corner_plots/contours/{popType}-{name}-cornerPlot-contour.pdf')
-
+		plt.close()
 		print('Corner contour plots made!')
 
 	# No contours
 	elif contours == False:
 		print('Making corner plots...')
 		df = DataFrame
-		f = corner.corner(df, labels = df.columns, bins = 20,plot_contours = False)
+		f = corner.corner(df, labels = df.columns, label_kwargs={"fontsize":18}, bins = 20, plot_contours = False, title_kwargs={"fontsize": 28})
 		f.suptitle(popType + '-' + name, fontsize = 24)
 		f.show()
 		f.savefig(f'./plots/corner_plots/{popType}-{name}-cornerPlot.pdf')
-
+		plt.close()
 		print('Corner plots made!')
 
 	print('On to the next!')
@@ -58,7 +60,7 @@ for root, dirs, files in os.walk('.', topdown = True):
 		if '-histData.csv' in name:
 
 			# Reading in an renaming dataframe columns for plotting - doing once and outside of our function call
-			dat = pd.read_csv(os.path.join(root,name), header = 0)
+			dat = pd.read_csv(os.path.join(root, name), header = 0)
 			# dat = dat.drop('Unnamed: 0', axis =1)
 			dat['p'] = np.log10(dat['p'])
 			dat.columns = ['log-p', 'm1 $(M_{\odot})$', 'm2 $(M_{\odot})$', 'r1 $(R_{\odot})$', 'r2 $(R_{\odot})$', 'e', 'i (deg)', 'App Mag Mean r']

@@ -343,7 +343,7 @@ class analyseCluster(object):
 				prsa = data.loc[(data['p'] < 1000) & (data['p'] > 0.5)]
 
 				# Selecting only WD candidates - log(g) selection (no mass)
-				prsaWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & 
+				prsaWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) 
 								  & (self.log_g(data['m1'], data['r1']) > 7.0)
 								  & (self.log_g(data['m2'], data['r2']) > 7.0 )]
 				self.all_WD.append(prsaWD)
@@ -405,8 +405,8 @@ class analyseCluster(object):
 
 					# White dwarf appending
 					prsaObsWD = data.loc[(data['p'] < 1000) & (data['p'] > 0.5) & (data['LSM_PERIOD'] != -999)
-										 (self.log_g(data['m1'], data['r1']) > 7.0)
-										 & (self.log_g(data['m2'], data['r2']) > 7.0)]
+										& (self.log_g(data['m1'], data['r1']) > 7.0)
+										& (self.log_g(data['m2'], data['r2']) > 7.0)]
 					self.obs_WD.append(prsaObsWD)
 
 					# would like to see if there is a better way of doing this

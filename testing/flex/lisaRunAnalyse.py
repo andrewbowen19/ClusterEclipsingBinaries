@@ -49,9 +49,10 @@ for root, dirs, files in os.walk('./clusters', topdown=True):
 
         # Pulling strat and crowd scenarios from dir names as keys
         if d in scenario_dict:
-            print('Have viewing and crowding scenario!', stratOpSim, crowd)
+            # print('Have viewing and crowding scenario!', stratOpSim, crowd)
             stratOpSim = scenario_dict[d][0]
             crowd = scenario_dict[d][1]
+            print('Have viewing and crowding scenario!', stratOpSim, crowd)
             haveStrat = True
             haveCrowd = True
 
@@ -68,7 +69,6 @@ for root, dirs, files in os.walk('./clusters', topdown=True):
             print('Running analyse with WDs...')
             ac = analyseClusterLISA(path, cluster, stratOpSim, crowd)
             ac.analyse(path, cluster, stratOpSim, crowd)
-
-    print('')
+            print('')
 
 # TODO: post to quest and run for all clusters

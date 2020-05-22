@@ -29,7 +29,9 @@ def corner_plot(DataFrame, popType, name, contours = False):
 	if contours == True:
 		print('Making corner plots with contours...')
 		df = DataFrame
-		f = corner.corner(df, labels = df.columns, bins = 20, plot_contours = True)
+		f = corner.corner(df, labels = df.columns, label_kwargs={"fontsize":16}, bins = 20, 
+                                  plot_contours = False, title_kwargs={"fontsize":28}, 
+                                  range = [(0.,1.), (0.,1.),(0.,1.),(0.,1.),(0.,1.),(0.,0.99),(0.,1.),(0.,1.),])
 		f.suptitle(popType + '-' + name + ' White Dwarfs', fontsize=24)
 		f.show()
 		f.savefig(f'./plots/lisaPlots/contours/{popType}-{name}-cornerPlot_contour_WDBinary.pdf')
@@ -40,7 +42,9 @@ def corner_plot(DataFrame, popType, name, contours = False):
 	elif contours == False:
 		print('Making corner plots...')
 		df = DataFrame
-		f = corner.corner(df, labels = df.columns, bins = 20, plot_contours = False)
+		f = corner.corner(df, labels = df.columns, label_kwargs={"fontsize":16}, bins = 20, 
+					plot_contours = False, title_kwargs={"fontsize":28}, 
+					range = [(0.,1.), (0.,1.),(0.,1.),(0.,1.),(0.,1.),(0.,0.99),(0.,1.),(0.,1.),])
 		f.suptitle(popType + '-' + name + ' White Dwarfs', fontsize = 24)
 		f.show()
 		f.savefig(f'./plots/lisaPlots/{popType}-{name}-cornerPlot_WDBinary.pdf')
@@ -54,7 +58,7 @@ def corner_plot(DataFrame, popType, name, contours = False):
 # ########################################################################################################
 
 # Looping through correct files in our trees and making plots
-for root, dirs, files in os.walk('./lisaFiles/', topdown = True):
+for root, dirs, files in os.walk('./clusters/', topdown = True):
 
 	for name in files:
 
@@ -69,6 +73,7 @@ for root, dirs, files in os.walk('./lisaFiles/', topdown = True):
 				dat.columns = ['p(days)', 'm1 $(M_{\odot})$', 'm2 $(M_{\odot})$', 'r1 $(R_{\odot})$', 'r2 $(R_{\odot})$', 'e', 'i (deg)','appMagMean_r']
 
 				print('Data read in...')
+				print(dat)
 				
 				# Making corner plots for every scenario -- add to other makeHists scripts (M67, OCs and GCs)
 				if len(dat) > len(dat.columns):
