@@ -5,9 +5,11 @@ for eclipsing binary stars in clusters. By learning about the periods of binary 
 
 We used data from catalogs provided from several sources of both [Open](https://www.google.com/search?client=safari&rls=en&q=webda+catalog&ie=UTF-8&oe=UTF-8) and [Globular clusters](http://physwww.mcmaster.ca/~harris/mwgc.dat). 
 
-Our project attempts to optimize the LSST cadence for viewing eclipsing binaries between different LSST observing strategies (*baseline* and *colossus*, respectively)
+Our project attempts to optimize the LSST cadence for viewing eclipsing binaries between different LSST observing strategies (*baseline* and *colossus*, respectively). In general, *colossus* will observe the regions of the sky near the galactic plane more frequently than *baseline*. The thinking being that with more observations of regions where globular and open clusters reside, there is a higher chance of successfully recovering the period of eclipsing binaries in those clusters.
 
-Feel free to look over our [**project poster**](/poster/AAS/AAS-Poster-final.pdf) which recently was awarded as a Chambliss Finalist at the 235th Meeting of the American AStronoimcal Society!
+Feel free to look over our [**project poster**](/poster/AAS/AAS-Poster-final.pdf) which recently was awarded as a Chambliss Medalist at the 235th Meeting of the American AStronoimcal Society!
+
+The thesis write-up of this project is coming soon!
 
 Author(s): Andrew Bowen (1), Aaron M. Geller (2)
 1. Center for Interdisciplinary Exploration and Research in Astrophysics
