@@ -1,3 +1,4 @@
+# OLD mollweide creator -- deprecated do not cuse
 # Script to generate Nobs mollweides for colossus and baseline strategies
 
 import pandas as pd

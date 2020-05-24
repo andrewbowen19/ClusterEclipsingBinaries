@@ -99,9 +99,11 @@ def createMollweide(filename, strategy, create_csv=True):
         print('CSV file created!')
 
 
-# Creating mollweides: from OpSim db files
+# Creating mollweides: from OpSim db files - only need to run once!
 # createMollweide('colossus_2664.db', 'colossus', create_csv=True)
 # createMollweide('baseline2018a.db', 'baseline', create_csv=True)
+# createMollweide('kraken_2026.db', 'kraken', create_csv=True)
+
 
 # New function to create mollweides
 def csvMollweide(filename, strategy):
@@ -126,3 +128,4 @@ def csvMollweide(filename, strategy):
 
 csvMollweide('colossus-OpSim-FieldData.csv', 'colossus')
 csvMollweide('baseline-OpSim-FieldData.csv', 'baseline')
+csvMollweide('kraken-OpSim-FieldData.csv', 'kraken')
