@@ -1,8 +1,10 @@
-# Corner plot script 
-# Flex repo version, need to add to other file trees (M67, OC, GC)
-# Updated for flex file paths (even for all observing scenarios)
-# Will create corner plots for all binary sample (i.e. not just WDs)
-# Corner plotting documentation: https://corner.readthedocs.io/en/latest/
+'''
+Corner plotting script -- on Quest
+Flex repo version, loops through current file path to create corner plots for each observing scenario
+Updated for flex file paths (even for all observing scenarios)
+Will create corner plots for all binary sample (i.e. not just WDs)
+Corner plotting documentation: https://corner.readthedocs.io/en/latest/
+'''
 
 import corner
 import numpy as np
@@ -61,8 +63,7 @@ for root, dirs, files in os.walk('.', topdown = True):
 
 			# Reading in an renaming dataframe columns for plotting - doing once and outside of our function call
 			dat = pd.read_csv(os.path.join(root, name), header = 0)
-			# dat = dat.drop('Unnamed: 0', axis =1)
-			dat['p'] = np.log10(dat['p'])
+			dat['p'] = np.log10(dat['p']) # converting period values from days to log-days
 			dat.columns = ['log-p', 'm1 $(M_{\odot})$', 'm2 $(M_{\odot})$', 'r1 $(R_{\odot})$', 'r2 $(R_{\odot})$', 'e', 'i (deg)', 'App Mag Mean r']
 
 
