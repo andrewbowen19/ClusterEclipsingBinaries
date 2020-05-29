@@ -98,7 +98,7 @@ class analyseClusterLISA(object):
 			if (f == 'all'):
 				lw = 0.5
 		ax1.step(bin_edges, histRec[f]/np.sum(histRec[f]), color=c3, linewidth=lw)
-		ax1.set_ylabel('PDF')
+		ax1.set_ylabel('PDF', fontsize=16)
 		# print('FOO FOO BIG OLE POO',self.clusterType, self.crowding)
 		ax1.set_yscale('log')
 		# ax1.set_title(self.clusterType + "(" + self.crowding + ")", fontsize = 16)
@@ -220,7 +220,7 @@ class analyseClusterLISA(object):
 		lpbins = np.arange(-2, 10, 0.5, dtype='float')
 		dbins = np.arange(0, 40, 1, dtype='float')
 		magbins = np.arange(11, 25, 1, dtype='float')
-		rbins = np.arange(0, 100, 1, dtype='float')
+		rbins = np.arange(0, 100, 2, dtype='float')
 
 		# blanks for the histograms - ALL first
 		m1hAll = np.zeros_like(mbins)[1:]
@@ -689,7 +689,7 @@ class analyseClusterLISA(object):
 		# Maybe try to save these #s to a file
 		print('Writing recovery stats to output txt file...')
 		
-		with open(os.path.join('./output/','recovery-stats') + self.clusterType + self.strategy + self.crowding + '.txt', 'w') as f:
+		with open(os.path.join('./output/stats','recovery-stats') + self.clusterType + self.strategy + self.crowding + '.txt', 'w') as f:
 			f.write("Observing Scenario: " + '\n')
 			f.write("Cluster Type: " + ' ' + self.clusterType + '\n')
 			f.write("OpSim Strategy: " + ' ' + self.strategy + '\n')
@@ -699,7 +699,7 @@ class analyseClusterLISA(object):
 			f.write("number of binaries in tested with gatspy (raw, log):" + ' ' +  str(np.sum(fileObsN)) + ', ' +  str(np.log10(np.sum(fileObsN))) + '\n')
 			f.write("number of binaries in recovered with gatspy (raw, log):" + ' ' + str(np.sum(fileRecN)) + ', ' +  str(np.log10(np.sum(fileRecN))) + '\n')
 			f.write("recovered/observable*100 with gatspy:" + ' ' + str(np.sum(fileRecN)/np.sum(fileObsN)*100.) + '\n')
-			f.write("###############################" + '\n')
+			f.write("###################" + '\n')
 			f.write("total in sample (raw, log):" + ' ' + str(np.sum(rawN)) + ', ' + str(np.log10(np.sum(rawN))) + '\n')
 			f.write("total observable (raw, log):" + ' ' + str(np.sum(obsN)) + ', ' + str(np.log10(np.sum(obsN))) + '\n')
 			f.write("total recovered (raw, log):" + ' ' + str(np.sum(recN)) + ', ' +  str(np.log10(np.sum(recN))) + '\n')

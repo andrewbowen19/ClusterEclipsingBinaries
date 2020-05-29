@@ -1,0 +1,88 @@
+\begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\href{#1}{#1}}
+\providecommand{\dodoi}[1]{doi:~\href{http://doi.org/#1}{\nolinkurl{#1}}}
+\providecommand{\doeprint}[1]{\href{http://ascl.net/#1}{\nolinkurl{http://ascl.net/#1}}}
+\providecommand{\doarXiv}[1]{\href{https://arxiv.org/abs/#1}{\nolinkurl{https://arxiv.org/abs/#1}}}
+
+\bibitem[{{Breivik}(2018)}]{2018PhDT........74B}
+{Breivik}, K. 2018, PhD thesis, Northwestern University
+
+\bibitem[{{Geller} \& {Leigh}(2015)}]{2015ApJ...808L..25G}
+{Geller}, A.~M., \& {Leigh}, N. W.~C. 2015, \apjl, 808, L25,
+  \dodoi{10.1088/2041-8205/808/1/L25}
+
+\bibitem[{{Harris}(1996)}]{1996AJ....112.1487H}
+{Harris}, W.~E. 1996, \aj, 112, 1487, \dodoi{10.1086/118116}
+
+\bibitem[{{Kharchenko} {et~al.}(2013){Kharchenko}, {Piskunov}, {Schilbach},
+  {R{\"o}ser}, \& {Scholz}}]{2013A&A...558A..53K}
+{Kharchenko}, N.~V., {Piskunov}, A.~E., {Schilbach}, E., {R{\"o}ser}, S., \&
+  {Scholz}, R.~D. 2013, \aap, 558, A53, \dodoi{10.1051/0004-6361/201322302}
+
+\bibitem[{{Korol} {et~al.}(2017){Korol}, {Rossi}, {Groot}, {Nelemans},
+  {Toonen}, \& {Brown}}]{2017MNRAS.470.1894K}
+{Korol}, V., {Rossi}, E.~M., {Groot}, P.~J., {et~al.} 2017, \mnras, 470, 1894,
+  \dodoi{10.1093/mnras/stx1285}
+
+\bibitem[{{Marsh} {et~al.}(1995){Marsh}, {Dhillon}, \&
+  {Duck}}]{1995MNRAS.275..828M}
+{Marsh}, T.~R., {Dhillon}, V.~S., \& {Duck}, S.~R. 1995, \mnras, 275, 828,
+  \dodoi{10.1093/mnras/275.3.828}
+
+\bibitem[{{Maxted}(2016)}]{2016ascl.soft03016M}
+{Maxted}, P.~F.~L. 2016, {ellc: Light curve model for eclipsing binary stars
+  and transiting exoplanets}.
+\newblock \doeprint{1603.016}
+
+\bibitem[{{Piskunov} {et~al.}(2008){Piskunov}, {Schilbach}, {Kharchenko},
+  {R{\"o}ser}, \& {Scholz}}]{2008A&A...477..165P}
+{Piskunov}, A.~E., {Schilbach}, E., {Kharchenko}, N.~V., {R{\"o}ser}, S., \&
+  {Scholz}, R.~D. 2008, \aap, 477, 165, \dodoi{10.1051/0004-6361:20078525}
+
+\bibitem[{{Plummer}(1911)}]{1911MNRAS..71..460P}
+{Plummer}, H.~C. 1911, \mnras, 71, 460, \dodoi{10.1093/mnras/71.5.460}
+
+\bibitem[{{Polzin} {et~al.}(2019){Polzin}, {Geller}, {Miller}, \&
+  {Breivik}}]{2019AAS...23336317P}
+{Polzin}, A., {Geller}, A., {Miller}, A., \& {Breivik}, K. 2019, in American
+  Astronomical Society Meeting Abstracts, Vol. 233, American Astronomical
+  Society Meeting Abstracts \#233, 363.17
+
+\bibitem[{{Pr{\v{s}}a} {et~al.}(2011){Pr{\v{s}}a}, {Pepper}, \&
+  {Stassun}}]{2011AJ....142...52P}
+{Pr{\v{s}}a}, A., {Pepper}, J., \& {Stassun}, K.~G. 2011, \aj, 142, 52,
+  \dodoi{10.1088/0004-6256/142/2/52}
+
+\bibitem[{{Salaris} {et~al.}(2004){Salaris}, {Weiss}, \&
+  {Percival}}]{2004A&A...414..163S}
+{Salaris}, M., {Weiss}, A., \& {Percival}, S.~M. 2004, \aap, 414, 163,
+  \dodoi{10.1051/0004-6361:20031578}
+
+\bibitem[{{Sandquist} {et~al.}(2016){Sandquist}, {Latham}, {Mathieu},
+  {Vanderburg}, {Brown}, \& {M67 K2 Team}}]{2016AAS...22811701S}
+{Sandquist}, E.~L., {Latham}, D.~W., {Mathieu}, R.~D., {et~al.} 2016, in
+  American Astronomical Society Meeting Abstracts, Vol. 228, American
+  Astronomical Society Meeting Abstracts \#228, 117.01
+
+\bibitem[{{van den Bergh}(2006)}]{2006AJ....131.1559V}
+{van den Bergh}, S. 2006, \aj, 131, 1559, \dodoi{10.1086/499532}
+
+\bibitem[{{VanderPlas}(2016)}]{2016ascl.soft10007V}
+{VanderPlas}, J. 2016, {gatspy: General tools for Astronomical Time Series in
+  Python}.
+\newblock \doeprint{1610.007}
+
+\bibitem[{{VanderPlas} \& {Ivezi{\'c}}(2015)}]{2015ApJ...812...18V}
+{VanderPlas}, J.~T., \& {Ivezi{\'c}}, {\v{Z}}. 2015, \apj, 812, 18,
+  \dodoi{10.1088/0004-637X/812/1/18}
+
+\bibitem[{{von Braun}(2003)}]{2003PASP..115..272V}
+{von Braun}, K. 2003, \pasp, 115, 272, \dodoi{10.1086/346194}
+
+\bibitem[{{Wells} {et~al.}(2017){Wells}, {Pr{\v{s}}a}, {Jones}, \&
+  {Yoachim}}]{2017PASP..129f5003W}
+{Wells}, M., {Pr{\v{s}}a}, A., {Jones}, L., \& {Yoachim}, P. 2017, \pasp, 129,
+  065003, \dodoi{10.1088/1538-3873/aa682a}
+
+\end{thebibliography}
