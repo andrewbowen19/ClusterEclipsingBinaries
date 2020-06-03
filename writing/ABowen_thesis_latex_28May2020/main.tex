@@ -161,17 +161,12 @@
 %% This is the end of the preamble.  Indicate the beginning of the
 %% manuscript itself with \begin{document}.
 
-% \usepackage{siunitx}
-% \usepackage{caption}
-% \usepackage{subcaption}
-% \captionsetup{compatibility=false}
 \usepackage{graphicx}
 \usepackage{appendix}
 \usepackage{savesym}
 \savesymbol{tablenum}
 \usepackage{morefloats}
 \usepackage{subfigure}
-% \usepackage[showframe]{geometry}% http://ctan.org/pkg/geometry
 
 
 \begin{document}
@@ -247,21 +242,11 @@ Northwestern University, CIERA Evanston, IL 60201
 \altaffiliation{Center for Interdisciplinary Exploration and Research in Astrophysics, 1800 Sherman Ave, 8th Floor
 Northwestern University, CIERA Evanston, IL 60201}
 
-%% Note that the \and command from previous versions of AASTeX is now
-%% depreciated in this version as it is no longer necessary. AASTeX 
-%% automatically takes care of all commas and "and"s between authors names.
+%%%% -------------------------------------------------------------------------------------------------------------------------
 
-%% AASTeX 6.3 has the new \collaboration and \nocollaboration commands to
-%% provide the collaboration status of a group of authors. These commands 
-%% can be used either before or after the list of corresponding authors. The
-%% argument for \collaboration is the collaboration identifier. Authors are
-%% encouraged to surround collaboration identifiers with ()s. The 
-%% \nocollaboration command takes no argument and exists to indicate that
-%% the nearby authors are not part of surrounding collaborations.
-
-% Abstract - used at AAS, updated slightly
+% Abstract - updated version of AAS abstract
 \begin{abstract}
-We present a study of the period-recovery capability of the Large Synoptic Survey Telescope (LSST) in the Vera Rubin Observatory for eclipsing binary stars in star clusters. Unlike binaries in the galactic field, dynamical encounters within the dense environment of a star cluster can modify the orbital parameters of binaries stars, by changing the periods and eccentricities and exchanging in different companions. Therefore, eclipsing binaries in star clusters may allow for insights into both the intrinsic properties of the binary’s component stars, as well as the dynamical histories of the binary population. For our simulations, we use \texttt{COSMIC} to generate and evolve populations of binaries specifically catered to each of the thousands of galactic open and globular clusters (e.g., matching the cluster ages, metallicities, periods at the hard-soft boundary, etc.). We generate simulated light curves, using the LSST filters and expected cadence and accounting for the expected photometric precision of LSST, for each observable eclipsing binary, using the \texttt{ellc} code. We then attempt to recover the orbital period for each observed binary through a Lomb-Scargle periodogram, using \texttt{gatspy} software. We compare the \textit{baseline} cadence proposed for LSST to a \textit{colossus} cadence that samples the galactic plane (where most open clusters reside) more evenly. In this paper, we present expected recovery statistics for eclipsing binary stars in the galactic open and globular star clusters for both of these proposed observing strategies. Overall, for cluster-member eclipsing binaries, the \textit{colossus} plan proves more robust for effective period-recovery. In addition, we discuss potential eclipsing White Dwarf binary systems that will be detectable by both LSST in the visible band and the Laser Interferometer Space Antenna (LISA) in gravitational waves. 
+We present a study of the period-recovery capability of the Vera Rubin Observatory for eclipsing binary stars in star clusters. Unlike binaries in the galactic field, dynamical encounters within the dense environment of a star cluster can modify the orbital parameters of binaries stars -- changing the periods and eccentricities and exchanging companions. Therefore, eclipsing binaries in star clusters may allow for insights into both the intrinsic properties of the binary’s component stars, and the dynamical histories of the binary population. For our simulations, we use \texttt{COSMIC} to generate and evolve binary populations specifically catered to each of the thousands of galactic open and globular clusters (using cluster ages, metallicities, periods at the hard-soft boundary, etc.). We generate simulated light curves, using the LSST filters and expected cadence and accounting for the expected photometric precision of LSST, for each observable eclipsing binary, using \texttt{ellc}. We then attempt to recover the orbital period for each binary through a Lomb-Scargle periodogram, using \texttt{gatspy} software. We compare the \textit{baseline} cadence proposed for LSST to the \textit{colossus} cadence which samples the galactic plane (which includes more open clusters) more evenly. We present expected recovery statistics for eclipsing binary stars in galactic open and globular star clusters for both proposed observing strategies. Overall, for cluster-member eclipsing binaries, \textit{colossus} proves more robust for period-recovery. In addition, we discuss potential eclipsing white dwarf binary systems detectable by both LSST in the visible band and the Laser Interferometer Space Antenna (LISA) in gravitational waves. 
 
 \end{abstract}
 
@@ -685,7 +670,7 @@ In general as seen in Figure~\ref{fig:gbc-hists}, Figure~\ref{fig:obc-hist} and 
 Less eccentric ($e \ll 1$) binaries will generally also be recovered by LSST more frequently. This can be seen in the sharp peak in \textit{recovered} and \textit{observable} eccentricities near $e \approx 0$ for all observing scenarios. This effect can also be seen in the corner plots of circularized binaries as well. The reason that more eccentric binaries are recovered more frequently is likely because the speed of eclipses will be the same for each component star, as well as across the eclipse. In addition, circular binaries will be more evenly spaced in phase, rendering them more easily recovered with the LS algorithm.
 
 % Distance patterns
-Binaries at shorter distances $d$  are also observed and recovered more frequently with LSST. This can be seen in Figures~\ref{fig:gbc-hists},~\ref{fig:gcc-hists},~\ref{fig:obc-hist}, and~\ref{fig:occ-hists} in which the distance distributions for \textit{recovered} peaks sharply at shorter distances from Earth. In general, binary systems at shorter distances will have brighter apparent magnitudes. LSST is more effective at observations of eclipses of these brighter binary systems. With more eclipses observed successfully with LSST, there is a higher chance of successful period recovery for a brighter EB. 
+Binaries at shorter distances $d$  are also observed and recovered more frequently with LSST. This can be seen in Figures~\ref{fig:gbc-hists},~\ref{fig:gcc-hists},~\ref{fig:obc-hist}, and~\ref{fig:occ-hists} in which the distance distributions for \textit{recovered} peak sharply at shorter distances from Earth. In general, binary systems at shorter distances will have brighter apparent magnitudes. LSST is more effective at observations of eclipses of these brighter binary systems. With more eclipses observed successfully with LSST, there is a higher chance of successful period recovery for a brighter EB. 
 
 % Comparison to the field
 The above recovery patterns for cluster binaries are in agreement with those included in \citet{2019AAS...23336317P} and \citet{2011AJ....142...52P}. While those recovery patterns are for binaries in the galactic field, they still are applicable for cluster member binaries. This is significant because even though binaries in clusters can display different behavior due to close binary encounters within a cluster, they still follow general recovery patterns of field binaries. 
