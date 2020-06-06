@@ -1,4 +1,5 @@
-"""Class of getClusterBinaries that runs our HS-period finding code, uses calculated sigma values
+"""
+Class of getClusterBinaries that runs our HS-period finding code, uses calculated sigma values
 Takes in these params: mass, Rhm, age, metallicity, velocity dispersion, and number of binaries requested
 should calculate hard-soft binary for each binary drawn with cosmic and return # of binaries requested on input
 output of this should be a numpy array of arrays

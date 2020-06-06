@@ -171,57 +171,8 @@
 
 \begin{document}
 
-
+% Let's do this
 \title{Simulating the Period-Recovery Yield of Eclipsing Binaries in Star Clusters with the Vera Rubin Observatory}
-
-%% LaTeX will automatically break titles if they run longer than
-%% one line. However, you may use \\ to force a line break if
-%% you desire. In v6.3 you can include a footnote in the title.
-
-%% A significant change from earlier AASTEX versions is in the structure for 
-%% calling author and affiliations. The change was necessary to implement 
-%% auto-indexing of affiliations which prior was a manual process that could 
-%% easily be tedious in large author manuscripts.
-%%
-%% The \author command is the same as before except it now takes an optional
-%% argument which is the 16 digit ORCID. The syntax is:
-%% \author[xxxx-xxxx-xxxx-xxxx]{Author Name}
-%%
-%% This will hyperlink the author name to the author's ORCID page. Note that
-%% during compilation, LaTeX will do some limited checking of the format of
-%% the ID to make sure it is valid. If the "orcid-ID.png" image file is 
-%% present or in the LaTeX pathway, the OrcID icon will appear next to
-%% the authors name.
-%%
-%% Use \affiliation for affiliation information. The old \affil is now aliased
-%% to \affiliation. AASTeX v6.3 will automatically index these in the header.
-%% When a duplicate is found its index will be the same as its previous entry.
-%%
-%% Note that \altaffilmark and \altaffiltext have been removed and thus 
-%% can not be used to document secondary affiliations. If they are used latex
-%% will issue a specific error message and quit. Please use multiple 
-%% \affiliation calls for to document more than one affiliation.
-%%
-%% The new \altaffiliation can be used to indicate some secondary information
-%% such as fellowships. This command produces a non-numeric footnote that is
-%% set away from the numeric \affiliation footnotes.  NOTE that if an
-%% \altaffiliation command is used it must come BEFORE the \affiliation call,
-%% right after the \author command, in order to place the footnotes in
-%% the proper location.
-%%
-%% Use \email to set provide email addresses. Each \email will appear on its
-%% own line so you can put multiple email address in one \email call. A new
-%% \correspondingauthor command is available in V6.3 to identify the
-%% corresponding author of the manuscript. It is the author's responsibility
-%% to make sure this name is also in the author list.
-%%
-%% While authors can be grouped inside the same \author and \affiliation
-%% commands it is better to have a single author for each. This allows for
-%% one to exploit all the new benefits and should make book-keeping easier.
-%%
-%% If done correctly the peer review system will be able to
-%% automatically put the author and affiliation information from the manuscript
-%% and save the corresponding author the trouble of entering it by hand.
 
 % Authors & affiliations
 \email{andrewbowen2020@u.northwestern.edu\\
@@ -246,17 +197,17 @@ Northwestern University, CIERA Evanston, IL 60201}
 
 % Abstract - updated version of AAS abstract
 \begin{abstract}
-We present a study of the period-recovery capability of the Vera Rubin Observatory for eclipsing binary stars in star clusters. Unlike binaries in the galactic field, dynamical encounters within the dense environment of a star cluster can modify the orbital parameters of binaries stars -- changing the periods and eccentricities and exchanging companions. Therefore, eclipsing binaries in star clusters may allow for insights into both the intrinsic properties of the binary’s component stars, and the dynamical histories of the binary population. For our simulations, we use \texttt{COSMIC} to generate and evolve binary populations specifically catered to each of the thousands of galactic open and globular clusters (using cluster ages, metallicities, periods at the hard-soft boundary, etc.). We generate simulated light curves, using the LSST filters and expected cadence and accounting for the expected photometric precision of LSST, for each observable eclipsing binary, using \texttt{ellc}. We then attempt to recover the orbital period for each binary through a Lomb-Scargle periodogram, using \texttt{gatspy} software. We compare the \textit{baseline} cadence proposed for LSST to the \textit{colossus} cadence which samples the galactic plane (which includes more open clusters) more evenly. We present expected recovery statistics for eclipsing binary stars in galactic open and globular star clusters for both proposed observing strategies. Overall, for cluster-member eclipsing binaries, \textit{colossus} proves more robust for period-recovery. In addition, we discuss potential eclipsing white dwarf binary systems detectable by both LSST in the visible band and the Laser Interferometer Space Antenna (LISA) in gravitational waves. 
+We present a study of the period-recovery capability of the Vera Rubin Observatory for eclipsing binary stars in star clusters. Unlike binaries in the galactic field, dynamical encounters within the dense environment of a star cluster can modify the orbital parameters of binaries stars -- changing the periods and eccentricities and exchanging companions. Therefore, eclipsing binaries in star clusters may allow for insights into both the intrinsic properties of the binary’s component stars, and the dynamical histories of the binary population. For our simulations, we use \texttt{COSMIC} to generate and evolve binary populations specifically catered to each of the thousands of galactic open and globular clusters (using cluster ages, metallicities, periods at the hard-soft boundary, etc.). We generate simulated light curves, using the Vera Rubin Observatory filters and expected cadence and accounting for the expected photometric precision of the Vera Rubin Observatory, for each observable eclipsing binary, using \texttt{ellc}. We then attempt to recover the orbital period for each binary through a Lomb-Scargle periodogram, using \texttt{gatspy} software. We compare the \textit{baseline} cadence proposed for the Vera Rubin Observatory to the \textit{colossus} cadence which samples the galactic plane (which includes more open clusters) more evenly. We present expected recovery statistics for eclipsing binary stars in galactic open and globular star clusters for both proposed observing strategies. Overall, for cluster-member eclipsing binaries, \textit{colossus} will enable the Vera Rubin observatory to recover $\sim 13\%$ more binary periods. In addition, we discuss potential eclipsing white dwarf binary systems detectable by both the Vera Rubin Observatory in the visible band and the Laser Interferometer Space Antenna (LISA) in gravitational waves. 
 
 \end{abstract}
 
-\keywords{LSST -- eclipsing binaries}
+\keywords{Vera Rubin Observatory -- LSST -- eclipsing binaries}
 
 %%%%%%% -------------------------------------------------------------------------------------------------------------------
 
 %%% Introduction %%%
 \section{Introduction} \label{sec:Intro}
-When the \textit{Large Synoptic Survey Telescope} (LSST) becomes operational in 2021, it will provide unprecedented data on eclipsing binary stars (EBs). Different attempts to find the period recovery rate for LSST in terms of eclipsing binary stars have been made by \citet{2011AJ....142...52P} and more recently in \citet{2017PASP..129f5003W} and \citet{2019AAS...23336317P}. We build on previous work by including eclipsing binary stars residing in open and globular clusters. Given that nearly half of all stars within the Milky Way reside in a binary system, and a significant number also reside in star clusters, these cluster binaries make up an important population of all galactic EBs. 
+When the Vera Rubin Observatory (previously known as the \textit{Large Synoptic Survey Telescope} (LSST))\footnote{Due to a name change of the facility on Jan 6, 2020 that houses LSST to the Vera Rubin Observatory, we will be using both names interchangeably in this paper.} becomes operational in 2021, it will provide unprecedented data on eclipsing binary stars (EBs). Different attempts to find the period recovery rate for LSST in terms of eclipsing binary stars have been made by \citet{2011AJ....142...52P} and more recently in \citet{2017PASP..129f5003W} and \citet{2019AAS...23336317P}. We build on previous work by including eclipsing binary stars residing in open and globular clusters. Given that nearly half of all stars within the Milky Way reside in a binary system, and a significant number also reside in star clusters, these cluster binaries make up an important population of all galactic EBs. 
 
 % Data compilation and refs
 We compiled data for open clusters from \citet{2008A&A...477..165P}, \citet{2004A&A...414..163S}, \citet{2006AJ....131.1559V}, and the WEBDA catalog \citep{1995MNRAS.275..828M}, alongside globular cluster data by \citet{1996AJ....112.1487H}. 
@@ -265,10 +216,10 @@ We compiled data for open clusters from \citet{2008A&A...477..165P}, \citet{2004
 The behavior of binary stars bound in clusters can be different than those binaries distributed throughout the rest of the galaxy because of close gravitational encounters with nearby stars. The higher rate of close stellar encounters within star clusters could influence the recovery rate for EBs within clusters. We account for intra-cluster binary encounters discussed in \citet{2015ApJ...808L..25G}. A hard-soft period limit (Equation~\ref{eq: hs-boundary}) is imposed on binaries generated by the population-synthesis software used. We use \texttt{COSMIC} \citep{2018PhDT........74B} to evolve populations of binary stars for every open and globular cluster. Light curve generation software \texttt{ellc}, created by \citet{2016ascl.soft03016M} allows us to create light curves able to be fit and phase-folded by \texttt{gatspy} \citep{2015ApJ...812...18V}. The light curves are then passed to a Lomb-Scargle (LS) periodogram in order to recover the period from an observed light curve. The recovered period from our light curve analysis is checked against the ‘input period’ initiated from COSMIC for a test of accuracy of our method.
 
 % WD binary theory
-Detached white dwarf (DWD) binary stars are a particularly interesting sub-section of binary systems that will be detectable by both LSST via observed eclipses and the \textit{Laser Interferometer Space Antenna} (LISA) via gravitational waves (GW). DWD binaries with periods $p \leq 0.1 days$ will have large enough GW strain to be detected by LISA \citep{2017MNRAS.470.1894K}. The possibility of a detection overlap of an eclipsing white dwarf (WD) binary system by both LSST and LISA have been studied in \citet{2017MNRAS.470.1894K}. However, we extend this analysis to include period recovery in addition to sole detection of DWD eclipses. We also will analyze DWDs within our sample in addition to other binaries. Observing WD binaries in both electromagnetic radiation and gravitational wave detection provides an important step in the development of multi-messenger astronomy.
+Detached white dwarf (DWD) binary stars are a particularly interesting sub-section of binary systems that will be detectable by both LSST via observed eclipses and the \textit{Laser Interferometer Space Antenna} (LISA) via gravitational waves (GW). DWD binaries with periods $p \leq 0.1$ days will have large enough GW strain to be detected by LISA \citep{2017MNRAS.470.1894K}. The possibility of a detection overlap of an eclipsing white dwarf (WD) binary system by both LSST and LISA have been studied in \citet{2017MNRAS.470.1894K}. However, we extend this analysis to include period recovery in addition to sole detection of DWD eclipses. We also will analyze DWDs within our sample in addition to other binaries. Observing WD binaries in both electromagnetic radiation and gravitational wave detection provides an important step in the development of multi-messenger astronomy.
 
 % Paper layout
-The remainder of this paper is laid out as follows. In Section~\ref{sec:Methods} we discusss our method for simulation and analysis of EB light curves in star clusters. In Section~\ref{sec:Results} we describe the results of our cluster binary population simulations. Section~\ref{sec:Conclusion} gives wider implications of our results. Appendix \ref{app:Appendix A} describes the software used in the project
+The remainder of this paper is laid out as follows. In Section~\ref{sec:Methods} we discusss our method for simulation and analysis of EB light curves in star clusters. In Section~\ref{sec:Results} we describe the results of our cluster binary population simulations. Section~\ref{sec:Conclusion} gives wider implications of our results. Appendix \ref{app:Appendix A} describes the software used in the project.
 Appendix~\ref{app:Appendix B} includes additional relevant plots and figures.
 
 %%%%%%%%----------------------------------------------------------------------
@@ -279,18 +230,18 @@ Appendix~\ref{app:Appendix B} includes additional relevant plots and figures.
 % Compiling Cluster Dataframes
 \subsection{Cluster Data} \label{sec:compiling}
 
-We first compiled cluster data for 157 globular clusters (GCs) and 3353 open clusters (OC). The GC data was compiled from tables provided by \citet{1996AJ....112.1487H}. These tables include cluster coordinates (RA/Dec), metallicities, velocity dispersions (km/s), ages (Myr), and distances (kpc). For the OCs, we compiled data from several databases, including the WEBDA database \citet{1995MNRAS.275..828M}, \citet{2013A&A...558A..53K}, \citet{2004A&A...414..163S}, and \citet{2008A&A...477..165P}. These databases originally used inconsistent units, so corrections were made to standardize both database labels as well as to convert units across all tables. The cluster parameters listed above were needed for our algorithm to run properly.
+We first compiled cluster data for 157 globular clusters (GCs) and 3353 open clusters (OC). The GC data was compiled from tables provided by \citet{1996AJ....112.1487H}. These tables include cluster coordinates (right ascension (RA), declination (Dec)), metallicities, velocity dispersions (km/s), ages (Myr), and distances (kpc). For the OCs, we compiled data from several databases, including the WEBDA database \citep{1995MNRAS.275..828M}, \citet{2013A&A...558A..53K}, \citet{2004A&A...414..163S}, and \citet{2008A&A...477..165P}. These databases originally used inconsistent units, so corrections were made to standardize both database labels as well as to convert units across all tables. The cluster parameters listed above were needed for our algorithm to run properly.
 
 % OpSim Overlap and Strategies
 \subsection{Cluster Viewing Fields} \label{sec:overlap}
-We use the Operations Simulator (hereafter \textit{OpSim}) to simulate LSST observation. We utilize both the \textit{baseline} and \textit{colossus}\footnote{It should be noted that there are several \textit{colossus} observing strategies for LSST. The strategy used in this paper corresponds to the 'colossus-2664' MySQL data file, which weighs the galactic plane more heavily in terms of $N_{obs}$} viewing strategies in an effort to compare effectiveness of recovering EB periods (see Figures~\ref{fig:cluster_mollweide} and \ref{fig:baseline_mollweide}). 
+We use the Operations Simulator (hereafter \textit{OpSim}) to simulate LSST observation. We utilize both the \textit{baseline} and \textit{colossus}\footnote{It should be noted that there are several \textit{colossus} observing strategies for LSST. The strategy used in this paper corresponds to the 'colossus-2664' MySQL data file, which weighs the galactic plane more heavily in terms of number of observations.} viewing strategies in an effort to compare effectiveness of recovering EB periods (see Figures~\ref{fig:cluster_mollweide} and \ref{fig:baseline_mollweide}). 
 % Some clusters’ on-sky locations will overlap with multiple LSST viewing fields (\ref{fig:cluster_mollweide} and \ref{fig:baseline_mollweide}.
 
 % Mollweides of Clusters and strategies
 \begin{figure}
     \centering
     \includegraphics[width=0.4\textwidth]{figures/mollweides/clusters-opsim-mollweide.pdf}
-    \caption{Mollweide projection plot of open clusters (red) along with globular clusters (blue) plotted in their on-sky locations. These locations are significant in that they vary in Nobs under different LSST observing strategies.}
+    \caption{Mollweide projection plot of open clusters (red) along with globular clusters (blue) plotted in their on-sky locations. These locations are significant in that they vary in number of observations under different LSST observing strategies, as seen in figure \ref{fig:baseline_mollweide}.}
     \label{fig:cluster_mollweide}
 \end{figure}
 
@@ -301,23 +252,23 @@ We use the Operations Simulator (hereafter \textit{OpSim}) to simulate LSST obse
     % Colossus molleweide
         \includegraphics[width=0.4\textwidth]{figures/mollweides/colossus-Nobs-mollweide.pdf}
         
-        \caption{Mollweide projection plot of Number of observations per OpSim field, $N_{obs}$, values for each \textit{OpSim} viewing field for \textit{baseline} (top) and \textit{colossus} (bottom) at each \textit{OpSim} viewing field. The colossus strategy more heavily weighs the galactic plane in terms of number of observations, which is where a considerable number of both GCs and OCs reside in terms of on-sky location (see \ref{fig:cluster_mollweide}).}
+        \caption{Mollweide projection plot of number of observations ($N_{\textit{OpSim}}$) per OpSim field,  values for each \textit{OpSim} viewing field for \textit{baseline} (top) and \textit{colossus} (bottom) at each \textit{OpSim} viewing field. The colossus strategy more heavily weighs the galactic plane in terms of number of observations, which is where a considerable number of both GCs and OCs reside in terms of on-sky location (see Figure \ref{fig:cluster_mollweide}).}
         \label{fig:colossus_mollweide}
         \label{fig:baseline_mollweide}
 
 \end{figure}
 
 % Multiple overlaps & OpSim cadence
-We took into consideration clusters that overlapped with more than one \textit{OpSim} field. This could alter the period recovery for EBs within that cluster due to a different number of observations in adjacent \textit{OpSim} fields. Across all \textit{OpSim} fields in the \textit{baseline} strategy, 29.3\% of GCs and 33.5\% of OCs overlap with more than 1 \textit{OpSim} fields. On the other hand, 24.2\% of OCs and 23.7\% of GCs overlapped with more than 1 \textit{OpSim} field with $N_{obs} > 0$ for \textit{baseline}. Because the fraction of clusters that overlap with multiple OpSim fields is small, we consider the closest on-sky neighbor field to be the closest field for each cluster. Consequently, the cadence used for each cluster is designated by its nearest on-sky neighbor.
+We first investigated clusters that overlapped with more than one \textit{OpSim} field. This could alter the period recovery for EBs within that cluster due to a different number of observations ($N_{\textit{OpSim}}$) in adjacent \textit{OpSim} fields. Across all \textit{OpSim} fields in the \textit{baseline} strategy, 29.3\% of GCs and 33.5\% of OCs overlap with more than 1 \textit{OpSim} fields. On the other hand, 24.2\% of OCs and 23.7\% of GCs overlapped with more than 1 \textit{OpSim} field with at least 1 \textit{OpSim} observation for \textit{baseline}. Because the fraction of clusters that overlap with multiple OpSim fields is small, we consider the closest on-sky neighbor field to be the closest field for each cluster. Consequently, the cadence used for each cluster is designated by its nearest on-sky neighbor.
 
 % Strategy comparison -- why colossus is better
-Our objective is to compare the proposed \textit{OpSim} observing strategies \textit{baseline} and \textit{colossus}. \textit{Colossus} generally allocates higher $N_{obs}$ values for \textit{OpSim} viewing fields in and around the galactic plane. This could result in a higher yield of \textit{recovered} binaries in OCs specifically because of their location throughout the galactic plane, whereas GCs reside primarily in a spherical distribution centered on the galactic center (see Figure \ref{fig:cluster_mollweide}). Due to the line-of-sight to some of these GCs being in \textit{OpSim} fields where \textit{colossus} has higher $N_{obs}$ values than \textit{baseline}, it is feasible that GCs could potentially have higher period recovery with \textit{colossus as well}. Due to different weighing of observation rates of the galactic plane, \textit{colossus} could potentially recovery higher rates of field EBs across both cluster types.
+Our objective is to compare the proposed \textit{OpSim} observing strategies \textit{baseline} and \textit{colossus}. \textit{Colossus} generally allocates higher $N_{\textit{OpSim}}$ values for \textit{OpSim} viewing fields in and around the galactic plane. This could result in a higher yield of \textit{recovered} binaries in OCs specifically because of their location throughout the galactic plane, whereas GCs reside primarily in a spherical distribution centered on the galactic center (see Figure \ref{fig:cluster_mollweide}). Due to the line-of-sight to some of these GCs being in \textit{OpSim} fields where \textit{colossus} has higher $N_{\textit{OpSim}}$ values than \textit{baseline}, it is feasible that GCs could potentially have higher period recovery with \textit{colossus} as well. Due to different weighing of observation rates of the galactic plane, \textit{colossus} could potentially recovery higher rates of field EBs across both cluster types.
 
 
 % COSMIC Simulation - figure out citing protocol for software
 % COSMIC Docs: https://cosmic-popsynth.github.io/docs/latest/
 \subsection{Binary Population Synthesis} \label{subsec:cosmic}
-We use COSMIC \citep{2018PhDT........74B} to generate and evolve populations of $N_{*}$ = $4 \times 10^4$ binaries to the age of the cluster listed in our compiled cluster data. While $4 \times 10^4$ binaries per cluster is not physically representative of the $N_{*}$ in real clusters, we chose this number to have a large enough statistical sample. After simulating a population for each cluster, we also normalize the sample by the true number of binaries in  each cluster. 
+We use COSMIC \citep{2018PhDT........74B} to generate and evolve populations of $N_{*}$ = $4 \times 10^4$ binaries to the age of the cluster listed in our compiled cluster data. While $4 \times 10^4$ binaries per cluster is not physically representative of the $N_{*}$ in  clusters in our sample, we chose this number to have a large enough statistical sample. After simulating a population for each cluster, we also normalize the sample by the true number of binaries in  each cluster. 
 
 We impose a long-period limit on each binary generated by COSMIC, such that the period is below the hard-soft period boundary, \textit{$P_{hs}$} for binaries in star clusters described by \citet{2015ApJ...808L..25G}:
 
@@ -326,7 +277,7 @@ We impose a long-period limit on each binary generated by COSMIC, such that the 
 \end{equation}
 
 % Velocity dispersions
-Where $\sigma_0$ is the cluster velocity dispersion. ‘Hard’ binaries have periods shorter than that of the hard-soft boundary of the cluster. ‘Soft’ binaries have longer periods than that of the boundary, and are most easily disrupted by intra-cluster close binary encounters. This was considered because the distance scales between objects is smaller in star clusters than in the field of the galaxy. Thus, binaries in star clusters will have higher encounter rates than those binaries in the galactic field. Cluster velocity dispersion values were listed for 66 GCs in \citet{1996AJ....112.1487H}. For open clusters, and those globular clusters with no $\sigma$ listed in our catalog, we calculate the projected velocity dispersion\footnote{It should be noted that the $\sigma_0$ in Eq~\ref{eq: hs-boundary} represents the three-dimensional velocity dispersion of a cluster. The velocity dispersion values from the cluster data was one-dimensional, and is converted to a three-dimensional value \citep{2015ApJ...808L..25G}}, $\sigma$  via the half-mass radius, $R_h$, or core radius $R_c$ and cluster mass, $M_{cl}$, from the Plummer model given in \cite{1911MNRAS..71..460P}:
+Where $\sigma_0$ is the cluster velocity dispersion. ‘Hard’ binaries have periods shorter than that of the hard-soft boundary of the cluster. ‘Soft’ binaries have longer periods than that of the boundary, and are most easily disrupted by intra-cluster close binary encounters. This was considered because the distance scales between objects is smaller in star clusters than in the field of the galaxy. Thus, binaries in star clusters will have higher encounter rates than those binaries in the galactic field. Cluster velocity dispersion values were listed for 66 GCs in \citet{1996AJ....112.1487H}. For open clusters, and those globular clusters with no $\sigma$ listed in our catalog, we calculate the projected velocity dispersion\footnote{It should be noted that the $\sigma_0$ in Eq.~\ref{eq: hs-boundary} represents the three-dimensional velocity dispersion of a cluster. The velocity dispersion values from the cluster data was one-dimensional, and is converted to a three-dimensional value \citep{2015ApJ...808L..25G}}, $\sigma_z$  via the half-mass radius, $R_h$, or core radius $R_c$ and cluster mass, $M_{cl}$, from the Plummer model given in \cite{1911MNRAS..71..460P}:
 
 % Plummer velocity dispersion model
 \begin{equation}
@@ -358,21 +309,22 @@ Where $\sigma_0$ is the cluster velocity dispersion. ‘Hard’ binaries have pe
 %  Ellc light curve stuff
 \subsection{Light Curve Generation}
 \label{subsec:ellc}
- We utilize \texttt{ellc} \citep{2016ascl.soft03016M} to generate a theoretical light curve for each binary in the cluster population. The evolved binary parameters from \texttt{COSMIC} were used by \texttt{ellc} as inputs to generate light curves.
+ We utilize \texttt{ellc} \citep{2016ascl.soft03016M} to generate a theoretical light curve for each evolved binary in the cluster population. The evolved binary parameters from \texttt{COSMIC} were used by \texttt{ellc} as inputs to generate light curves.
  
 %  \subsection{Light Curves and the Effects of Crowding on Period Recovery}
-One consideration that must be taken in the analysis of EBs in star clusters is the effect of crowding from other objects within a viewing field. Either background or foreground objects can contribute additional flux, thus producing the effect of crowding the LSST viewing field. This additional flux could potentially impact the period recovery of EBs when passing the folded and fitted light curves to \texttt{gatspy}, as shown in Figure~\ref{fig:light3curve}. We model this background flux by using the third-light parameter from \texttt{ellc}.
+One consideration that must be taken in the analysis of EBs in star clusters is the effect of crowding from other objects within a viewing field. Either background or foreground objects can contribute additional flux, thus producing the effect of crowding the LSST viewing field. This additional flux could potentially impact the period recovery of EBs when passing the folded and fitted light curves to \texttt{gatspy}. This effect is shown in Figure~\ref{fig:light3curve}, which demonstrates the effect of crowding light on the eclipse depth of a binary. With a large enough amount of crowding light it is possible that the Vera Rubin Observatory will not detect an eclipse at all. We model this background flux by using the third-light parameter from \texttt{ellc}.
  
- We use \texttt{gatspy} to generate a fit for the phase-folded light curves across all filters \citep{2016ascl.soft10007V}. The light curves are passed through a Lomb-Scargle algorithm (LS) in order to recover the period of the eclipsing binary system \citep{2015ApJ...812...18V}. The LS periodogram utilized the Fourier transform of the light curves to produce a period (hereafter referred to as '\textit{output period}'). This is in contrast to the \textit{‘input period’} generated by COSMIC which we then use to compare our periodogram-generated output period. 
+ We use \texttt{gatspy} to generate a fit for the phase-folded light curves across all filters \citep{2016ascl.soft10007V}. \texttt{gatspy} then uses a Lomb-Scargle algorithm (LS) in order to recover the period of the eclipsing binary system \citep{2015ApJ...812...18V}. The LS periodogram utilized the Fourier transform of the light curves to produce a period (hereafter referred to as \textit{'output period'}). This is in contrast to the \textit{‘input period’} generated by COSMIC which we then use to compare our periodogram-generated output period. 
 
 % 3rd light sample LC
 \begin{figure}
     \centering
     \includegraphics[width = 0.48\textwidth]{figures/light-curve-sample576.pdf}
-    \caption{Sampled theoretical light curve with (solid line) and without (dashed line) crowding light added. The difference in flux is plotted underneath (dotted line). The flux parameter is given as percentage of peak (non-eclipse) flux from the binary system. The binary's phase is a folded over a full period length of the binary.}
+    \caption{Sampled theoretical light curve with (solid line) and without (dashed line) crowding light from additional viewing field objects added. The difference in flux is plotted beneath (dotted line). The flux parameter is given as percentage of peak (non-eclipse) flux from the binary system. The binary's phase is folded over a full period length of the binary.}
     \label{fig:light3curve}
 \end{figure}
 
+% Outlining observing scenarios
 In our analysis we performed the same process for each binary across all clusters in our database. We performed this for both the crowding and non-crowding scenarios. However, given that the crowding scenario is more representative of actual viewing conditions for LSST with star clusters, we will hereafter only cite our binary statistics with crowding. For GCs, the rate of binaries that will not be recovered due to crowding effects will likely be higher. This is due to GCs being more dense viewing environments at the center than OCs.
 
 % Nobs crowding effect table for both OCs and GCs
@@ -404,14 +356,13 @@ We define certain sub-populations of binaries for our purposes.
 
 % All, obs, rec
 \begin{itemize}
-    \item ‘\textbf{\textit{All}}’ binaries refers to every star  within LSST viewing fields in a binary system.
+    \item ‘\textbf{\textit{All}}’ binaries refers to every binary within LSST viewing fields in a binary system.
     \item ‘\textbf{\textit{Observable}}’ binaries refer to the sub-population of binary stars in which an eclipse can be viewed by LSST. 
     \item ‘\textbf{\textit{Recovered}}’ refers to binaries with periods returned by the \texttt{gatspy} within 10\% of the input period from COSMIC. To check for binaries whose periods are integer multiples of the input period, we also allow 10\% of the half or double period. 
 \end{itemize}
 
 % Defining subpopulations
-\textit{Observable} binaries will have an output period returned by \texttt{gatspy}, though not necessarily an output period that would deem the binary \textit{recovered}. For a binary to be considered \textit{observable} in our scheme, an eclipse must be detected by LSST. This condition is mostly dependent on the inclination angle\footnote{For our purposes, the inclination angle of 90 degrees refers to when two binaries pass directly in front of each other when eclipsing.} of the binary system. Without a proper inclination angle, an eclipse will not have the proper depth to be detected by LSST.
-Without a proper inclination angle, the line of sight to the binary does not provide an eclipse as viewed by LSST. We also ensure the binary components have a mean apparent r-band magnitude between 15.8 and 24.5. The latter two (\textit{Observable} and \textit{Recovered}) are sub-populations of \textit{All} binaries, while \textit{recovered} is also a subgroup of \textit{observable}. For the remainder of this paper, we will use this nomenclature to refer to each of these subgroups of binaries.
+\textit{Observable} binaries will have an output period returned by \texttt{gatspy}, though not necessarily an output period that would deem the binary \textit{recovered}. For a binary to be considered \textit{observable} in our scheme, an eclipse must be detected by LSST. This condition is mostly dependent on the inclination angle\footnote{For our purposes, the inclination angle of 90 degrees refers to when two binaries pass directly in front of each other with respect to our line of sight when eclipsing.} of the binary system. Without a proper inclination angle, an eclipse will not have the proper depth to be detected by LSST along the line of sight to the EB. We also ensure the binary components have a mean apparent r-band magnitude between 15.8 and 24.5. The latter two (\textit{observable} and \textit{recovered}) are sub-populations of \textit{all} binaries, while \textit{recovered} is also a subgroup of \textit{observable}. For the remainder of this paper, we will use this nomenclature to refer to each of these subgroups of binaries.
 
 % Eclipsing White Dwarfs
 \subsection{Eclipsing White Dwarf Binaries} \label{subsec:wd}
@@ -419,7 +370,7 @@ Without a proper inclination angle, the line of sight to the binary does not pro
 % How we selected WDs
 Within our sample of binary populations there are detached white dwarf candidates. 
 %These DWD candidates are white dwarf binaries that both meet our selection criteria as WDs. 
-We identify WDs in our data as stars that had $log(g) > 7$. This sets them apart from main sequence stars which typically have $log(g) \approx 3.5$. If both members of the binary are found to be WDs, and the binary was in the \textit{recovered} population, we imposed an additionally selection criteria of $p < 0.1$ days to check if the DWD is detectable by LISA \citep{2017MNRAS.470.1894K}. These short period DWD binary systems are candidates for LISA GW detections. While more of these DWD systems reside in the galactic field, cluster member DWDs will have a well-defined age and distance compared to field DWDs. 
+We identify WDs in our data as stars that had $log(g) > 7$, where $g$ is the acceleration due to gravity. This sets them apart from main sequence stars which typically have $log(g) \approx 3.5$. If both members of the binary are found to be WDs, and the binary was in the \textit{recovered} population, we imposed an additionally selection criteria of $p < 0.1$ days to check if the DWD is detectable by LISA \citep{2017MNRAS.470.1894K}. These short period DWD binary systems are candidates for LISA GW detections. While more of these DWD systems reside in the galactic field, cluster member DWDs will have a well-defined age and distance compared to field DWDs. 
 
 
 %% -------------------------------------------------------------------------------------------------------------------------------------------------
@@ -446,7 +397,7 @@ In this section we provide binary population statistics for our three binary sub
     % ecc hist - gbc
     \includegraphics[width=0.3\textwidth]{figures/popPlots/GlobularClusters/baseCrowd/EBLSST_ehist.pdf} 
     % \end{subfigure}
-    \caption{Globular-\textit{baseline} population statistics for several binary parameters. (From left to right \& top to bottom): orbital period (log-days), radius ratios $r_2/r_1$,  mass ratio $q = m_1/m_2$., primary component mass $m_1$,  distance, Apparent Mean magnitude in LSST r-band, binary orbital eccentricity $e$. The recovery patterns discussed in section \ref{subsec: BinaryBreakdown} can be seen in these figures.}
+    \caption{Globular-\textit{baseline} population statistics for several binary parameters. (From left to right \& top to bottom): orbital period (log-days), radius ratios $r_2/r_1$,  mass ratio $q = m_1/m_2$., primary component mass $m_1$,  distance, Apparent Mean magnitude in LSST r-band, binary orbital eccentricity $e$. The recovery patterns discussed in section \ref{subsec: BinaryBreakdown} can be seen in these figures. The color of each distribution corresponds to the following binary sub-populations: Blue - \textit{all}, Red - \textit{observable}, Gold - \textit{Recovered}.}
     \label{fig:gbc-hists}
 \end{figure*}
 
@@ -590,14 +541,14 @@ In this section we provide binary population statistics for our three binary sub
 \begin{figure*}[p]
     % Rec corner plot GCC
     \plotone{figures/cornerPlots/GlobularClusters/obs-GBC-cornerPlot-contour.pdf}
-    \caption{Globular Cluster-\textit{baseline} corner plots for the \textit{observable} sub-population. The binary parameters pictures are the same as those listed above in \ref{fig:gbc-hists}} %Figure~\ref{fig:gbc-Obs-corner-plot}.}
+    \caption{Globular Cluster-\textit{baseline} corner plots for the \textit{observable} sub-population. The binary parameters pictures are the same as those listed above in Figure \ref{fig:gbc-hists}.} %Figure~\ref{fig:gbc-Obs-corner-plot}.}
     \label{fig:gbc-Obs-corner-plot}
 \end{figure*}
 
 % Rec corner plot GCC
 \begin{figure*}
     \plotone{figures/cornerPlots/GlobularClusters/rec-GBC-cornerPlot-contour.pdf}
-    \caption{Globular Cluster-\textit{baseline} corner plots for the \textit{recovered} sub-population. The binary parameters pictures are the same as those listed above} %Figure~\ref{fig:gbc-Obs-corner-plot}.}
+    \caption{Globular Cluster-\textit{baseline} corner plots for the \textit{recovered} sub-population. The binary parameters pictures are the same as those listed above.} %Figure~\ref{fig:gbc-Obs-corner-plot}.}
     \label{fig:gbc-Rec-corner-plot}
 \end{figure*}
 
@@ -658,16 +609,16 @@ In this section we provide binary population statistics for our three binary sub
 % Discussion of population plots
 \subsection{Recovery Patterns}
 \label{subsec:recovery-patterns}
-There are certain characteristics of binaries that render them more likely to be recovered by LSST. In general, shorter-period binaries are more likely to fall into our \textit{observable} and \textit{recovered} sub-populations because of a higher rate of eclipses. With eclipses occurring more frequently due to a shorter orbital period, there is a higher probability of both LSST observing and eclipse and \texttt{gatspy} correctly producing an output period. As shown in Figures~\ref{fig:gbc-hists},~\ref{fig:gcc-hists},~\ref{fig:obc-hist}, and~\ref{fig:occ-hists}, both the \textit{observable} and \textit{recovered} populations have peaks in their $log(p)$ distributions that correspond with significantly shorter orbital periods than those of the corresponding \textit{all} populations.
+There are certain characteristics of binaries that render them more likely to be recovered by LSST. In general, shorter-period binaries are more likely to fall into our \textit{observable} and \textit{recovered} sub-populations because of a higher rate of eclipses. With eclipses occurring more frequently due to a shorter orbital period, there is a higher probability of both LSST observing an eclipse and \texttt{gatspy} correctly producing an output period. As shown in Figures~\ref{fig:gbc-hists},~\ref{fig:gcc-hists},~\ref{fig:obc-hist}, and~\ref{fig:occ-hists}, both the \textit{observable} and \textit{recovered} populations have peaks in their $log(p)$ distributions that correspond with significantly shorter orbital periods than those of the corresponding \textit{all} populations.
 
 % q and radius ratios 
-In addition, EBs with mass and radius ratios that are closer to unity will also fall into the \textit{recovered} more frequently. This is due to the fact that similarly-sized binary components will have similar eclipse depths and shapes. \texttt{gatspy} is more effective at successful period recovery when applied to regularly-shaped and sized eclipses. This can be seen in both our PDF plots as well as corner plots in Figures~\ref{fig:gbc-Obs-corner-plot}, \ref{fig:gcc-Obs-corner-plot} \ref{fig:obc-Obs-corner-plot}, and \ref{fig:occ-Obs-corner-plot}. These distributions will peak at mass and radius ratios closer to 1, implying similar binary component size and masses. Interestingly, as is noted earlier in section \ref{subsec:wd}, the corner plots provided in \ref{fig:obc-Obs-corner-plot} and \ref{fig:obc-Rec-corner-plot} show certain \textit{observable} and \textit{recovered} EBs that lie on the lower end of the mass-radius distribution. Some of these binary systems contain DWD binaries mentioned in section \ref{subsec:wd}.
+In addition, EBs with mass and radius ratios that are closer to unity will also fall into the \textit{recovered} more frequently. This is due to the fact that similarly-sized binary components will have similar eclipse depths and shapes. In general, \texttt{gatspy} is more effective at successful period recovery when applied to regularly-shaped and sized eclipses. This can be seen in both our PDF plots as well as corner plots in Figures~\ref{fig:gbc-Obs-corner-plot}, \ref{fig:gcc-Obs-corner-plot} \ref{fig:obc-Obs-corner-plot}, and \ref{fig:occ-Obs-corner-plot}. These distributions will peak at mass and radius ratios closer to unity, implying similar binary component size and masses. Interestingly, as is noted earlier in section \ref{subsec:wd}, the corner plots provided in Figures \ref{fig:obc-Obs-corner-plot} and \ref{fig:obc-Rec-corner-plot} show certain \textit{observable} and \textit{recovered} EBs that lie on the lower end of the mass-radius distribution. Some of these binary systems contain DWD binaries mentioned in section \ref{subsec:wd}.
 
-% Inclination & eccentricity
-In general as seen in Figure~\ref{fig:gbc-hists}, Figure~\ref{fig:obc-hist} and other PDF plots, there is a pattern among inclination values in all 3 sub-populations. Binaries that tend to be recovered more frequently are those with inclinations close to 90 degrees. Binaries with inclinations close to perpendicular to the line-of-sight are recovered more frequently because the depth of eclipses will be maximized. Binaries with inclinations $i \not\approx 90^o$ will have smaller eclipse depths for one or both eclipses, resulting in a higher likelihood that \texttt{gatspy} will return an incorrect output period.
+% Inclination
+In general as seen in Figure~\ref{fig:gbc-hists}, Figure~\ref{fig:obc-hist} and other PDF plots, there is a pattern among inclination values in all 3 sub-populations. Binaries that tend to be recovered more frequently are those with inclinations close to 90 degrees. Binaries with inclinations close to perpendicular to the line-of-sight are recovered more frequently because the depth of eclipses will be maximized. This is because binaries with inclinations $i \not\approx 90^o$ will have smaller eclipse depths for one or both eclipses, resulting in a higher likelihood that \texttt{gatspy} will return an incorrect output period.
 
 % Eccentricity patterns (circularized binaries)
-Less eccentric ($e \ll 1$) binaries will generally also be recovered by LSST more frequently. This can be seen in the sharp peak in \textit{recovered} and \textit{observable} eccentricities near $e \approx 0$ for all observing scenarios. This effect can also be seen in the corner plots of circularized binaries as well. The reason that more eccentric binaries are recovered more frequently is likely because the speed of eclipses will be the same for each component star, as well as across the eclipse. In addition, circular binaries will be more evenly spaced in phase, rendering them more easily recovered with the LS algorithm.
+Less eccentric ($e \ll 1$) binaries will generally also be recovered by LSST more frequently. This can be seen in the sharp peak in \textit{recovered} and \textit{observable} eccentricities near $e \approx 0$ for all observing scenarios. This effect can also be seen in the corner plots of circularized binaries as well (Figures \ref{fig:gbc-Obs-corner-plot} - \ref{fig:occ-Rec-corner-plot}). The reason that more eccentric binaries are recovered more frequently is likely because the speed of eclipses will be the same for each component star, as well as across the eclipse. In addition, eclipses in circular binaries will be more evenly spaced in phase, rendering them more easily recovered with the LS algorithm.
 
 % Distance patterns
 Binaries at shorter distances $d$  are also observed and recovered more frequently with LSST. This can be seen in Figures~\ref{fig:gbc-hists},~\ref{fig:gcc-hists},~\ref{fig:obc-hist}, and~\ref{fig:occ-hists} in which the distance distributions for \textit{recovered} peak sharply at shorter distances from Earth. In general, binary systems at shorter distances will have brighter apparent magnitudes. LSST is more effective at observations of eclipses of these brighter binary systems. With more eclipses observed successfully with LSST, there is a higher chance of successful period recovery for a brighter EB. 
@@ -676,11 +627,12 @@ Binaries at shorter distances $d$  are also observed and recovered more frequent
 The above recovery patterns for cluster binaries are in agreement with those included in \citet{2019AAS...23336317P} and \citet{2011AJ....142...52P}. While those recovery patterns are for binaries in the galactic field, they still are applicable for cluster member binaries. This is significant because even though binaries in clusters can display different behavior due to close binary encounters within a cluster, they still follow general recovery patterns of field binaries. 
 
 % Circularized binaries
-Another binary population of interest is short period binaries that become circularized in their orbits ($e \ll 1$) due to tidal effects. These binaries make up the majority of \textit{recovered} binaries due to their shorter period and eccentricities near 0. 
-Most \textit{recovered} binaries are shorter in their orbital periods when compared to binaries in the \textit{all} population. In addition to our analysis of \textit{all} binaries, we also selected out binaries with $\textit{p} < 1000$ days. These populations of circularized-short period EBs for both \textit{observable} and \textit{recovered} binares are shown in Figures~\ref{fig:gbc-Obs-corner-plot}, \ref{fig:gcc-Obs-corner-plot} \ref{fig:obc-Obs-corner-plot}, and \ref{fig:occ-Obs-corner-plot}. The effects of this short-period circularization can especially be seen in the corresponding period-eccentricity panels of those plots.
+Another binary population of interest is short period binaries that become circularized in their orbits ($e \ll 1$) due to tidal effects. These binaries make up the majority of \textit{recovered} binaries due to their shorter periods ($p < 10$ days) and eccentricities near 0. 
+Most \textit{recovered} binaries are shorter in their orbital periods when compared to binaries in the \textit{all} population. 
+
+In addition to our analysis of \textit{all} binaries, we also selected out binaries with $\textit{p} < 1000$ days. These populations of short period EBs for both \textit{observable} and \textit{recovered} binares are shown in Figures~\ref{fig:gbc-Obs-corner-plot}, \ref{fig:gcc-Obs-corner-plot} \ref{fig:obc-Obs-corner-plot}, and \ref{fig:occ-Obs-corner-plot}. The effects of this short-period circularization can especially be seen in the corresponding period-eccentricity panels of those plots for binaries with periods less than 10 days. In many of these panels, after an orbital period of $\sim 10$ days, there is a jump in eccentricity values to significantly above zero.
 
 %% Recovered statistics table (maybe more than 1)
-
     
 % Recovery table reformatted
 % Please add the following required packages to your document preamble:
@@ -698,9 +650,11 @@ Most \textit{recovered} binaries are shorter in their orbital periods when compa
     \hline
     \textit{baseline} & 687 & 1890  & \textbf{36.3} &  49 & 148 & \textbf{33.1} \\
     % colossus
-    \textit{colossus} & 840 & 2377 & \textbf{35.3} & 111 & 286 & \textbf{38.8} 
+    \textit{colossus} & 840 & 2377 & \textbf{35.3} & 111 & 286 & \textbf{38.8} \\
+    Difference & 153 & 487 & \textbf{-1.0\%} & 62 & 138 &  \textbf{5.7\%} \\
+    
     \end{tabular}
-    \caption{Recovery Statistics, including number of binaries \textit{observed} $N_{obs}$ and binaries \textit{recovered}, $N_{rec}$.\footnote{It should be noted that the notation chosen for number of binaries deemed \textit{observable}, $N_{obs}$ is different than the \textit{OpSim} field number of observations $N_{obs}$. Context should distinguish between the two definitions.} for all observing scenarios OS between globular and open clusters and across the \textit{baseline} and \textit{colossus} observing strategies. The percent recovery is defined as $(N_{rec}/N_{obs}) x 100$. It is interesting to note that \textit{colossus} recovers more effectively for OCs, which reside in the more-heavily sampled galactic plane.}
+    \caption{Recovery Statistics, including number of binaries \textit{observed} $N_{obs}$ and binaries with periods that are \textit{recovered}, $N_{rec}$. For all observing scenarios OS between globular and open clusters and across the \textit{baseline} and \textit{colossus} observing strategies. The percent recovery is defined as $(N_{rec}/N_{obs}) \times 100$. It is interesting to note that \textit{colossus} recovers more effectively for OCs, which reside in the more-heavily sampled galactic plane. When summed across all cluster types, \textit{colossus} recovers higher raw numbers as well as 13\% more EBs than \textit{baseline}.}
     \label{tab:recovery_table}
 
 \end{table}
@@ -720,12 +674,12 @@ Most \textit{recovered} binaries are shorter in their orbital periods when compa
 
 % Strategy comparison
 \subsection{Comparing the strategies}
-Table \ref{tab:recovery_table} gives insight into the differences in performance with period recovery between the two observing strategies: \textit{baseline} and \textit{colossus}. Between our two observing strategies, \textit{colossus} will observe and recover higher raw numbers of EBs within both GCs and OCs. This is likely because of higher observation rates of \textit{OpSim} fields where star clusters reside in the \textit{colossus} strategy (Figure \ref{fig:cluster_mollweide}, Figure \ref{fig:baseline_mollweide}). This phenomenon can also be seen at the projection of the galactic plane (centered at $\alpha = 17h 45.0$, $\delta = -28^o 56$) in Figures \ref{fig:gbc_recovery_mollweides} \& \ref{fig:gcc_recovery_mollweides} for GCs as well as Figures \ref{fig:obc_recovery_mollweides} \& \ref{fig:occ_recovery_mollweides}. Primarily, in OCs \textit{colossus} sees a higher recovery rate while also producing higher raw numbers for the \textit{recovered} and \textit{observable} populations. For GCs, \textit{baseline} has a slightly higher recovery rate, but produces fewer total \textit{recovered} and \textit{observable} EBs. 
+Table \ref{tab:recovery_table} gives insight into the differences in performance with period recovery between the two observing strategies: \textit{baseline} and \textit{colossus}. Between our two observing strategies, \textit{colossus} will observe and recover higher raw numbers of EBs within both GCs and OCs. This is likely because of higher observation rates of \textit{OpSim} fields where star clusters reside in the \textit{colossus} strategy (Figure \ref{fig:cluster_mollweide}, Figure \ref{fig:baseline_mollweide}). This phenomenon can also be seen at the projection of the galactic plane (centered at $\alpha = 17h 45.0$, $\delta = -28^o 56$) in Figures \ref{fig:gbc_recovery_mollweides} \& \ref{fig:gcc_recovery_mollweides} for GCs as well as Figures \ref{fig:obc_recovery_mollweides} \& \ref{fig:occ_recovery_mollweides}. Primarily, in OCs \textit{colossus} sees a higher recovery rate while also producing higher raw numbers for the \textit{recovered} and \textit{observable} populations. For GCs, the \textit{baseline} strategy produces a slightly higher recovery rate, but produces fewer total \textit{recovered} and \textit{observable} EBs. Overall, \textit{colossus} will recover the periods of $\sim 13\%$ more EBs  throughout the 10-year tuntime.
 
 % Crowding Effect
 \subsection{Crowding Effects}
 \label{subsec:crowding_results}
-As discussed, the effect of crowding from background objects within an LSST viewing field can impact both the observation and period recovery of EBs within that field. The effects of crowding across all cluster types from background objects on period recovery is listed in Table~\ref{tab:crowding-table-recovered}. In general, both cluster types and observing strategies see a significant reduction of period recovery due to crowding effects. This effect is more pronounced in GCs in terms of percentage of binaries not recovered due to crowding. This is likely due to globular clusters having more objects within a single viewing field compared to OCs.
+As discussed, the effect of crowding from background objects within an LSST viewing field can impact both the observation and period recovery of EBs within that viewing field. The effects of crowding across all cluster types from background objects on period recovery is listed in Table~\ref{tab:crowding-table-recovered}. In general, both cluster types and observing strategies see a significant reduction of period recovery due to crowding effects. This effect is more pronounced in GCs in terms of percentage of binaries that would have been successfully \textit{recovered} without the effects of crowding. This is due to globular clusters having higher numbers of objects within a single viewing field compared to OCs.
 % Nrec crowding table - different than 
 \begin{table}[]
     \centering
@@ -740,15 +694,15 @@ As discussed, the effect of crowding from background objects within an LSST view
         \textbf{\% Reduction} & 33.2 & 25.5
 
     \end{tabular}
-    \caption{Different $N_{rec}$ between crowding and non-crowding scenarios. These numbers are summed across both observing strategies \textit{baseline} and \textit{colossus}. Crowding will reduce recovery rates for both observing strategies. GCs will see a higher drop in total binaries recovered. This is likely due to the fact that GCs are a much more crowded viewing situation compared to OCs, especially for binaries close to the center of the cluster. With higher crowding present in GCs, a larger drop in recovery rates in GCs should be expected.}
+    \caption{Different $N_{rec}$ between crowding and non-crowding scenarios. These numbers are summed across both observing strategies \textit{baseline} and \textit{colossus}. Crowding will reduce recovery rates for both observing strategies. GCs will see a higher drop in total binaries recovered. This is due to the fact that GCs are a more crowded viewing situation compared to OCs, especially for binaries close to the center of the cluster. With higher crowding present in GCs, a larger drop in recovery rates in GCs should be expected.}
     \label{tab:crowding-table-recovered}
 \end{table}
 
 % White Dwarf Analysis
 \subsection{White Dwarf Binaries}
-DWD binaries in our sample appear in all three of our binary sub-populations. Among white dwarfs in our sample, there are 36 candidates that fall into both our \textit{observable} sub-population for LSST and are detectable by LISA. In addition, certain WD candidates were also considered \textit{recovered}  by our algorithm. 
+DWD binaries in our sample appear in all three of our binary sub-populations. Among white dwarfs in our sample, there are 36 candidates that fall into both our \textit{observable} sub-population for LSST and are detectable by LISA. In addition, certain WD candidates were also eligible to be considered \textit{recovered}  by our algorithm. 
 
-Of the white dwarfs in our population, one that is detectable by LISA along our criteria used above in Section~\ref{subsec:wd} also is considered \textit{recovered} by LSST. This particular candidate was present in our Open-baseline observing scenario. This aligns with expectations as WD binary candidates would be more likely to be recovered by LSST due to the lower level of background light and lessen the effects of crowding. The binary parameters for this particular LISA-LSST WD binary are listed in table \ref{tab:lsst-lisa binary}. In addition, there are several WD binaries that are \textit{observable} across different observing scenarios. It is possible that with a different periodogram or algorithm used, the number of LISA-LSST WD binaries could be selected as \textit{observable}.
+Of the white dwarfs in our population, one that is detectable by LISA along our criteria used above in Section~\ref{subsec:wd} also is considered \textit{recovered} by LSST. This particular candidate was present in our Open Cluster-\textit{baseline} observing scenario. This aligns with expectations as WD binary candidates would be more likely to be recovered by LSST due to the lower level of background light and lessen the effects of crowding. The binary parameters for this particular LISA-LSST WD binary are listed in table \ref{tab:lsst-lisa binary}. In addition, there are several WD binaries that are \textit{observable} across different observing scenarios. It is possible that with a different periodogram or algorithm used, the number of LISA-LSST WD binaries could be selected as \textit{observable}.
 
 % Table of binary params for recovered LISA-LSST binary (OBC scenario)
 % Using mass ratio instead of listing both masses so it fits into one column
@@ -760,43 +714,43 @@ Of the white dwarfs in our population, one that is detectable by LISA along our 
         \hline
         0.0948 & 1.817 & 0.009 & 0.014 & 0.0 & 90.623 \\
     \end{tabular}
-    \caption{Binary Parameters for a binary recovered by LSST as well as detectable by LISA in accordance with our selection criteria. The observing scenario for this particular binary was the Open Clusters-\textit{baseline} scenario. The binary parameters are (from left to right): orbital period (days), mass ratio, primary component radius, secondary component radius, eccentricity, and inclination.}
+    \caption{Binary Parameters for a binary sucessfully \textit{recovered} by LSST as well as detectable by LISA in accordance with our selection criteria. The observing scenario for this particular binary was the Open Clusters-\textit{baseline} scenario. The binary parameters are (from left to right): orbital period (days), mass ratio, primary component radius, secondary component radius, eccentricity, and inclination.}
     \label{tab:lsst-lisa binary}
 \end{table}
 
 % LISA-LSST binary breakdown
-One interesting aspect of this LISA-LSST white dwarf eclipsing binary is that the mass ratio varies from the recovery pattern of most EBs discussed above in Subsection~\ref{subsec:recovery-patterns}, ($q \not\approx 1$). It is possible that for a WD binary with a mass ratio of $q \approx 1$  our algorithm would have a better chance of successfully recovering the period. Despite an uneven mass ratio, this binary remains circularized as well as short-period. Apart from the mass-ratio discrepancy, it tends to follow the general recovery patterns outlined in Section~\ref{subsec:recovery-patterns}. Another is that it has a relatively short orbital period $p$, meaning the GW produced will be of a strong enough amplitude to be detectable by LISA. 
+One interesting aspect of this LISA-LSST white dwarf eclipsing binary is that the mass ratio differs from the recovery pattern of most EBs discussed above in Subsection~\ref{subsec:recovery-patterns}, ($q \not\approx 1$). It is possible that for a WD binary with a mass ratio of $q \approx 1$  our algorithm would have a better chance of successfully recovering the period. Despite an uneven mass ratio, this binary remains circularized as well as short-period. Apart from the mass-ratio discrepancy, it tends to follow the general recovery patterns outlined in Section~\ref{subsec:recovery-patterns}. Furthermore, this DWD binary has a relatively short orbital period $p$, meaning the GW produced will be of a strong enough amplitude to be detectable by LISA. The short period of this binary ($0.0948$ days) also corresponds to a circularized eccentricity. DWD binaries that are detectable by both LISA and LSST will follow this tidal-circularization because their orbital periods will be well under the cutoff of $p \approx 10$ days.
 
 % Open Cluster WD
-This particular LISA-LSST WD binary system is significant because it is a member of an Open Cluster. Given this, we will be able to have better estimates for the distance and age of this particular system.  In addition, because OCs are less dense viewing environments within an \textit{OpSim} field than GCs, there will be less of an effect of crowding in the recovery of white dwarf binaries within those systems. 
+This particular LISA-LSST WD binary system is significant because it is a member of an Open Cluster. Given this, we will have more accurate estimates for the distance and age of this particular system.  In addition, OCs are less dense viewing environments within an \textit{OpSim} field than GCs. This results in  less of an effect of crowding in the recovery of white dwarf binaries within those systems (see Table \ref{tab:crowding-table-recovered}). 
 %% ----------------------------------------------------------------------------------------
 % %%%% Conclusion/Discussion %%%%
 \section{Conclusion}
 \label{sec:Conclusion}
-Overall, our method provides period recovery rates listed in Table~\ref{tab:recovery_table}. The \textit{colossus} strategy proves slightly more robust for recovering eclipsing binaries than \textit{baseline}, especially main sequence eclipsing binaries. With \textit{colossus}, LSST will successfully recover $\sim400$ more cluster eclipsing binaries, observe the eclipses $\sim800$ more, and improve it's recovery rate by $\sim13\%$ across both cluster types (see table \ref{tab:summed_rec_stats}). This is due to the fact that the colossus strategy weighs the galactic plane more heavily in terms of the number of observations within \textit{OpSim} fields centered on the on-sky location of the galactic plane. Consequently, it will therefore observe the \textit{OpSim} fields where there are more Globular and Open Clusters as shown in Figure~\ref{fig:cluster_mollweide}. 
+Overall, our method provides period recovery rates listed in Table~\ref{tab:recovery_table}. The \textit{colossus} strategy proves slightly more robust for recovering eclipsing binaries than \textit{baseline}, especially main sequence eclipsing binaries. Using \textit{colossus}, the Vera Rubin Observatory will successfully recover $\sim400$ more cluster eclipsing binaries, observe the eclipses of $\sim800$ more, and improve it's period-recovery rate by $\sim13\%$ across both cluster types (see table \ref{tab:summed_rec_stats}). This is due to the fact that the colossus strategy weighs the galactic plane more heavily in terms of the number of observations within \textit{OpSim} fields centered on the on-sky location of the galactic plane. Consequently, it will therefore observe the \textit{OpSim} fields where there are more Globular and Open Clusters as shown in Figure~\ref{fig:cluster_mollweide}. 
 
-In addition, the presence of binary WD systems that can be successfully recovered with LSST and observed with LISA is a significant harbinger of synergies between the two projects. Future study of these systems will be made more feasible through multi-messenger astronomy.
+In addition, the presence of eclipsing white dwarf binary systems that can be successfully recovered with LSST and observed with LISA is a significant harbinger of potential synergy between the two projects. Future study of these systems will be made more feasible through a combination of astronomy via electromagnetic radiation and multi-messenger signals.
 
-While there are different benefits and drawbacks to the proposed observing strategies, for the purpose of eclipsing binary star observing and period recovery, the \textit{colossus} strategy will yield higher numbers of eclipsing binary stars within OCs and GCs over the 10 year runtime of the Vera Rubin Observatory. Future study could compare the period-recovery yield of other proposed LSST observing strategies. It also could include the use of different periodogram algorithms to determine the most effective way of determining EB periods from observed light curves
+While there are different benefits and drawbacks to the proposed observing strategies, for the purpose of eclipsing binary star observing and period recovery, the \textit{colossus} strategy will yield higher numbers of eclipsing binary stars within OCs and GCs over the 10 year runtime of the Vera Rubin Observatory. Future study could compare the period-recovery yield of other proposed \textit{OpSim} observing strategies. It also could include the use of different period-finding algorithms to determine the most effective way of determining EB periods from observed light curves. 
 
-The Vera Rubin Observatory will also be capable of recovering the periods of thousands of star cluster member eclipsing binaries. This unprecedented dataset of these variable stars will give great insight into eclipsing binary stars as well as other variable sources.
+The Vera Rubin Observatory will be capable of recovering the orbital periods of thousands of eclipsing binaries within Milky Way star clusters. The unprecedented dataset produced by this incredible tool will give great insight into eclipsing binary stars as well as other variable sources.
 
 
 %% ----------------------------------------------------------------------------------------
 %%% Acknowledgements %%%
 % Don't forget your funding sourcesm --add last
 \section{Acknowledgements}
+This material is based upon work supported by the LSST Corporation (LSSTC), through an Enabling Science Grant \#2019‐UG01, award to CIERA at Northwestern University.
+
 The study resulting in this publication was assisted by a grant from the WCAS Undergraduate Research Grant Program which is administered by Northwestern University's Weinberg College of Arts and Sciences. However, the conclusions, opinions, and other statements and findings in this publication are the author's and not necessarily those of the sponsoring institution or of the LSSTC.
 
 This research was supported in part through the computational resources and staff contributions provided for the Quest high performance computing facility at Northwestern University which is jointly supported by the Office of the Provost, the Office for Research, and Northwestern University Information Technology.
 
 This research has made use of the WEBDA database, operated at the Department of Theoretical Physics and Astrophysics of the Masaryk University. 
 
-This material is based upon work supported by the LSST Corporation (LSSTC), through an Enabling Science Grant \#2019‐UG01, award to CIERA at Northwestern University.
+I would also like to extend my sincerest gratitude to all my friends and family that have supported me throughout this process. Your help and patience have been integral to helping me not only in this work but in life. You have all served as wonderful role models and a support system for which I am indescribably grateful. I would not be the person I am today, nor be in the position I am, without all of you.
 
-I would also like to extend my sincerest gratitude to my friends and family that have supported me throughout this process. Your help and patience have been integral to helping me not only in this work but in life.
-
-Lastly, my sincere thanks and appreciation go to my research advisor Dr. Aaron Geller, without whom this project would never have been possible. His patience and mentorship have been integral to not only this project, but also my development as an astronomer and a person. He took a big chance taking me onto your research group, and words cannot express how grateful I was and still am for that opportunity.
+Lastly, my sincere thanks and appreciation go to my research advisor, Dr. Aaron M. Geller, without whom this project would never have been possible. His patience and mentorship have been integral to not only this project, but also my development as an astronomer and a person. He took a big chance taking me onto your research group, and words cannot express how grateful I was and still am for that opportunity. He has served as an incredible mentor throughout my time at Northwestern, and I am extremely grateful for that experience.
 
 
 %%% References %%%
@@ -827,11 +781,11 @@ Lastly, my sincere thanks and appreciation go to my research advisor Dr. Aaron G
 
 \section{Software}
 \label{app:Appendix A}
-The code written for this project is available at \href{https://github.com/andrewbowen19/ClusterEclipsingBinaries}{this link to our GitHub repository} \url{https://github.com/andrewbowen19/ClusterEclipsingBinaries}. The software written for this project falls under an MIT License for software and can be used, reproduced and distributed at no charge. For producing the plots in this paper, two python scripts were used. The software for this project was primarily written in \textit{python 3.6} and later versions. One, entitled \texttt{analyseClusterLISA} produces the PDF and CDF histograms in Figures \ref{fig:gbc-hists}, \ref{fig:gcc-hists} \ref{fig:obc-hist}, \& \ref{fig:occ-hists}, as well as the mollweide projection plots in \ref{fig:gbc_recovery_mollweides}, \ref{fig:gcc_recovery_mollweides}, \ref{fig:obc_recovery_mollweides}, \ref{fig:occ_recovery_mollweides}. For producing corner plots, including those in the below appendix, the python script entitled \texttt{corner\_plotter} was used. This script loops through each observing scenario, as well as all three binary sub-populations (\textit{all}, \textit{obs}, \textit{rec}) and generates a corner plot. This function was produced using the \href{https://corner.readthedocs.io/en/latest/}{corner plotting python package}.
+The code written for this project is available at \href{https://github.com/andrewbowen19/ClusterEclipsingBinaries}{this link to our GitHub repository} \url{https://github.com/andrewbowen19/ClusterEclipsingBinaries}. The software written for this project falls under an MIT License for software and can be used, reproduced and distributed at no charge. For producing the plots in this paper, two python scripts were used. The software for this project was primarily written in \texttt{python 3.6} and later versions. One, entitled \texttt{analyseClusterLISA} produces the PDF and CDF histograms in Figures \ref{fig:gbc-hists}, \ref{fig:gcc-hists} \ref{fig:obc-hist}, \& \ref{fig:occ-hists}, as well as the mollweide projection plots in \ref{fig:gbc_recovery_mollweides}, \ref{fig:gcc_recovery_mollweides}, \ref{fig:obc_recovery_mollweides}, \ref{fig:occ_recovery_mollweides}. For producing corner plots, including those in the below appendix, the python script entitled \texttt{corner\_plotter} was used. This script loops through each observing scenario, as well as all three binary sub-populations (\textit{all}, \textit{obs}, \textit{rec}) and generates a corner plot. This function was produced using the \href{https://corner.readthedocs.io/en/latest/}{corner plotting python package}.
 
-In order to produce plots for each observing scenario, a python script entitled \texttt{lisaRunAnalyse} was used. The general structure of this script includes a file tree loop that creates an \texttt{analyseClusterLISA} object and corresponding plots for each observing scenario and cluster type (including our long runs for the individual clusters M10 and M67). This script can be run from the command line or via batch submission. 
+In order to produce plots for each observing scenario, a python script entitled \texttt{lisaRunAnalyse} was used. The general structure of this script includes a file tree loop that creates an \texttt{analyseClusterLISA} object and corresponding plots for each observing scenario and cluster type (including our long runs for the individual clusters M10 and M67). This script can be run from the command line or via batch submission. The \texttt{analyseClusterLISA} object generates the necessary output files (file extensions: \textit{-histData.csv} or \textit{-histDataLISA.csv}) for the \texttt{corner\_plotter} script to generate corner plots. These files are outputted to the \texttt{clusters} directory in the working directory of \texttt{analyseClusterLISA} and can be either copied to or used by the working directory of the \texttt{corner\_plotter} script. In addition, \texttt{analyseClusterLISA} produces output files with histogram data for the binary parameters included in our PDF and CDF plots. 
 
-All of the mentioned scripts are located in the \texttt{code} sub-directory of \href{https://github.com/andrewbowen19/ClusterEclipsingBinaries}{our GitHub repository}. The requisite data files can be downloaded upon request. 
+All of the mentioned scripts are located in the \texttt{code} sub-directory of \href{https://github.com/andrewbowen19/ClusterEclipsingBinaries}{our GitHub repository}. The requisite data files can be downloaded upon request. For the software listed to run properly, the directory structure should be the same as that of the included \texttt{code} directory. 
 % Corner Plot appendix
 % \appendix
 
@@ -870,7 +824,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/GlobularClusters/obs-GBN-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{observable} sub-population for the Globular Cluster-\textit{baseline} observing scenario with no crowding effects present (\textit{GBN}). As is true for both \textit{observable} and \textit{recovered} sub-populations, shorter-period binaries are more common. In addition, binaries with mass and radius ratios near unity are more frequently \textit{observed} and \textit{recovered} by our algorithm due to similarly shaped eclipses. This effect can be seen in the panels depicting the relationship between $r_1$\&$r_2$ as well as $m_1$\&$m_2$. In addition, the inclination distribution is sharply peaked at 90 degrees as well. This can also be seen in \ref{fig:gbn-corner-plot-appendix}.}
+    \caption{Corner plot for the \textit{observable} sub-population for the Globular Cluster-\textit{baseline} observing scenario with no crowding effects present (\textit{GBN}). As is true for both \textit{observable} and \textit{recovered} sub-populations, shorter-period binaries are more common. In addition, binaries with mass and radius ratios near unity are more frequently \textit{observed} and \textit{recovered} by our algorithm due to similarly shaped eclipses. This effect can be seen in the panels depicting the relationship between $r_1$ \& $r_2$ as well as $m_1$ \& $m_2$. In addition, the inclination distribution is sharply peaked at 90 degrees as well. This can also be seen in Figure \ref{fig:gbn-corner-plot-appendix}.}
     \label{fig:gbn-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -878,7 +832,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/GlobularClusters/rec-GBN-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{recovered} sub-population for the Globular Cluster-\textit{baseline} observing scenario with no crowding effects present (\textit{GBN}). }
+    \caption{Corner plot for the \textit{recovered} sub-population for the Globular Cluster-\textit{baseline} observing scenario with no crowding effects present (\textit{GBN}). The presence of potential white dwarf components of these binaries can be seen in the mass and radius panels via clustering near relatively lower mass and radius values.}
     \label{fig:gbn-corner-plot-appendix}
 \end{figure}\clearpage
 % --------------------------------------
@@ -904,7 +858,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/GlobularClusters/rec-GBC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{recovered} sub-population for the Globular Cluster-\textit{baseline} observing scenario with crowding effects present (\textit{GBC}).One dynamic interesting to note among recovered binaries is the large presence of circularized binaries ($e \approx 0$). Also, interestingly enough the inclination distribution for this observing scenario is more widely spread than that of the corresponding \textit{observable} sub-population. In addition the period-eccentricity panel shows a clear circularization of binaries up until a period of $\sim10 days$. Binaries with periods longer than this can have more eccentric orbits.}
+    \caption{Corner plot for the \textit{recovered} sub-population for the Globular Cluster-\textit{baseline} observing scenario with crowding effects present (\textit{GBC}). One dynamic interesting to note among recovered binaries is the large presence of circularized binaries ($e \approx 0$). Also, interestingly enough the inclination distribution for this observing scenario is more widely spread than that of the corresponding \textit{observable} sub-population. In addition the period-eccentricity panel shows a clear circularization of binaries up until a period of $\sim10$ days. Binaries with periods longer than this limit can have more eccentric orbits, as seen in the period-eccentricity panel of this and other \textit{recovered} corner plots.}
     \label{fig:gbc-rec-corner-plot-appendix}
 \end{figure}\clearpage
 % --------------------------------------
@@ -929,7 +883,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/GlobularClusters/rec-GCN-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{recovered} sub-population for the Globular Cluster-\textit{colossus} observing scenario with no crowding effects present (\textit{GCN}).}
+    \caption{Corner plot for the \textit{recovered} sub-population for the Globular Cluster-\textit{colossus} observing scenario with no crowding effects present (\textit{GCN}). Interestingly, the magnitude distribution for this no-crowding observing scenario is smaller for higher magnitudes. This is to be expected as less bright binaries will not be \textit{recovered} as frequently when crowding effects are present.}
     \label{fig:gcn-Rec-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -947,7 +901,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/GlobularClusters/obs-GCC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{observable} sub-population for the Globular Cluster-\textit{colossus} observing scenario with no crowding effects present (\textit{GCC}).}
+    \caption{Corner plot for the \textit{observable} sub-population for the Globular Cluster-\textit{colossus} observing scenario with crowding effects present (\textit{GCC}). A strong jump in eccentricity in the period-eccentricity panel at $p \approx 1$ log-days demonstrates the effects of tidal circularization for binaries with periods below $\sim 10$ days.}
     \label{fig:gcn-obs-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -955,7 +909,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/GlobularClusters/rec-GCC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{recovered} sub-population for the Globular Cluster-\textit{colossus} observing scenario with no crowding effects present (\textit{GCC}). The concentration of relatively low-mass, low-radius concentrated in the mass-radius panels hints to the potential presence of WD binaries in our sample.}
+    \caption{Corner plot for the \textit{recovered} sub-population for the Globular Cluster-\textit{colossus} observing scenario with crowding effects present (\textit{GCC}). The concentration of relatively low-mass, low-radius concentrated in the mass-radius panels hints to the potential presence of WD binaries in our sample.}
     \label{fig:gcc-rec-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1003,7 +957,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/OpenClusters/obs-OBC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{observable} sub-population for the Open Cluster-\textit{baseline} observing scenario with crowding effects present (\textit{OBC}). One interesting phenomenon depicted in this plot comes from the period-inclination panel. The flattening of the 2-dimensional distribution at longer periods shows an interesting pattern in our classification scheme. At long periods ($p > 100 days$) binary inclinations for \textit{observable} and \textit{recovered} binaries approach 90 degrees. This is because if a binary has an inclination $i \not\approx 90^o$ coupled with a longer period, the infrequent and shallow eclipses will be less likely to be successfully deemed \textit{observable} or even \textit{recovered}.}
+    \caption{Corner plot for the \textit{observable} sub-population for the Open Cluster-\textit{baseline} observing scenario with crowding effects present (\textit{OBC}). One interesting phenomenon depicted in this plot comes from the period-inclination panel. The flattening of the two-dimensional distribution at longer periods shows an interesting pattern in our classification scheme. At long periods ($p > 100$ days) binary inclinations for \textit{observable} and \textit{recovered} binaries approach 90 degrees. This is because if a binary has an inclination $i \not\approx 90^o$ coupled with a longer period, the infrequent and shallow eclipses will be less likely to be successfully deemed \textit{observable} or even \textit{recovered}.}
     \label{fig:obc-obs-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1011,7 +965,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/OpenClusters/rec-OBC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{recovered} sub-population for the Open Cluster-\textit{baseline} observing scenario with crowding effects present (\textit{OBC}).}
+    \caption{Corner plot for the \textit{recovered} sub-population for the Open Cluster-\textit{baseline} observing scenario with crowding effects present (\textit{OBC}). Primary masses strongly tend towards lower mass stars for this \textit{recovered} distribution.}
     \label{fig:obc-rec-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1021,7 +975,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/OpenClusters/all-OCN-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{all} sub-population for the Open Cluster-\textit{colossus} observing scenario with no crowding (\textit{OCN}).}
+    \caption{Corner plot for the \textit{all} sub-population for the Open Cluster-\textit{colossus} observing scenario with no crowding effects present (\textit{OCN}).}
     \label{fig:ocn-All-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1029,7 +983,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/OpenClusters/obs-OCN-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{observable} sub-population for the Open Cluster-\textit{colossus} observing scenario with no crowding (\textit{OCN}).}
+    \caption{Corner plot for the \textit{observable} sub-population for the Open Cluster-\textit{colossus} observing scenario with no crowding effects present (\textit{OCN}).}
     \label{fig:ocn-Obs-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1037,7 +991,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/OpenClusters/rec-OCN-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{recovered} sub-population for the Open Cluster-\textit{colossus} observing scenario with no crowding (\textit{OCN}).}
+    \caption{Corner plot for the \textit{recovered} sub-population for the Open Cluster-\textit{colossus} observing scenario with no crowding effects present (\textit{OCN}).}
     \label{fig:ocn-Rec-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1047,7 +1001,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/OpenClusters/all-OCC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{all} sub-population for the Open Cluster-\textit{colossus} observing scenario with crowding (\textit{OCC}).}
+    \caption{Corner plot for the \textit{all} sub-population for the Open Cluster-\textit{colossus} observing scenario with crowding  effects present (\textit{OCC}).}
     \label{fig:occ-All-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1055,7 +1009,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/OpenClusters/obs-OCC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{observable} sub-population for the Open Cluster-\textit{colossus} observing scenario with crowding (\textit{OCC}).}
+    \caption{Corner plot for the \textit{observable} sub-population for the Open Cluster-\textit{colossus} observing scenario with crowding  effects present (\textit{OCC}).}
     \label{fig:occ-Obs-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1063,7 +1017,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/OpenClusters/rec-OCC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{recovered} sub-population for the Open Cluster-\textit{colossus} observing scenario with crowding (\textit{OCC}).}
+    \caption{Corner plot for the \textit{recovered} sub-population for the Open Cluster-\textit{colossus} observing scenario with crowding  effects present(\textit{OCC}).}
     \label{fig:occ-Rec-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1077,7 +1031,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/m10/all-M10BN-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{all} sub-population for the m10-\textit{baseline} observing scenario with no crowding effects present (\textit{m10BN}).}
+    \caption{Corner plot for the \textit{all} sub-population for the M10-\textit{baseline} observing scenario with no crowding effects present (\textit{M10BN}).}
     \label{fig:m10bn-All-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1085,7 +1039,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/m10/obs-M10BN-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{observable} sub-population for the M10-\textit{baseline} observing scenario with no crowding effects present (\textit{m10BN}).}
+    \caption{Corner plot for the \textit{observable} sub-population for the M10-\textit{baseline} observing scenario with no crowding effects present (\textit{M10BN}).}
     \label{fig:m10bn-Obs-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1093,7 +1047,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/m10/rec-M10BN-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{recovered} sub-population for the m10-\textit{baseline} observing scenario with no crowding effects present (\textit{m10BN}).}
+    \caption{Corner plot for the \textit{recovered} sub-population for the M10-\textit{baseline} observing scenario with no crowding effects present (\textit{M10BN}).}
     \label{fig:m10bn-Rec-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1103,7 +1057,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/m10/all-M10BC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{all} sub-population for the m10-\textit{baseline} observing scenario with crowding effects present (\textit{m10BC}).}
+    \caption{Corner plot for the \textit{all} sub-population for the M10-\textit{baseline} observing scenario with crowding effects present (\textit{M10BC}).}
     \label{fig:m10bc-All-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1111,7 +1065,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/m10/obs-M10BC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{observable} sub-population for the m10-\textit{baseline} observing scenario with crowding effects present (\textit{m10BC}).}
+    \caption{Corner plot for the \textit{observable} sub-population for the M10-\textit{baseline} observing scenario with crowding effects present (\textit{M10BC}).}
     \label{fig:m10bc-Obs-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1119,7 +1073,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/m10/rec-M10BC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{recovered} sub-population for the m10-\textit{baseline} observing scenario with crowding effects present (\textit{m10BC}).}
+    \caption{Corner plot for the \textit{recovered} sub-population for the M10-\textit{baseline} observing scenario with crowding effects present (\textit{M10BC}).}
     \label{fig:m10bc-Rec-corner-plot-appendix}
 \end{figure}\clearpage
 
@@ -1143,7 +1097,7 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/m10/rec-M10CN-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{recovered} sub-population for the m10-\textit{colossus} observing scenario with no crowding effects present (\textit{M10CN}).}
+    \caption{Corner plot for the \textit{recovered} sub-population for the M10-\textit{colossus} observing scenario with no crowding effects present (\textit{M10CN}).}
     \label{fig:rec-m10cn-Rec-corner-plot-appendix}
 \end{figure}\clearpage
 % --------------------------------------
@@ -1152,21 +1106,21 @@ As a note on our naming schema for the following corner plots, for the purpose o
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/m10/all-M10CC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{all} sub-population for the m10-\textit{colossus} observing scenario with crowding effects present (\textit{M10CC}).}
+    \caption{Corner plot for the \textit{all} sub-population for the M10-\textit{colossus} observing scenario with crowding effects present (\textit{M10CC}).}
     \label{fig:m10cc-All-corner-plot-appendix}
 \end{figure}\clearpage
 % obs-m10CC
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/m10/obs-M10CC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{observable} sub-population for the m10-\textit{colossus} observing scenario with crowding effects present (\textit{M10CC}).}
+    \caption{Corner plot for the \textit{observable} sub-population for the M10-\textit{colossus} observing scenario with crowding effects present (\textit{M10CC}).}
     \label{fig:m10cc-Obs-corner-plot-appendix}
 \end{figure}\clearpage
 % rec-m10CC
 \begin{figure}
     \centering
     \includegraphics[width =\textwidth]{figures/cornerPlots/m10/rec-M10CC-cornerPlot-contour.pdf}
-    \caption{Corner plot for the \textit{recovered} sub-population for the m10-\textit{colossus} observing scenario with crowding effects present (\textit{M10CC}).}
+    \caption{Corner plot for the \textit{recovered} sub-population for the M10-\textit{colossus} observing scenario with crowding effects present (\textit{M10CC}).}
     \label{fig:m10cc-Rec-corner-plot-appendix}
 \end{figure}\clearpage
 % ----------------------------------------------------------------------------------
