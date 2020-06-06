@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  29 MAY 2020 13:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  5 JUN 2020 11:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -462,12 +462,12 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfig@bottom=\skip74
 )
 Class revtex4-1 Info: Unrecognized array package. Please update this document c
-lass! (Proceeding with fingers crossed.) on input line 177.
+lass! (Proceeding with fingers crossed.) on input line 172.
 Class revtex4-1 Info: Patching unrecognized longtable package. (Proceeding with
- fingers crossed) on input line 177.
-Class revtex4-1 Info: cite was not loaded (OK!) on input line 177.
-Class revtex4-1 Info: mcite was not loaded (OK!) on input line 177.
-Class revtex4-1 Info: multicol was not loaded (OK!) on input line 177.
+ fingers crossed) on input line 172.
+Class revtex4-1 Info: cite was not loaded (OK!) on input line 172.
+Class revtex4-1 Info: mcite was not loaded (OK!) on input line 172.
+Class revtex4-1 Info: multicol was not loaded (OK!) on input line 172.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
@@ -484,22 +484,22 @@ LaTeX Warning: Label `fig:gbn-corner-plot-appendix' multiply defined.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 177.
-LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
  (/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count319
@@ -523,7 +523,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box81
-Package hyperref Info: Link coloring ON on input line 177.
+Package hyperref Info: Link coloring ON on input line 172.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -537,161 +537,162 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count325
 )
-LaTeX Info: Redefining \ref on input line 177.
-LaTeX Info: Redefining \pageref on input line 177.
-LaTeX Info: Redefining \nameref on input line 177.
+LaTeX Info: Redefining \ref on input line 172.
+LaTeX Info: Redefining \pageref on input line 172.
+LaTeX Info: Redefining \nameref on input line 172.
  (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 23
-3.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 17
+9.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 233
+LaTeX Font Info:    Trying to load font information for U+msa on input line 179
 .
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 233
+LaTeX Font Info:    Trying to load font information for U+msb on input line 179
 .
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (10.88353pt too wide) in paragraph at lines 301--301
+)
+Overfull \hbox (10.88353pt too wide) in paragraph at lines 210--210
 [][]| [] [][][]| 
  []
 
-<figures/mollweides/clusters-opsim-mollweide.pdf, id=160, 510.29195pt x 276.272
+[1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (10.88353pt too wide) in paragraph at lines 237--237
+[][]| [] [][][]| 
+ []
+
+<figures/mollweides/clusters-opsim-mollweide.pdf, id=158, 510.29195pt x 276.272
 78pt>
 File: figures/mollweides/clusters-opsim-mollweide.pdf Graphic file (type pdf)
 <use figures/mollweides/clusters-opsim-mollweide.pdf>
 Package pdftex.def Info: figures/mollweides/clusters-opsim-mollweide.pdf  used 
-on input line 307.
+on input line 243.
 (pdftex.def)             Requested size: 205.24384pt x 111.11841pt.
 <figures/mollweides/baseline-Nobs-mollweide.pdf, id=161, 495.01778pt x 302.4016
 6pt>
 File: figures/mollweides/baseline-Nobs-mollweide.pdf Graphic file (type pdf)
 <use figures/mollweides/baseline-Nobs-mollweide.pdf>
 Package pdftex.def Info: figures/mollweides/baseline-Nobs-mollweide.pdf  used o
-n input line 315.
+n input line 251.
 (pdftex.def)             Requested size: 205.24384pt x 125.37898pt.
 <figures/mollweides/colossus-Nobs-mollweide.pdf, id=162, 495.01778pt x 302.4016
 6pt>
 File: figures/mollweides/colossus-Nobs-mollweide.pdf Graphic file (type pdf)
 <use figures/mollweides/colossus-Nobs-mollweide.pdf>
 Package pdftex.def Info: figures/mollweides/colossus-Nobs-mollweide.pdf  used o
-n input line 317.
+n input line 253.
 (pdftex.def)             Requested size: 205.24384pt x 125.37898pt.
-[2 <./figures/mollweides/clusters-opsim-mollweide.pdf> <./figures/mollweides/ba
-seline-Nobs-mollweide.pdf
+[2 <./figures/mollweides/clusters-opsim-mollweide.pdf>]
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/mollweides/baselin
-e-Nobs-mollweide.pdf): PDF inclusion: multiple pdfs with page group included in
- a single page
-> <./figures/mollweides/colossus-Nobs-mollweide.pdf
+LaTeX Warning: A float is stuck (cannot be placed) on input line 266.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 266.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
+
+Overfull \hbox (10.88353pt too wide) in paragraph at lines 280--280
+[][]| [] [][][]| 
+ []
+
+[3 <./figures/mollweides/baseline-Nobs-mollweide.pdf> <./figures/mollweides/col
+ossus-Nobs-mollweide.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/mollweides/colossu
 s-Nobs-mollweide.pdf): PDF inclusion: multiple pdfs with page group included in
  a single page
 >]
-Overfull \hbox (10.88353pt too wide) in paragraph at lines 344--344
-[][]| [] [][][]| 
- []
-
-[3]
-<figures/light-curve-sample576.pdf, id=331, 390.73793pt x 266.68005pt>
+<figures/light-curve-sample576.pdf, id=333, 390.73793pt x 266.68005pt>
 File: figures/light-curve-sample576.pdf Graphic file (type pdf)
 <use figures/light-curve-sample576.pdf>
 Package pdftex.def Info: figures/light-curve-sample576.pdf  used on input line 
-386.
+322.
 (pdftex.def)             Requested size: 246.29417pt x 168.09477pt.
 
-Overfull \hbox (4.02765pt too wide) in paragraph at lines 386--387
+Overfull \hbox (4.02765pt too wide) in paragraph at lines 322--323
  [][] 
  []
 
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 394.
-
-
-Overfull \hbox (10.88353pt too wide) in paragraph at lines 427--427
+Overfull \hbox (10.88353pt too wide) in paragraph at lines 365--365
 [][]| [] [][][]| 
  []
 
 [4 <./figures/light-curve-sample576.pdf>]
-Overfull \hbox (10.88353pt too wide) in paragraph at lines 436--436
+Overfull \hbox (10.88353pt too wide) in paragraph at lines 379--379
 [][]| [] [][][]| 
  []
 
-
-Overfull \hbox (10.88353pt too wide) in paragraph at lines 442--442
-[][]| [] [][][]| 
- []
-
-<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_lphist.pdf, id=387, 349.896
+<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_lphist.pdf, id=385, 349.896
 8pt x 499.89574pt>
 File: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_lphist.pdf Graphic fil
 e (type pdf)
 <use figures/popPlots/GlobularClusters/baseCrowd/EBLSST_lphist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_lph
-ist.pdf  used on input line 449.
+ist.pdf  used on input line 386.
 (pdftex.def)             Requested size: 153.93678pt x 219.93192pt.
-<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_rhist.pdf, id=388, 348.6870
+<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_rhist.pdf, id=386, 348.6870
 6pt x 499.44217pt>
 File: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_rhist.pdf Graphic file
  (type pdf)
 <use figures/popPlots/GlobularClusters/baseCrowd/EBLSST_rhist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_rhi
-st.pdf  used on input line 451.
+st.pdf  used on input line 388.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
-<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_qhist.pdf, id=389, 348.6870
+<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_qhist.pdf, id=387, 348.6870
 6pt x 499.44217pt>
 File: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_qhist.pdf Graphic file
  (type pdf)
 <use figures/popPlots/GlobularClusters/baseCrowd/EBLSST_qhist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_qhi
-st.pdf  used on input line 453.
+st.pdf  used on input line 390.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
-<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_m1hist.pdf, id=390, 348.687
+<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_m1hist.pdf, id=388, 348.687
 06pt x 499.44217pt>
 File: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_m1hist.pdf Graphic fil
 e (type pdf)
 <use figures/popPlots/GlobularClusters/baseCrowd/EBLSST_m1hist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_m1h
-ist.pdf  used on input line 455.
+ist.pdf  used on input line 392.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
-<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_dhist.pdf, id=391, 348.6870
+<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_dhist.pdf, id=389, 348.6870
 6pt x 499.44217pt>
 File: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_dhist.pdf Graphic file
  (type pdf)
 <use figures/popPlots/GlobularClusters/baseCrowd/EBLSST_dhist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_dhi
-st.pdf  used on input line 457.
+st.pdf  used on input line 394.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
-<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_maghist.pdf, id=392, 348.68
+<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_maghist.pdf, id=390, 348.68
 706pt x 499.44217pt>
 File: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_maghist.pdf Graphic fi
 le (type pdf)
 <use figures/popPlots/GlobularClusters/baseCrowd/EBLSST_maghist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_mag
-hist.pdf  used on input line 459.
+hist.pdf  used on input line 396.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
-<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_ehist.pdf, id=393, 348.6870
+<figures/popPlots/GlobularClusters/baseCrowd/EBLSST_ehist.pdf, id=391, 348.6870
 6pt x 499.44217pt>
 File: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_ehist.pdf Graphic file
  (type pdf)
 <use figures/popPlots/GlobularClusters/baseCrowd/EBLSST_ehist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/baseCrowd/EBLSST_ehi
-st.pdf  used on input line 461.
+st.pdf  used on input line 398.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 
-LaTeX Warning: Float too large for page by 50.41444pt on input line 465.
+LaTeX Warning: Float too large for page by 60.91444pt on input line 402.
 
 <figures/popPlots/GlobularClusters/colCrowd/EBLSST_lphist.pdf, id=394, 349.8968
 pt x 499.86864pt>
@@ -699,7 +700,7 @@ File: figures/popPlots/GlobularClusters/colCrowd/EBLSST_lphist.pdf Graphic file
  (type pdf)
 <use figures/popPlots/GlobularClusters/colCrowd/EBLSST_lphist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/colCrowd/EBLSST_lphi
-st.pdf  used on input line 473.
+st.pdf  used on input line 410.
 (pdftex.def)             Requested size: 153.93678pt x 219.92pt.
 <figures/popPlots/GlobularClusters/colCrowd/EBLSST_rhist.pdf, id=395, 348.68706
 pt x 499.44217pt>
@@ -707,7 +708,7 @@ File: figures/popPlots/GlobularClusters/colCrowd/EBLSST_rhist.pdf Graphic file
 (type pdf)
 <use figures/popPlots/GlobularClusters/colCrowd/EBLSST_rhist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/colCrowd/EBLSST_rhis
-t.pdf  used on input line 475.
+t.pdf  used on input line 412.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/GlobularClusters/colCrowd/EBLSST_qhist.pdf, id=396, 348.68706
 pt x 499.44217pt>
@@ -715,7 +716,7 @@ File: figures/popPlots/GlobularClusters/colCrowd/EBLSST_qhist.pdf Graphic file
 (type pdf)
 <use figures/popPlots/GlobularClusters/colCrowd/EBLSST_qhist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/colCrowd/EBLSST_qhis
-t.pdf  used on input line 477.
+t.pdf  used on input line 414.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/GlobularClusters/colCrowd/EBLSST_m1hist.pdf, id=397, 348.6870
 6pt x 499.44217pt>
@@ -723,7 +724,7 @@ File: figures/popPlots/GlobularClusters/colCrowd/EBLSST_m1hist.pdf Graphic file
  (type pdf)
 <use figures/popPlots/GlobularClusters/colCrowd/EBLSST_m1hist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/colCrowd/EBLSST_m1hi
-st.pdf  used on input line 479.
+st.pdf  used on input line 416.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/GlobularClusters/colCrowd/EBLSST_dhist.pdf, id=398, 348.68706
 pt x 499.44217pt>
@@ -731,7 +732,7 @@ File: figures/popPlots/GlobularClusters/colCrowd/EBLSST_dhist.pdf Graphic file
 (type pdf)
 <use figures/popPlots/GlobularClusters/colCrowd/EBLSST_dhist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/colCrowd/EBLSST_dhis
-t.pdf  used on input line 481.
+t.pdf  used on input line 418.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/GlobularClusters/colCrowd/EBLSST_maghist.pdf, id=399, 348.687
 06pt x 499.44217pt>
@@ -739,7 +740,7 @@ File: figures/popPlots/GlobularClusters/colCrowd/EBLSST_maghist.pdf Graphic fil
 e (type pdf)
 <use figures/popPlots/GlobularClusters/colCrowd/EBLSST_maghist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/colCrowd/EBLSST_magh
-ist.pdf  used on input line 483.
+ist.pdf  used on input line 420.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/GlobularClusters/colCrowd/EBLSST_ehist.pdf, id=400, 348.68706
 pt x 499.44217pt>
@@ -747,10 +748,10 @@ File: figures/popPlots/GlobularClusters/colCrowd/EBLSST_ehist.pdf Graphic file
 (type pdf)
 <use figures/popPlots/GlobularClusters/colCrowd/EBLSST_ehist.pdf>
 Package pdftex.def Info: figures/popPlots/GlobularClusters/colCrowd/EBLSST_ehis
-t.pdf  used on input line 485.
+t.pdf  used on input line 422.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 
-LaTeX Warning: Float too large for page by 38.91444pt on input line 489.
+LaTeX Warning: Float too large for page by 38.91444pt on input line 426.
 
 <figures/popPlots/OpenClusters/baseCrowd/EBLSST_lphist.pdf, id=403, 349.8968pt 
 x 499.44217pt>
@@ -758,7 +759,7 @@ File: figures/popPlots/OpenClusters/baseCrowd/EBLSST_lphist.pdf Graphic file (t
 ype pdf)
 <use figures/popPlots/OpenClusters/baseCrowd/EBLSST_lphist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/baseCrowd/EBLSST_lphist.
-pdf  used on input line 497.
+pdf  used on input line 434.
 (pdftex.def)             Requested size: 153.93678pt x 219.73236pt.
 <figures/popPlots/OpenClusters/baseCrowd/EBLSST_rhist.pdf, id=404, 348.68706pt 
 x 499.44217pt>
@@ -766,7 +767,7 @@ File: figures/popPlots/OpenClusters/baseCrowd/EBLSST_rhist.pdf Graphic file (ty
 pe pdf)
 <use figures/popPlots/OpenClusters/baseCrowd/EBLSST_rhist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/baseCrowd/EBLSST_rhist.p
-df  used on input line 499.
+df  used on input line 436.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/OpenClusters/baseCrowd/EBLSST_qhist.pdf, id=405, 348.68706pt 
 x 499.44217pt>
@@ -774,7 +775,7 @@ File: figures/popPlots/OpenClusters/baseCrowd/EBLSST_qhist.pdf Graphic file (ty
 pe pdf)
 <use figures/popPlots/OpenClusters/baseCrowd/EBLSST_qhist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/baseCrowd/EBLSST_qhist.p
-df  used on input line 501.
+df  used on input line 438.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/OpenClusters/baseCrowd/EBLSST_m1hist.pdf, id=406, 348.68706pt
  x 499.44217pt>
@@ -782,7 +783,7 @@ File: figures/popPlots/OpenClusters/baseCrowd/EBLSST_m1hist.pdf Graphic file (t
 ype pdf)
 <use figures/popPlots/OpenClusters/baseCrowd/EBLSST_m1hist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/baseCrowd/EBLSST_m1hist.
-pdf  used on input line 503.
+pdf  used on input line 440.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/OpenClusters/baseCrowd/EBLSST_dhist.pdf, id=407, 348.68706pt 
 x 499.44217pt>
@@ -790,7 +791,7 @@ File: figures/popPlots/OpenClusters/baseCrowd/EBLSST_dhist.pdf Graphic file (ty
 pe pdf)
 <use figures/popPlots/OpenClusters/baseCrowd/EBLSST_dhist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/baseCrowd/EBLSST_dhist.p
-df  used on input line 505.
+df  used on input line 442.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/OpenClusters/baseCrowd/EBLSST_maghist.pdf, id=408, 348.68706p
 t x 499.44217pt>
@@ -798,7 +799,7 @@ File: figures/popPlots/OpenClusters/baseCrowd/EBLSST_maghist.pdf Graphic file (
 type pdf)
 <use figures/popPlots/OpenClusters/baseCrowd/EBLSST_maghist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/baseCrowd/EBLSST_maghist
-.pdf  used on input line 507.
+.pdf  used on input line 444.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/OpenClusters/baseCrowd/EBLSST_ehist.pdf, id=409, 348.68706pt 
 x 499.44217pt>
@@ -806,10 +807,10 @@ File: figures/popPlots/OpenClusters/baseCrowd/EBLSST_ehist.pdf Graphic file (ty
 pe pdf)
 <use figures/popPlots/OpenClusters/baseCrowd/EBLSST_ehist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/baseCrowd/EBLSST_ehist.p
-df  used on input line 509.
+df  used on input line 446.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 
-LaTeX Warning: Float too large for page by 38.91444pt on input line 514.
+LaTeX Warning: Float too large for page by 38.91444pt on input line 451.
 
 <figures/popPlots/OpenClusters/colCrowd/EBLSST_lphist.pdf, id=412, 349.8968pt x
  499.44217pt>
@@ -817,7 +818,7 @@ File: figures/popPlots/OpenClusters/colCrowd/EBLSST_lphist.pdf Graphic file (ty
 pe pdf)
 <use figures/popPlots/OpenClusters/colCrowd/EBLSST_lphist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/colCrowd/EBLSST_lphist.p
-df  used on input line 520.
+df  used on input line 457.
 (pdftex.def)             Requested size: 153.93678pt x 219.73236pt.
 <figures/popPlots/OpenClusters/colCrowd/EBLSST_rhist.pdf, id=413, 348.68706pt x
  499.44217pt>
@@ -825,7 +826,7 @@ File: figures/popPlots/OpenClusters/colCrowd/EBLSST_rhist.pdf Graphic file (typ
 e pdf)
 <use figures/popPlots/OpenClusters/colCrowd/EBLSST_rhist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/colCrowd/EBLSST_rhist.pd
-f  used on input line 522.
+f  used on input line 459.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/OpenClusters/colCrowd/EBLSST_qhist.pdf, id=414, 348.68706pt x
  499.44217pt>
@@ -833,7 +834,7 @@ File: figures/popPlots/OpenClusters/colCrowd/EBLSST_qhist.pdf Graphic file (typ
 e pdf)
 <use figures/popPlots/OpenClusters/colCrowd/EBLSST_qhist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/colCrowd/EBLSST_qhist.pd
-f  used on input line 524.
+f  used on input line 461.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/OpenClusters/colCrowd/EBLSST_m1hist.pdf, id=415, 348.68706pt 
 x 499.44217pt>
@@ -841,7 +842,7 @@ File: figures/popPlots/OpenClusters/colCrowd/EBLSST_m1hist.pdf Graphic file (ty
 pe pdf)
 <use figures/popPlots/OpenClusters/colCrowd/EBLSST_m1hist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/colCrowd/EBLSST_m1hist.p
-df  used on input line 526.
+df  used on input line 463.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/OpenClusters/colCrowd/EBLSST_dhist.pdf, id=416, 348.68706pt x
  499.44217pt>
@@ -849,7 +850,7 @@ File: figures/popPlots/OpenClusters/colCrowd/EBLSST_dhist.pdf Graphic file (typ
 e pdf)
 <use figures/popPlots/OpenClusters/colCrowd/EBLSST_dhist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/colCrowd/EBLSST_dhist.pd
-f  used on input line 528.
+f  used on input line 465.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/OpenClusters/colCrowd/EBLSST_maghist.pdf, id=417, 348.68706pt
  x 499.44217pt>
@@ -857,7 +858,7 @@ File: figures/popPlots/OpenClusters/colCrowd/EBLSST_maghist.pdf Graphic file (t
 ype pdf)
 <use figures/popPlots/OpenClusters/colCrowd/EBLSST_maghist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/colCrowd/EBLSST_maghist.
-pdf  used on input line 530.
+pdf  used on input line 467.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 <figures/popPlots/OpenClusters/colCrowd/EBLSST_ehist.pdf, id=418, 348.68706pt x
  499.44217pt>
@@ -865,10 +866,10 @@ File: figures/popPlots/OpenClusters/colCrowd/EBLSST_ehist.pdf Graphic file (typ
 e pdf)
 <use figures/popPlots/OpenClusters/colCrowd/EBLSST_ehist.pdf>
 Package pdftex.def Info: figures/popPlots/OpenClusters/colCrowd/EBLSST_ehist.pd
-f  used on input line 532.
+f  used on input line 469.
 (pdftex.def)             Requested size: 153.93678pt x 220.49445pt.
 
-LaTeX Warning: Float too large for page by 38.91444pt on input line 537.
+LaTeX Warning: Float too large for page by 38.91444pt on input line 474.
 
 <figures/mollweides/recoveryMollweides/GCs/mollweide_pct_gbc.pdf, id=421, 493.3
 5358pt x 224.5232pt>
@@ -876,7 +877,7 @@ File: figures/mollweides/recoveryMollweides/GCs/mollweide_pct_gbc.pdf Graphic f
 ile (type pdf)
 <use figures/mollweides/recoveryMollweides/GCs/mollweide_pct_gbc.pdf>
 Package pdftex.def Info: figures/mollweides/recoveryMollweides/GCs/mollweide_pc
-t_gbc.pdf  used on input line 547.
+t_gbc.pdf  used on input line 484.
 (pdftex.def)             Requested size: 230.90128pt x 105.08395pt.
 <figures/mollweides/recoveryMollweides/GCs/mollweide_N_gbc.pdf, id=422, 486.970
 35pt x 224.5232pt>
@@ -884,7 +885,7 @@ File: figures/mollweides/recoveryMollweides/GCs/mollweide_N_gbc.pdf Graphic fil
 e (type pdf)
 <use figures/mollweides/recoveryMollweides/GCs/mollweide_N_gbc.pdf>
 Package pdftex.def Info: figures/mollweides/recoveryMollweides/GCs/mollweide_N_
-gbc.pdf  used on input line 550.
+gbc.pdf  used on input line 487.
 (pdftex.def)             Requested size: 230.90128pt x 106.45776pt.
 <figures/mollweides/recoveryMollweides/GCs/mollweide_pct_gcc.pdf, id=423, 499.7
 3679pt x 224.5232pt>
@@ -892,7 +893,7 @@ File: figures/mollweides/recoveryMollweides/GCs/mollweide_pct_gcc.pdf Graphic f
 ile (type pdf)
 <use figures/mollweides/recoveryMollweides/GCs/mollweide_pct_gcc.pdf>
 Package pdftex.def Info: figures/mollweides/recoveryMollweides/GCs/mollweide_pc
-t_gcc.pdf  used on input line 562.
+t_gcc.pdf  used on input line 499.
 (pdftex.def)             Requested size: 230.90128pt x 103.73756pt.
 <figures/mollweides/recoveryMollweides/GCs/mollweide_N_gcc.pdf, id=424, 495.376
 75pt x 224.5232pt>
@@ -900,7 +901,7 @@ File: figures/mollweides/recoveryMollweides/GCs/mollweide_N_gcc.pdf Graphic fil
 e (type pdf)
 <use figures/mollweides/recoveryMollweides/GCs/mollweide_N_gcc.pdf>
 Package pdftex.def Info: figures/mollweides/recoveryMollweides/GCs/mollweide_N_
-gcc.pdf  used on input line 565.
+gcc.pdf  used on input line 502.
 (pdftex.def)             Requested size: 230.90128pt x 104.65228pt.
 <figures/mollweides/recoveryMollweides/OCs/mollweide_pct_obc.pdf, id=425, 499.7
 3679pt x 224.5232pt>
@@ -908,7 +909,7 @@ File: figures/mollweides/recoveryMollweides/OCs/mollweide_pct_obc.pdf Graphic f
 ile (type pdf)
 <use figures/mollweides/recoveryMollweides/OCs/mollweide_pct_obc.pdf>
 Package pdftex.def Info: figures/mollweides/recoveryMollweides/OCs/mollweide_pc
-t_obc.pdf  used on input line 575.
+t_obc.pdf  used on input line 512.
 (pdftex.def)             Requested size: 230.90128pt x 103.73756pt.
 <figures/mollweides/recoveryMollweides/OCs/mollweide_N_obc.pdf, id=426, 495.376
 75pt x 224.5232pt>
@@ -916,7 +917,7 @@ File: figures/mollweides/recoveryMollweides/OCs/mollweide_N_obc.pdf Graphic fil
 e (type pdf)
 <use figures/mollweides/recoveryMollweides/OCs/mollweide_N_obc.pdf>
 Package pdftex.def Info: figures/mollweides/recoveryMollweides/OCs/mollweide_N_
-obc.pdf  used on input line 578.
+obc.pdf  used on input line 515.
 (pdftex.def)             Requested size: 230.90128pt x 104.65228pt.
 <figures/mollweides/recoveryMollweides/OCs/mollweide_pct_occ.pdf, id=427, 493.3
 5358pt x 224.5232pt>
@@ -924,7 +925,7 @@ File: figures/mollweides/recoveryMollweides/OCs/mollweide_pct_occ.pdf Graphic f
 ile (type pdf)
 <use figures/mollweides/recoveryMollweides/OCs/mollweide_pct_occ.pdf>
 Package pdftex.def Info: figures/mollweides/recoveryMollweides/OCs/mollweide_pc
-t_occ.pdf  used on input line 588.
+t_occ.pdf  used on input line 525.
 (pdftex.def)             Requested size: 230.90128pt x 105.08395pt.
 <figures/mollweides/recoveryMollweides/OCs/mollweide_N_occ.pdf, id=428, 495.376
 75pt x 224.5232pt>
@@ -932,7 +933,7 @@ File: figures/mollweides/recoveryMollweides/OCs/mollweide_N_occ.pdf Graphic fil
 e (type pdf)
 <use figures/mollweides/recoveryMollweides/OCs/mollweide_N_occ.pdf>
 Package pdftex.def Info: figures/mollweides/recoveryMollweides/OCs/mollweide_N_
-occ.pdf  used on input line 591.
+occ.pdf  used on input line 528.
 (pdftex.def)             Requested size: 230.90128pt x 104.65228pt.
 <figures/cornerPlots/GlobularClusters/obs-GBC-cornerPlot-contour.pdf, id=429, 1
 308.08694pt x 1308.08694pt>
@@ -940,7 +941,7 @@ File: figures/cornerPlots/GlobularClusters/obs-GBC-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/obs-GBC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/obs-GBC-cornerPlo
-t-contour.pdf  used on input line 606.
+t-contour.pdf  used on input line 543.
 (pdftex.def)             Requested size: 436.15294pt x 436.14102pt.
 <figures/cornerPlots/GlobularClusters/rec-GBC-cornerPlot-contour.pdf, id=432, 1
 308.08694pt x 1308.08694pt>
@@ -948,7 +949,7 @@ File: figures/cornerPlots/GlobularClusters/rec-GBC-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/rec-GBC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/rec-GBC-cornerPlo
-t-contour.pdf  used on input line 613.
+t-contour.pdf  used on input line 550.
 (pdftex.def)             Requested size: 436.15294pt x 436.14102pt.
 <figures/cornerPlots/GlobularClusters/obs-GCC-cornerPlot-contour.pdf, id=433, 1
 308.08694pt x 1308.08694pt>
@@ -956,7 +957,7 @@ File: figures/cornerPlots/GlobularClusters/obs-GCC-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/obs-GCC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/obs-GCC-cornerPlo
-t-contour.pdf  used on input line 623.
+t-contour.pdf  used on input line 560.
 (pdftex.def)             Requested size: 436.15294pt x 436.14102pt.
 <figures/cornerPlots/GlobularClusters/rec-GCC-cornerPlot-contour.pdf, id=436, 1
 308.08694pt x 1308.08694pt>
@@ -964,7 +965,7 @@ File: figures/cornerPlots/GlobularClusters/rec-GCC-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/rec-GCC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/rec-GCC-cornerPlo
-t-contour.pdf  used on input line 631.
+t-contour.pdf  used on input line 568.
 (pdftex.def)             Requested size: 436.15294pt x 436.14102pt.
 <figures/cornerPlots/OpenClusters/obs-OBC-cornerPlot-contour.pdf, id=439, 1308.
 08694pt x 1308.08694pt>
@@ -972,7 +973,7 @@ File: figures/cornerPlots/OpenClusters/obs-OBC-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/obs-OBC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/obs-OBC-cornerPlot-co
-ntour.pdf  used on input line 640.
+ntour.pdf  used on input line 577.
 (pdftex.def)             Requested size: 436.15294pt x 436.14102pt.
 <figures/cornerPlots/OpenClusters/rec-OBC-cornerPlot-contour.pdf, id=442, 1308.
 08694pt x 1308.08694pt>
@@ -980,7 +981,7 @@ File: figures/cornerPlots/OpenClusters/rec-OBC-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/rec-OBC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/rec-OBC-cornerPlot-co
-ntour.pdf  used on input line 648.
+ntour.pdf  used on input line 585.
 (pdftex.def)             Requested size: 436.15294pt x 436.14102pt.
 <figures/cornerPlots/OpenClusters/obs-OCC-cornerPlot-contour.pdf, id=445, 1308.
 08694pt x 1308.08694pt>
@@ -988,7 +989,7 @@ File: figures/cornerPlots/OpenClusters/obs-OCC-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/obs-OCC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/obs-OCC-cornerPlot-co
-ntour.pdf  used on input line 657.
+ntour.pdf  used on input line 594.
 (pdftex.def)             Requested size: 436.15294pt x 436.14102pt.
 <figures/cornerPlots/OpenClusters/rec-OCC-cornerPlot-contour.pdf, id=448, 1308.
 08694pt x 1308.08694pt>
@@ -996,32 +997,8 @@ File: figures/cornerPlots/OpenClusters/rec-OCC-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/rec-OCC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/rec-OCC-cornerPlot-co
-ntour.pdf  used on input line 665.
+ntour.pdf  used on input line 602.
 (pdftex.def)             Requested size: 436.15294pt x 436.14102pt.
-
-LaTeX Warning: Reference `fig:gbc-corner-plots' on page 5 undefined on input li
-ne 678.
-
-
-LaTeX Warning: Reference `fig:gcc-corner-plots' on page 5 undefined on input li
-ne 678.
-
-
-LaTeX Warning: Reference `fig:obc-corner-plots' on page 5 undefined on input li
-ne 678.
-
-
-LaTeX Warning: Reference `fig:occ-corner-plots' on page 5 undefined on input li
-ne 678.
-
-
-LaTeX Warning: Reference `fig:obc-corner-plots' on page 5 undefined on input li
-ne 678.
-
-
-LaTeX Warning: Reference `fig:occ-corner-plots' on page 5 undefined on input li
-ne 678.
-
 [5] [6 <./figures/popPlots/GlobularClusters/baseCrowd/EBLSST_lphist.pdf> <./fig
 ures/popPlots/GlobularClusters/baseCrowd/EBLSST_rhist.pdf
 
@@ -1055,7 +1032,7 @@ lusters/baseCrowd/EBLSST_ehist.pdf): PDF inclusion: multiple pdfs with page gro
 up included in a single page
 >]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 693.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 625.
 
 [7 <./figures/popPlots/GlobularClusters/colCrowd/EBLSST_lphist.pdf> <./figures/
 popPlots/GlobularClusters/colCrowd/EBLSST_rhist.pdf
@@ -1090,7 +1067,7 @@ lusters/colCrowd/EBLSST_ehist.pdf): PDF inclusion: multiple pdfs with page grou
 p included in a single page
 >]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 693.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 625.
 
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
@@ -1128,7 +1105,7 @@ ers/baseCrowd/EBLSST_ehist.pdf): PDF inclusion: multiple pdfs with page group i
 ncluded in a single page
 >]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 693.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 625.
 
 [9 <./figures/popPlots/OpenClusters/colCrowd/EBLSST_lphist.pdf> <./figures/popP
 lots/OpenClusters/colCrowd/EBLSST_rhist.pdf
@@ -1163,29 +1140,10 @@ ers/colCrowd/EBLSST_ehist.pdf): PDF inclusion: multiple pdfs with page group in
 cluded in a single page
 >]
 
-LaTeX Warning: A float is stuck (cannot be placed) on input line 693.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 625.
 
 
 Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
-
-
-Overfull \hbox (17.77481pt too wide) in paragraph at lines 706--717
- []$ 
- []
-
-
-Overfull \hbox (4.79231pt too wide) in paragraph at lines 717--717
-[][][][]| 
- []
-
-
-Overfull \hbox (4.79231pt too wide) in paragraph at lines 717--717
-[][][][]| 
- []
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 723.
 
 [10 <./figures/mollweides/recoveryMollweides/GCs/mollweide_pct_gbc.pdf> <./figu
 res/mollweides/recoveryMollweides/GCs/mollweide_N_gbc.pdf
@@ -1223,497 +1181,541 @@ group included in a single page
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/mollweides/recover
 yMollweides/OCs/mollweide_N_occ.pdf): PDF inclusion: multiple pdfs with page gr
 oup included in a single page
->] [11 <./figures/cornerPlots/GlobularClusters/obs-GBC-cornerPlot-contour.pdf>]
+>]
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 745.
+Class revtex4-1 Warning: Dequeueing of floats stalled.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 630.
+
+[11 <./figures/cornerPlots/GlobularClusters/obs-GBC-cornerPlot-contour.pdf>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 630.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
+
+Overfull \hbox (25.61638pt too wide) in paragraph at lines 644--657
+ []$ 
+ []
 
 [12 <./figures/cornerPlots/GlobularClusters/rec-GBC-cornerPlot-contour.pdf>]
+
+Class revtex4-1 Warning: Dequeueing of floats stalled.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 678.
+
 [13 <./figures/cornerPlots/GlobularClusters/obs-GCC-cornerPlot-contour.pdf>]
-[14 <./figures/cornerPlots/GlobularClusters/rec-GCC-cornerPlot-contour.pdf>]
-(./main.bbl [15 <./figures/cornerPlots/OpenClusters/obs-OBC-cornerPlot-contour.
-pdf>] [16 <./figures/cornerPlots/OpenClusters/rec-OBC-cornerPlot-contour.pdf>])
-[17 <./figures/cornerPlots/OpenClusters/obs-OCC-cornerPlot-contour.pdf>]
 
-LaTeX Warning: Reference `fig:gbc-corner-plots' on page 18 undefined on input l
-ine 852.
+LaTeX Warning: A float is stuck (cannot be placed) on input line 678.
 
 
-LaTeX Warning: Reference `fig:gcc-corner-plots' on page 18 undefined on input l
-ine 852.
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
 
 
-LaTeX Warning: Reference `fig:obc-corner-plots' on page 18 undefined on input l
-ine 852.
+Class revtex4-1 Warning: Dequeueing of floats stalled.
 
 
-LaTeX Warning: Reference `fig:occ-corner-plots' on page 18 undefined on input l
-ine 852.
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 684.
+
+[14]
+
+Class revtex4-1 Warning: Dequeueing of floats stalled.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 852--854
+LaTeX Warning: A float is stuck (cannot be placed) on input line 723.
+
+[15 <./figures/cornerPlots/GlobularClusters/rec-GCC-cornerPlot-contour.pdf>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 723.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
+
+Class revtex4-1 Warning: Dequeueing of floats stalled.
+
+(./main.bbl [16]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 1.
+
+[17 <./figures/cornerPlots/OpenClusters/obs-OBC-cornerPlot-contour.pdf>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 1.
+
+[18 <./figures/cornerPlots/OpenClusters/rec-OBC-cornerPlot-contour.pdf>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 1.
+
+[19 <./figures/cornerPlots/OpenClusters/obs-OCC-cornerPlot-contour.pdf>]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 1.
+
+[20 <./figures/cornerPlots/OpenClusters/rec-OCC-cornerPlot-contour.pdf>])
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 797--799
 
  []
 
-[18 <./figures/cornerPlots/OpenClusters/rec-OCC-cornerPlot-contour.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 856--857
+
+Underfull \hbox (badness 10000) in paragraph at lines 801--802
 
  []
 
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 860--867
+
+Underfull \hbox (badness 10000) in paragraph at lines 805--812
 
  []
 
-<figures/cornerPlots/GlobularClusters/all-GBN-cornerPlot-contour.pdf, id=2818, 
+<figures/cornerPlots/GlobularClusters/all-GBN-cornerPlot-contour.pdf, id=2842, 
 1308.08694pt x 1308.08694pt>
 File: figures/cornerPlots/GlobularClusters/all-GBN-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/all-GBN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/all-GBN-cornerPlo
-t-contour.pdf  used on input line 873.
+t-contour.pdf  used on input line 818.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
-[20] [21 <./figures/cornerPlots/GlobularClusters/all-GBN-cornerPlot-contour.pdf
+[22] [23 <./figures/cornerPlots/GlobularClusters/all-GBN-cornerPlot-contour.pdf
 >]
-<figures/cornerPlots/GlobularClusters/obs-GBN-cornerPlot-contour.pdf, id=2984, 
+<figures/cornerPlots/GlobularClusters/obs-GBN-cornerPlot-contour.pdf, id=3010, 
 1308.08694pt x 1308.08694pt>
 File: figures/cornerPlots/GlobularClusters/obs-GBN-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/obs-GBN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/obs-GBN-cornerPlo
-t-contour.pdf  used on input line 881.
+t-contour.pdf  used on input line 826.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [22 <./figures/cornerPlots/GlobularClusters/obs-GBN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/GlobularClusters/rec-GBN-cornerPlot-contour.pdf, id=3152, 
+ [24 <./figures/cornerPlots/GlobularClusters/obs-GBN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/GlobularClusters/rec-GBN-cornerPlot-contour.pdf, id=3178, 
 1308.08694pt x 1308.08694pt>
 File: figures/cornerPlots/GlobularClusters/rec-GBN-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/rec-GBN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/rec-GBN-cornerPlo
-t-contour.pdf  used on input line 889.
+t-contour.pdf  used on input line 834.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
-[23 <./figures/cornerPlots/GlobularClusters/rec-GBN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/GlobularClusters/all-GBC-cornerPlot-contour.pdf, id=3314, 
+[25 <./figures/cornerPlots/GlobularClusters/rec-GBN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/GlobularClusters/all-GBC-cornerPlot-contour.pdf, id=3342, 
 1308.08694pt x 1308.08694pt>
 File: figures/cornerPlots/GlobularClusters/all-GBC-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/all-GBC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/all-GBC-cornerPlo
-t-contour.pdf  used on input line 899.
+t-contour.pdf  used on input line 844.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
 
-[24 <./figures/cornerPlots/GlobularClusters/all-GBC-cornerPlot-contour.pdf>]
+[26 <./figures/cornerPlots/GlobularClusters/all-GBC-cornerPlot-contour.pdf>]
 File: figures/cornerPlots/GlobularClusters/obs-GBC-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/obs-GBC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/obs-GBC-cornerPlo
-t-contour.pdf  used on input line 907.
+t-contour.pdf  used on input line 852.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
 
-[25]
+[27]
 File: figures/cornerPlots/GlobularClusters/rec-GBC-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/rec-GBC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/rec-GBC-cornerPlo
-t-contour.pdf  used on input line 915.
+t-contour.pdf  used on input line 860.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
-<figures/cornerPlots/GlobularClusters/all-GCN-cornerPlot-contour.pdf, id=3482, 
+<figures/cornerPlots/GlobularClusters/all-GCN-cornerPlot-contour.pdf, id=3508, 
 1308.08694pt x 1308.08694pt>
 File: figures/cornerPlots/GlobularClusters/all-GCN-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/all-GCN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/all-GCN-cornerPlo
-t-contour.pdf  used on input line 924.
+t-contour.pdf  used on input line 869.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [26] [27 <./figures/cornerPlots/GlobularClusters/all-GCN-cornerPlot-contour.pd
+ [28] [29 <./figures/cornerPlots/GlobularClusters/all-GCN-cornerPlot-contour.pd
 f>]
-<figures/cornerPlots/GlobularClusters/obs-GCN-cornerPlot-contour.pdf, id=3650, 
+<figures/cornerPlots/GlobularClusters/obs-GCN-cornerPlot-contour.pdf, id=3675, 
 1308.08694pt x 1308.08694pt>
 File: figures/cornerPlots/GlobularClusters/obs-GCN-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/obs-GCN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/obs-GCN-cornerPlo
-t-contour.pdf  used on input line 932.
+t-contour.pdf  used on input line 877.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [28 <./figures/cornerPlots/GlobularClusters/obs-GCN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/GlobularClusters/rec-GCN-cornerPlot-contour.pdf, id=3814, 
+ [30 <./figures/cornerPlots/GlobularClusters/obs-GCN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/GlobularClusters/rec-GCN-cornerPlot-contour.pdf, id=3839, 
 1308.08694pt x 1308.08694pt>
 File: figures/cornerPlots/GlobularClusters/rec-GCN-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/rec-GCN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/rec-GCN-cornerPlo
-t-contour.pdf  used on input line 940.
+t-contour.pdf  used on input line 885.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [29 <./figures/cornerPlots/GlobularClusters/rec-GCN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/GlobularClusters/all-GCC-cornerPlot-contour.pdf, id=3977, 
+ [31 <./figures/cornerPlots/GlobularClusters/rec-GCN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/GlobularClusters/all-GCC-cornerPlot-contour.pdf, id=4004, 
 1308.08694pt x 1308.08694pt>
 File: figures/cornerPlots/GlobularClusters/all-GCC-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/all-GCC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/all-GCC-cornerPlo
-t-contour.pdf  used on input line 950.
+t-contour.pdf  used on input line 895.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [30 <./figures/cornerPlots/GlobularClusters/all-GCC-cornerPlot-contour.pdf>]
+ [32 <./figures/cornerPlots/GlobularClusters/all-GCC-cornerPlot-contour.pdf>]
 File: figures/cornerPlots/GlobularClusters/obs-GCC-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/obs-GCC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/obs-GCC-cornerPlo
-t-contour.pdf  used on input line 958.
+t-contour.pdf  used on input line 903.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [31]
+ [33]
 File: figures/cornerPlots/GlobularClusters/rec-GCC-cornerPlot-contour.pdf Graph
 ic file (type pdf)
 <use figures/cornerPlots/GlobularClusters/rec-GCC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/GlobularClusters/rec-GCC-cornerPlo
-t-contour.pdf  used on input line 966.
+t-contour.pdf  used on input line 911.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [32]
-<figures/cornerPlots/OpenClusters/all-OBN-cornerPlot-contour.pdf, id=4149, 1308
+ [34]
+<figures/cornerPlots/OpenClusters/all-OBN-cornerPlot-contour.pdf, id=4174, 1308
 .08694pt x 1308.08694pt>
 File: figures/cornerPlots/OpenClusters/all-OBN-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/all-OBN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/all-OBN-cornerPlot-co
-ntour.pdf  used on input line 980.
+ntour.pdf  used on input line 925.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [33 <./figures/cornerPlots/OpenClusters/all-OBN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/OpenClusters/obs-OBN-cornerPlot-contour.pdf, id=4312, 1308
+ [35 <./figures/cornerPlots/OpenClusters/all-OBN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/OpenClusters/obs-OBN-cornerPlot-contour.pdf, id=4337, 1308
 .08694pt x 1308.08694pt>
 File: figures/cornerPlots/OpenClusters/obs-OBN-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/obs-OBN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/obs-OBN-cornerPlot-co
-ntour.pdf  used on input line 988.
+ntour.pdf  used on input line 933.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [34 <./figures/cornerPlots/OpenClusters/obs-OBN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/OpenClusters/rec-OBN-cornerPlot-contour.pdf, id=4477, 1308
+ [36 <./figures/cornerPlots/OpenClusters/obs-OBN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/OpenClusters/rec-OBN-cornerPlot-contour.pdf, id=4502, 1308
 .08694pt x 1308.08694pt>
 File: figures/cornerPlots/OpenClusters/rec-OBN-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/rec-OBN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/rec-OBN-cornerPlot-co
-ntour.pdf  used on input line 996.
+ntour.pdf  used on input line 941.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
 
-[35 <./figures/cornerPlots/OpenClusters/rec-OBN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/OpenClusters/all-OBC-cornerPlot-contour.pdf, id=4640, 1308
+[37 <./figures/cornerPlots/OpenClusters/rec-OBN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/OpenClusters/all-OBC-cornerPlot-contour.pdf, id=4666, 1308
 .08694pt x 1308.08694pt>
 File: figures/cornerPlots/OpenClusters/all-OBC-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/all-OBC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/all-OBC-cornerPlot-co
-ntour.pdf  used on input line 1006.
+ntour.pdf  used on input line 951.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
 
-[36 <./figures/cornerPlots/OpenClusters/all-OBC-cornerPlot-contour.pdf>]
+[38 <./figures/cornerPlots/OpenClusters/all-OBC-cornerPlot-contour.pdf>]
 File: figures/cornerPlots/OpenClusters/obs-OBC-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/obs-OBC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/obs-OBC-cornerPlot-co
-ntour.pdf  used on input line 1014.
+ntour.pdf  used on input line 959.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
 
-[37]
+[39]
 File: figures/cornerPlots/OpenClusters/rec-OBC-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/rec-OBC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/rec-OBC-cornerPlot-co
-ntour.pdf  used on input line 1022.
+ntour.pdf  used on input line 967.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [38]
-<figures/cornerPlots/OpenClusters/all-OCN-cornerPlot-contour.pdf, id=4815, 1308
+ [40]
+<figures/cornerPlots/OpenClusters/all-OCN-cornerPlot-contour.pdf, id=4840, 1308
 .08694pt x 1308.08694pt>
 File: figures/cornerPlots/OpenClusters/all-OCN-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/all-OCN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/all-OCN-cornerPlot-co
-ntour.pdf  used on input line 1032.
+ntour.pdf  used on input line 977.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [39 <./figures/cornerPlots/OpenClusters/all-OCN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/OpenClusters/obs-OCN-cornerPlot-contour.pdf, id=4978, 1308
+ [41 <./figures/cornerPlots/OpenClusters/all-OCN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/OpenClusters/obs-OCN-cornerPlot-contour.pdf, id=5003, 1308
 .08694pt x 1308.08694pt>
 File: figures/cornerPlots/OpenClusters/obs-OCN-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/obs-OCN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/obs-OCN-cornerPlot-co
-ntour.pdf  used on input line 1040.
+ntour.pdf  used on input line 985.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [40 <./figures/cornerPlots/OpenClusters/obs-OCN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/OpenClusters/rec-OCN-cornerPlot-contour.pdf, id=5139, 1308
+ [42 <./figures/cornerPlots/OpenClusters/obs-OCN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/OpenClusters/rec-OCN-cornerPlot-contour.pdf, id=5165, 1308
 .08694pt x 1308.08694pt>
 File: figures/cornerPlots/OpenClusters/rec-OCN-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/rec-OCN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/rec-OCN-cornerPlot-co
-ntour.pdf  used on input line 1048.
+ntour.pdf  used on input line 993.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
 
-[41 <./figures/cornerPlots/OpenClusters/rec-OCN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/OpenClusters/all-OCC-cornerPlot-contour.pdf, id=5302, 1308
+[43 <./figures/cornerPlots/OpenClusters/rec-OCN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/OpenClusters/all-OCC-cornerPlot-contour.pdf, id=5328, 1308
 .08694pt x 1308.08694pt>
 File: figures/cornerPlots/OpenClusters/all-OCC-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/all-OCC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/all-OCC-cornerPlot-co
-ntour.pdf  used on input line 1058.
+ntour.pdf  used on input line 1003.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
 
-[42 <./figures/cornerPlots/OpenClusters/all-OCC-cornerPlot-contour.pdf>]
+[44 <./figures/cornerPlots/OpenClusters/all-OCC-cornerPlot-contour.pdf>]
 File: figures/cornerPlots/OpenClusters/obs-OCC-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/obs-OCC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/obs-OCC-cornerPlot-co
-ntour.pdf  used on input line 1066.
+ntour.pdf  used on input line 1011.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
 
-[43]
+[45]
 File: figures/cornerPlots/OpenClusters/rec-OCC-cornerPlot-contour.pdf Graphic f
 ile (type pdf)
 <use figures/cornerPlots/OpenClusters/rec-OCC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/OpenClusters/rec-OCC-cornerPlot-co
-ntour.pdf  used on input line 1074.
+ntour.pdf  used on input line 1019.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [44]
-<figures/cornerPlots/m10/all-M10BN-cornerPlot-contour.pdf, id=5475, 1308.08694p
+ [46]
+<figures/cornerPlots/m10/all-M10BN-cornerPlot-contour.pdf, id=5500, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m10/all-M10BN-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m10/all-M10BN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m10/all-M10BN-cornerPlot-contour.p
-df  used on input line 1088.
+df  used on input line 1033.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [45 <./figures/cornerPlots/m10/all-M10BN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m10/obs-M10BN-cornerPlot-contour.pdf, id=5636, 1308.08694p
+ [47 <./figures/cornerPlots/m10/all-M10BN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m10/obs-M10BN-cornerPlot-contour.pdf, id=5661, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m10/obs-M10BN-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m10/obs-M10BN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m10/obs-M10BN-cornerPlot-contour.p
-df  used on input line 1096.
+df  used on input line 1041.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
 
-[46 <./figures/cornerPlots/m10/obs-M10BN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m10/rec-M10BN-cornerPlot-contour.pdf, id=5799, 1308.08694p
+[48 <./figures/cornerPlots/m10/obs-M10BN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m10/rec-M10BN-cornerPlot-contour.pdf, id=5825, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m10/rec-M10BN-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m10/rec-M10BN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m10/rec-M10BN-cornerPlot-contour.p
-df  used on input line 1104.
+df  used on input line 1049.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [47 <./figures/cornerPlots/m10/rec-M10BN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m10/all-M10BC-cornerPlot-contour.pdf, id=5962, 1308.08694p
+ [49 <./figures/cornerPlots/m10/rec-M10BN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m10/all-M10BC-cornerPlot-contour.pdf, id=5988, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m10/all-M10BC-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m10/all-M10BC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m10/all-M10BC-cornerPlot-contour.p
-df  used on input line 1114.
+df  used on input line 1059.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [48 <./figures/cornerPlots/m10/all-M10BC-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m10/obs-M10BC-cornerPlot-contour.pdf, id=6125, 1308.08694p
+ [50 <./figures/cornerPlots/m10/all-M10BC-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m10/obs-M10BC-cornerPlot-contour.pdf, id=6151, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m10/obs-M10BC-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m10/obs-M10BC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m10/obs-M10BC-cornerPlot-contour.p
-df  used on input line 1122.
+df  used on input line 1067.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [49 <./figures/cornerPlots/m10/obs-M10BC-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m10/rec-M10BC-cornerPlot-contour.pdf, id=6289, 1308.08694p
+ [51 <./figures/cornerPlots/m10/obs-M10BC-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m10/rec-M10BC-cornerPlot-contour.pdf, id=6315, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m10/rec-M10BC-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m10/rec-M10BC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m10/rec-M10BC-cornerPlot-contour.p
-df  used on input line 1130.
+df  used on input line 1075.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [50 <./figures/cornerPlots/m10/rec-M10BC-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m10/all-M10CN-cornerPlot-contour.pdf, id=6452, 1308.08694p
+ [52 <./figures/cornerPlots/m10/rec-M10BC-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m10/all-M10CN-cornerPlot-contour.pdf, id=6477, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m10/all-M10CN-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m10/all-M10CN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m10/all-M10CN-cornerPlot-contour.p
-df  used on input line 1140.
+df  used on input line 1085.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
-<figures/cornerPlots/m10/obs-M10CN-cornerPlot-contour.pdf, id=6453, 1308.08694p
+<figures/cornerPlots/m10/obs-M10CN-cornerPlot-contour.pdf, id=6478, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m10/obs-M10CN-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m10/obs-M10CN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m10/obs-M10CN-cornerPlot-contour.p
-df  used on input line 1147.
+df  used on input line 1092.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [51 <./figures/cornerPlots/m10/all-M10CN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m10/rec-M10CN-cornerPlot-contour.pdf, id=6614, 1308.08694p
+ [53 <./figures/cornerPlots/m10/all-M10CN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m10/rec-M10CN-cornerPlot-contour.pdf, id=6639, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m10/rec-M10CN-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m10/rec-M10CN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m10/rec-M10CN-cornerPlot-contour.p
-df  used on input line 1154.
+df  used on input line 1099.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
-[52 <./figures/cornerPlots/m10/obs-M10CN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m10/all-M10CC-cornerPlot-contour.pdf, id=6778, 1308.08694p
+[54 <./figures/cornerPlots/m10/obs-M10CN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m10/all-M10CC-cornerPlot-contour.pdf, id=6803, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m10/all-M10CC-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m10/all-M10CC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m10/all-M10CC-cornerPlot-contour.p
-df  used on input line 1163.
+df  used on input line 1108.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [53 <./figures/cornerPlots/m10/rec-M10CN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m10/obs-M10CC-cornerPlot-contour.pdf, id=6939, 1308.08694p
+ [55 <./figures/cornerPlots/m10/rec-M10CN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m10/obs-M10CC-cornerPlot-contour.pdf, id=6965, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m10/obs-M10CC-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m10/obs-M10CC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m10/obs-M10CC-cornerPlot-contour.p
-df  used on input line 1170.
+df  used on input line 1115.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [54 <./figures/cornerPlots/m10/all-M10CC-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m10/rec-M10CC-cornerPlot-contour.pdf, id=7099, 1308.08694p
+ [56 <./figures/cornerPlots/m10/all-M10CC-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m10/rec-M10CC-cornerPlot-contour.pdf, id=7125, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m10/rec-M10CC-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m10/rec-M10CC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m10/rec-M10CC-cornerPlot-contour.p
-df  used on input line 1177.
+df  used on input line 1122.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [55 <./figures/cornerPlots/m10/obs-M10CC-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m67/all-M67BN-cornerPlot-contour.pdf, id=7263, 1308.08694p
+ [57 <./figures/cornerPlots/m10/obs-M10CC-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m67/all-M67BN-cornerPlot-contour.pdf, id=7288, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m67/all-M67BN-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m67/all-M67BN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m67/all-M67BN-cornerPlot-contour.p
-df  used on input line 1190.
+df  used on input line 1135.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [56 <./figures/cornerPlots/m10/rec-M10CC-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m67/obs-M67BN-cornerPlot-contour.pdf, id=7424, 1308.08694p
+ [58 <./figures/cornerPlots/m10/rec-M10CC-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m67/obs-M67BN-cornerPlot-contour.pdf, id=7450, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m67/obs-M67BN-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m67/obs-M67BN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m67/obs-M67BN-cornerPlot-contour.p
-df  used on input line 1197.
+df  used on input line 1142.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [57 <./figures/cornerPlots/m67/all-M67BN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m67/rec-M67BN-cornerPlot-contour.pdf, id=7587, 1308.08694p
+ [59 <./figures/cornerPlots/m67/all-M67BN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m67/rec-M67BN-cornerPlot-contour.pdf, id=7612, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m67/rec-M67BN-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m67/rec-M67BN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m67/rec-M67BN-cornerPlot-contour.p
-df  used on input line 1204.
+df  used on input line 1149.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
-[58 <./figures/cornerPlots/m67/obs-M67BN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m67/all-M67BC-cornerPlot-contour.pdf, id=7751, 1308.08694p
+[60 <./figures/cornerPlots/m67/obs-M67BN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m67/all-M67BC-cornerPlot-contour.pdf, id=7776, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m67/all-M67BC-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m67/all-M67BC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m67/all-M67BC-cornerPlot-contour.p
-df  used on input line 1213.
+df  used on input line 1158.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [59 <./figures/cornerPlots/m67/rec-M67BN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m67/obs-M67BC-cornerPlot-contour.pdf, id=7913, 1308.08694p
+ [61 <./figures/cornerPlots/m67/rec-M67BN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m67/obs-M67BC-cornerPlot-contour.pdf, id=7940, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m67/obs-M67BC-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m67/obs-M67BC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m67/obs-M67BC-cornerPlot-contour.p
-df  used on input line 1220.
+df  used on input line 1165.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [60 <./figures/cornerPlots/m67/all-M67BC-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m67/rec-M67BC-cornerPlot-contour.pdf, id=8076, 1308.08694p
+ [62 <./figures/cornerPlots/m67/all-M67BC-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m67/rec-M67BC-cornerPlot-contour.pdf, id=8102, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m67/rec-M67BC-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m67/rec-M67BC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m67/rec-M67BC-cornerPlot-contour.p
-df  used on input line 1227.
+df  used on input line 1172.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [61 <./figures/cornerPlots/m67/obs-M67BC-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m67/all-M67CN-cornerPlot-contour.pdf, id=8241, 1308.08694p
+ [63 <./figures/cornerPlots/m67/obs-M67BC-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m67/all-M67CN-cornerPlot-contour.pdf, id=8266, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m67/all-M67CN-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m67/all-M67CN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m67/all-M67CN-cornerPlot-contour.p
-df  used on input line 1236.
+df  used on input line 1181.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [62 <./figures/cornerPlots/m67/rec-M67BC-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m67/obs-M67CN-cornerPlot-contour.pdf, id=8404, 1308.08694p
+ [64 <./figures/cornerPlots/m67/rec-M67BC-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m67/obs-M67CN-cornerPlot-contour.pdf, id=8429, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m67/obs-M67CN-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m67/obs-M67CN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m67/obs-M67CN-cornerPlot-contour.p
-df  used on input line 1243.
+df  used on input line 1188.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [63 <./figures/cornerPlots/m67/all-M67CN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m67/rec-M67CN-cornerPlot-contour.pdf, id=8566, 1308.08694p
+ [65 <./figures/cornerPlots/m67/all-M67CN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m67/rec-M67CN-cornerPlot-contour.pdf, id=8591, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m67/rec-M67CN-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m67/rec-M67CN-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m67/rec-M67CN-cornerPlot-contour.p
-df  used on input line 1250.
+df  used on input line 1195.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
-[64 <./figures/cornerPlots/m67/obs-M67CN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m67/all-M67CC-cornerPlot-contour.pdf, id=8730, 1308.08694p
+[66 <./figures/cornerPlots/m67/obs-M67CN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m67/all-M67CC-cornerPlot-contour.pdf, id=8755, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m67/all-M67CC-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m67/all-M67CC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m67/all-M67CC-cornerPlot-contour.p
-df  used on input line 1259.
+df  used on input line 1204.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [65 <./figures/cornerPlots/m67/rec-M67CN-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m67/obs-M67CC-cornerPlot-contour.pdf, id=8893, 1308.08694p
+ [67 <./figures/cornerPlots/m67/rec-M67CN-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m67/obs-M67CC-cornerPlot-contour.pdf, id=8919, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m67/obs-M67CC-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m67/obs-M67CC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m67/obs-M67CC-cornerPlot-contour.p
-df  used on input line 1266.
+df  used on input line 1211.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [66 <./figures/cornerPlots/m67/all-M67CC-cornerPlot-contour.pdf>]
-<figures/cornerPlots/m67/rec-M67CC-cornerPlot-contour.pdf, id=9054, 1308.08694p
+ [68 <./figures/cornerPlots/m67/all-M67CC-cornerPlot-contour.pdf>]
+<figures/cornerPlots/m67/rec-M67CC-cornerPlot-contour.pdf, id=9081, 1308.08694p
 t x 1308.08694pt>
 File: figures/cornerPlots/m67/rec-M67CC-cornerPlot-contour.pdf Graphic file (ty
 pe pdf)
 <use figures/cornerPlots/m67/rec-M67CC-cornerPlot-contour.pdf>
 Package pdftex.def Info: figures/cornerPlots/m67/rec-M67CC-cornerPlot-contour.p
-df  used on input line 1273.
+df  used on input line 1218.
 (pdftex.def)             Requested size: 513.11743pt x 513.10591pt.
- [67 <./figures/cornerPlots/m67/obs-M67CC-cornerPlot-contour.pdf>] [68 <./figur
+ [69 <./figures/cornerPlots/m67/obs-M67CC-cornerPlot-contour.pdf>] [70 <./figur
 es/cornerPlots/m67/rec-M67CC-cornerPlot-contour.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1278.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1223.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1278.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1278.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1223.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1223.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B8F4CC1335BE82DBF1B031FA9710B66B;1153.
-
-
-LaTeX Warning: There were undefined references.
+(rerunfilecheck)             Checksum: B4810728BEA05DD8C10D77977C720666;1111.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 10310 strings out of 480608
- 172004 string characters out of 5903631
- 468852 words of memory out of 5000000
- 25764 multiletter control sequences out of 15000+600000
+ 10302 strings out of 480608
+ 171838 string characters out of 5903631
+ 482568 words of memory out of 5000000
+ 25758 multiletter control sequences out of 15000+600000
  543954 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,10n,41p,1910b,501s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,10n,41p,1908b,409s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
@@ -1740,10 +1742,10 @@ t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2020/texmf-dist
 onts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2020/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2020/texmf-dist/font
 s/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (68 pages, 19462221 bytes).
+Output written on main.pdf (70 pages, 19466602 bytes).
 PDF statistics:
- 9502 PDF objects out of 10688 (max. 8388607)
- 4073 compressed objects within 41 object streams
- 190 named destinations out of 1000 (max. 500000)
- 593 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 9527 PDF objects out of 10688 (max. 8388607)
+ 4095 compressed objects within 41 object streams
+ 188 named destinations out of 1000 (max. 500000)
+ 585 words of extra memory for PDF output out of 10000 (max. 10000000)
 

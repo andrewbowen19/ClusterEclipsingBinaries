@@ -105,8 +105,8 @@ class fieldOverlap(object):
         # Setting up field coordinates for matching function
         self.fieldDat = pd.read_csv(os.path.join('output/', strategy + '-OpSim-FieldData.csv'))
         self.fieldID = self.fieldDat['OpSim ID']
-        self.fieldRA = Angle(self.fieldDat['OpSim RA'].loc[np.where(self.fieldDat['Nobs'] > 0.)], unit=u.degree) # .loc[np.where(self.fieldDat['Nobs'] > 0.)]
-        self.fieldDec = Angle(self.fieldDat['OpSim Dec'].loc[np.where(self.fieldDat['Nobs'] > 0.)], unit=u.degree) # .loc[np.where(self.fieldDat['Nobs'] > 0.)]
+        self.fieldRA = Angle(self.fieldDat['OpSim RA'], unit=u.degree) # .loc[np.where(self.fieldDat['Nobs'] > 0.)]
+        self.fieldDec = Angle(self.fieldDat['OpSim Dec'], unit=u.degree) # .loc[np.where(self.fieldDat['Nobs'] > 0.)]
 
         self.fieldCoords = SkyCoord(self.fieldRA, self.fieldDec, unit=(u.degree, u.degree), frame='icrs')
         self.fieldRad = Angle(1.75, unit=u.deg)
