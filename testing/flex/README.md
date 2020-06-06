@@ -22,3 +22,4 @@ while also selecting LISA-LSST WD candidates and producing those histogram files
 
 In order to use the analyseCluster class for each observing scenario, run either 'runAnalyse' or 'lisaRunAnalyse' depending on if you'd like to include WD analysis
 
+Binary population data for each cluster can be downloaded [here](https://northwestern.box.com/s/wb4cyw9ihne1lffkov4r988l0dk92lvl). The file tree structure of the entire clusters directory is needed for our scripts to run properl. The file tree structure of the entire clusters directory is needed for our scripts to run properly.
