@@ -2,7 +2,7 @@
 Rewritten analyse script as an object
 Can call in file tree walk scrip (runAnalyse)
 Will perform analyse functionality for multiple viewing scenarios
-Can call one time (or in a loop)
+Can call one time (or in a loop -- lisaRunAnalyse script)
 instead of running script several times for multiple scenarios
 
 Pulling binaries only for LISA candidate WD binaries
@@ -128,7 +128,7 @@ class analyseClusterLISA(object):
 
 		ax2.set_xlabel(xtitle, fontsize=16)
 		fig.subplots_adjust(hspace=0)
-		fig.savefig(self.path + '/plots/analyse_plots/' + fname + '.pdf', format='pdf', bbox_inches='tight')
+		fig.savefig(self.path + os.path.join('/plots', 'analyse_plots', fname + '.pdf'), format='pdf', bbox_inches='tight')
 
 		# write to a text file
 		with open(self.path + '/eblsst_files/' + fname + '.csv', 'w') as fl:
@@ -662,13 +662,13 @@ class analyseClusterLISA(object):
 		f.savefig(self.path + '/plots/analyse_plots/' + 'mollweide_N.pdf', format='pdf', bbox_inches='tight')
 
 		if (doIndividualPlots):
-			fmass.savefig(self.path + '/plots/analyse_plots/' + 'massPDFall.pdf', format='pdf', bbox_inches='tight')
-			fqrat.savefig(self.path + '/plots/analyse_plots/' + 'qPDFall.pdf', format='pdf', bbox_inches='tight')
-			fecc.savefig(self.path + '/plots/analyse_plots/' + 'eccPDFall.pdf', format='pdf', bbox_inches='tight')
-			flper.savefig(self.path + '/plots/analyse_plots/' + 'lperPDFall.pdf', format='pdf', bbox_inches='tight')
-			fdist.savefig(self.path + '/plots/analyse_plots/' + 'distPDFall.pdf', format='pdf', bbox_inches='tight')
-			fmag.savefig(self.path + '/plots/analyse_plots/' + 'magPDFall.pdf', format='pdf', bbox_inches='tight')
-			frad.savefig(self.path + '/plots/analyse_plots/' + 'radPDFall.pdf', format='pdf', bbox_inches='tight')
+			fmass.savefig(self.path + os.path.join('/plots', 'analyse_plots/', 'massPDFall.pdf'), format='pdf', bbox_inches='tight')
+			fqrat.savefig(self.path + os.path.join('/plots', 'analyse_plots/', 'qPDFall.pdf'), format='pdf', bbox_inches='tight')
+			fecc.savefig(self.path + os.path.join('/plots', 'analyse_plots/', 'eccPDFall.pdf'), format='pdf', bbox_inches='tight')
+			flper.savefig(self.path + os.path.join('/plots', 'analyse_plots/', 'lperPDFall.pdf'), format='pdf', bbox_inches='tight')
+			fdist.savefig(self.path + os.path.join('/plots', 'analyse_plots/', 'distPDFall.pdf'), format='pdf', bbox_inches='tight')
+			fmag.savefig(self.path + os.path.join('/plots', 'analyse_plots/', 'magPDFall.pdf'), format='pdf', bbox_inches='tight')
+			frad.savefig(self.path + os.path.join('/plots', 'analyse_plots/', 'radPDFall.pdf'), format='pdf', bbox_inches='tight')
 
 		print("###################")
 		print("number of binaries in input files (raw, log):", np.sum(fileN), np.log10(np.sum(fileN)))

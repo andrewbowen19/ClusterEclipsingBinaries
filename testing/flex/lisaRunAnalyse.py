@@ -33,7 +33,8 @@ clusterTypes = {'GlobularClusters': 'G', 'OpenClusters': 'O',
 print('Analyzing all clusters including LISA candidate WD binaries...')
 
 # looping through file tree to cover all 16 scenarios
-for root, dirs, files in os.walk('./clusters', topdown=True):
+path_to_clusters = os.path.join('.', 'clusters')
+for root, dirs, files in os.walk(path_to_clusters, topdown=True):    
     haveStrat = False
     haveCrowd = False
     haveCluster = False

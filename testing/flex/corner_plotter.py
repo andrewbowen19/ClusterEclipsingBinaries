@@ -32,7 +32,7 @@ def corner_plot(DataFrame, popType, name, contours = False):
 		f = corner.corner(df, labels = df.columns, label_kwargs={"fontsize":18}, bins = 20, plot_contours = True, title_kwargs={"fontsize": 28})
 		f.suptitle(popType + '-' + name, fontsize=24)
 		f.show()
-		f.savefig(f'./plots/corner_plots/contours/{popType}-{name}-cornerPlot-contour.pdf')
+		f.savefig(os.path.join('./plots/corner_plots/contours/', f'{popType}-{name}-cornerPlot-contour.pdf'))
 		plt.close()
 		print('Corner contour plots made!')
 
@@ -43,14 +43,13 @@ def corner_plot(DataFrame, popType, name, contours = False):
 		f = corner.corner(df, labels = df.columns, label_kwargs={"fontsize":18}, bins = 20, plot_contours = False, title_kwargs={"fontsize": 28})
 		f.suptitle(popType + '-' + name, fontsize = 24)
 		f.show()
-		f.savefig(f'./plots/corner_plots/{popType}-{name}-cornerPlot.pdf')
+		f.savefig(os.path.join('./plots/corner_plots/', f'{popType}-{name}-cornerPlot.pdf'))
 		plt.close()
 		print('Corner plots made!')
 
 	print('On to the next!')
 
 	
-
 # ########################################################################################################
 
 # Looping through correct files in our trees and making plots
