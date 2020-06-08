@@ -8,5 +8,15 @@ This directory features several sub-directories that contain code for various as
 * **mollweides**: This directory contains code as well as data files for producing the mollweide projection plots included both in our thesis and poster. The csv files needed are both for individual cluster data as well as *OpSim* field observation data. These are located in the **clusters** directory as well as the **data** directory (available for download [here](https://northwestern.box.com/s/ed31vf5bswf6e84669qdk625gjk6k0jw)). The class fieldOverlap can be run to check for the number of clusters with multiple overlaps of *OpSim* fields. This can be run for fields with and without observations. In addition, the mollweide_creator script can be run to produce *OpSim* mollweide plots for several observing strategies. Simply comment out the function calls and run from the command line. In addition, the MySQL database files for the *OpSim* observing strategy are available for download at [this link](https://northwestern.box.com/s/ed31vf5bswf6e84669qdk625gjk6k0jw).
 * **flex**: This directory contains the analyseCluster python scripts described in Appendix B of [the thesis](https://northwestern.box.com/s/grc92s1vm7qd80jffmnl5guppltlyemt). Of the two scripts, analyseClusterLISA is more flexible in that it includes selection of LSST-LISA candidate white dwarf binaries. On the other hand, the *analyseCluster* script will select binaries that contain *at least* (though not necessarily 2) white dwarf stars. The white dwarfs are selected based on their log(g) values (log-g > 7.0), where g is the acceleration due to gravity. In order to run the analyseClusterLISA script for each observing scenario, run the **lisaRunAnalyse** script which loops through the directory and generates an analyseClusterLISA object for each observing scenario (GC/OC, *baseline*/*colossus*, crowding/no-crowding). These scripts output plots to the working directory '/plots/analyse_plots' folder and histogram csv files to the data directory in each observing scenario sub-directory. In addition, the corner_plotter pythons script also loops through observing scenarios to produce corner plots (located in the 'plots' sub-directory). If needed, requisite data files are available for download from [this box folder](https://northwestern.box.com/s/wb4cyw9ihne1lffkov4r988l0dk92lvl).
 
+The *getClusterBinaries* pythons cript defines an object that is used to simulate populations of binaries. This object is called for each cluster to generate the requisite population with the correct input parameters. The binaries can then be evolved with the EvolveBinaries method. The needed cluster paramters are:
+
+* age (Myr)
+* metallicity
+* distance (used with kpc in our schema)
+* velocity dispersion (km/s in our setup, but other units are allowed)
+* Half mass radius
+* Cluster mass (solar units preferred)
+
+
 
 

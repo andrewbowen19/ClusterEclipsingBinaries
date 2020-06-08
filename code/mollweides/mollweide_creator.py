@@ -27,7 +27,8 @@ p2 = pv+':'+p
 os.environ['PATH'] = p2
 
 # Establishing path
-mypath = '/Users/andrewbowen/ClusterEclipsingBinaries/testing/mollweides/'
+# mypath = '/Users/andrewbowen/ClusterEclipsingBinaries/code/mollweides/'
+mypath = os.getcwd()
 sys.path.insert(0, mypath)
 
 # OpSim viewing field diameter

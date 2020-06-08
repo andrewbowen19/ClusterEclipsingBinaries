@@ -8,6 +8,10 @@ OpSim database files for different observing strategies can be downloaded [at th
 
 * It should be noted that there are variants of different *OpSim* strategies, we utilize the colossus_2664 version, which weighs the galactic plane more heavily. It should be noted that the colossus_2665 is a baseline-style strategy and **should NOT** be used.
 
+* Also note that the nObsMollweides jupyter-notebook is deprectaed, to produce mollweide plots, use the mollweide_creator script
+
+# *OpSim* Field Overlaps
+
 In order to analyse the number of clusters that overlap with multiple *OpSim* fields, run the fieldOverlap python script via command line (<python fieldOverlap.py>). If it is needed to checkfor fields with more than 0 observations, the .loc statement in the variable definitions of <self.fieldRA> and <self.fieldDec>. This script will print to the screen the numbers and percentages of clusters with more than one overlap.
 
 # Overlap Stats
