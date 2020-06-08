@@ -1,25 +1,20 @@
-Directory for us to make analyse script into a more flexible class.
-Want to be able to import it from wherever
+#Flex directory#
 
-Files copied are M10 baseline no-crowding output_files as a test
-Making this as a directory with file structure similar to that of WDs
+This sub-directory contains the code which analyzes the results of our cluster-binary simulations. These simulation result files reside in the 'input_files'folders in each cluster-scenario sub-directory (e.g. OpenClusters/colCrowd, which corresponds to the Open Cluster-colossus-with crowding observing scenario). 
 
-Want this to be able to be called in other scripts
-so we can run it in an os.walk loop
+In order to create PDF/CDF, mollweide recovery plots, and the short-period binary selection histogram csv files, run either the analyseCluster or analyseClusterLISA python scripts via command line: <python analyseCluster.py> or <python analyseClusterLISA.py>. In order to generate these plots and output files for all observing scenarios, utilize the *runAnalyse scripts* via command line, either: <python runAnalyse.py> to create analyseCluster objects or <python lisaRunAnalyse.py> to create analyseClusterLISA objects for each observing scenario. 
 
-can use 'runAnalyse' script to run analyse for each subscenario (16 in total -- OC/GC/LongCluster, Baseline/Colossus, Crowding/No-Crowding)
-Need to update directories with proper input files
-Will upload folder to Quest and run on there - will make OCs and GCs use less memory
-
-
-UPDATE: successfully ran lisaRunAnalyse and RunAnalyse script to produce output files for both LISA-candidate WDs as well as circularized binary output files
-
-Output csv files from Quest are posted in this repo. These are for histogram/corner plot data for MS stars as well as WDs (LISA WDs specifically).
+Histogram data output csv files from the analyse scripts are located in the 'data' subdirectories for each observing scenario (e.g. 'GlubularClusters/baseCrowd/data/'). Corresponding white dwarf binary output files reside in the 'wd' sub-directories of the 'data' folders. The Box download link provided below contains the needed files structure, which should be placed in a 'clusters' directory in the same directory as the analyse scripts.
 
 There are 2 different histogram csv files produced from our analyseClusterLISA and analyseCluster script
 As their names imply, the analyseClusterLISA script has all the functionality of analyseCluster,
 while also selecting LISA-LSST WD candidates and producing those histogram files (-histDataLISA.csv files)
 
-In order to use the analyseCluster class for each observing scenario, run either 'runAnalyse' or 'lisaRunAnalyse' depending on if you'd like to include WD analysis
+In addition, the analyseCluster and analyseClusterLISA scripts produce txt files with recovery statistics for each observing scenario. These are written to the output/stats/ subdirectory.
 
-Binary population data for each cluster can be downloaded [here](https://northwestern.box.com/s/wb4cyw9ihne1lffkov4r988l0dk92lvl). The file tree structure of the entire clusters directory is needed for our scripts to run properl. The file tree structure of the entire clusters directory is needed for our scripts to run properly.
+Binary population data for each cluster can be downloaded [here](https://northwestern.box.com/s/wb4cyw9ihne1lffkov4r988l0dk92lvl). The file tree structure of the entire clusters directory is needed for our scripts to run properly. The file tree structure of the entire clusters directory is needed for our scripts to run properly.
+
+In addition, the corner_plotter script can be run via <pyhton corner_plotter.py> in order to create and save corner plot pdf files for each observing scenario and binary sub-population (*all*, *observable*, or *recovered*). This script loops through each observing scenario sub-directory and uses the histogram csv files in the 'data' sub-directories to generate corner plots for each. The corner plots are then saved to the 'plots/corner_plots' folder located in the working directory.
+
+
+

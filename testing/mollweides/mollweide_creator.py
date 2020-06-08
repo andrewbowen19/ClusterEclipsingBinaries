@@ -1,11 +1,13 @@
-# Script to generate Nobs mollweides for colossus and baseline strategies
-# Real version, one in 'code' directory is an imposter
+'''
+Script to generate Number of observations, Nobs mollweides for colossus and baseline strategies
 
-# DO NOT LOSE THIS LINK:
-# Download site for different strategy db files
-# http://astro-lsst-01.astro.washington.edu:8080/?runId=16
+DO NOT LOSE THIS LINK:
+Download site for different strategy db files
+http://astro-lsst-01.astro.washington.edu:8080/?runId=16
 
-# Be sure to use colossus 2664 NOT 2665 which is baseline-style
+Be sure to use colossus 2664 NOT 2665 which is baseline-style
+'''
+
 
 import pandas as pd
 import numpy as np
@@ -91,6 +93,7 @@ def createMollweide(filename, strategy, create_csv=True):
     # Making the mollweide
     plotMollweide(ra, dec, goodObs, fieldRad, strategy)
 
+    # Writing Nobs and coordinate data to csv output files
     if create_csv:
         df = pd.DataFrame({'OpSim ID': OpS.fieldID,
                            'OpSim RA': OpS.RA, 'OpSim Dec': OpS.Dec,
