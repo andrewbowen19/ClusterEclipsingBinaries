@@ -1,4 +1,4 @@
-## Flex code directory
+### Flex code directory
 
 This sub-directory contains the code which analyzes the results of our cluster-binary simulations. These simulation result files reside in the 'input_files'folders in each cluster-scenario sub-directory (e.g. OpenClusters/colCrowd, which corresponds to the Open Cluster-colossus-with crowding observing scenario). 
 
@@ -16,15 +16,15 @@ Binary population data for each cluster can be downloaded [here](https://northwe
 
 In addition, the corner_plotter script can be run via <pyhton corner_plotter.py> in order to create and save corner plot pdf files for each observing scenario and binary sub-population (*all*, *observable*, or *recovered*). This script loops through each observing scenario sub-directory and uses the histogram csv files in the 'data' sub-directories to generate corner plots for each. The corner plots are then saved to the 'plots/corner_plots' folder located in the working directory.
 
-# Recovery Statistics
-* Globular Clusters
+## Recovery Statistics
+# Globular Clusters
 Observing Scenario | N_rec | N_obs | % Recovered
 ------------------ | ----- | ----- | -----------
 *baseline* | 687 | 1890 | **36.3%**
 *colossus* | 840 | 2377 | **35.3%**
 Difference | 153 | 487  | **-1.0%**
 
-* Open Clusters
+# Open Clusters
 Observing Scenario | N_rec | N_obs | % Recovered
 ------------------ | ----- | ----- | -----------
 *baseline* | 49 | 148 | **33.1%**
