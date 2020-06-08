@@ -1,4 +1,4 @@
-#Flex directory#
+# Flex directory
 
 This sub-directory contains the code which analyzes the results of our cluster-binary simulations. These simulation result files reside in the 'input_files'folders in each cluster-scenario sub-directory (e.g. OpenClusters/colCrowd, which corresponds to the Open Cluster-colossus-with crowding observing scenario). 
 

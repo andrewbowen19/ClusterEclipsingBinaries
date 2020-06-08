@@ -1,4 +1,4 @@
-##Mollweide plot generation directory##
+## Mollweide plot generation directory
 
 This sub-directory is used to generate mollweide-projection plots used in both [the thesis](https://northwestern.box.com/s/grc92s1vm7qd80jffmnl5guppltlyemt) as well as [the poster presented](https://northwestern.box.com/s/hxuq4fsl76aaxg3m4ctazmjnv6ru56jh) at the AAS conference. 
 
@@ -10,7 +10,7 @@ OpSim database files for different observing strategies can be downloaded [at th
 
 In order to analyse the number of clusters that overlap with multiple *OpSim* fields, run the fieldOverlap python script via command line (<python fieldOverlap.py>). If it is needed to checkfor fields with more than 0 observations, the .loc statement in the variable definitions of <self.fieldRA> and <self.fieldDec>. This script will print to the screen the numbers and percentages of clusters with more than one overlap.
 
-#Overlap Stats#
+# Overlap Stats
 
 Cluster Type | Percent of Clusters with multiple overlaps
 ------------ | -----------------------------------------
