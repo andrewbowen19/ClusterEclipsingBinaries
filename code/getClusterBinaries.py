@@ -82,10 +82,10 @@ class getClusterBinaries(object):
     	and m3 is the mass of the incoming (disrupting) object, velocity dispersions are given in km/s
 		
     	"""
-    	#do this ahead of time when you create your table
+    	# do this ahead of time when you create your table
     	# get sigma value (first see if it has one, if not, if mass then calculate sigma, else draw randomly)
     	# for random draw you will have predefined loc and scale for numpy.random.normal for OCs and GCs
-    	#then calulate phs but use all the self.period_hardsoft
+    	# then calulate phs but use all the self.period_hardsoft
 
 		G = 1.334 * (10 ** 11) # Gravitational Constant in units of km^3 M_sun ^ -1 s ^ -2 (consistent with cosmic output units)
 

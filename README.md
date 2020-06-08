@@ -9,7 +9,7 @@ Our project attempts to optimize the LSST cadence for viewing eclipsing binaries
 
 Feel free to look over our [**project poster**](https://northwestern.box.com/s/hxuq4fsl76aaxg3m4ctazmjnv6ru56jh) which recently was awarded as a Chambliss Medalist at the 235th Meeting of the American AStronoimcal Society!
 
-As of June 5th, 2020. I am very proud to say that we have completed writing [my senior thesis](https://northwestern.box.com/s/grc92s1vm7qd80jffmnl5guppltlyemt)! This project was the result of a lot of hard work. My thanks go out to my advisor, Dr. Aaron Geller for all his help along the way!
+As of June 5th, 2020. I am very proud to say that we have completed writing [my senior thesis](https://northwestern.box.com/s/grc92s1vm7qd80jffmnl5guppltlyemt)! This project was the result of a lot of hard work. My thanks go out to my advisor, Dr. Aaron Geller (@ageller) for all his help along the way!
 
 Author(s): Andrew Bowen (1), Aaron M. Geller (2)
 1. Center for Interdisciplinary Exploration and Research in Astrophysics

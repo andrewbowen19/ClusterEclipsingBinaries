@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  5 JUN 2020 11:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  7 JUN 2020 08:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1742,7 +1742,7 @@ t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2020/texmf-dist
 onts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2020/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2020/texmf-dist/font
 s/type1/public/cm-super/sfrm1000.pfb>
-Output written on main.pdf (70 pages, 19466602 bytes).
+Output written on main.pdf (70 pages, 19466578 bytes).
 PDF statistics:
  9527 PDF objects out of 10688 (max. 8388607)
  4095 compressed objects within 41 object streams
