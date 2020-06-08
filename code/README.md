@@ -1,7 +1,8 @@
-#Welcome to the code directory of our Cluster Eclipsing Binaries repository.#
+## Code Directory
 
 This directory features several sub-directories that contain code for various aspects of our project. These are listed below along with instructions for how to best implement the software. Please note that requisite data files may not be included in the GitHub repository, but are available for download via Box.
 
+# Project sub-directories
 * **clusterCompile**: This directory contains the python scripts/jupyter-notebooks used to compile and standardize our OC and GC data. Now that we have our O/GCDataEBLSST csv files, this code is generally no longer needed to be run. Raw cluster data files and our different source files can be downloaded [here](https://northwestern.box.com/s/6iq63teq6uwrwasmclubt1tsp4f8cquf). 
 * **clusterMass**: This directory is for the purpose of estimateing summed and average masses for both Open and Globular clusters. The data files, which include various cluster parameters, reside in the 'data' subdirectory. In order to produce these numbers and print them to the screen run 'clusterMass' via python command line. 
 * **whiteDwarfs**: This directory contains the requisite python scripts for our white dwarf analysis. It should be noted that the white dwarf histogram csv files produced by these versions of the analyceCluster scripts reside in this as well as the **flex** directory. In addition, corner plotting scripts for each observing scenario can be found in this directory
@@ -17,6 +18,6 @@ The *getClusterBinaries* pythons cript defines an object that is used to simulat
 * Half mass radius
 * Cluster mass (solar units preferred)
 
-
+The crowding jupyter-notebook is now deprecated, as binary population data for each cluster has been performed on Quest. The crowding-affected population data can be downloaded [from this box folder](https://northwestern.box.com/s/wb4cyw9ihne1lffkov4r988l0dk92lvl)
 
 
