@@ -10,7 +10,7 @@ import corner
 import numpy as np
 import pandas as pd
 import matplotlib
-matplotlib.use('Agg')
+# matplotlib.use('Agg') # uncomment if running on Quest
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import matplotlib.colors as colors
