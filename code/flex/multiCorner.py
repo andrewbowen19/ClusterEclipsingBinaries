@@ -88,20 +88,22 @@ class multiCorner(object):
 		'''
 		# Getting paths for requisite data files: 
 		# input path/cluster type corresponds to opposite cluster type for path2
-		self.path2 = self.path
+		self.path2 = None
 		if 'OpenClusters' in self.path:
 			self.path2 = self.path.replace('Open', 'Globular')
 
-		elif 'GlobularClusters' in self.path:
+		if 'GlobularClusters' in self.path:
 			self.path2 = self.path.replace('Globuular', 'Open')
 
-		elif 'm10' in self.path:
+		if 'm10' in self.path:
 			self.path2 = self.path.replace('m10', 'm67')
 
-		elif 'm67' in self.path:
+		if 'm67' in self.path:
 			self.path2 = self.path.replace('m67', 'm10')
 
+		print('respective paths: ', self.path, self.path2)
 
+		# completing plotting for each file in data directory
 		for file1, file2 in zip(os.listdir(self.path), os.listdir(self.path2)):
 			
 			# Ignoring wd file dsubdirs
@@ -120,21 +122,16 @@ class multiCorner(object):
 												'r1 $(R_{\odot})$', 'r2 $(R_{\odot})$', 'e', 'i (deg)', 'App Mag Mean r']
 				self.gcDat.columns = ['log-p', 'm1 $(M_{\odot})$', 'm2 $(M_{\odot})$',
 												'r1 $(R_{\odot})$', 'r2 $(R_{\odot})$', 'e', 'i (deg)', 'App Mag Mean r'] 
-				# print('Binary Pop data for OCs, GCs: ', ocDat, '\n', gcDat)
 
 				# Making multi corner plots - OCs in red, GCs in blue
 				self.corner_plot(self.ocDat, self.gcDat, file1[0:3], file1[4:7] + '-' + file2[4:7], True)
 				print('multi-colored corner plot made!')
 
 
-# Test to see why OCC situation is being off
-# new_path = './clusters/GlobularClusters/colCrowd/data/'
-# mc_gcc = multiCorner(new_path)
-# mc_gcc.makeMultiCornerPlot(new_path)
-
 # Looping through Open Cluster file path, no need to loop through OC and GC files 
 # fucntion will pull data from and make plots for corresponding GC observing scenario files
 for root, dirs, files in os.walk(os.path.join('clusters', 'OpenClusters'), topdown = True):
+	print(root)
 	for d in dirs:
 		print(d)
 		if 'data' in d:
