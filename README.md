@@ -11,6 +11,8 @@ Feel free to look over our [**project poster**](https://northwestern.box.com/s/h
 
 As of June 5th, 2020. I am very proud to say that we have completed writing [my senior thesis](https://northwestern.box.com/s/grc92s1vm7qd80jffmnl5guppltlyemt)! This project was the result of a lot of hard work. My thanks go out to my advisor, Dr. Aaron Geller (@ageller) for all his help along the way!
 
+In addition, feel free to take a look at a [AAS-style Research Note](https://northwestern.box.com/s/sfbnk70dq0f43gxjv9vf88axbq93wqno) version of the thesis for a more condensed read of the project. This work was recently submitted to the Northwestern Undergradaute Research Journal.
+
 Author(s): Andrew Bowen (1), Aaron M. Geller (2)
 1. Center for Interdisciplinary Exploration and Research in Astrophysics
 1800 Sherman Ave, 8th Floor 

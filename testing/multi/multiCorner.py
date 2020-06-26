@@ -31,17 +31,16 @@ def corner_plot(DataFrame1, DataFrame2, popType, name, contours=False):
 	name - name of observing scenario (OC/GC; Base/Col; Crowding/NoCrowd)
 	contours (bool) - create plot w/ or w.out contours
 	'''
+	# Setting up better range values for either OCs or GCs
+	ranges = [(-0.5, 3.0),
+			  (0., 1.), (45., 135.),
+			  (15., 24.), (0., 4.), (0., 4.)]
 
 	# Plot with Contours
 	if contours is True:
 		print('Making corner plots with contours...')
 		# df1 = DataFrame1
 		# df2 = DataFrame2
-
-		# Setting up better range values for either OCs or GCs
-		ranges = [(-0.5, 2.5), (0., 15.), (0, 15.),
-				  (0., 8.), (0., 8.), (0., 1.),
-				  (45., 135.), (15., 24.)]
 
 		# Plotting first dataframe - OCs
 		f1 = corner.corner(DataFrame1, color='r',
@@ -72,17 +71,31 @@ def corner_plot(DataFrame1, DataFrame2, popType, name, contours=False):
 						   label_kwargs={"fontsize": 18}, bins=20,
 						   plot_contours=False,
 						   no_fill_contours=True,
-						   plot_density=True, title_kwargs={"fontsize": 28},
-						   hist_kwargs={"density": True})
-
+						   title_kwargs={"fontsize": 28}, range=ranges,# scale_hist=True, #plot_density=False,
+						   top_ticks=True, hist_kwargs={"density": True})#, 'cumulative':True})
+		
 		# Plot 2
-		corner.corner(DataFrame2, color='b', labels=DataFrame2.columns,
+		corner.corner(DataFrame2, color='b',  labels=DataFrame2.columns,
 					  label_kwargs={"fontsize": 18}, bins=20,
 					  plot_contours=False,
 					  no_fill_contours=True,
-					  plot_density=True, title_kwargs={"fontsize": 28},
-					  fig=f1, hist_kwargs={"density": True})
+					  title_kwargs={"fontsize": 28}, range=ranges,# scale_hist=True, #plot_density=False,
+					  top_ticks=True, fig=f1, hist_kwargs={"density": True})#, 'cumulative':True})
 		f1.suptitle(popType + '-' + name, fontsize=24)
+
+		cols = DataFrame1.columns
+		ax = f1.axes
+		for i in range(len(cols)):
+
+		    for j in range(len(cols)):
+		        if (i == j):
+		            k = i*len(cols) + j
+		            # hist, bins = np.histogram(DataFrame1[DataFrame1.columns[i]])
+		            ax[k].set_yscale('log')
+		            ax[k].yaxis.set_label_position("right")
+		            ax[k].yaxis.tick_right()
+		            
+		            ax[k].set_ylim(0,2)
 		# plt.show()
 		f1.savefig(os.path.join('./plots/corner_plots/multi/',
 				   f'{popType}-{name}-cornerPlot-contour.pdf'))
@@ -114,14 +127,26 @@ for root, dirs, files in os.walk(os.path.join('.', 'clusters', 'OpenClusters'), 
 					# Converting period to log-days
 					dat1['p'] = np.log10(dat1['p'])
 					dat2['p'] = np.log10(dat2['p'])
-					dat1.columns = ['log-p', 'm1 $(M_{\odot})$',
-									'm2 $(M_{\odot})$',
-									'r1 $(R_{\odot})$', 'r2 $(R_{\odot})$',
-									'e', 'i (deg)', 'App Mag Mean r']
-					dat2.columns = ['log-p', 'm1 $(M_{\odot})$',
-									'm2 $(M_{\odot})$',
-									'r1 $(R_{\odot})$', 'r2 $(R_{\odot})$',
-									'e', 'i (deg)', 'App Mag Mean r']
+
+					# Generating mass and radius ratio columns
+					dat1['q'] = dat1['m2'] / dat1['m1']
+					dat2['q'] = dat2['m2'] / dat2['m1']
+
+					dat1['radius ratio (r2/r1)'] = dat1['r2'] / dat1['r1']
+					dat2['radius ratio (r2/r1)'] = dat2['r2'] / dat2['r1']
+
+					print(dat1,'\n', dat2, np.max(dat1['q']), np.max(dat1['radius ratio (r2/r1)']))
+					dat1=dat1.drop(['m1', 'm2', 'r1', 'r2'], axis=1)
+					dat2=dat2.drop(['m1', 'm2', 'r1', 'r2'], axis=1)
+
+					dat1.columns = ['log-p', #'m1 $(M_{\odot})$',
+									#'m2 $(M_{\odot})$',
+									#'r1 $(R_{\odot})$', 'r2 $(R_{\odot})$',
+									'e', 'i (deg)', 'App Mag Mean r', r'q ($m_2/m_1$)', r'$\rho (r_2/r_1)$']
+					dat2.columns = ['log-p', #'m1 $(M_{\odot})$',
+									#'m2 $(M_{\odot})$',
+									#'r1 $(R_{\odot})$', 'r2 $(R_{\odot})$',
+									'e', 'i (deg)', 'App Mag Mean r', r'q ($m_2/m_1$)', r'$\rho (r_2/r_1)$']
 
 					# Making multi corner plots - OCs in red, GCs in blue
 					corner_plot(dat1, dat2, file1[0:3],
@@ -129,5 +154,7 @@ for root, dirs, files in os.walk(os.path.join('.', 'clusters', 'OpenClusters'), 
 
 
 # TODO: maybe include m10-m67 crossover plots (can't hurt)
+# Add mass/radius ratio
+# 
 # - Upload and run on Quest to save memory
 # Add corner article citation to thesis refs
