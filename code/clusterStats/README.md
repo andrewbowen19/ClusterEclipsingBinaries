@@ -1,16 +1,14 @@
-##Testing directory to estimate summed cluster statistics
+## Testing directory to estimate summed cluster statistics
 
-Want to include these numbers in thesis
-Will use to justify why GCs have higher recovery #s
+There are important differences between the Globular and Open Clusters sampled in this study. With the *clusterStats* python script present in this directory, the user can pull any needed statistics about the clusters sampled.
 
-Pulling data from O/GCdataForEBLSST csv files
-*Note:* These use mean masses in pace of NaN values for clusters with no masses listed.
+This directory is for us to generate statistics and plots of different cluster parameters. These stats can also be written to output .txt files for reference later.
 
-In order to gnerate statistics for different cluster parameters, run *clusterStats* via command line.
+In order to generate statistics for different cluster parameters, run *clusterStats* via command line.
 The parameters that can be pulled from the cluster data csv files located in the data subriectory are:
 * Cluster Age [Myr]
 * Cluster velocity dispersion [km/s]
-* CLuster distance [pc]
+* Cluster distance [pc]
 * Cluster half-mass radius [pc]
 * Cluster mass [M_sol]
 * Cluster metallicity
