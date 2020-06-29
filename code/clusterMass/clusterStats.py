@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
+from itertools import permutations
 
 # Print values to screen (for OCs and GCs)
 # Writes values to txt file as well
@@ -45,26 +46,27 @@ class clusterStats(object):
 		self.gc = pd.read_csv(os.path.join('data', 'GCdataForEBLSST.csv'), header=0)
 		self.oc = pd.read_csv(os.path.join('data', 'OCdataForEBLSST.csv'), header=0)
 
-		# Printing data to screen
-		print('Globular Cluster Data: \n', self.gc)
-		print('Open Cluster Data: \n', self.oc)
+		# Printing data to screen - uncomment if desired
+		# print('Globular Cluster Data: \n', self.gc)
+		# print('Open Cluster Data: \n', self.oc)
 
 		# Setting up 
 		if 'gc' in self.clusterType.lower() or 'globular' in self.clusterType.lower():
 			self.df = self.gc
 			self.cluster_dfs = [self.gc]
 
-		if 'gc' in self.clusterType.lower() or 'open' in self.clusterType.lower():
+		if 'oc' in self.clusterType.lower() or 'open' in self.clusterType.lower():
 			self.df = self.oc
 			self.cluster_dfs = [self.oc]
 
 		# If clusterType is passed as 'All' or 'Both' or combined
 		if 'all' in self.clusterType.lower() or 'both' in self.clusterType.lower() or 'combined' in self.clusterType.lower():
 			self.allClusters = pd.concat([self.gc, self.oc])
+			self.df = self.allClusters
 			# List to iterate through for all cluster plots later
 			self.cluster_dfs = [self.gc, self.oc]
 
-	def getClusterStats(self, params_to_write, combined=False, output_file = True):
+	def getClusterStats(self, params_to_write, output_file = True):
 		'''
 		Method to produce statistics for different cluster params 
 		6 in total:
@@ -75,7 +77,7 @@ class clusterStats(object):
 			-Velocity Dispersion (km/s)
 			-Cluster Age (Myr)
 
-		cluster_params: list-like of cluster parameters to generate statristics for
+		params_to_write: list-like of cluster parameters to generate statristics for
 		output_file: (boolean) if True, cluster stats are written to .txt files in 'output' directory
 		'''
 		# Drawing param data from dataframes
@@ -88,6 +90,7 @@ class clusterStats(object):
 
 		
 		# Printing mean
+		print('Cluster Stats: ' + '\n')
 		for c in params_to_write:
 			self.paramLabel = self.paramDict[c.lower()]
 			self.unit = self.unitsDict[c.lower()]
@@ -105,10 +108,12 @@ class clusterStats(object):
 
 		# If desired, writing cluster stats to output txt files
 		if output_file:
+			print('Writing data to txt output file...')
 			with open(os.path.join('output', f'{self.clusterType}-Stats.txt'), 'w') as f:
 				for c in params_to_write:
 					self.paramLabel = self.paramDict[c.lower()]
 					self.unit = self.unitsDict[c.lower()]
+					f.write(c.upper() + '\n')
 					f.write('Globular Clusters: ' + '\n')
 					f.write(f'The mean value for globular cluster {c} is: {np.mean(self.gc[self.paramLabel])}' + ' ' + self.unit  + '\n')
 					f.write(f'The total (summed across all clusters) value for globular cluster {c} is: {np.sum(self.gc[self.paramLabel])}' + ' ' + self.unit + '\n')
@@ -116,83 +121,122 @@ class clusterStats(object):
 					f.write('Open Clusters: ' + '\n')
 					f.write(f'The mean value for open cluster {c} is: {np.mean(self.oc[self.paramLabel])}' + ' ' + self.unit + '\n')
 					f.write(f'The total (summed across all clusters) value for open cluster {c} is: {np.sum(self.oc[self.paramLabel])}' + ' ' + self.unit + '\n')
+					f.write('######################################## \n')
 			# Writing file with both cluster types as well for each param
 				# if combined:
 
 
-	def clusterHist(self, params_to_plot, clusterType, show_mean=False, save_fig=False):
+	def clusterHist(self, params_to_plot, show_mean=False, save_fig=False):
 		'''
 		Method to generate histogram plots of different cluster params
+		params_to_plot - list-like of paramters to geenrate histograms for
+
 		'''
 		# for d in cluster_dfs:
 		for p in params_to_plot:
-				# Param labels correspond to labels used in original .csv files
-				# These are different than the keys passed to clusterHist (paramLabel includes units)
+			# Param labels correspond to labels used in original .csv files
+			# These are different than the keys passed to clusterHist (paramLabel includes units)
 			paramLabel = self.paramDict[p.lower()]
 			for d in self.cluster_dfs:  # if combined, will plot OCs and GCs in different colors
 				# Fix legend labelins
-				plt.hist(d[paramLabel], bins=30, label = self.clusterType, alpha=0.5)
+				# if 'gc' in self.clusterType.lower() or 'globular' in self.clusterType.lower():
+				plt.hist(d[paramLabel], bins=30, label=self.clusterType, alpha=0.5)
+
 				plt.title(self.clusterType)
 				plt.xlabel(paramLabel)
 				plt.legend()
 				# If user wants mean value showed on plot as a vertical line
 				if show_mean:
-					plt.vlines(np.mean(d[paramLabel]), 0, len(d), linestyle='--', label='mean')
-			plt.show()
+					plt.vlines(np.mean(d[paramLabel]), 0, len(d), linestyle='--', label=f'mean:{clusterType}')
+			# plt.show()
 
-		if save_fig:
-			plt.savefig(f'{clusterType}-hist.pdf', format='pdf')
+			if save_fig:
+				path = os.path.join('plots', 'hists')
+				plt.savefig(os.path.join(path, f'{self.clusterType}-{p}-hist.pdf'), format='pdf')
 
-	def clusterScatter(self, params, clusterType):
+	def clusterScatter(self, params, save_fig=False):
 		'''
-		Method to generate scatter plot between 2 cluster params
+		Method to generate 2D histogram between 2 cluster params
+		Done instead of a scatter 
 		params - list-like of cluster params (give param key strings)
-
+		clusterType - used for plot title/labels
 
 		'''
 		# x and y data pulled from params key list
+		print(self.df)
 		x = self.df[self.paramDict[params[0]]]
 		y = self.df[self.paramDict[params[1]]]
 
 		plt.scatter(x,y)
 		plt.xlabel(self.paramDict[params[0]])
 		plt.ylabel(self.paramDict[params[1]])
-		plt.title(clusterType)
-		plt.show()
+		plt.title(self.clusterType)
+		# plt.show()
+
+		# If desired, saving figure to plots dir
+		if save_fig:
+			path = os.path.join('plots', 'scatter')
+			plt.savefig(os.path.join(path, f'{self.clusterType}-{params[0]}-{params[1]}-scatter.pdf'), format='pdf')
+
+	def clusterHist2d(self, params, save_fig=False):
+		'''
+		Method to generate 2D histogram between 2 cluster params
+		Done instead of a scatter 
+		params - list-like of cluster params (give param key strings)
+		clusterType - used for plot title/labels
+
+		'''
+		# x and y data pulled from params key list
+		x = self.df[self.paramDict[params[0]]]
+		y = self.df[self.paramDict[params[1]]]
+
+		plt.hist2d(x,y)
+		plt.xlabel(self.paramDict[params[0]])
+		plt.ylabel(self.paramDict[params[1]])
+		plt.title(self.clusterType)
+		# plt.show()
+
+		# If desired, saving figure to plots dir
+		if save_fig:
+			path = os.path.join('plots', 'hists', 'hist2d')
+			plt.savefig(os.path.join(path, f'{self.clusterType}-{params[0]}-{params[1]}-hist2D.pdf'), format='pdf')
 
 
-	# def RunAll(self):
-	# 	'''
-	# 	Method that can run all the above defined functions if need be
-	# 	Comment out and call after instantiating an instance
-	# 	'''
-	# 	self.getClusterData()
-	# 	self.getClusterStats(self.clusterParams, self.combined, True)
-	# 	self.clusterHist(self.clusterParams, self.clusterType, False)
+# #############################################################################################################
+
+# Test call of object/methods
+# cs = clusterStats(['mass', 'age', 'rhm', 'dist', 'Z', 'sigma'], 'OC')
+# cs.getClusterData()
+# cs.getClusterStats(['mass', 'age', 'rhm', 'dist', 'Z', 'sigma'], True)
+# # cs.clusterScatter(['dist', 'rhm'])
+# # cs.clusterHist2d(['mass', 'age'], False)
+
+
+# TODO: 
+# - Add more plotting methods
+# - Test output file writing
+
+types = ['OC', 'GC', 'all']
+params = ['mass', 'age', 'rhm', 'dist', 'z', 'sigma']
+
+for t in types:
+	print(f'Producing cluster data for {t}')
+
+	C = clusterStats(params, t)
+	C.getClusterData()
+	C.clusterHist(params, False, True)
+	for p in permutations(params,2):
+
+		C.clusterScatter(p, True)
+		C.clusterHist2d(p, True)
+
+	
 
 
 
-# Test call of script -- maybe include runAll method?
-cs = clusterStats(['mass', 'age'], 'GC')
-cs.getClusterData()
-cs.getClusterStats(['mass', 'age'], True, True)
-cs.clusterHist(['mass', 'age'], 'GC', True)
-# cs.df = 'OC'
-# cs.clusterScatter(['mass', 'age'], 'GC')
 
 
 
-
-# Cols -- for reference delete later
-# # ['ID', 'RA[hr]', 'Dec[deg]', 'dist[pc]', 'rhm[pc]', 'mass[Msun]',
-#        'age[Myr]', '[Fe/H]', 'sigma_v0_z[km/s]', 'OpSimID', 'OpSimRA[deg]',
-#        'OpSimDec[deg]']
-
-
-
-
-# TODO: write scatter plot method
-#  - test histogramt and written files
 
 
 
