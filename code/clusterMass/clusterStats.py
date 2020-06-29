@@ -22,7 +22,7 @@ class clusterStats(object):
     '''
     Object that produces plots for and prints cluster statistics
     Generates output (.txt) files as well as plots
-    clusterParams - list-like of cluster parameter keys desired
+    clusterParams - list-like of cluster parameter keys desired (generally all are used)
     *Note that param keys are not the same as the column labels
     clusterType: can be
     '''
@@ -69,7 +69,7 @@ class clusterStats(object):
             # List to iterate through for all cluster plots later
             self.cluster_dfs = [self.gc, self.oc]
 
-    def getClusterStats(self, params_to_write, output_file=True):
+    def getClusterStats(self, output_file=True):
         '''
         Method to produce statistics for different cluster params
         6 in total:
@@ -95,7 +95,7 @@ class clusterStats(object):
 
         # Printing mean
         print('Cluster Stats: ' + '\n')
-        for c in params_to_write:
+        for c in self.clusterParams:
             self.paramLabel = self.paramDict[c.lower()]
             self.unit = self.unitsDict[c.lower()]
             # Printing GC param valuues to screen (summed and averaged)
@@ -112,7 +112,7 @@ class clusterStats(object):
         if output_file:
             print('Writing data to txt output file...')
             with open(os.path.join('output', f'{self.clusterType}-Stats.txt'), 'w') as f:
-                for c in params_to_write:
+                for c in self.clusterParams:
                     self.paramLabel = self.paramDict[c.lower()]
                     self.unit = self.unitsDict[c.lower()]
                     f.write(c.upper() + '\n')
@@ -125,14 +125,14 @@ class clusterStats(object):
                     f.write(f'The total (summed across all clusters) value for open cluster {c} is: {np.sum(self.oc[self.paramLabel])}' + ' ' + self.unit + '\n')
                     f.write('######################################## \n')
 
-    def clusterHist(self, params_to_plot, show_mean=False, save_fig=False):
+    def clusterHist(self, show_mean=False, save_fig=False):
         '''
         Method to generate histogram plots of different cluster params
         params_to_plot - list-like of paramters to geenrate histograms for
 
         '''
         # for d in cluster_dfs:
-        for p in params_to_plot:
+        for p in self.clusterParams:
             # Param labels correspond to labels used in original .csv files
             # These are different than the keys passed to clusterHist (paramLabel includes units)
             paramLabel = self.paramDict[p.lower()]
@@ -210,16 +210,17 @@ class clusterStats(object):
         '''
         print('Making corner plot for clusters...')
         print(self.df.columns)
+        # Dropping unneeded columns from dataframe
         DataFrame = self.df.drop(['ID', 'RA[hr]',
                                   'Dec[deg]', 'OpSimID',
                                   'OpSimRA[deg]','OpSimDec[deg]'], axis=1)
-        
+
         # Plotting corner for cluster type
         f = corner.corner(DataFrame, labels = DataFrame.columns, label_kwargs={"fontsize":16}, bins = 20, 
                                   plot_contours = True, title_kwargs={"fontsize":28})
         f.suptitle(self.clusterType, fontsize=24)
-        f.close()
-        # plt.show()
+        # f.show()
+        # f.close()
 
         # Saving figure to corner_plots subdir
         if save_fig:
@@ -239,7 +240,7 @@ class clusterStats(object):
 
 
 # TODO:
-# - Add more plotting methods
+# - Add more plotting methods X
 # - Test output file writing
 
 # Cluster type and param lists to loop thru
@@ -251,7 +252,7 @@ for t in types:
     C = clusterStats(params, t)
     C.getClusterData()  # getting data from csv files
     # creating histograms (only need 1 iteration for each cluster type)
-    C.clusterHist(params, False, True)
+    C.clusterHist(False, True)
     C.clusterCorner(True)  # Cluster corner plots
 
     # Generating diffent plots for cluster type
