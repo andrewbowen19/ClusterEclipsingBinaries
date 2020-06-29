@@ -231,18 +231,6 @@ class clusterStats(object):
 
 # #############################################################################################################
 
-# Test call of object/methods
-# cs = clusterStats(['mass', 'age', 'rhm', 'dist', 'Z', 'sigma'], 'OC')
-# cs.getClusterData()
-# cs.getClusterStats(['mass', 'age', 'rhm', 'dist', 'Z', 'sigma'], True)
-# # cs.clusterScatter(['dist', 'rhm'])
-# # cs.clusterHist2d(['mass', 'age'], False)
-
-
-# TODO:
-# - Add more plotting methods X
-# - Test output file writing
-
 # Cluster type and param lists to loop thru
 types = ['OC', 'GC', 'all']
 params = ['mass', 'age', 'rhm', 'dist', 'z', 'sigma']
@@ -261,7 +249,9 @@ for t in types:
         C.clusterHist2d(p, True)  # 2D Hists
 
 
-
+# TODO:
+# - Add more plotting methods X
+# - Test output file writing
 
 
 
