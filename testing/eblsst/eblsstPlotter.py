@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+import re
 
 
 class eblsstPlotter(object):
@@ -79,67 +80,4 @@ class eblsstPlotter(object):
 			path_to_fig = os.path.join('.', 'plots', self.clusterType, self.strategy + self.crowding, 'combined', fileName)
 			fig.savefig(path_to_fig)
 
-
-# #########################################################################################################################
-
-# Looping through all observing scenarios
-# path_to_clusters = os.path.join('.', 'clusters')
-# for root, dirs, files in os.walk(path_to_clusters, topdown=True):
-# 	print(root)
-# 	for 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ########################################################################################################################
-
-# Old path loop: only did GBC scenario
-# test path to play around with plotting, will loop through file tree later
-# test_path = os.path.join('clusters', 'GlobularClusters', 'baseCrowd', 'eblsst_files')
-# save_path = test_path.replace('clusters', 'plots')
-
-
-# filtersLSST = ['u', 'g', 'r', 'i', 'z', 'y']
-
-# # looping through one dir for now
-# for file  in os.listdir(test_path):
-#     print(file)
-#     df = pd.read_csv(os.path.join(test_path, file), header=0)
-#     print(df)
-#     binParam = file.replace('EBLSST_', '').replace('hist.csv', '')
-#     eb = eblsstPlotter(df, 'GlobularClusters', 'base', 'Crowd', binParam)
-#     eb.makeCombinedHist(filtersLSST, True)
-
-#     for c in df.columns:
-
-#     	# Getting filter key from column titles (if an individual filter col)
-#     	# If there is an individual filter column, it's recovered
-#     	if '_histRec' in c:
-#     		filt = c.replace('_histRec', '')
-#     		eb.makeIndHist(df[c],  filt, False, True)
-#     	else:
-#     		eb.makeIndHist(df[c], 'ugrizy', False, True)
-
-
-
-
-
-# binEdges,histAll,histObs,u_histRec,g_histRec,r_histRec,i_histRec,z_histRec,y_histRec,allhistRec
 
