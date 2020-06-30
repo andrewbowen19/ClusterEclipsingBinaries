@@ -1,11 +1,12 @@
 '''
-Script to run the eblsstPloter (located in this directory) for each observing scenario
+Script to run the eblsstPloter for each observing scenario
+eblsstPlotter class should reside in working dir
 The scenarios include every permutation of the following:
 Open/Globular
 baseline/colossus
 crowding/no-crowding
-Utilizes methods from eblsstPlotter to generate histograms for each scenario/binary param
-*Note: in our nomenclature, OS refers to the 'observing scenario'. Sorry for any confusion.
+Utilizes methods from eblsstPlotter to generate histograms for each scenario
+*Note: in our nomenclature, OS refers to the 'observing scenario'.
 '''
 
 from eblsstPlotter import eblsstPlotter
@@ -15,10 +16,12 @@ import pandas as pd
 import os
 import re
 
-
-# dictionary including path folder names and the respective OpSim strategy and crowding scenario
-scenarioDict = {'baseCrowd': ['base', 'Crowd'], 'baseNoCrowd': ['base', 'NoCrowd'],
-				'colCrowd': ['col', 'Crowd'], 'colNoCrowd': ['col', 'NoCrowd']}
+# dictionary including path folder names
+# Also includes respective OpSim strategy and crowding scenario
+scenarioDict = {'baseCrowd': ['base', 'Crowd'],
+				'baseNoCrowd': ['base', 'NoCrowd'],
+				'colCrowd': ['col', 'Crowd'],
+				'colNoCrowd': ['col', 'NoCrowd']}
 filtersLSST = ['u', 'g', 'r', 'i', 'z', 'y']
 
 # Looping through all observing scenarios
@@ -30,7 +33,7 @@ for root, dirs, files in os.walk(path_to_clusters, topdown=True):
 		if 'eblsst_files' in d:
 			scenario = root.replace('./clusters/', '')
 			print('Here\'s the sitch:', scenario)
-			path_to_files = os.path.join(root , d)
+			path_to_files = os.path.join(root, d)
 
 			# Defining observing scenario (OC/GC, base/col, crowd/NoCrowd)
 			cluster = scenario.split('/')[0]
@@ -38,7 +41,7 @@ for root, dirs, files in os.walk(path_to_clusters, topdown=True):
 			strategyOpSim = scenarioDict[stratCrowd][0]  # either baseline or colossus
 			crowding = scenarioDict[stratCrowd][1]
 			print(f'Making plots for following OS: {cluster}, {strategyOpSim}, {crowding}...')
-			
+
 			# Generating plots for each binary parameter file in working OS
 			for file in os.listdir(path_to_files):
 
@@ -46,11 +49,11 @@ for root, dirs, files in os.walk(path_to_clusters, topdown=True):
 				binParam = file.replace('EBLSST_', '').replace('hist.csv', '')
 				eb = eblsstPlotter(df, cluster, strategyOpSim, crowding, binParam)
 				eb.makeCombinedHist(filtersLSST, True)
-				
 
+				# Making individual filter histograms
 				for c in df.columns:
 
-					# Getting filter key from column titles (if an individual filter col)
+					# Getting filter key from column titles
 					# If there is an individual filter column, it's recovered
 					if '_histRec' in c:
 						filt = c.replace('_histRec', '')
@@ -60,8 +63,6 @@ for root, dirs, files in os.walk(path_to_clusters, topdown=True):
 
 
 print("All done!")
-
-
 
 
 
