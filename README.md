@@ -7,6 +7,13 @@ We used data from catalogs provided from several sources of both [Open](https://
 
 Our project attempts to optimize the LSST cadence for viewing eclipsing binaries between different LSST observing strategies (*baseline* and *colossus*, respectively). In general, *colossus* will observe the regions of the sky near the galactic plane more frequently than *baseline*. The thinking being that with more observations of regions where globular and open clusters reside, there is a higher chance of successfully recovering the period of eclipsing binaries in those clusters.
 
+This GitHub repository is available for download via MIT License. The repository is laid out with several sub-directories corresponding to different parts of the project. The sub-directories are as follows:
+
+* code - contains all requisite software and data files for the project
+* plots - relevant plots are posted in this folder locally. To download plots, visit this [box link.](https://northwestern.box.com/s/ilwzu9esd37rq9vg6ri169htg8apu63d)
+* testing - playground suv-repository for testing new project software. Note that these versions are in development and not necessarily stable.
+* outreach - directory containing files related to outreach projects (thesis writing, poster, CIERA REU website, etc.)
+
 Feel free to look over our [**project poster**](https://northwestern.box.com/s/hxuq4fsl76aaxg3m4ctazmjnv6ru56jh) which recently was awarded as a Chambliss Medalist at the 235th Meeting of the American AStronoimcal Society!
 
 As of June 5th, 2020. I am very proud to say that we have completed writing [my senior thesis](https://northwestern.box.com/s/grc92s1vm7qd80jffmnl5guppltlyemt)! This project was the result of a lot of hard work. My thanks go out to my advisor, Dr. Aaron Geller (@ageller) for all his help along the way!
