@@ -122,9 +122,9 @@ class eblsstPlotter(object):
                 nRec = np.sum(histData)
 
                 # Finding variance of histogram dists
-                mids = 0.5*(self.DataFrame['binEdges'][0:] + self.DataFrame['binEdges'][:-1])
-                mean = np.average(mids, weights=histData)
-                var = np.average((mids - mean)**2, weights=histData)
+                # mids = 0.5*(self.DataFrame['binEdges'][0:] + self.DataFrame['binEdges'][:-1])
+                # mean = np.average(mids, weights=histData)
+                # var = np.average((mids - mean)**2, weights=histData)
                 print('mids: \n', mids, '\n mean:', mean)
                 # print(self.DataFrame['binEdges'])
 
@@ -132,20 +132,11 @@ class eblsstPlotter(object):
                 peakParam = self.DataFrame['binEdges'].loc[np.argmax(histData)]
                 f.write(f'{filt} filter: \n')
                 f.write(f'The total # of binaries recovered for {filt} filter: {nRec} \n')
-                f.write(f'The variance of the ditribution for recovered binaries in {filt}-band is: {var}\n')
+                # f.write(f'The variance of the ditribution for recovered binaries in {filt}-band is: {var}\n')
                 f.write(f'The value of {self.param} with the most binaries recovered in {filt}-band is: {peakParam} \n')
                 f.write('####################################\n')
 
-# Test call for new method
-filtersVRO = ['u', 'g', 'r', 'i', 'z', 'y']
-dat = pd.read_csv('EBLSST_rhist.csv', header=0)
-eb = eblsstPlotter(dat, 'GlobularClusters', 'base', 'Crowd', 'r')
-eb.filterStats(filtersVRO)
 
-# Comparing with other file for consistency
-dat = pd.read_csv('EBLSST_dhist.csv', header=0)
-EB = eblsstPlotter(dat, 'GlobularClusters', 'base', 'Crowd', 'd')
-EB.filterStats(filtersVRO)
 
 
 
