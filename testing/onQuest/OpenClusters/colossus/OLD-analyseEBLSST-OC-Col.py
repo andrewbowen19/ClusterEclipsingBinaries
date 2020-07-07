@@ -225,7 +225,7 @@ if __name__ == "__main__":
 	peccRec = pd.DataFrame(columns = ['e', 'p'])
 
 	#Read in all the data and make the histograms
-	d = os.path.join("projects", "p30137", "ageller", "testing", "EBLSST","clusters","OpenClusters", "colossus", "output_files")   
+	d = "/projects/p30137/ageller/testing/EBLSST/clusters/OpenClusters/colossus/output_files/"
 	files = os.listdir(d)
 	IDs = []
 	for i, f in enumerate(files):

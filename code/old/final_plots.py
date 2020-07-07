@@ -1,3 +1,8 @@
+'''
+This script is deprecated and no longer used
+Instead, use other plotting scripts included in this repository
+'''
+
 # Importing needed libraries
 import pandas as pd
 import numpy as np

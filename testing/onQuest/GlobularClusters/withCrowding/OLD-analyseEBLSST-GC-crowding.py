@@ -4,12 +4,11 @@
 #########################
 #########################
 
-# Baseline GC script -- NO crowding
+# Baseline GC script -- WITH crowding
 # New script copied from quest - want to take p and ecc from each population (all, obs, rec) and put them into separate file
 # Doing this so we don't have to run analyse each time
 # Can write separate script for p-ecc plots
-# Andrew's local paths in this version of the script
-
+# Quest paths in this version of script
 
 import pandas as pd
 import numpy as np
@@ -226,7 +225,7 @@ if __name__ == "__main__":
 	peccRec = pd.DataFrame(columns = ['e', 'p'])
 
 	#Read in all the data and make the histograms
-	d = "/Users/andrewbowen/ceb_project/testing/GlobularClusters/output_files/"
+	d = "/projects/p30137/ageller/testing/EBLSST/clusters/GlobularClusters/withCrowding/output_files/"
 	files = os.listdir(d)
 	IDs = []
 	for i, f in enumerate(files):
@@ -430,11 +429,12 @@ if __name__ == "__main__":
 	peccRec['p'] = pRec
 
 	# print('Final Dataframes:', peccAll, peccObs, peccRec)
-	print(peccRec.columns)
+	# print(peccRec.columns)
 
-	peccAll.to_csv('./pecc/all-ecc-p.csv', header = ['e', 'p'])
-	peccObs.to_csv('./pecc/obs-ecc-p.csv', header = ['e', 'p'])
-	peccRec.to_csv('./pecc/rec-ecc-p.csv', header = ['e', 'p'])
+	# 3 letter code corresponds to scenario (OC/GC, baseline/colossus, crowding/no crowding)
+	peccAll.to_csv('./pecc/all-GBC-ecc-p.csv', header = ['e', 'p'])
+	peccObs.to_csv('./pecc/obs-GBC-ecc-p.csv', header = ['e', 'p'])
+	peccRec.to_csv('./pecc/rec-GBC-ecc-p.csv', header = ['e', 'p'])
 
 	#plot and save the histograms
 	saveHist(m1hAll, m1hObs, m1hRec, m1b, 'm1 (Msolar)', 'EBLSST_m1hist')

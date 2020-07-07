@@ -38,6 +38,26 @@ def scatterPecc(df, plot_title):
     ax.set_title(plot_title)
     # Add in plot tile in for loop below - want these scatters for 3 subpops and all scenarios (O/G, B/C, C/N)
     f.savefig('./plots/' + plot_title + '-scatter-pecc.pdf')
+    
+############################################################################################
+
+
+def PercentRecHist(recHist, obsHist, title):
+	#Function to make percent Recovered histogram of period and eccentricity - going to put on quest scripts
+	trueRecHist = np.divide(recHist,obsHist)
+	print('Obs: ', obsHist, 'Rec: ', recHist)
+	# Plotting percent rec hist
+	f, ax = plt.subplots()
+	
+	im = ax.imshow(np.nan_to_num(trueRecHist), cmap = cm.Blues,aspect = (xmax - xmin)/(ymax - ymin),origin = 'lower', extent = [xmin,xmax,ymin, ymax])
+	ax.set_xlabel('Period (log-days)')
+	ax.set_ylabel('Eccentricity')
+	ax.set_title(r'% recovered: ' + title)
+	plt.show()
+	plt.savefig('./plots/contour_plots/percentRecHist'+ title + '.pdf')
+    
+
+
 
 
 ##################################################################################################################
@@ -51,7 +71,7 @@ def plotPecc(p, ecc,  xmin, xmax, Nx, ymin, ymax, Ny, plot_title, norm = None):
     ax1 = plt.subplot(gs[0])
     ax2 = plt.subplot(gs[2])
     ax3 = plt.subplot(gs[3])
-    # print('log-period: ', np.log10(p))
+    print('log-period: ', np.log10(p))
     #histograms
     pBins = np.linspace(xmin,xmax,Nx)
     eccBins = np.linspace(ymin,ymax,Ny)
@@ -82,61 +102,6 @@ def plotPecc(p, ecc,  xmin, xmax, Nx, ymin, ymax, Ny, plot_title, norm = None):
 
 
 # ########################################################################################################################
-def PercentRecHist(recHist, obsHist, xmin, xmax, Nx, ymin, ymax, Ny, title):
-    #Function to make percent Recovered histogram of period and eccentricity - going to put on quest scripts
-    trueRecHist = np.divide(recHist,obsHist)
-    print('truRecHist: ' ,trueRecHist)
-
-    pBins = np.linspace(xmin, xmax, Nx)
-    eccBins = np.linspace(ymin, ymax, Ny)
-
-    # Plotting percent rec hist - adjusting figure layout with gridspec
-    f = plt.figure(figsize=(8, 8)) 
-    gs = gridspec.GridSpec(2, 2, height_ratios = [1, 3], width_ratios = [3, 1]) 
-    ax1 = plt.subplot(gs[0])
-    ax2 = plt.subplot(gs[2])
-    ax3 = plt.subplot(gs[3])
-    plt.setp(ax1.get_yticklabels()[0], visible=False)
-    plt.setp(ax1.get_xticklabels(), visible=False)
-    plt.setp(ax3.get_yticklabels(), visible=False)
-    plt.setp(ax3.get_xticklabels()[0], visible=False)
-
-    print('period :', trueRecHist[0])
-    print('ecc: ', trueRecHist[1][0:])
-
-    n = 0
-    # Looping through 
-    ecc = []
-    per = []
-    for e, p in zip(trueRecHist[1][0:],trueRecHist[0][0:]):
-        pSum = np.sum(p)
-        eccSum = np.sum(e)
-
-        ecc.append(eccSum)
-        per.append(pSum)
-
-
-    # making 1D histograms
-    hx1D, x1D, im = ax1.hist(per, bins=pBins, histtype='step', fill=False)
-    hy1D, y1D, im = ax3.hist(ecc, bins=eccBins, histtype='step', fill=False, orientation="horizontal")
-
-    # Plotting actual 2d % rec hist
-    im = ax2.imshow(np.nan_to_num(trueRecHist), cmap = cm.Blues,
-        aspect = (xmax - xmin)/(ymax - ymin), origin = 'lower', extent = [xmin,xmax,ymin, ymax])
-    ax2.set_xlabel('Period (log-days)')
-    ax2.set_ylabel('Eccentricity')
-    ax1.set_title(r'% recovered: ' + title)
-    f.subplots_adjust(hspace=0., wspace=0.)
-
-    # Adding colorbar
-    cbar = f.colorbar(im)
-    cbar.ax.set_ylabel(r'% recovered', rotation = 270, labelpad = 8)
-
-
-    plt.savefig('./plots/contour_plots/percentRecHist'+ title + '.pdf')
-    print(' ')
-    plt.show()
-
 # ########################################################################################################################
 
 # Setting up bins: will likely change
@@ -156,40 +121,31 @@ ymin, ymax, Ny = 0, 1, 100
 import os
 n = 0
 
-
 # Walks through every file in directory, only pulls relevant csv files and makes plots for each scenario
 for root, dirs, files in os.walk(".", topdown=True):
-    # print('LOOP',root, dirs, files)
-    haveRec = False
-    haveObs = False
-    for name in files:
-        # Only reading in p-ecc output files
-        # print('CHECKING FILE', name)
-        if '-ecc-p.csv' in name:
-            df = pd.read_csv(os.path.join(root,name), header = 0, names = ['e', 'p'])
-            # print(n)
-            # print('e',df['e'])
-            n += 1
-            x2D, y2D, h2D, x1D, hx1D, y1D, hy1D, ax = plotPecc(np.log10(df['p']),df['e'], xmin, xmax, Nx, ymin, ymax, Ny, name[0:9], norm=mpl.colors.LogNorm())
-            # print('NAME:', name, h2D)
-            scatterPecc(df, name[0:9])
-            # Only want matching scenario obs-rec dataframes
+	for name in files:
+		# Only reading in p-ecc output files
+		if '-ecc-p.csv' in name:
+			df = pd.read_csv(os.path.join(root,name), header = 0, names = ['e', 'p'])
+			print(n)
+			#print(df)
+			n += 1
+			x2D, y2D, h2D, x1D, hx1D, y1D, hy1D, ax = plotPecc(np.log10(df['p']),df['e'], xmin, xmax, Nx, ymin, ymax, Ny, name[0:7], norm=mpl.colors.LogNorm())
+			
+			scatterPecc(df, name[0:7])
+			# Only want matching scenario obs-rec dataframes
 
-            if ('obs' in name):
-                # print('GOT OBS', name)
-                obsHist2D = h2D
-                haveObs = True
-            elif 'rec' in name and '.csv' in name:
-                # print('GOT REC', name)
-                recHist2D = h2D
-                haveRec = True
-            # Making 2D histgram of percent recoved
-            if (haveRec and haveObs):
-                PercentRecHist(recHist2D, obsHist2D, xmin, xmax, Nx, ymin, ymax, Ny, name[4:9])
+			if ('obs' in name) and ('.csv' in name):
+				obsHist2D = h2D
+			elif 'rec' in name and '.csv' in name:
+				recHist2D = h2D
+			# Making 2D histgram of percent recoved
+				PercentRecHist(recHist2D, obsHist2D, name[4:7])
+
+		else:
+			pass
 
 
-        else:
-            pass
 
 
 

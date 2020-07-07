@@ -41,6 +41,27 @@ def scatterPecc(df, plot_title):
     
 ############################################################################################
 
+
+def PercentRecHist(recHist, obsHist, title):
+	#Function to make percent Recovered histogram of period and eccentricity - going to put on quest scripts
+	trueRecHist = np.divide(recHist,obsHist)
+	#print('Obs: ', obsHist, 'Rec: ', recHist)
+	# Plotting percent rec hist
+	f, ax = plt.subplots()
+	
+	im = ax.imshow(np.nan_to_num(trueRecHist), cmap = cm.Blues,aspect = (xmax - xmin)/(ymax - ymin),origin = 'lower', extent = [xmin,xmax,ymin, ymax])
+	ax.set_xlabel('Period (log-days)')
+	ax.set_ylabel('Eccentricity')
+	ax.set_title(r'% recovered: ' + title)
+	plt.show()
+	plt.savefig('./plots/contour_plots/percentRecHist-'+ title + '.pdf')
+    
+
+
+
+
+##################################################################################################################
+
 # Function copied from Gaia_M67_SOLUTIONS (/CIERA_REU/PythonTutorialSequence/Part5/)
 # Want to convert from plotting proper motion to ecc and p
 # Can call this for each scenario (GC/OC, baseline/colossus, crowding/noCrowding)
@@ -78,51 +99,60 @@ def plotPecc(p, ecc,  xmin, xmax, Nx, ymin, ymax, Ny, plot_title, norm = None):
     f.savefig('./plots/contour_plots/'+ plot_title + '-p-ecc-hist2D.pdf')
     return x2D, y2D, h2D, x1D, hx1D, y1D, hy1D, (ax1, ax2, ax3)
 
-# ##############################################################################################################
 
-def PercentRecHist(recHist, obsHist, title):
-    #Function to make percent Recovered histogram of period and eccentricity - going to put on quest scripts
-    trueRecHist = np.divide(recHist,obsHist)
-    print('truRecHist: ' ,trueRecHist)
 
-    pBins = np.linspace(xmin, xmax, Nx)
-    eccBins = np.linspace(ymin, ymax, Ny)
+# #######################################################################################3
+#Percent Rec histogram function
+def OLDpercentRecHist(recHist, obsHist,xmin, xmax, Nx, ymin, ymax, Ny, plot_title, norm = None):
+	f = plt.figure(figsize=(8, 8)) 
+	gs = gridspec.GridSpec(2, 2, height_ratios = [1, 3], width_ratios = [3, 1]) 
+	ax1 = plt.subplot(gs[0])
+	ax2 = plt.subplot(gs[2])
+	ax3 = plt.subplot(gs[3])
 
-    # Plotting percent rec hist - adjusting figure layout with gridspec
-    f = plt.figure(figsize=(8, 8)) 
-    gs = gridspec.GridSpec(2, 2, height_ratios = [1, 3], width_ratios = [3, 1]) 
-    ax1 = plt.subplot(gs[0])
-    ax2 = plt.subplot(gs[2])
-    ax3 = plt.subplot(gs[3])
-    plt.setp(ax1.get_yticklabels()[0], visible=False)
-    plt.setp(ax1.get_xticklabels(), visible=False)
-    plt.setp(ax3.get_yticklabels(), visible=False)
-    plt.setp(ax3.get_xticklabels()[0], visible=False)
+	#histograms
+	pBins = np.linspace(xmin,xmax,Nx)
+	eccBins = np.linspace(ymin,ymax,Ny)
+	hx1D, x1D, im = ax1.hist(recHist[0], bins=pBins, histtype='step', fill=False)
+	hy1D, y1D, im = ax3.hist(recHist[1], bins=eccBins, histtype='step', fill=False, orientation="horizontal")
 
-    print('period :', trueRecHist[0])
-    print('ecc: ', trueRecHist[1][0:])
+	# dividing to get percent recovered
+	pRecHist2D = np.divide(obsHist, recHist)
+	pRec2D = np.nan_to_num(pRecHist2D)
 
-    n = 0
-    for e in trueRecHist[1][0:]:
-        n+=1
-        # print(n, e)
-    # making 1D histograms
-    hx1D, x1D, im = ax1.hist(np.concatenate(np.nan_to_num(trueRecHist)), bins=pBins, histtype='step', fill=False)
-    hy1D, y1D, im = ax3.hist(np.concatenate(np.nan_to_num(trueRecHist)), bins=eccBins, histtype='step', fill=False, orientation="horizontal")
+	# Test plotting - can just index 2D percent recovered hist from above
+	f = plt.figure(figsize=(8, 8)) 
+	gs = gridspec.GridSpec(2, 2, height_ratios = [1, 3], width_ratios = [3, 1]) 
+	ax1 = plt.subplot(gs[0])
+	ax2 = plt.subplot(gs[2])
+	ax3 = plt.subplot(gs[3])
 
-    # Plotting actual 2d % rec hist
-    im = ax2.imshow(np.nan_to_num(trueRecHist), cmap = cm.Blues,
-        aspect = (xmax - xmin)/(ymax - ymin), origin = 'lower', extent = [xmin,xmax,ymin, ymax])
-    ax2.set_xlabel('Period (log-days)')
-    ax2.set_ylabel('Eccentricity')
-    ax1.set_title(r'% recovered: ' + title)
-    f.subplots_adjust(hspace=0., wspace=0.)
+	# Making heatmap
+	h2D, x2D, y2D, im = ax2.hist2d(pRec2D[0][0:], pRec2D[1][0:], bins=[Nx, Ny], \
+							range=[[xmin, xmax], [ymin, ymax]], norm = None, cmap = cm.Blues, vmin = 0., vmax = 1)
+#	im = ax2.imshow(pRec2D, cmap = cm.Blues, vmin = 0, vmax = 1)
+	ax1.set_xlim(xmin, xmax)
+	ax2.set_xlim(xmin, xmax)
+	ax2.set_ylim(ymin, ymax)
+	ax3.set_ylim(ymin, ymax)
+	ax2.set_xlabel(r'period (days) - foo', fontsize=16)
+	ax2.set_ylabel(r'binary eccentricity', fontsize=16)
+	plt.setp(ax1.get_yticklabels()[0], visible=False)
+	plt.setp(ax1.get_xticklabels(), visible=False)
+	plt.setp(ax3.get_yticklabels(), visible=False)
+	plt.setp(ax3.get_xticklabels()[0], visible=False)
+	plt.title(plot_title, fontsize = 22) # Can add titles to distinguish between plots
+	f.subplots_adjust(hspace=0., wspace=0.)
+	# plt.show()
+	f.savefig('./plots/contour_plots/percentRecHist2D.pdf')
 
-    plt.savefig('./plots/contour_plots/percentRecHist'+ title + '.pdf')
-    print(' ')
-    plt.show()
-    
-# ##################################################################################################################
+
+
+	return h2D
+
+
+
+###################################################################################################
 
 # Setting up bins: will likely change
 xmin, xmax, Nx = -1, 2, 100

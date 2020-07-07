@@ -1,1 +1,0 @@
-# Messing around and animating a binary eclipse using

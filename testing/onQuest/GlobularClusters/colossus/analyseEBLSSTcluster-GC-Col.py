@@ -4,7 +4,7 @@
 #########################
 #########################
 
-# Colossus OC script -- NO crowding
+# Colossus GC script -- NO crowding
 # New script copied from quest - want to take p and ecc from each population (all, obs, rec) and put them into separate file
 # Doing this so we don't have to run analyse each time
 # Can write separate script for p-ecc plots
@@ -77,7 +77,7 @@ def saveHist(histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_
 	ax1.step(bin_edges, histRec[f]/np.sum(histRec[f]), color=c3, linewidth=lw)
 	ax1.set_ylabel('PDF')
 	ax1.set_yscale('log')
-	ax1.set_title('Globular Clusters - Baseline', fontsize = 16)
+	ax1.set_title('Globular Clusters - Colossus', fontsize = 16)
 	ax1.set_xlabel(xtitle)
 	#CDF
 	#cdfAll = []
@@ -104,10 +104,10 @@ def saveHist(histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_
 
 	#ax2.set_xlabel(xtitle)
 	fig.subplots_adjust(hspace=0)
-	fig.savefig('./plots/'  + fname+'.pdf',format='pdf', bbox_inches = 'tight')
+	fig.savefig(os.path.join('.', 'plots', fname+'.pdf'), format='pdf', bbox_inches = 'tight')
 
 	#write to a text file
-	with open('./eblsst_files/' + fname+'.csv','w') as fl:
+	with open(os.path.join('.','eblsst_files', fname+'.csv'),'w') as fl:
 		outline = 'binEdges,histAll,histObs'
 		for f in filters:
 			outline += ','+f+'histRec'
@@ -225,15 +225,16 @@ if __name__ == "__main__":
 	peccRec = pd.DataFrame(columns = ['e', 'p'])
 
 	#Read in all the data and make the histograms
-	d = os.path.join("projects", "p30137", "ageller", "testing", "EBLSST","clusters","OpenClusters", "colossus", "output_files")   
+	d = os.path.join("/projects", "p30137", "ageller", "testing", "EBLSST", "clusters", "GlobularClusters", "colossus", "output_files")
 	files = os.listdir(d)
 	IDs = []
 	for i, f in enumerate(files):
 		print(round(i/len(files),4), f)
-		fl = file_len(d+f)
+		path_to_file = os.path.join(d, f)
+		fl = file_len(path_to_file)
 		if (fl >= 4):
 			#read in the header
-			header = pd.read_csv(d+f, nrows=1)
+			header = pd.read_csv(path_to_file, nrows=1)
 	######################
 	#NEED TO ACCOUNT FOR THE BINARY FRACTION when combining histograms
 	#####################
@@ -244,7 +245,7 @@ if __name__ == "__main__":
 			Dec.append(header['OpSimDec'])
 
 			#read in rest of the file
-			data = pd.read_csv(d+f, header = 2).fillna(-999)
+			data = pd.read_csv(path_to_file, header = 2).fillna(-999)
 			rF = 0.
 			rN = 0.
 			Nrec = 0.
@@ -401,7 +402,6 @@ if __name__ == "__main__":
 			allNPrsa.append(NallPrsa)
 			obsNPrsa.append(NobsPrsa)
 			recNPrsa.append(NrecPrsa)
-			#print(np.sum(lphRec), np.sum(recN), np.sum(lphRec)/np.sum(recN), np.sum(lphRec0), Nrec, np.sum(lphRec0)/Nrec, np.sum(lphObs), np.sum(obsN), np.sum(lphObs)/np.sum(obsN))
 
 	# Concatenating p and ecc lists
 	eccAll = np.concatenate(eccAll)
@@ -413,8 +413,6 @@ if __name__ == "__main__":
 	pRec = np.concatenate(pRec)
 
 
-	# print('Ecc lists:', eccAll, eccObs, eccRec)
-	# print('P lists:', pAll, pObs, pRec)
 	# Appending lists with all the p/ecc values to our dataframes
 	# All dataframe
 	peccAll['e'] = eccAll
@@ -430,11 +428,11 @@ if __name__ == "__main__":
 
 	# print('Final Dataframes:', peccAll, peccObs, peccRec)
 	# print(peccRec.columns)
-
+	
 	# 3 letter code corresponds to scenario (OC/GC, baseline/colossus, crowding/no crowding)
-	peccAll.to_csv('./pecc/all-OCN-ecc-p.csv', header = ['e', 'p'])
-	peccObs.to_csv('./pecc/obs-OCN-ecc-p.csv', header = ['e', 'p'])
-	peccRec.to_csv('./pecc/rec-OCN-ecc-p.csv', header = ['e', 'p'])
+	peccAll.to_csv(os.path.join('.', 'pecc', 'all-GCN-ecc-p.csv'), header = ['e', 'p'])
+	peccObs.to_csv(os.path.join('.', 'pecc', 'obs-GCN-ecc-p.csv'), header = ['e', 'p'])
+	peccRec.to_csv(os.path.join('.', 'pecc', 'rec-GCN-ecc-p.csv'), header = ['e', 'p'])
 
 	#plot and save the histograms
 	saveHist(m1hAll, m1hObs, m1hRec, m1b, 'm1 (Msolar)', 'EBLSST_m1hist')
@@ -452,7 +450,8 @@ if __name__ == "__main__":
 	bGal = coords.galactic.b.wrap_at(180.*units.degree).degree
 	RAwrap = coords.ra.wrap_at(180.*units.degree).degree
 	Decwrap = coords.dec.wrap_at(180.*units.degree).degree
-
+	
+	plotPath = os.path.join('.', 'plots')
 	f, ax = plt.subplots(subplot_kw={'projection': "mollweide"}, figsize=(8,5))
 	ax.grid(True)
 	#ax.set_xlabel(r"$l$",fontsize=16)
@@ -463,7 +462,7 @@ if __name__ == "__main__":
 	mlw = ax.scatter(np.array(RAwrap).ravel()*np.pi/180., np.array(Decwrap).ravel()*np.pi/180., c=np.array(recFrac)*100., cmap='viridis_r', s = 4)
 	cbar = f.colorbar(mlw, shrink=0.7)
 	cbar.set_label(r'% recovered')
-	f.savefig('./plots/'  + 'mollweide_pct.pdf',format='pdf', bbox_inches = 'tight')
+	f.savefig(os.path.join(plotPath, 'mollweide_pct.pdf'),format='pdf', bbox_inches = 'tight')
 
 	f, ax = plt.subplots(subplot_kw={'projection': "mollweide"}, figsize=(8,5))
 	ax.grid(True)
@@ -475,16 +474,16 @@ if __name__ == "__main__":
 	mlw = ax.scatter(np.array(RAwrap).ravel()*np.pi/180., np.array(Decwrap).ravel()*np.pi/180., c=np.log10(np.array(recN)), cmap='viridis_r', s = 4)
 	cbar = f.colorbar(mlw, shrink=0.7)
 	cbar.set_label(r'log10(N) recovered')
-	f.savefig('./plots/'  + 'mollweide_N.pdf',format='pdf', bbox_inches = 'tight')
+	f.savefig(os.path.join(plotPath, 'mollweide_N.pdf'),format='pdf', bbox_inches = 'tight')
 
 	if (doIndividualPlots):
-		fmass.savefig('./plots/'  + 'massPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fqrat.savefig('./plots/'  + 'qPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fecc.savefig('./plots/'  + 'eccPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		flper.savefig('./plots/'  + 'lperPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fdist.savefig('./plots/'  + 'distPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fmag.savefig('./plots/'  + 'magPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		frad.savefig('./plots/'  + 'radPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		fmass.savefig(os.path.join(plotPath, 'massPDFall.pdf'), format='pdf', bbox_inches = 'tight')
+		fqrat.savefig(os.path.join(plotPath, 'qPDFall.pdf'), format='pdf', bbox_inches = 'tight')
+		fecc.savefig(os.path.join(plotPath, 'eccPDFall.pdf'), format='pdf', bbox_inches = 'tight')
+		flper.savefig(os.path.join(plotPath, 'lperPDFall.pdf'), format='pdf', bbox_inches = 'tight')
+		fdist.savefig(os.path.join(plotPath, 'distPDFall.pdf'), format='pdf', bbox_inches = 'tight')
+		fmag.savefig(os.path.join(plotPath, 'magPDFall.pdf'), format='pdf', bbox_inches = 'tight')
+		frad.savefig(os.path.join(plotPath, 'radPDFall.pdf'), format='pdf', bbox_inches = 'tight')
 
 	print("###################")
 	print("number of binaries in input files (raw, log):",np.sum(fileN), np.log10(np.sum(fileN)))
@@ -492,10 +491,10 @@ if __name__ == "__main__":
 	print("number of binaries in recovered with gatspy (raw, log):",np.sum(fileRecN), np.log10(np.sum(fileRecN)))
 	print("recovered/observable*100 with gatspy:",np.sum(fileRecN)/np.sum(fileObsN)*100.)
 	print("###################")
-	print("total in sample (raw, log):",np.sum(rawN), np.log10(np.sum(rawN)))
-	print("total observable (raw, log):",np.sum(obsN), np.log10(np.sum(obsN)))
-	print("total recovered (raw, log):",np.sum(recN), np.log10(np.sum(recN)))
-	print("recovered/observable*100:",np.sum(recN)/np.sum(obsN)*100.)
+	print("total in sample (raw, log):", np.sum(rawN), np.log10(np.sum(rawN)))
+	print("total observable (raw, log):", np.sum(obsN), np.log10(np.sum(obsN)))
+	print("total recovered (raw, log):", np.sum(recN), np.log10(np.sum(recN)))
+	print("recovered/observable*100:", np.sum(recN)/np.sum(obsN)*100.)
 	print("###################")
 	print("total in Prsa 15.8<r<19.5 P<1000d sample (raw, log):",np.sum(allNPrsa), np.log10(np.sum(allNPrsa)))
 	print("total observable in Prsa 15.8<r<19.5 P<1000d sample (raw, log):",np.sum(obsNPrsa), np.log10(np.sum(obsNPrsa)))

@@ -2,7 +2,7 @@
 # These files are grabbed from different observing scenarios
 # eblsst files from the analyseClusterLISA script in the flex directory
 # Let's plot!
-# info on VRO filters here: 
+# info on Vera Rubin Obs filters here: 
 # https://community.lsst.org/t/lsst-filter-profiles/1463
 
 import numpy as np
@@ -80,7 +80,7 @@ class eblsstPlotter(object):
                     histtype='step', linestyle='--',
                     color=self.filterColors[f], label=f, alpha=0.7)
         ax.legend()
-        ax.set_title(ax.set_title(self.clusterType + '-' + self.strategy + self.crowding + '; recovered'))
+        ax.set_title(self.clusterType + '-' + self.strategy + self.crowding + '; recovered')
         ax.set_xlabel(self.paramDict[self.param])  # replacing parameter label from file name w param key (in dict above)
         ax.set_ylabel(r'$N_{bin}$')
 
@@ -95,7 +95,27 @@ class eblsstPlotter(object):
         Method to produce cumulative histograms across all filters
         Want this to be easier to compare than straight (unstacked) histogram
         '''
+        print('Making CDF histograms...')
+        multiData = self.DataFrame.drop(['binEdges', 'histAll', 'histObs', 'allhistRec'],
+                                        axis=1)
 
+        fig, ax = plt.subplots(figsize=(8, 5))
+        # Looping thru filters
+        for f in filters:
+            ax.hist(multiData[f+'_histRec'], bins=self.DataFrame['binEdges'], density=True,
+                    histtype='step', cumulative=True,
+                    color=self.filterColors[f], label=f, alpha=0.7)
+        ax.legend()
+        ax.set_title(self.clusterType + '-' + self.strategy + self.crowding + '; recovered (cumulative)')
+        ax.set_xlabel(self.paramDict[self.param])  # replacing parameter label from file name w param key (in dict above)
+        ax.set_ylabel(r'$N_{bin}$')
+
+        if save_fig:
+            # filterStr = ''.join(filters)
+            name = f'{self.clusterType}-{self.strategy}-{self.param}--histCombinedCDF.pdf'
+            path_to_fig = os.path.join('.', 'plots', self.clusterType, self.strategy + self.crowding, 'combined', 'CDF', name)
+            fig.savefig(path_to_fig)
+        print('CDF made!')
 
     def filterStats(self, filters):
         '''
@@ -125,7 +145,7 @@ class eblsstPlotter(object):
                 # mids = 0.5*(self.DataFrame['binEdges'][0:] + self.DataFrame['binEdges'][:-1])
                 # mean = np.average(mids, weights=histData)
                 # var = np.average((mids - mean)**2, weights=histData)
-                print('mids: \n', mids, '\n mean:', mean)
+                # print('mids: \n', mids, '\n mean:', mean)
                 # print(self.DataFrame['binEdges'])
 
                 #Figuring out where peak of histogram lies in parameter space

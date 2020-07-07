@@ -4,7 +4,7 @@
 #########################
 #########################
 
-# Baseline M10 (GC) long script -- NO crowding
+# Baseline M10 script -- NO crowding
 # New script copied from quest - want to take p and ecc from each population (all, obs, rec) and put them into separate file
 # Doing this so we don't have to run analyse each time
 # Can write separate script for p-ecc plots
@@ -104,10 +104,10 @@ def saveHist(histAll, histObs, histRec, bin_edges, xtitle, fname, filters = ['u_
 
 	#ax2.set_xlabel(xtitle)
 	fig.subplots_adjust(hspace=0)
-	fig.savefig('./plots/'  + fname+'.pdf',format='pdf', bbox_inches = 'tight')
+	fig.savefig(os.path.join('.', 'plots', fname+'.pdf'), format='pdf', bbox_inches = 'tight')
 
 	#write to a text file
-	with open('./eblsst_files/' + fname+'.csv','w') as fl:
+	with open(os.path.join('.','eblsst_files', fname+'.csv'),'w') as fl:
 		outline = 'binEdges,histAll,histObs'
 		for f in filters:
 			outline += ','+f+'histRec'
@@ -209,7 +209,7 @@ if __name__ == "__main__":
 	obsNPrsa = []
 	recNPrsa = []
 
-	# Lists for different params
+	# Lists for period and eccentricity for Andrew's circularization plots
 	eccAll = []
 	eccObs = []
 	eccRec = []
@@ -217,44 +217,24 @@ if __name__ == "__main__":
 	pAll = []
 	pObs = []
 	pRec = []
-
-	iAll = []
-	iObs = []
-	iRec = []
-
-	m1All = []
-	m1Obs = []
-	m1Rec = []
-
-	m2All = []
-	m2Obs = []
-	m2Rec = []
-
-	r1All = []
-	r1Obs = []
-	r1Rec = []	
-
-	r2All = []
-	r2Obs = []
-	r2Rec = []
-
 	# Using prsa dataframes for these lists because of period cutoff at 1000 days
 
 	# Dataframes to write to files later; 3 files for each sub-population - append everything to these
-	All = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
-	Obs = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
-	Rec = pd.DataFrame(columns = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
+	peccAll = pd.DataFrame(columns = ['e', 'p'])
+	peccObs = pd.DataFrame(columns = ['e', 'p'])
+	peccRec = pd.DataFrame(columns = ['e', 'p'])
 
 	#Read in all the data and make the histograms
-	d = "./input_files/"
+	d = os.path.join('.', 'input_files')
 	files = os.listdir(d)
 	IDs = []
 	for i, f in enumerate(files):
 		print(round(i/len(files),4), f)
-		fl = file_len(d+f)
+		path_to_file = os.path.join(d, f)
+		fl = file_len(path_to_file)
 		if (fl >= 4):
 			#read in the header
-			header = pd.read_csv(d+f, nrows=1)
+			header = pd.read_csv(path_to_file, nrows=1)
 	######################
 	#NEED TO ACCOUNT FOR THE BINARY FRACTION when combining histograms
 	#####################
@@ -265,7 +245,7 @@ if __name__ == "__main__":
 			Dec.append(header['OpSimDec'])
 
 			#read in rest of the file
-			data = pd.read_csv(d+f, header = 2).fillna(-999)
+			data = pd.read_csv(path_to_file, header = 2).fillna(-999)
 			rF = 0.
 			rN = 0.
 			Nrec = 0.
@@ -279,17 +259,11 @@ if __name__ == "__main__":
 			NobsPrsa = 0.
 			NrecPrsa = 0.
 			Nall = len(data.index)/intNorm ###is this correct? (and the only place I need to normalize?)
-			prsa = data.loc[(data['p'] < 1000) & (data['p'] > 0.5)]
+			prsa = data.loc[(data['appMagMean_r'] <= 19.5) & (data['appMagMean_r'] > 15.8) & (data['p'] < 1000) & (data['p'] > 0.5)]
 
 			# Appending for Andrew
 			eccAll.append(prsa['e'].values)
 			pAll.append(prsa['p'].values)
-			iAll.append(prsa['i'].values)
-			m1All.append(prsa['m1'].values)
-			m2All.append(prsa['m2'].values)
-			r1All.append(prsa['r1'].values)
-			r2All.append(prsa['r2'].values)
-
 
 			NallPrsa = len(prsa.index)
 			if (Nall >= Nlim):
@@ -334,17 +308,12 @@ if __name__ == "__main__":
 				#Obs
 				obs = data.loc[data['LSM_PERIOD'] != -999]
 				Nobs = len(obs.index)
-				prsaObs = data.loc[(data['p'] < 1000) & (data['p'] >0.5) & (data['LSM_PERIOD'] != -999)]
+				prsaObs = data.loc[(data['appMagMean_r'] <= 19.5) & (data['appMagMean_r'] > 15.8) & (data['p'] < 1000) & (data['p'] >0.5) & (data['LSM_PERIOD'] != -999)]
 				NobsPrsa = len(prsaObs.index)
 
 				# Appending for Andrew's files
 				eccObs.append(prsaObs['e'].values)
 				pObs.append(prsaObs['p'].values)
-				iObs.append(prsaObs['i'].values)
-				m1Obs.append(prsaObs['m1'].values)
-				m2Obs.append(prsaObs['m2'].values)
-				r1Obs.append(prsaObs['r1'].values)
-				r2Obs.append(prsaObs['r2'].values)
 
 				if (Nobs >= Nlim):
 					m1hObs0, m1b = np.histogram(obs["m1"], bins=mbins)
@@ -373,7 +342,7 @@ if __name__ == "__main__":
 						halfP = abs(data[key] - 0.5*data['p'])/(0.5*data['p'])
 						twiceP = abs(data[key] - 2.*data['p'])/(2.*data['p'])
 						rec = data.loc[(data[key] != -999) & ( (fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))]
-						prsaRec = data.loc[(data['p'] < 1000) & (data['p'] >0.5) & (data['LSM_PERIOD'] != -999) & ( (fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))]
+						prsaRec = data.loc[(data['appMagMean_r'] <= 19.5) & (data['appMagMean_r'] >15.8) & (data['p'] < 1000) & (data['p'] >0.5) & (data['LSM_PERIOD'] != -999) & ( (fullP < Pcut) | (halfP < Pcut) | (twiceP < Pcut))]
 						Nrec = len(rec.index)
 
 						#I'd like to account for all filters here to have more accurate numbers
@@ -383,14 +352,6 @@ if __name__ == "__main__":
 						# Going to use prsaRecCombined for ecc-p plots to account for all filters
 						eccRec.append(prsaRec['e'].values)
 						pRec.append(prsaRec['p'].values)
-						iRec.append(prsaRec['i'].values)
-						m1Rec.append(prsaRec['m1'].values)
-						m2Rec.append(prsaRec['m2'].values)
-						r1Rec.append(prsaRec['r1'].values)
-						r2Rec.append(prsaRec['r2'].values)
-
-
-						# print(prsaRec.columns)
 
 
 						if (filt == 'all'):
@@ -441,82 +402,37 @@ if __name__ == "__main__":
 			allNPrsa.append(NallPrsa)
 			obsNPrsa.append(NobsPrsa)
 			recNPrsa.append(NrecPrsa)
-			#print(np.sum(lphRec), np.sum(recN), np.sum(lphRec)/np.sum(recN), np.sum(lphRec0), Nrec, np.sum(lphRec0)/Nrec, np.sum(lphObs), np.sum(obsN), np.sum(lphObs)/np.sum(obsN))
 
-	# Concatenating param lists for 2D histograms -- eccentricity 1st (all 3 subpopulations)
+	# Concatenating p and ecc lists
 	eccAll = np.concatenate(eccAll)
 	eccObs = np.concatenate(eccObs)
 	eccRec = np.concatenate(eccRec)
 
-	# period
 	pAll = np.concatenate(pAll)
 	pObs = np.concatenate(pObs)
 	pRec = np.concatenate(pRec)
 
-	# Inclination
-	iAll = np.concatenate(iAll)
-	iObs = np.concatenate(iObs)
-	iRec = np.concatenate(iRec)
 
-	# Mass 1
-	m1All = np.concatenate(m1All)
-	m1Obs = np.concatenate(m1Obs)
-	m1Rec = np.concatenate(m1Rec)
-
-	# Mass 2
-	m2All = np.concatenate(m2All)
-	m2Obs = np.concatenate(m2Obs)
-	m2Rec = np.concatenate(m2Rec)
-
-	# Radius 1
-	r1All = np.concatenate(r1All)
-	r1Obs = np.concatenate(r1Obs)
-	r1Rec = np.concatenate(r1Rec)
-
-	# Radius 2
-	r2All = np.concatenate(r2All)
-	r2Obs = np.concatenate(r2Obs)
-	r2Rec = np.concatenate(r2Rec)	
-
-
-	# print('Ecc lists:', eccAll, eccObs, eccRec)
-	# print('P lists:', pAll, pObs, pRec)
 	# Appending lists with all the p/ecc values to our dataframes
 	# All dataframe
-	All['e'] = eccAll
-	All['p'] = pAll
-	All['i'] = iAll
-	All['m1'] = m1All
-	All['m2'] = m2All
-	All['r1'] = r1All
-	All['r2'] = r2All
+	peccAll['e'] = eccAll
+	peccAll['p'] = pAll
 
 	# Observable dataframe
-	Obs['e'] = eccObs
-	Obs['p'] = pObs
-	Obs['i'] = iObs
-	Obs['m1'] = m1Obs
-	Obs['m2'] = m2Obs
-	Obs['r1'] = r1Obs
-	Obs['r2'] = r2Obs
+	peccObs['e'] = eccObs
+	peccObs['p'] = pObs
 
 	# Recovered dataframe
-	Rec['e'] = eccRec
-	Rec['p'] = pRec
-	Rec['i'] = iRec
-	Rec['m1'] = m1Rec
-	Rec['m2'] = m2Rec
-	Rec['r1'] = r1Rec
-	Rec['r2'] = r2Rec
-
+	peccRec['e'] = eccRec
+	peccRec['p'] = pRec
 
 	# print('Final Dataframes:', peccAll, peccObs, peccRec)
 	# print(peccRec.columns)
 	
 	# 3 letter code corresponds to scenario (OC/GC, baseline/colossus, crowding/no crowding)
-	All.to_csv('./data/all-M10BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
-	Obs.to_csv('./data/obs-M10BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
-	Rec.to_csv('./data/rec-M10BN-histData.csv', header = ['p', 'm1', 'm2', 'r1', 'r2', 'e', 'i'])
+	peccAll.to_csv(os.path.join('.', 'pecc', 'all-M10BN-ecc-p.csv'), header = ['e', 'p'])
+	peccObs.to_csv(os.path.join('.', 'pecc', 'obs-M10BN-ecc-p.csv'), header = ['e', 'p'])
+	peccRec.to_csv(os.path.join('.', 'pecc', 'rec-M10BN-ecc-p.csv'), header = ['e', 'p'])
 
 	#plot and save the histograms
 	saveHist(m1hAll, m1hObs, m1hRec, m1b, 'm1 (Msolar)', 'EBLSST_m1hist')
@@ -534,7 +450,8 @@ if __name__ == "__main__":
 	bGal = coords.galactic.b.wrap_at(180.*units.degree).degree
 	RAwrap = coords.ra.wrap_at(180.*units.degree).degree
 	Decwrap = coords.dec.wrap_at(180.*units.degree).degree
-
+	
+	plotPath = os.path.join('.', 'plots')
 	f, ax = plt.subplots(subplot_kw={'projection': "mollweide"}, figsize=(8,5))
 	ax.grid(True)
 	#ax.set_xlabel(r"$l$",fontsize=16)
@@ -545,7 +462,7 @@ if __name__ == "__main__":
 	mlw = ax.scatter(np.array(RAwrap).ravel()*np.pi/180., np.array(Decwrap).ravel()*np.pi/180., c=np.array(recFrac)*100., cmap='viridis_r', s = 4)
 	cbar = f.colorbar(mlw, shrink=0.7)
 	cbar.set_label(r'% recovered')
-	f.savefig('./plots/'  + 'mollweide_pct.pdf',format='pdf', bbox_inches = 'tight')
+	f.savefig(os.path.join(plotPath, 'mollweide_pct.pdf'),format='pdf', bbox_inches = 'tight')
 
 	f, ax = plt.subplots(subplot_kw={'projection': "mollweide"}, figsize=(8,5))
 	ax.grid(True)
@@ -557,16 +474,16 @@ if __name__ == "__main__":
 	mlw = ax.scatter(np.array(RAwrap).ravel()*np.pi/180., np.array(Decwrap).ravel()*np.pi/180., c=np.log10(np.array(recN)), cmap='viridis_r', s = 4)
 	cbar = f.colorbar(mlw, shrink=0.7)
 	cbar.set_label(r'log10(N) recovered')
-	f.savefig('./plots/'  + 'mollweide_N.pdf',format='pdf', bbox_inches = 'tight')
+	f.savefig(os.path.join(plotPath, 'mollweide_N.pdf'),format='pdf', bbox_inches = 'tight')
 
 	if (doIndividualPlots):
-		fmass.savefig('./plots/'  + 'massPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fqrat.savefig('./plots/'  + 'qPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fecc.savefig('./plots/'  + 'eccPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		flper.savefig('./plots/'  + 'lperPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fdist.savefig('./plots/'  + 'distPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		fmag.savefig('./plots/'  + 'magPDFall.pdf',format='pdf', bbox_inches = 'tight')
-		frad.savefig('./plots/'  + 'radPDFall.pdf',format='pdf', bbox_inches = 'tight')
+		fmass.savefig(os.path.join(plotPath, 'massPDFall.pdf'), format='pdf', bbox_inches = 'tight')
+		fqrat.savefig(os.path.join(plotPath, 'qPDFall.pdf'), format='pdf', bbox_inches = 'tight')
+		fecc.savefig(os.path.join(plotPath, 'eccPDFall.pdf'), format='pdf', bbox_inches = 'tight')
+		flper.savefig(os.path.join(plotPath, 'lperPDFall.pdf'), format='pdf', bbox_inches = 'tight')
+		fdist.savefig(os.path.join(plotPath, 'distPDFall.pdf'), format='pdf', bbox_inches = 'tight')
+		fmag.savefig(os.path.join(plotPath, 'magPDFall.pdf'), format='pdf', bbox_inches = 'tight')
+		frad.savefig(os.path.join(plotPath, 'radPDFall.pdf'), format='pdf', bbox_inches = 'tight')
 
 	print("###################")
 	print("number of binaries in input files (raw, log):",np.sum(fileN), np.log10(np.sum(fileN)))
@@ -574,10 +491,10 @@ if __name__ == "__main__":
 	print("number of binaries in recovered with gatspy (raw, log):",np.sum(fileRecN), np.log10(np.sum(fileRecN)))
 	print("recovered/observable*100 with gatspy:",np.sum(fileRecN)/np.sum(fileObsN)*100.)
 	print("###################")
-	print("total in sample (raw, log):",np.sum(rawN), np.log10(np.sum(rawN)))
-	print("total observable (raw, log):",np.sum(obsN), np.log10(np.sum(obsN)))
-	print("total recovered (raw, log):",np.sum(recN), np.log10(np.sum(recN)))
-	print("recovered/observable*100:",np.sum(recN)/np.sum(obsN)*100.)
+	print("total in sample (raw, log):", np.sum(rawN), np.log10(np.sum(rawN)))
+	print("total observable (raw, log):", np.sum(obsN), np.log10(np.sum(obsN)))
+	print("total recovered (raw, log):", np.sum(recN), np.log10(np.sum(recN)))
+	print("recovered/observable*100:", np.sum(recN)/np.sum(obsN)*100.)
 	print("###################")
 	print("total in Prsa 15.8<r<19.5 P<1000d sample (raw, log):",np.sum(allNPrsa), np.log10(np.sum(allNPrsa)))
 	print("total observable in Prsa 15.8<r<19.5 P<1000d sample (raw, log):",np.sum(obsNPrsa), np.log10(np.sum(obsNPrsa)))

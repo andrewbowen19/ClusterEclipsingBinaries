@@ -1,6 +1,6 @@
 # Welcome to the GitHub repository of our Cluster Eclipsing Binaries project!
 
-This project, serving as my senior thesis, studies the period recovery of the new Large Synoptic Survey Telescope
+This project, serving as my senior thesis, studies the period recovery of the new Vera Rubin Observatory(formerly the *Large Synoptic Survey Telescope*)
 for eclipsing binary stars in clusters. By learning about the periods of binary stars, we can then infer the mass of these stars -- allowing us to test our models of stellar evolution.
 
 We used data from catalogs provided from several sources of both [Open](https://www.google.com/search?client=safari&rls=en&q=webda+catalog&ie=UTF-8&oe=UTF-8) and [Globular clusters](http://physwww.mcmaster.ca/~harris/mwgc.dat). 

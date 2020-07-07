@@ -50,6 +50,8 @@ for root, dirs, files in os.walk(path_to_clusters, topdown=True):
 				eb = eblsstPlotter(df, cluster, strategyOpSim, crowding, binParam)
 				eb.makeCombinedHist(filtersLSST, True)
 				eb.filterStats(filtersLSST)  # Writing filter recovery stats to txt file
+				print('#####################################')
+				eb.makeCDF(filtersLSST, True)
 
 				# Making individual filter histograms
 				for c in df.columns:
