@@ -94,6 +94,7 @@ class eblsstPlotter(object):
         '''
         Method to produce cumulative histograms across all filters
         Want this to be easier to compare than straight (unstacked) histogram
+        filters - list-like of Vera Rubin filters desired
         '''
         print('Making CDF histograms...')
         multiData = self.DataFrame.drop(['binEdges', 'histAll', 'histObs', 'allhistRec'],

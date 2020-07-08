@@ -1,0 +1,125 @@
+\documentclass[RNAAS]{aastex63}
+
+%% Define new commands here
+\newcommand\latex{La\TeX}
+\graphicspath{{./}{figures/}}
+\begin{document}
+
+% Maybe we write this on the LISA-the Vera Rubin Observatory WD binary we found (include the table maybe?)
+\title{Simulating the Yield of Eclipsing Binary Stars in Star Clusters with the Vera Rubin Observatory}
+
+%% Note that the corresponding author command and emails has to come
+%% before everything else. Also place all the emails in the \email
+%% command instead of using multiple \email calls.
+
+\author{Andrew Bowen}
+\affiliation{Center for Interdisciplinary Exploration and Research in Astrophysics (CIERA) and Department of Physics \& Astronomy, 1800 Sherman Ave, 8th Floor, Evanston, IL 60201}
+
+\author{Aaron M. Geller}
+\affiliation{Center for Interdisciplinary Exploration and Research in Astrophysics (CIERA) and Department of Physics \& Astronomy, 1800 Sherman Ave, 8th Floor, Evanston, IL 60201}
+\affiliation{Adler Planetarium, 1300 S. Lake Shore Drive, Chicago, IL 60605}
+
+%% Note that RNAAS manuscripts DO NOT have abstracts.
+%% See the online documentation for the full list of available subject
+%% keywords and the rules for their use.
+\keywords{Eclipsing Binary stars -- Variable Stars -- Period search}
+
+%% Start the main body of the article. If no sections in the 
+%% research note leave the \section call blank to make the title.
+
+%%% Introduction %%%
+\section{Introduction}
+\label{sec:Intro}
+The Vera Rubin Observatory (formerly the \textit{Large Synoptic Survey Telescope}, or LSST) will be an integral tool for the study of eclipsing binary (EB) stars. The analysis of EBs can lead to important insights on stellar populations and variable stars. Previous studies of the EB yield of the Vera Rubin Observatory have been performed in \citet{2011AJ....142...52P}, \citet{2017PASP..129f5003W} as well as \citet{2019AAS...23336317P}. However, EBs in star clusters were not considered previously. 
+
+EBs in star clusters are particularly valuable because we have more precise measurements of their distances, ages, and metallicities based on other cluster member stars. They also provide insights into cluster dynamics. Binaries in clusters can be disrupted during gravitational encounters with other cluster stars \citep{2015ApJ...808L..25G}. Because of this, the hard-soft period boundary, the widest orbit at which a binary can avoid disruption, is used to limit the initial binary population. This is defined as:
+% Phs definition
+\begin{equation}
+    \label{eq:hard-soft-boundary}
+    P_{hs} = \frac{\pi G}{\sqrt{2}} \left( \frac{m_1m_2}{m_3} \right) ^{3/2}(m_1 + m_2)^{-1/2}\sigma_0^{-3} ,
+\end{equation}
+where $\sigma_0$ is the cluster velocity dispersion, $m_1$ and $m_2$ are binary component masses and $m_3$ is the mass of the disrupting object.
+
+% Strategies
+We simulate and analyze EBs in 3353 open clusters (OCs) and 157 globular clusters (GCs). We also compare two proposed observing strategies for the Vera Rubin Observatory: \textit{baseline} and \textit{colossus}. \textit{Baseline} is the current planned observing strategy. \textit{Colossus} observes the galactic plane more frequently and consequently could recover more EBs that reside in galactic plane star clusters.
+
+%%% Methods %%%
+\section{Methods}
+\label{sec:Methods}
+For each cluster, we simulate a statistical population of binary stars using \texttt{COSMIC} \citep{2018ApJ...854L...1B}, with each binary's orbital period below the cluster hard-soft period limit. We refer to periods for each binary produced by \texttt{COSMIC} as the ``input period." We use \texttt{ellc} \citep{2016ascl.soft03016M} to generate light curves for each binary star. We analyze these light curves with a Lomb-Scargle periodogram via \texttt{gatspy} \citep{2017PASP..129f5003W} to return an ``output period." If an eclipse is detected, the binary is considered \textit{observable}. If the output period produced by \texttt{gatspy} is within 10\% of the input period, half the input period, or twice the input period, we consider that EB to be successfully \textit{recovered}. By definition, \textit{recovered} binaries form a subgroup of \textit{observable} binaries.
+
+%%% Results %%%
+\section{Results}
+\label{sec:Results}
+% Comparison between strategies
+Across all clusters, \textit{colossus} will recover EB periods at a rate of 33.2\%, while \textit{baseline} will recover periods at a rate of 28.9\%. Overall, GCs contain more recoverable EBs, (see Table~\ref{tab:recovery_table}). This is due to GCs having significantly higher numbers of stars on average, and therefore a higher likelihood of containing more EBs. Different binary parameters for the recovered sub-population of binaries for each combination of cluster type (OC vs.\ GC) are shown in Figure~\ref{fig:baseline-cornerPlot}.
+
+
+% Recovery Table - copied from Thesis doc
+\begin{table}%[]
+    \centering
+    \begin{tabular}{lllllll}
+    
+    & \multicolumn{6}{c}{{\textbf{Recovery Statistics}}} \\
+    {\textbf{}} & \multicolumn{3}{c}{{ \textbf{Globular Clusters}}} & \multicolumn{3}{c}{\textbf{Open Clusters}} \\
+    \textbf{OS} &  $N_{rec,G}$ & $N_{obs,G}$ & \% Rec & $N_{rec,O}$ &  $N_{obs,O}$ & \% Rec \\
+    % baseline stats
+    \hline
+    \textit{baseline} & 687 & 1890  & \textbf{36.3} &  49 & 148 & \textbf{33.1} \\
+    % colossus
+    \textit{colossus} & 840 & 2377 & \textbf{35.3} & 111 & 286 & \textbf{38.8} \\
+    Difference & 153 & 487 & \textbf{-1.0\%} & 62 & 138 &  \textbf{5.7\%} \\
+    
+    \end{tabular}
+    \caption{Recovery statistics, including number of binaries observable, $N_{obs}$, and  recovered, $N_{rec}$, across all observing scenarios between GCs and OCs and both \textit{baseline} and \textit{colossus}. Recovery rate is defined as $(N_{rec}/N_{obs}) \times 100$. When summed across all cluster types, \textit{colossus} recovers 13\% more EBs than \textit{baseline}.}
+    \label{tab:recovery_table}
+
+\end{table}
+
+
+% Recovery patterns
+There are certain binary properties that increase the likelihood of period recovery. In general, shorter-period binaries are more likely to be recovered. With eclipses occurring more frequently due to a shorter orbital period, there is a higher probability of both observation of an eclipse and \texttt{gatspy} identifying the correct output period. Figure~\ref{fig:baseline-cornerPlot} shows recovered populations with peaks in their $log(p)$ distributions that correspond with relatively shorter orbital periods, while the input period distribution spanned a much larger range.
+
+% q and radius ratios 
+In addition, EBs with mass and radius ratios near unity will be recovered more frequently. Similarly-sized binary components will have similar eclipse shapes. \texttt{Gatspy} is more effective at successful period recovery when applied to regularly-shaped and sized eclipses (see Figure~\ref{fig:baseline-cornerPlot}). These distributions peak at mass and radius ratios closer to 1, while the input distribution did not contain these strong peaks.
+
+% Inclination & eccentricity
+ Figure~\ref{fig:baseline-cornerPlot} also shows that more frequently recovered binaries have inclinations close to perpendicular. Inclination of $90^o$ occurs when the component stars pass directly in front of each other with respect to our line of sight when eclipsing, maximizing the eclipse depth. Binaries with inclinations $i \not\approx 90^o$ have smaller eclipse depths for one or both eclipses, resulting in a higher likelihood that \texttt{gatspy} will return an incorrect output period.
+
+% Eccentricity patterns (circularized binaries)
+Less eccentric ($e \ll 1$) binaries will also be recovered more easily. This can be seen in the sharp peak in eccentricities near $e \approx 0$ in Figure \ref{fig:baseline-cornerPlot}, while the input eccentricity distribution was closer to uniform. Less eccentric binaries are recovered more often because the speed of eclipses is the same for each component star, spacing the eclipses more evenly in orbital phase. 
+
+% Corner Plots % -
+% baseline corner plot
+\begin{figure*}
+    \centering
+    % Rec-GBC
+    \plotone{cornerPlots/rec-OBC-GBC-cornerPlot-contour.pdf}
+
+    \caption{Corner plot for the \textit{baseline}-\textit{recovered} populations for OCs (red) and GCs (blue). These binaries were selected for orbital periods less than $p < 1000$ days. Most recovered binaries have periods less than 1000 days, justifying the selection. The binary parameters plotted are (from left to right on the x-axis): $\log_{10}$ of the orbital period $p$ in days, binary primary component mass $m_1 (M_{\odot})$, binary secondary mass $m_2 (M_{\odot})$, binary primary component radius $R_1 (R_{\odot})$, binary secondary component radius $r_2 (R_{\odot})$, binary eccentricity $e$, inclination $i$ (deg), mean apparent magnitude in the r-band. The 1-dimensional histograms along the diagonal show individual parameter probability density distributions.}
+    \label{fig:baseline-cornerPlot}
+\end{figure*}
+
+%%% Conclusion %%%
+\section{Conclusion}
+\label{sec:Conclusion}
+There are benefits and drawbacks to the proposed observing strategies for the purpose of eclipsing binary star period recovery. However, the \textit{colossus} strategy will recover $\sim 13\%$ more eclipsing binary stars within open and globular clusters in total. Also, more EBs will be recovered in GCs than OCs. Future study could compare the period-recovery yield of other proposed Vera Rubin Observatory observing strategies. It also could include different period-finding algorithms to determine the most effective way of determining EB periods from observed light curves.
+
+The Vera Rubin Observatory will recover the periods of thousands of star cluster member EBs. The unprecedented data of these populations will give great insight into EBs as well as other variable sources.
+
+% Acknowledgements word count == 146
+\acknowledgments
+\label{sec:Acknowledgements}
+This material is based upon work supported by the the Large Synoptic Survey Telescope Corporation (LSSTC), through an Enabling Science Grant \#2019‐UG01, award to CIERA at Northwestern University.
+The study resulting in this publication was assisted by a grant from the WCAS Undergraduate Research Grant Program which is administered by Northwestern University's Weinberg College of Arts and Sciences. However, the conclusions, opinions, and other statements and findings in this publication are the author's and not necessarily those of the sponsoring institution or of the the LSSTC.
+This research was supported in part through the computational resources and staff contributions provided for the Quest high performance computing facility at Northwestern University which is jointly supported by the Office of the Provost, the Office for Research, and Northwestern University Information Technology.
+This research has made use of the WEBDA database, operated at the Department of Theoretical Physics and Astrophysics of the Masaryk University. 
+
+%%% References %%%
+\nocite{*}
+\bibliography{references}
+% \bibliographystyle{aasjournal}
+
+\end{document}
+
+% Mini-Thesis done.
