@@ -1,4 +1,6 @@
-This part of our repo is dedicated to the writing of my thesis.
+# Thesis Writing
+
+This part of our repo is dedicated to the writing and compiling of my senior thesis.
 
 The requisite .tex files are located in the **thesis** directory as well as additional auxillary files to compile the latex script.
 Requisite figures should reside in the **figures** sub-directory and can be downloaded [at this link](https://northwestern.box.com/s/v9j0x3sw29gd6myqchcrgzrvotm8ltgb). The figures directory and corresponding folder on box have the requisite structure for the latex script to compile.
