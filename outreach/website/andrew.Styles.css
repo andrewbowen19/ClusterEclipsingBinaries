@@ -35,7 +35,7 @@ h1{
     color: #D9D5C1;/*Van Gogh beige*/
     margin-left:10px;
     margin-right:0px;
-    margin-top:10px;
+    margin-top:0px;
     margin-bottom:0px;
     font-size:50px;
 }
@@ -70,32 +70,49 @@ h2{
 
 }
 
+/*.maintext {
+    font-size:18px;
+    
+}*/
+
 body {
         margin: 50px;
         background-color: #61808C;
     }
 
-    p {
+p {
         font-size: 18px;
-        line-height: 130%
+        line-height: 120%;
+        font-family:Arial;
+        padding-left: 5%;
+        padding-right: 5%;
+
     }
     /* LINKS
  ****************************************************************/
-    a { 
+a { 
 
      text-decoration: none;
      text-align:center;
      vertical-align:center;
      margin-top:0px;
-     margin-left:10px;
+     /*margin-left:10px;*/
      color: #2C5273;  
-     font-size:20px;
+     font-size:18px;
      font-family:Arial;
      height:50px;
      width:75px;
 } 
 
+li {
+        font-size: 24px;
+        line-height: 120%;
+        font-family:Arial;
+        padding-left: 5%;
+        padding-right: 5%;
 
+
+}
 
     a:hover {
         font-style: italic; 

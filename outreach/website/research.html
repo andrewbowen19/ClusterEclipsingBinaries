@@ -14,35 +14,63 @@
 		</div>
 	</head>
 
-<!-- Dropdown menu -->
+	<!-- Dropdown menu, links to other pages on site -->
 	<div class="dropdown" style='width:100%; height:40px;'>
 		<div class = 'dropbtn' style = 'height:40px; '>
-			<a href="index.html">Home</a>
-			<a href="research.html"  >Research</a>
-			<a href="background.html">Background</a>
-			<a href="contact.html">Contact</a>
-			<a href="contact.html">CV</a>
+			<a style='padding:3%;' href="index.html">Home</a>
+			<a style='padding:3%;' href="research.html"  >Research</a>
+			<a style='padding:3%;' href="background.html">Background</a>
+			<a style='padding:3%;' href="contact.html">Contact</a>
+			<a style='padding:3%;' href="cv.html">CV</a>
 		</div>
 		
 	</div>
 
 
   	<body>
-
+  		<!-- Main text: give links to stuff on Box (thesis/poster) -->
   	<div style='width:100%; background-color:#D9D5C1; color:#2C5273; height:90%;'>
-  		<p style='text-align:center; font-size:24px; font-family:Arial; padding-top:25px;'>RESEARCH</p>
+  		<p style='text-align:center; font-size:32px; font-family:Arial; padding-top:25px;'>RESEARCH</p>
+  		
+  		<!-- CEB -->
+  		<div style='width:100%; background-color:#D9D5C1; color:#2C5273; height:90%; overflow: scroll;'>
+  			<p style='text-align:center; font-size:24px; font-family:Arial; '><u>Cluster Eclipsing Binaries</u></p>
+  			<!-- Link to thesis on Box -->
+  			<p>This project served as my senior thesis project at Northwestern University. Feel free to take a look at the thesis <a href='https://northwestern.box.com/s/sfbnk70dq0f43gxjv9vf88axbq93wqno' target = '_blank'>here</a>.</p> 
+  			
+  			<p>When the Vera Rubin Observatory (previously known as the <i>Large Synoptic Survey Telescope</i> (LSST)) becomes operational in 2021, it will provide unprecedented data on eclipsing binary stars (EBs). The period-recovery rate of the Vera Rubin Observatory has been studied previoudly by Polzin 2018 & Prsa 2017. We build on previous work by including eclipsing binary stars residing in open and globular clusters. Given that nearly half of all stars within the Milky Way reside in a binary system, and a significant number also reside in star clusters, these cluster binaries make up an important population of all galactic EBs. </p>
+
+  			<!-- Binaries in clusters -->
+  			<p>The behavior of binary stars bound in clusters can be different than those binaries distributed throughout the rest of the galaxy because of close gravitational encounters with nearby stars. For example, binaries with longer orbital periods, which are less tightly bound gravitationally, will be disrupted by the gravity from other cluster-member objects.</p>
+
+  			<!-- Strategy Comparison -->
+  			<p>In addition, the Vera Rubin Observatory has several proposed observing strategies and cadences, allocating different numbers of observations for different viewing fields. We use the <i>Operations Simulator</i> (OpSim) to simulate the viewing patterns and cadence of the Vera Rubin Observatory. Between the two strategies compared in this project, <i>baseline</i> & <i>colossus</i>, there are differences that could alter the period recovery across clusters. Namely, <i>colossus</i> allocates higher numbers of observations to the OpSim viewing fields near the galactic plane. Given that most Open Clusters reside in the galactic plane, it is possible that <i>colossus</i> will have a higher rate of period recovery for Open Clusters (see figure below).</p>
+
+  			<!-- Cluster mollweide -->
+  			<p style='width:60%; height:50%; float:center; padding:10px; vertical-align:middle;'>
+  			<img src = 'images/clusters-opsim-mollweide.pdf'></p>
+
+  			<!-- White Dwarfs -->
+  			<p>Another population of interest present in our study is detached white dwarf (WD) binary systems that are both eclipsing and short-period enough to produce detectable gravitational waves. </p>
+
+  		</div>
+
+
+  		<!-- EBLSST (2018 REU) -->
+  		<!-- <div> -->
+  			<!-- <h2>Eclipsing Binaries with LSST</h2> -->
+  			<!-- Limb-darkening stuff, EBLSST results if you can find them -->
+  		<!-- </div> -->
+
   	</div>
-
-
-
 
 
   	</body>
 
 	<!-- Bottom contact info/logos -->
-	<div>
-	<p style="color:#D9D5C1; margin-left:10px; font-family:Arial; font-size:12px;">Email: atbowen [at] gmail.com </p>
-	<a href= 'https://www.linkedin.com/in/andrew-bowen-/' target = '_blank' style="color:#D9D5C1; margin-left:10px; font-family:Arial; font-size:12px; padding-bottom:10px;">LinkedIn</a>
+	<div style='width:100%; color:#D9D5C1; height:10%; overflow: scroll;'>
+		<p style="color:#D9D5C1; margin-left:10px; font-family:Arial; font-size:12px;">Email: atbowen [at] gmail.com </p>
+		<a href= 'https://www.linkedin.com/in/andrew-bowen-/' target = '_blank' style="color:#D9D5C1; margin-left:10px; font-family:Arial; font-size:12px; padding-bottom:10px;">LinkedIn Profile</a>
 	</div>
 
 
