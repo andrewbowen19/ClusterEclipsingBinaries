@@ -14,14 +14,14 @@
 		</div>
 	</head>
 
-	<!-- Dropdown menu, links to other pages on site -->
+	<!-- Dropdown menu, links to otherpages on site -->
 	<div class="dropdown" style='width:100%; height:40px;'>
 		<div class = 'dropbtn' style = 'height:40px; '>
-			<a style='padding:3%;' href="index.html">Home</a>
-			<a style='padding:3%;' href="research.html"  >Research</a>
-			<a style='padding:3%;' href="background.html">Background</a>
-			<a style='padding:3%;' href="contact.html">Contact</a>
-			<a style='padding:3%;' href="cv.html">CV</a>
+			<a style='padding:3%; color:#2C5273;' href="index.html">Home</a>
+			<a style='padding:3%; color:#2C5273;' href="research.html"  >Research</a>
+			<a style='padding:3%; color:#2C5273;' href="background.html">Background</a>
+			<a style='padding:3%; color:#2C5273;' href="contact.html">Contact</a>
+			<a style='padding:3%; color:#2C5273;' href="cv.html">CV</a>
 		</div>
 		
 	</div>
@@ -29,49 +29,66 @@
 
   	<body>
   		<!-- Main text: give links to stuff on Box (thesis/poster) -->
-  	<div style='width:100%; background-color:#D9D5C1; color:#2C5273; height:90%;'>
+  	<div style='width:100%; background-color:#D9D5C1; color:#2C5273; height:90%;overflow: scroll;'>
   		<p style='text-align:center; font-size:32px; font-family:Arial; padding-top:25px;'>RESEARCH</p>
   		
   		<!-- CEB -->
-  		<div style='width:100%; background-color:#D9D5C1; color:#2C5273; height:90%; overflow: scroll;'>
-  			<p style='text-align:center; font-size:24px; font-family:Arial; '><u>Cluster Eclipsing Binaries</u></p>
-  			<!-- Link to thesis on Box -->
-  			<p>This project served as my senior thesis project at Northwestern University. Feel free to take a look at the thesis <a href='https://northwestern.box.com/s/sfbnk70dq0f43gxjv9vf88axbq93wqno' target = '_blank'>here</a>.</p> 
-  			
-  			<p>When the Vera Rubin Observatory (previously known as the <i>Large Synoptic Survey Telescope</i> (LSST)) becomes operational in 2021, it will provide unprecedented data on eclipsing binary stars (EBs). The period-recovery rate of the Vera Rubin Observatory has been studied previoudly by Polzin 2018 & Prsa 2017. We build on previous work by including eclipsing binary stars residing in open and globular clusters. Given that nearly half of all stars within the Milky Way reside in a binary system, and a significant number also reside in star clusters, these cluster binaries make up an important population of all galactic EBs. </p>
 
-  			<!-- Binaries in clusters -->
-  			<p>The behavior of binary stars bound in clusters can be different than those binaries distributed throughout the rest of the galaxy because of close gravitational encounters with nearby stars. For example, binaries with longer orbital periods, which are less tightly bound gravitationally, will be disrupted by the gravity from other cluster-member objects.</p>
+			<p style='text-align:center; font-size:24px; font-family:Arial; '><u>Cluster Eclipsing Binaries</u></p>
+			<!-- Link to thesis on Box -->
+			<p>This project served as my senior thesis project at Northwestern University. Feel free to take a look at the full thesis <a href='https://northwestern.box.com/s/sfbnk70dq0f43gxjv9vf88axbq93wqno' target = '_blank'>here</a>.</p> 
+			
+      <h2 style='color:#2C5273; padding-left:5%;'>Introduction</h2> 
 
-  			<!-- Strategy Comparison -->
-  			<p>In addition, the Vera Rubin Observatory has several proposed observing strategies and cadences, allocating different numbers of observations for different viewing fields. We use the <i>Operations Simulator</i> (OpSim) to simulate the viewing patterns and cadence of the Vera Rubin Observatory. Between the two strategies compared in this project, <i>baseline</i> & <i>colossus</i>, there are differences that could alter the period recovery across clusters. Namely, <i>colossus</i> allocates higher numbers of observations to the OpSim viewing fields near the galactic plane. Given that most Open Clusters reside in the galactic plane, it is possible that <i>colossus</i> will have a higher rate of period recovery for Open Clusters (see figure below).</p>
+			<p>When the <a href='https://www.lsst.org' target = '_blank'>Vera Rubin Observatory</a> (previously known as the <i>Large Synoptic Survey Telescope</i> (LSST)) becomes operational in 2021, it will provide unprecedented data on eclipsing binary stars (EBs). The period-recovery rate of the Vera Rubin Observatory has been studied previoudly by Polzin 2018 & Prsa 2017. We build on previous work by including eclipsing binary stars residing in open and globular clusters. Given that nearly half of all stars within the Milky Way reside in a binary system, and a significant number also reside in star clusters, these cluster binaries make up an important population of all galactic EBs. </p>
 
-  			<!-- Cluster mollweide -->
-  			<p style='width:60%; height:50%; float:center; padding:10px; vertical-align:middle;'>
-  			<img src = 'images/clusters-opsim-mollweide.pdf'></p>
+			<!-- Binaries in clusters -->
+			<p>The behavior of binary stars bound in clusters can be different than those binaries distributed throughout the rest of the galaxy because of close gravitational encounters with nearby stars. For example, binaries with longer orbital periods, which are less tightly bound gravitationally, will be disrupted by the gravity from other cluster-member objects.</p>
 
-  			<!-- White Dwarfs -->
-  			<p>Another population of interest present in our study is detached white dwarf (WD) binary systems that are both eclipsing and short-period enough to produce detectable gravitational waves. </p>
+			<!-- Strategy Comparison -->
+			<p>In addition, the Vera Rubin Observatory has several proposed observing strategies and cadences, allocating different numbers of observations for different viewing fields. We use the <i>Operations Simulator</i> (OpSim) to simulate the viewing patterns and cadence of the Vera Rubin Observatory. Between the two strategies compared in this project, <i>baseline</i> & <i>colossus</i>, there are differences that could alter the period recovery across clusters. Namely, <i>colossus</i> allocates higher numbers of observations to the OpSim viewing fields near the galactic plane. Given that most Open Clusters reside in the galactic plane, it is possible that <i>colossus</i> will have a higher rate of period recovery for Open Clusters (see figure below).</p>
 
-  		</div>
+			<!-- Cluster mollweide -->
+			<p style='padding-bottom:3%; float:center;'>
+			 <img src = 'images/clusters-opsim-mollweide.pdf' class='center'style='float:center; width:60%; height:45%; '></p>
+      <p style='font-size:16px; text-align:center;'><b>Figure:</b> mollweide projection plot of on-sky location of open clusters (red) and globular clusters (blue).</p>
 
+      <!-- OpSim mollweides -->
+      <div style='width:100%; background-color:#D9D5C1; color:#2C5273; padding-bottom:0p'x;>
+        <!-- baseline -->
+        <img src = 'images/baseline-Nobs-mollweide.pdf' style='width:50%; height:45%; float:left;'></p>
+        <!-- colossus -->
+        <img src = 'images/colossus-Nobs-mollweide.pdf' style='width:50%; height:45%; float:right;'>
+        <p style='font-size:16px; text-align:center;'><b>Figure:</b> mollweide projection plot of number of observations per <i>OpSim</i> field for the <i>baseline</i> (left) and <i>colossus</i> (right) strategy.</p>
+      </div>
+      
+      <!-- Simulation and compilation of OCs and GCs -->
+      <p>We compiled data for 3353 open and 157 globular clusters. For each cluster, we used <a href='https://cosmic-popsynth.github.io'>COSMIC</a> to simulate a population of 40,000 binaries. Light curves are generated for each binary using <a href='https://github.com/pmaxted/ellc'>ellc</a>. These light curves are passed to <a href='https://www.astroml.org/gatspy/'>gatspy</a>, which analyzes them via a Lomb-Scargle periodogram. If an eclipse is detectable, then that binary is considered <i>'observable.'</i>  If the period returned by <i>gatspy</i> is witin 10% of the 'input period' from COSMIC (or half/integer multiples), then that binary is considered 'recovered.'</p>
 
-  		<!-- EBLSST (2018 REU) -->
-  		<!-- <div> -->
-  			<!-- <h2>Eclipsing Binaries with LSST</h2> -->
-  			<!-- Limb-darkening stuff, EBLSST results if you can find them -->
-  		<!-- </div> -->
+      <!-- CEB Results -->
+      <h2 style='color:#2C5273; padding-left:5%;'>Results</h2> 
+      <p>Over the 10-year run-time of the Vera Rubin Observatory, <i>colossus</i> will recover <b>13%</b> more EBs than <i>baseline</i>. In addition, globular clusters will have more total EBs recovered than open clusters. This makes sense because globular clusters have much higher cluster masses on average when compared to open clusters.</p>
+
+			<!-- White Dwarfs: do later at end of section -->
+			<p>Another population of interest present in our study is detached white dwarf (WD) binary systems that are both eclipsing and short-period enough to produce detectable gravitational waves (Korol 2017). The gravitational waves produced by these systems are detectable by the new <a href='https://lisa.nasa.gov'><i>Laser Interferometer Space Antenna</i> (LISA).</a> In our sample, we were able to find an eclipsing binary that was deemed recovered by the Vera Rubin Observatory and detectable in GW by LISA. This example of a simulated eclipsing binary visible via both electromagnetic radiation and gravitational waves points to exciting synergies between the two projects!</p>
+
 
   	</div>
 
 
   	</body>
 
-	<!-- Bottom contact info/logos -->
-	<div style='width:100%; color:#D9D5C1; height:10%; overflow: scroll;'>
-		<p style="color:#D9D5C1; margin-left:10px; font-family:Arial; font-size:12px;">Email: atbowen [at] gmail.com </p>
-		<a href= 'https://www.linkedin.com/in/andrew-bowen-/' target = '_blank' style="color:#D9D5C1; margin-left:10px; font-family:Arial; font-size:12px; padding-bottom:10px;">LinkedIn Profile</a>
-	</div>
+  <!-- Bottom contact bar with info/logos --><!-- Maybe write as a function? -->
+  <div>
+    <p style="color:#D9D5C1; vertical-align:left; margin-left:0px; font-family:Arial; font-size:12px;">atbowen[at]gmail.com 
+      <!-- LinkedIn -->
+      <a href= 'https://www.linkedin.com/in/andrew-bowen-/' target = '_blank' style="color:#D9D5C1; margin-left:10px; font-family:Arial; font-size:12px; padding-bottom:10px;">LinkedIn</a> 
+      <!-- GitHub -->
+      <a href='https://github.com/andrewbowen19' target='_blank' style='color:#D9D5C1; margin-left:10px; font-family:Arial; font-size:12px; padding-bottom:10px;'>GitHub</a> 
+      <!-- Thesis -->
+      <a href='https://northwestern.box.com/s/sfbnk70dq0f43gxjv9vf88axbq93wqno' target='_blank' style='color:#D9D5C1; margin-left:10px; font-family:Arial; font-size:12px; padding-bottom:10px;'>Thesis</a> 
+    </p>
+  </div>
 
 
 
